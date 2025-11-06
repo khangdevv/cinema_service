@@ -7,11 +7,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Account
- * 
+ *
  * @property int $id
  * @property string|null $email
  * @property string|null $phone
@@ -19,20 +21,26 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $full_name
  * @property string $role
  * @property bool $is_active
- * 
+ *
  * @property Collection|Order[] $orders
  * @property Collection|SeatLock[] $seat_locks
  *
  * @package App\Models
  */
-class Account extends Model
+class Account extends Authenticatable
 {
+    use HasFactory, Notifiable;
+
 	protected $table = 'account';
 	public $timestamps = false;
 
 	protected $casts = [
 		'is_active' => 'bool'
 	];
+
+    protected $hidden = [
+        'password_hash',
+    ];
 
 	protected $fillable = [
 		'email',
@@ -42,6 +50,11 @@ class Account extends Model
 		'role',
 		'is_active'
 	];
+
+    public function getAuthPassword()
+    {
+        return $this->password_hash;
+    }
 
 	public function orders()
 	{
