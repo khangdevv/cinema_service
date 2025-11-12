@@ -71,6 +71,7 @@ class AuthController extends Controller
                 'message' => 'Invalid Account'
             ], 403);
         }
+        $account->tokens()->delete();
 
         $token = $account->createToken('customer')->plainTextToken;
 
