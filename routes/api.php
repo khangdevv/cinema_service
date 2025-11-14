@@ -12,13 +12,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/info', [AuthController::class, 'getInfo']);
 
-    // Route::middleware('role:ADMIN')->group(function () {
-    //     Route::get('/admin/accounts', [AccountController::class, 'index']);
-    //     Route::get('/admin/accounts/{id}', [AccountController::class, 'show']);
-    //     Route::put('/admin/accounts/{id}', [AccountController::class, 'update'] );
-    // });
+    Route::put('/accounts/{id}', [AccountController::class, 'update']);
+
+    Route::middleware('role:ADMIN')->group(function () {
+        Route::apiResource('/accounts', AccountController::class);
+    });
 });
 
-Route::apiResource('accounts', AccountController::class);
+
+
+
 
 
