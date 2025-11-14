@@ -12,10 +12,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/info', [AuthController::class, 'getInfo']);
 
-    Route::put('/update', [AccountController::class, 'update']);
+    Route::put('/accounts/{id}', [AccountController::class, 'update']);
 
     Route::middleware('role:ADMIN')->group(function () {
-        Route::apiResource('/admin/accounts', AccountController::class);
+        Route::apiResource('/accounts', AccountController::class);
     });
 });
 
