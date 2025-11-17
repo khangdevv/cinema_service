@@ -99,7 +99,7 @@ class AccountController extends Controller
 
             $account->phone = $request->phone;
             $account->full_name = $request->full_name;
-            $account->password_hash = $request->password_hash;
+            $account->password_hash = Hash::make($request->password_hash);
             $account->save();
 
 
