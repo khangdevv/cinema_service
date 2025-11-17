@@ -73,7 +73,9 @@ class AuthController extends Controller
         }
         $account->tokens()->delete();
 
-        $token = $account->createToken('customer')->plainTextToken;
+        $tokenName = $account->role === 'ADMIN' ? 'admin' : 'customer';
+
+        $token = $account->createToken($tokenName)->plainTextToken;
 
         return response()->json([
             'success' => true,
