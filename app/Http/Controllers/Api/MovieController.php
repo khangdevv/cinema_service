@@ -11,9 +11,23 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Movie::all();
+        $movie = Movie::query();
+
+        if ($request->has('title')) {
+            $movie->where('title', 'LIKE', '%' . $request->title . '%');
+        }
+
+        if ($request->has('genre')) {
+            $movie->where('genre', 'LIKE', '%' . $request->genre . '%');
+        }
+
+        if ($request->has('rating_code')) {
+            $movie->where('rating_code', 'LIKE', '%' . $request->rating_code . '%');
+        }
+
+        return $movie->get();
     }
 
     /**
@@ -24,6 +38,8 @@ class MovieController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'duration_min' => 'required|numeric',
+            'genre' => 'nullable|string|100',
+            'poster' => 'nullable|url',
             'rating_code' => 'nullable|string',
         ]);
 
@@ -83,6 +99,8 @@ class MovieController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'duration_min' => 'required|numeric',
+            'genre' => 'nullable|string|100',
+            'poster' => 'nullable|url',
             'rating_code' => 'nullable|string',
         ]);
 
