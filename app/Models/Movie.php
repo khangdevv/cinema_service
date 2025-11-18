@@ -35,7 +35,9 @@ class Movie extends Model
 	protected $fillable = [
 		'title',
 		'duration_min',
-		'rating_code'
+        'genre',
+        'poster',
+		'rating_code',
 	];
 
 	public function showtimes()
