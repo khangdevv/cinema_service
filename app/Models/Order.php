@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Order
- * 
+ *
  * @property int $id
  * @property string $channel
  * @property int|null $account_id
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $status
  * @property string|null $payment_method
  * @property int $total_amount
- * 
+ *
  * @property Account|null $account
  * @property Showtime $showtime
  * @property Collection|OrderLine[] $order_lines
@@ -42,7 +42,6 @@ class Order extends Model
 	protected $fillable = [
 		'channel',
 		'account_id',
-		'cashier_id',
 		'showtime_id',
 		'status',
 		'payment_method',
