@@ -7,11 +7,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Screen
- * 
+ *
  * @property int $id
  * @property string $code
  * @property string $name
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $row_count
  * @property int $col_count
  * @property bool $is_active
- * 
+ *
  * @property Collection|Seat[] $seats
  * @property Collection|Showtime[] $showtimes
  *
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Screen extends Model
 {
+    use HasFactory;
 	protected $table = 'screen';
 	public $timestamps = false;
 
