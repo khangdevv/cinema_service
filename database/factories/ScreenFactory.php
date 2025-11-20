@@ -16,8 +16,16 @@ class ScreenFactory extends Factory
      */
     public function definition(): array
     {
+        static $count = 0;
+        $count++;
+        
         return [
-            //
+            'code' => 'SCR-' . $count,
+            'name' => 'Screen ' . $count,
+            'format' => fake()->randomElement(['2D', '3D', 'IMAX', '4DX', 'ScreenX']),
+            'row_count' => fake()->numberBetween(8, 15),
+            'col_count' => fake()->numberBetween(8, 15),
+            'is_active' => fake()->boolean(90),
         ];
     }
 }
