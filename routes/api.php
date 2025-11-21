@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\MovieController;
 use App\Http\Controllers\Api\ScreenController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SeatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/screens/{screen}', [ScreenController::class, 'show']);
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::get('/seats', [SeatController::class, 'index']);
+    Route::get('/seats/{seat}', [SeatController::class, 'show']);
 
     Route::middleware('role:ADMIN')->group(function () {
         Route::apiResource('/accounts', AccountController::class);
@@ -31,6 +34,9 @@ Route::middleware('auth:sanctum')->group(function () {
              ->except(['index', 'show']);
         Route::apiResource('/products', ProductController::class)
              ->except(['index', 'show']);
+        Route::apiResource('/seats', SeatController::class)
+             ->except(['index', 'show']);
+        Route::post('/screens/{screen}/generate-seats', [SeatController::class, 'generateSeats']);
     });
 });
 
