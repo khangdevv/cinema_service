@@ -29,7 +29,8 @@ class Movie extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'duration_min' => 'int'
+		'duration_min' => 'int',
+		'is_active' => 'bool'
 	];
 
 	protected $fillable = [
@@ -38,6 +39,7 @@ class Movie extends Model
         'genre',
         'poster',
 		'rating_code',
+		'is_active',
 	];
 
 	public function showtimes()
