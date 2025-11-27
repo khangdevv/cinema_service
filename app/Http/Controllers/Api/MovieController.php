@@ -38,7 +38,7 @@ class MovieController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'duration_min' => 'required|numeric',
-            'genre' => 'nullable|string|100',
+            'genre' => 'nullable|string',
             'poster' => 'nullable|url',
             'rating_code' => 'nullable|string',
         ]);
@@ -47,25 +47,25 @@ class MovieController extends Controller
             $movie = new Movie();
             $movie->title = $request->title;
             $movie->duration_min = $request->duration_min;
+            $movie->genre = $request->genre;
+            $movie->poster = $request->poster;
             $movie->rating_code = $request->rating_code;
+            $movie->is_active = true;
             $movie->save();
 
-
             return response()->json([
-            'success' => true,
-            'message' => 'Movie has been created Successfully',
-            'data' => [
-                'movie' => $movie,
+                'success' => true,
+                'message' => 'Movie has been created Successfully',
+                'data' => [
+                    'movie' => $movie,
                 ],
             ], 201);
 
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return response()->json([
-            'success' => false,
-            'message' => 'Movie has been created failed',
-            'error' => $e->getMessage(),
+                'success' => false,
+                'message' => 'Movie has been created failed',
+                'error' => $e->getMessage(),
             ], 400);
         }
     }
@@ -99,16 +99,18 @@ class MovieController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'duration_min' => 'required|numeric',
-            'genre' => 'nullable|string|100',
+            'genre' => 'nullable|string',
             'poster' => 'nullable|url',
             'rating_code' => 'nullable|string',
         ]);
 
         try {
-
             $movie->title = $request->title;
             $movie->duration_min = $request->duration_min;
+            $movie->genre = $request->genre;
+            $movie->poster = $request->poster;
             $movie->rating_code = $request->rating_code;
+            $movie->is_active = true;
             $movie->save();
 
             return response()->json([
@@ -139,14 +141,16 @@ class MovieController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => "Movie not exist",
-            ],404);
+            ], 404);
         }
 
-        $movie->delete();
+        $movie->is_active = false;
+        $movie->save();
+
         return response()->json([
             'success' => true,
             'message' => "Movie has been deleted successfully",
             'data' => $movie,
-        ],200);
+        ], 200);
     }
 }
