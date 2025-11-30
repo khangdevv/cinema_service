@@ -22,6 +22,7 @@ class MovieFactory extends Factory
             'genre' => fake()->randomElement(['Action', 'Adventur','Sci-Fi','Honor']),
             'poster' => 'https://picsum.photos/500/750?random=' . fake()->unique()->numberBetween(1, 9999),
             'rating_code' => fake()->randomElement(['T13', 'T16', 'T18']),
+            'is_active' => fake()->boolean(90),
         ];
     }
 }

@@ -23,7 +23,11 @@ class ScreenController extends Controller
             $screen->where('is_active', $request->is_active);
         }
 
-        return $screen->get();
+        return response()->json([
+                'success' => true,
+                'message' => 'Screen has been show Successfully',
+                'data' => $screen->get(),
+            ], 200);
     }
 
     /**
@@ -41,14 +45,14 @@ class ScreenController extends Controller
         ]);
 
         try {
-            $screen = new Screen();
-            $screen->code = $request->code;
-            $screen->name = $request->name;
-            $screen->format = $request->format;
-            $screen->row_count = $request->row_count;
-            $screen->col_count = $request->col_count;
-            $screen->is_active = $request->is_active;
-            $screen->save();
+            $screen = Screen::create([
+                'code' => $request->code,
+                'name' => $request->name,
+                'format' => $request->format,
+                'row_count' => $request->row_count,
+                'col_count' => $request->col_count,
+                'is_active' => $request->is_active,
+            ]);
 
             return response()->json([
                 'success' => true,
@@ -103,13 +107,14 @@ class ScreenController extends Controller
         ]);
 
         try {
-            $screen->code = $request->code;
-            $screen->name = $request->name;
-            $screen->format = $request->format;
-            $screen->row_count = $request->row_count;
-            $screen->col_count = $request->col_count;
-            $screen->is_active = $request->is_active;
-            $screen->save();
+            $screen->update([
+                'code' => $request->code,
+                'name' => $request->name,
+                'format' => $request->format,
+                'row_count' => $request->row_count,
+                'col_count' => $request->col_count,
+                'is_active' => $request->is_active,
+            ]);
 
             return response()->json([
                 'success' => true,
