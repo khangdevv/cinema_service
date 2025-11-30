@@ -15,6 +15,8 @@ class MovieController extends Controller
     {
         $movie = Movie::query();
 
+        $movie->where('is_active', true);
+
         if ($request->has('title')) {
             $movie->where('title', 'LIKE', '%' . $request->title . '%');
         }
@@ -27,7 +29,11 @@ class MovieController extends Controller
             $movie->where('rating_code', 'LIKE', '%' . $request->rating_code . '%');
         }
 
-        return $movie->get();
+        return response()->json([
+                'success' => true,
+                'message' => 'Movie has been show Successfully',
+                'data' => $movie->get(),
+            ], 200);
     }
 
     /**
@@ -144,13 +150,27 @@ class MovieController extends Controller
             ], 404);
         }
 
-        $movie->is_active = false;
-        $movie->save();
+        // Kiểm tra xem phim có suất chiếu không
+        $hasShowtimes = \App\Models\Showtime::where('movie_id', $id)->exists();
 
-        return response()->json([
-            'success' => true,
-            'message' => "Movie has been deleted successfully",
-            'data' => $movie,
-        ], 200);
+        if ($hasShowtimes) {
+            $movie->is_active = false;
+            $movie->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => "Movie has been deactivated",
+                'data' => $movie,
+            ], 200);
+        } 
+        else {
+            $movie->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => "Movie has been deleted sucessfully",
+                'data' => $movie,
+            ], 200);
+        }
     }
 }
