@@ -11,14 +11,12 @@ use App\Http\Controllers\Api\AccountController;
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
-
+ Route::get('/movies', [MovieController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
-
      Route::post('/logout', [AuthController::class, 'logout']);
      Route::get('/info', [AuthController::class, 'getInfo']);
-
      Route::put('/accounts/{account}', [AccountController::class, 'update']);
-     Route::get('/movies', [MovieController::class, 'index']);
+    
      Route::get('/movies/{movie}', [MovieController::class, 'show']);
      Route::get('/screens', [ScreenController::class, 'index']);
      Route::get('/screens/{screen}', [ScreenController::class, 'show']);
