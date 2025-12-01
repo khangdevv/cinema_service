@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
+use App\Models\Screen;
+use App\Models\Showtime;
 use Illuminate\Http\Request;
+
+use function Laravel\Prompts\select;
+use function PHPUnit\Framework\isEmpty;
 
 class MovieController extends Controller
 {
@@ -30,10 +35,10 @@ class MovieController extends Controller
         }
 
         return response()->json([
-                'success' => true,
-                'message' => 'Movie has been show Successfully',
-                'data' => $movie->get(),
-            ], 200);
+            'success' => true,
+            'message' => 'Movie has been show Successfully',
+            'data' => $movie->get(),
+        ], 200);
     }
 
     /**
@@ -150,7 +155,6 @@ class MovieController extends Controller
             ], 404);
         }
 
-        // Kiểm tra xem phim có suất chiếu không
         $hasShowtimes = \App\Models\Showtime::where('movie_id', $id)->exists();
 
         if ($hasShowtimes) {
@@ -162,8 +166,7 @@ class MovieController extends Controller
                 'message' => "Movie has been deactivated",
                 'data' => $movie,
             ], 200);
-        } 
-        else {
+        } else {
             $movie->delete();
 
             return response()->json([
@@ -171,6 +174,95 @@ class MovieController extends Controller
                 'message' => "Movie has been deleted sucessfully",
                 'data' => $movie,
             ], 200);
+        }
+    }
+
+    public function generateSchedule(Request $request)
+    {
+        // validate
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'duration_min' => 'required|numeric',
+            'genre' => 'required|string',
+            'poster' => 'required|url',
+            'rating_code' => 'required|string',
+            'days' => 'required|numberic|min:0|max:2',
+            'screens' => 'required|numberic|min:0|max:8',
+            'base_price' => 'required|numberic|min:0',
+        ]);
+
+        // time
+        $timeSlots = [
+            ['hour' => 9, 'minute' => 0],   // 9:00
+            ['hour' => 13, 'minute' => 30], // 13:30
+            ['hour' => 17, 'minute' => 0],  // 17:00
+            ['hour' => 20, 'minute' => 30], // 20:30
+        ];
+
+        try {
+            // create movie
+            $movie = Movie::create([
+                'title' => $request->title,
+                'duration_min' => $request->duration_min,
+                'genre' => $request->genre,
+                'poster' => $request->poster,
+                'rating_code' => $request->rating_code,
+                'is_active' => true,
+            ]);
+
+            $movie = Movie::find($movie->id);
+
+            // get screen 
+            $screen = Screen::query(select('id'))->where('is_active', true);
+            $screenId = array();
+
+            foreach ($screen as $key => $value) {
+                $screenId[] = $value->id;
+            }
+
+            // check screen active
+            if (isEmpty($screen)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No screens available',
+                    'data' => [
+                        'movie' => $movie,
+                    ],
+                ], 400);
+            }
+
+            // get tommorrow
+            $startDate = Carbon::now()->addDays();
+
+            for ($i = 0; $i < $request->days; $i++) {
+
+            }
+
+            $showtimes = Showtime::create([
+                'movie_id' => $request->id,
+                'screen_id' => random($screenId, ),
+                'start_at' => '',
+                'end_at' => '',
+                'base_price' => $request->base_price,
+                'status' => 'OPEN',
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Movie created with showtimes successfully',
+                'data' => [
+                    'movie' => $movie,
+                    'showtimes_created' => count($createdShowtimes),
+                    'screens_used' => $screens->pluck('name'),
+                ],
+            ], 201);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Movie has been created failed',
+                'error' => $e->getMessage(),
+            ], 400);
         }
     }
 }
