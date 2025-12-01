@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Order;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,9 +14,20 @@ class AccountController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Account::all();
+        $account = Account::query();
+
+
+        if ($request->has('full_name')) {
+            $account->where('full_name', 'LIKE', '%' . $request->full_name . '%');
+        }
+
+        return response()->json([
+                'success' => true,
+                'message' => 'Account has been show Successfully',
+                'data' => $account->get(),
+            ], 200);
     }
 
     /**
@@ -134,7 +146,17 @@ class AccountController extends Controller
             ],404);
         }
 
+        $hasOrders = Order::where('account_id', $id)->exists();
+
+        if ($hasOrders) {
+            return response()->json([
+                'success' => false,
+                'message' => "Cannot delete account with orders",
+            ], 400);
+        }
+
         $account->delete();
+
         return response()->json([
             'success' => true,
             'message' => "Account has been deleted successfully",

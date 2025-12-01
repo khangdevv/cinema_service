@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\MovieController;
 use App\Http\Controllers\Api\ScreenController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SeatController;
+use App\Http\Controllers\Api\ShowtimeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
@@ -25,6 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/products/{product}', [ProductController::class, 'show']);
     Route::get('/seats', [SeatController::class, 'index']);
     Route::get('/seats/{seat}', [SeatController::class, 'show']);
+    Route::get('/showtimes', [ShowtimeController::class, 'index']);
+    Route::get('/showtimes/{showtime}', [ShowtimeController::class, 'show']);
 
     Route::middleware('role:ADMIN')->group(function () {
         Route::apiResource('/accounts', AccountController::class);
@@ -36,7 +39,10 @@ Route::middleware('auth:sanctum')->group(function () {
              ->except(['index', 'show']);
         Route::apiResource('/seats', SeatController::class)
              ->except(['index', 'show']);
-        Route::post('/screens/{screen}/generate-seats', [SeatController::class, 'generateSeats']);
+        Route::post('/screens/{screen}/generate', [SeatController::class, 'generateSeats']);
+        Route::apiResource('/showtimes', ShowtimeController::class)
+             ->except(['index', 'show']);
+        Route::post('/showtimes/generate', [ShowtimeController::class, 'generateShowtimes']);
     });
 });
 
