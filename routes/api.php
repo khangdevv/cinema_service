@@ -48,7 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::apiResource('/showtimes', ShowtimeController::class)
                ->except(['index', 'show']);
           Route::post('/showtimes/generate', [ShowtimeController::class, 'generateShowtimes']);
-          Route::post('/generateSchedule', [MovieController::class, 'generateSchedule']);
+          Route::post('/movies/generateSchedule', [MovieController::class, 'generateSchedule']);
      });
 });
 

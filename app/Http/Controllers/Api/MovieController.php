@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use App\Models\Screen;
 use App\Models\Showtime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use function Laravel\Prompts\select;
@@ -177,9 +178,7 @@ class MovieController extends Controller
         }
     }
 
-    /**
-     * Create movie with auto showtimes - ĐƠN GIẢN NHẤT
-     */
+
     public function generateSchedule(Request $request)
     {
         $request->validate([
@@ -188,7 +187,7 @@ class MovieController extends Controller
             'genre' => 'nullable|string',
             'poster' => 'nullable|url',
             'rating_code' => 'nullable|string',
-            'days' => 'required|numeric|min:1|max:30',
+            'days' => 'required|numeric|min:1|max:3',
             'screens_count' => 'required|numeric|min:1|max:8',
             'base_price' => 'required|numeric|min:0',
         ]);
@@ -205,7 +204,7 @@ class MovieController extends Controller
             ]);
 
             // danh sách phòng active
-            $allScreens = \App\Models\Screen::where('is_active', true)->get();
+            $allScreens = Screen::where('is_active', true)->get();
 
             if ($allScreens->count() == 0) {
                 return response()->json([
@@ -240,17 +239,17 @@ class MovieController extends Controller
 
             // tạo suất chiếu
             // bắt đầu từ ngày hôm sau so với hiện tại 
-            $startDate = \Carbon\Carbon::now()->addDay();
+            $startDate = Carbon::now()->addDay();
             $createdCount = 0;
 
             // tạo
             for ($day = 0; $day < $request->days; $day++) {
                 foreach ($screens as $screen) {
-                    $startAt = $startDate->copy()
+                    $startAt = Carbon::parse($startDate->copy()
                         ->addDays($day)
-                        ->setHour(fake()->randomNumber(8, 20))
+                        ->setHour(rand(8, 20))
                         ->setMinute(fake()->randomElement([0, 15, 30, 45]))
-                        ->setSecond(0);
+                        ->setSecond(0));
 
                     // tính giờ kết thúc bằng cách cộng thời lượng phim với giờ bắt đầu vô nhau 
                     $endAt = $startAt->copy()->addMinutes($movie->duration_min);
