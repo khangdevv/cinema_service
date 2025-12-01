@@ -16,6 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => CheckRole::class,
         ]);
+        
+        // Configure API to return JSON for unauthenticated requests
+        $middleware->redirectGuestsTo(fn() => response()->json([
+            'success' => false,
+            'message' => 'Unauthenticated'
+        ], 401));
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
