@@ -177,30 +177,24 @@ class MovieController extends Controller
         }
     }
 
+    /**
+     * Create movie with auto showtimes - ĐƠN GIẢN NHẤT
+     */
     public function generateSchedule(Request $request)
     {
-        // validate
         $request->validate([
             'title' => 'required|string|max:255',
             'duration_min' => 'required|numeric',
-            'genre' => 'required|string',
-            'poster' => 'required|url',
-            'rating_code' => 'required|string',
-            'days' => 'required|numberic|min:0|max:2',
-            'screens' => 'required|numberic|min:0|max:8',
-            'base_price' => 'required|numberic|min:0',
+            'genre' => 'nullable|string',
+            'poster' => 'nullable|url',
+            'rating_code' => 'nullable|string',
+            'days' => 'required|numeric|min:1|max:30',
+            'screens_count' => 'required|numeric|min:1|max:8',
+            'base_price' => 'required|numeric|min:0',
         ]);
 
-        // time
-        $timeSlots = [
-            ['hour' => 9, 'minute' => 0],   // 9:00
-            ['hour' => 13, 'minute' => 30], // 13:30
-            ['hour' => 17, 'minute' => 0],  // 17:00
-            ['hour' => 20, 'minute' => 30], // 20:30
-        ];
-
         try {
-            // create movie
+            // tạo phim
             $movie = Movie::create([
                 'title' => $request->title,
                 'duration_min' => $request->duration_min,
@@ -210,57 +204,84 @@ class MovieController extends Controller
                 'is_active' => true,
             ]);
 
-            $movie = Movie::find($movie->id);
+            // danh sách phòng active
+            $allScreens = \App\Models\Screen::where('is_active', true)->get();
 
-            // get screen 
-            $screen = Screen::query(select('id'))->where('is_active', true);
-            $screenId = array();
-
-            foreach ($screen as $key => $value) {
-                $screenId[] = $value->id;
-            }
-
-            // check screen active
-            if (isEmpty($screen)) {
+            if ($allScreens->count() == 0) {
                 return response()->json([
                     'success' => false,
                     'message' => 'No screens available',
-                    'data' => [
-                        'movie' => $movie,
-                    ],
                 ], 400);
             }
 
-            // get tommorrow
-            $startDate = Carbon::now()->addDays();
-
-            for ($i = 0; $i < $request->days; $i++) {
-
+            // lấy id
+            $screenIds = [];
+            foreach ($allScreens as $screen) {
+                $screenIds[] = $screen->id;
             }
 
-            $showtimes = Showtime::create([
-                'movie_id' => $request->id,
-                'screen_id' => random($screenId, ),
-                'start_at' => '',
-                'end_at' => '',
-                'base_price' => $request->base_price,
-                'status' => 'OPEN',
-            ]);
+            // random số lượng cần lấy 
+            // nếu giả định có ít rạp thì lấy ít rạp để đỡ lỗi
+            $selectedCount = min($request->screens_count, count($screenIds));
+            $randomKeys = array_rand($screenIds, $selectedCount);
+
+            // Nếu chỉ random 1 phần tử, array_rand trả về số, không phải mảng
+            if (!is_array($randomKeys)) {
+                $randomKeys = [$randomKeys];
+            }
+
+            $selectedScreenIds = [];
+            foreach ($randomKeys as $key) {
+                $selectedScreenIds[] = $screenIds[$key];
+            }
+
+            // lấy phòng mình đã chọn 
+            $screens = Screen::whereIn('id', $selectedScreenIds)->get();
+
+            // tạo suất chiếu
+            // bắt đầu từ ngày hôm sau so với hiện tại 
+            $startDate = \Carbon\Carbon::now()->addDay();
+            $createdCount = 0;
+
+            // tạo
+            for ($day = 0; $day < $request->days; $day++) {
+                foreach ($screens as $screen) {
+                    $startAt = $startDate->copy()
+                        ->addDays($day)
+                        ->setHour(fake()->randomNumber(8, 20))
+                        ->setMinute(fake()->randomElement([0, 15, 30, 45]))
+                        ->setSecond(0);
+
+                    // tính giờ kết thúc bằng cách cộng thời lượng phim với giờ bắt đầu vô nhau 
+                    $endAt = $startAt->copy()->addMinutes($movie->duration_min);
+
+                    // Tạo showtime
+                    Showtime::create([
+                        'movie_id' => $movie->id,
+                        'screen_id' => $screen->id,
+                        'start_at' => $startAt,
+                        'end_at' => $endAt,
+                        'base_price' => $request->base_price,
+                        'status' => 'OPEN',
+                    ]);
+
+                    $createdCount++;
+                }
+            }
 
             return response()->json([
                 'success' => true,
                 'message' => 'Movie created with showtimes successfully',
                 'data' => [
                     'movie' => $movie,
-                    'showtimes_created' => count($createdShowtimes),
-                    'screens_used' => $screens->pluck('name'),
+                    'showtimes_created' => $createdCount,
                 ],
             ], 201);
 
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Movie has been created failed',
+                'message' => 'Failed to create movie',
                 'error' => $e->getMessage(),
             ], 400);
         }
