@@ -20,7 +20,7 @@ class SeatFactory extends Factory
         return [
             'screen_id' => Screen::inRandomOrder()->first()?->id ?? 1,
             'row_label' => fake()->randomElement(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']),
-            'seat_number' => fake()->numberBetween(1, 15),
+            'seat_number' => fake()->numberBetween(1, 8),
             'seat_type' => fake()->randomElement(['STANDARD', 'VIP', 'COUPLE', 'ACCESSIBLE']),
             'is_aisle' => fake()->boolean(10),
             'is_blocked' => fake()->boolean(5),

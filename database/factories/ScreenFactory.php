@@ -23,8 +23,8 @@ class ScreenFactory extends Factory
             'code' => 'SCR-' . $count,
             'name' => 'Screen ' . $count,
             'format' => fake()->randomElement(['2D', '3D', 'IMAX', '4DX', 'ScreenX']),
-            'row_count' => fake()->numberBetween(8, 15),
-            'col_count' => fake()->numberBetween(8, 15),
+            'row_count' => fake()->numberBetween(8, 8),
+            'col_count' => fake()->numberBetween(8, 8),
             'is_active' => fake()->boolean(90),
         ];
     }

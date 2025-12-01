@@ -157,9 +157,6 @@ class SeatController extends Controller
         ], 200);
     }
 
-    /**
-     * Generate seats for a screen automatically
-     */
     public function generateSeats(Request $request, string $screenId)
     {
         $screen = Screen::find($screenId);

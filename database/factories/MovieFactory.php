@@ -18,7 +18,7 @@ class MovieFactory extends Factory
     {
         return [
             'title' => fake()->sentence(5),
-            'duration_min' => fake()->numberBetween(90,180),
+            'duration_min' => fake()->numberBetween(90,120),
             'genre' => fake()->randomElement(['Action', 'Adventur','Sci-Fi','Honor']),
             'poster' => 'https://picsum.photos/500/750?random=' . fake()->unique()->numberBetween(1, 9999),
             'rating_code' => fake()->randomElement(['T13', 'T16', 'T18']),
