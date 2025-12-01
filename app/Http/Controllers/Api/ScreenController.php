@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Screen;
+use App\Models\Seat;
 use App\Models\Showtime;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,26 @@ class ScreenController extends Controller
                 'col_count' => $request->col_count,
                 'is_active' => $request->is_active,
             ]);
+
+            $screen = Screen::where('code', $request->code)->first();
+
+            $seats = [];
+            $rowLabels = range('A', 'Z');
+
+            for ($row = 0; $row < $screen->row_count; $row++) {
+                for ($col = 1; $col <= $screen->col_count; $col++) {
+                    $seats[] = [
+                        'screen_id' => $screen->id,
+                        'row_label' => $rowLabels[$row],
+                        'seat_number' => $col,
+                        'seat_type' => 'STANDARD',
+                        'is_aisle' => false,
+                        'is_blocked' => false,
+                    ];
+                }
+            }
+
+            Seat::insert($seats);
 
             return response()->json([
                 'success' => true,
