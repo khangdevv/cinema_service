@@ -229,121 +229,89 @@ class ShowtimeController extends Controller
         ], 200);
     }
 
-    public function generateShowtimes(Request $request)
-    {
-        $request->validate([
-            'movie_id' => 'required|exists:movie,id',
-            'screen_ids' => 'required|array',
-            'screen_ids.*' => 'exists:screen,id',
-            'start_date' => 'required|date',
-            'days' => 'required|numeric|min:1|max:30',
-            'base_price' => 'required|numeric|min:0',
-        ]);
+    /**
+     * Get seat map - XEM SƠ ĐỒ GHẾ (cho Android)
+     */
+    // public function getSeatMap(string $id)
+    // {
+    //     $showtime = Showtime::with(['movie', 'screen'])->find($id);
 
-        try {
-            $movie = Movie::find($request->movie_id);
-            $screens = Screen::whereIn('id', $request->screen_ids)->get();
-            $startDate = Carbon::parse($request->start_date);
-            $days = $request->days;
+    //     if (!$showtime) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Showtime not found',
+    //         ], 404);
+    //     }
+
+    //     // Lấy tất cả ghế của phòng
+    //     $seats = Seat::where('screen_id', $showtime->screen_id)
+    //         ->orderBy('row_label')
+    //         ->orderBy('seat_number')
+    //         ->get();
+
+    //     // Lấy ghế đã đặt
+    //     $bookedSeats = OrderLine::whereHas('order', function($q) use ($id) {
+    //         $q->where('showtime_id', $id)
+    //           ->where('status', 'PAID');
+    //     })
+    //     ->where('item_type', 'TICKET')
+    //     ->pluck('seat_id')
+    //     ->toArray();
+
+    //     // Lấy ghế đang lock
+    //     $lockedSeats = SeatLock::where('showtime_id', $id)
+    //         ->where('expires_at', '>', \Carbon\Carbon::now())
+    //         ->pluck('seat_id')
+    //         ->toArray();
+
+    //     // Tạo danh sách ghế với trạng thái
+    //     $seatList = [];
+    //     $available = 0;
+    //     $booked = 0;
+    //     $locked = 0;
+
+    //     foreach ($seats as $seat) {
+    //         $status = 'AVAILABLE';
             
-            $createdShowtimes = [];
-            $createdSeats = 0;
+    //         if (in_array($seat->id, $bookedSeats)) {
+    //             $status = 'BOOKED';
+    //             $booked++;
+    //         } elseif (in_array($seat->id, $lockedSeats)) {
+    //             $status = 'LOCKED';
+    //             $locked++;
+    //         } elseif ($seat->is_blocked) {
+    //             $status = 'BLOCKED';
+    //         } else {
+    //             $available++;
+    //         }
 
-            foreach ($screens as $screen) {
-                $seatCount = Seat::where('screen_id', $screen->id)->count();
-                
-                if ($seatCount == 0) {
-                    $seats = [];
-                    $rowLabels = range('A', 'Z');
-                    
-                    for ($row = 0; $row < $screen->row_count; $row++) {
-                        for ($col = 1; $col <= $screen->col_count; $col++) {
-                            $seats[] = [
-                                'screen_id' => $screen->id,
-                                'row_label' => $rowLabels[$row],
-                                'seat_number' => $col,
-                                'seat_type' => 'STANDARD',
-                                'is_aisle' => false,
-                                'is_blocked' => false,
-                            ];
-                        }
-                    }
-                    
-                    Seat::insert($seats);
-                    $createdSeats += count($seats);
-                }
-            }
+    //         $seatList[] = [
+    //             'id' => $seat->id,
+    //             'row' => $seat->row_label,
+    //             'number' => $seat->seat_number,
+    //             'type' => $seat->seat_type,
+    //             'status' => $status,
+    //             'price' => $showtime->base_price,
+    //         ];
+    //     }
 
-            // Các khung giờ chiếu trong ngày
-            $timeSlots = [
-                ['hour' => 9, 'minute' => 0],   // 9:00
-                ['hour' => 13, 'minute' => 30], // 13:30
-                ['hour' => 17, 'minute' => 0],  // 17:00
-                ['hour' => 20, 'minute' => 30], // 20:30
-            ];
-
-            // Lặp qua từng ngày
-            for ($day = 0; $day < $days; $day++) {
-                $currentDate = $startDate->copy()->addDays($day);
-                
-                // Lặp qua từng phòng
-                foreach ($screens as $screen) {
-                    // Lặp qua từng khung giờ
-                    foreach ($timeSlots as $slot) {
-                        $startAt = $currentDate->copy()
-                            ->setHour($slot['hour'])
-                            ->setMinute($slot['minute'])
-                            ->setSecond(0);
-                        
-                        $endAt = $startAt->copy()->addMinutes($movie->duration_min);
-
-                        // Kiểm tra conflict
-                        $conflict = Showtime::where('screen_id', $screen->id)
-                            ->where(function ($query) use ($startAt, $endAt) {
-                                $query->whereBetween('start_at', [$startAt, $endAt])
-                                    ->orWhereBetween('end_at', [$startAt, $endAt])
-                                    ->orWhere(function ($q) use ($startAt, $endAt) {
-                                        $q->where('start_at', '<=', $startAt)
-                                          ->where('end_at', '>=', $endAt);
-                                    });
-                            })
-                            ->exists();
-
-                        // Nếu không conflict thì tạo
-                        if (!$conflict) {
-                            $showtime = Showtime::create([
-                                'movie_id' => $movie->id,
-                                'screen_id' => $screen->id,
-                                'start_at' => $startAt,
-                                'end_at' => $endAt,
-                                'base_price' => $request->base_price,
-                                'status' => 'OPEN',
-                            ]);
-                            
-                            $createdShowtimes[] = $showtime;
-                        }
-                    }
-                }
-            }
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Showtimes generated successfully',
-                'data' => [
-                    'movie' => $movie->title,
-                    'screens' => $screens->pluck('name'),
-                    'total_showtimes' => count($createdShowtimes),
-                    'total_seats_created' => $createdSeats,
-                    'showtimes' => $createdShowtimes,
-                ],
-            ], 201);
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Generate showtimes failed',
-                'error' => $e->getMessage(),
-            ], 400);
-        }
-    }
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => [
+    //             'showtime' => [
+    //                 'id' => $showtime->id,
+    //                 'movie' => $showtime->movie->title,
+    //                 'screen' => $showtime->screen->name,
+    //                 'start_at' => $showtime->start_at,
+    //             ],
+    //             'seats' => $seatList,
+    //             'summary' => [
+    //                 'total' => $seats->count(),
+    //                 'available' => $available,
+    //                 'booked' => $booked,
+    //                 'locked' => $locked,
+    //             ],
+    //         ],
+    //     ], 200);
+    // }
 }
