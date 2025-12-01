@@ -20,7 +20,10 @@ class MovieController extends Controller
     {
         $movie = Movie::query();
 
-        $movie->where('is_active', true);
+        // Chỉ filter is_active nếu không truyền tham số show_all
+        if (!$request->has('show_all')) {
+            $movie->where('is_active', true);
+        }
 
         if ($request->has('title')) {
             $movie->where('title', 'LIKE', '%' . $request->title . '%');
@@ -36,8 +39,8 @@ class MovieController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Movie has been show Successfully',
-            'data' => $movie->get(),
+            'message' => 'Movies retrieved successfully',
+            'data' => $movie->get()
         ], 200);
     }
 
