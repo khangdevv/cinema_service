@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Showtime;
 use App\Models\Screen;
+use App\Models\SeatLock;
+use App\Models\OrderLine;
 use App\Models\Seat;
 use App\Models\Order;
 use App\Models\Movie;
@@ -229,89 +231,86 @@ class ShowtimeController extends Controller
         ], 200);
     }
 
-    /**
-     * Get seat map - XEM SƠ ĐỒ GHẾ (cho Android)
-     */
-    // public function getSeatMap(string $id)
-    // {
-    //     $showtime = Showtime::with(['movie', 'screen'])->find($id);
+    public function getSeatMap(string $id)
+    {
+        $showtime = Showtime::with(['movie', 'screen'])->find($id);
 
-    //     if (!$showtime) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Showtime not found',
-    //         ], 404);
-    //     }
+        if (!$showtime) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Showtime not found',
+            ], 404);
+        }
 
-    //     // Lấy tất cả ghế của phòng
-    //     $seats = Seat::where('screen_id', $showtime->screen_id)
-    //         ->orderBy('row_label')
-    //         ->orderBy('seat_number')
-    //         ->get();
+        // Lấy tất cả ghế của phòng
+        $seats = Seat::where('screen_id', $showtime->screen_id)
+            ->orderBy('row_label')
+            ->orderBy('seat_number')
+            ->get();
 
-    //     // Lấy ghế đã đặt
-    //     $bookedSeats = OrderLine::whereHas('order', function($q) use ($id) {
-    //         $q->where('showtime_id', $id)
-    //           ->where('status', 'PAID');
-    //     })
-    //     ->where('item_type', 'TICKET')
-    //     ->pluck('seat_id')
-    //     ->toArray();
+        // Lấy ghế đã đặt
+        $bookedSeats = OrderLine::whereHas('order', function($q) use ($id) {
+            $q->where('showtime_id', $id)
+              ->where('status', 'PAID');
+        })
+        ->where('item_type', 'TICKET')
+        ->pluck('seat_id')
+        ->toArray();
 
-    //     // Lấy ghế đang lock
-    //     $lockedSeats = SeatLock::where('showtime_id', $id)
-    //         ->where('expires_at', '>', \Carbon\Carbon::now())
-    //         ->pluck('seat_id')
-    //         ->toArray();
+        // Lấy ghế đang lock
+        $lockedSeats = SeatLock::where('showtime_id', $id)
+            ->where('expires_at', '>', \Carbon\Carbon::now())
+            ->pluck('seat_id')
+            ->toArray();
 
-    //     // Tạo danh sách ghế với trạng thái
-    //     $seatList = [];
-    //     $available = 0;
-    //     $booked = 0;
-    //     $locked = 0;
+        // Tạo danh sách ghế với trạng thái
+        $seatList = [];
+        $available = 0;
+        $booked = 0;
+        $locked = 0;
 
-    //     foreach ($seats as $seat) {
-    //         $status = 'AVAILABLE';
+        foreach ($seats as $seat) {
+            $status = 'AVAILABLE';
             
-    //         if (in_array($seat->id, $bookedSeats)) {
-    //             $status = 'BOOKED';
-    //             $booked++;
-    //         } elseif (in_array($seat->id, $lockedSeats)) {
-    //             $status = 'LOCKED';
-    //             $locked++;
-    //         } elseif ($seat->is_blocked) {
-    //             $status = 'BLOCKED';
-    //         } else {
-    //             $available++;
-    //         }
+            if (in_array($seat->id, $bookedSeats)) {
+                $status = 'BOOKED';
+                $booked++;
+            } elseif (in_array($seat->id, $lockedSeats)) {
+                $status = 'LOCKED';
+                $locked++;
+            } elseif ($seat->is_blocked) {
+                $status = 'BLOCKED';
+            } else {
+                $available++;
+            }
 
-    //         $seatList[] = [
-    //             'id' => $seat->id,
-    //             'row' => $seat->row_label,
-    //             'number' => $seat->seat_number,
-    //             'type' => $seat->seat_type,
-    //             'status' => $status,
-    //             'price' => $showtime->base_price,
-    //         ];
-    //     }
+            $seatList[] = [
+                'id' => $seat->id,
+                'row' => $seat->row_label,
+                'number' => $seat->seat_number,
+                'type' => $seat->seat_type,
+                'status' => $status,
+                'price' => $showtime->base_price,
+            ];
+        }
 
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => [
-    //             'showtime' => [
-    //                 'id' => $showtime->id,
-    //                 'movie' => $showtime->movie->title,
-    //                 'screen' => $showtime->screen->name,
-    //                 'start_at' => $showtime->start_at,
-    //             ],
-    //             'seats' => $seatList,
-    //             'summary' => [
-    //                 'total' => $seats->count(),
-    //                 'available' => $available,
-    //                 'booked' => $booked,
-    //                 'locked' => $locked,
-    //             ],
-    //         ],
-    //     ], 200);
-    // }
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'showtime' => [
+                    'id' => $showtime->id,
+                    'movie' => $showtime->movie->title,
+                    'screen' => $showtime->screen->name,
+                    'start_at' => $showtime->start_at,
+                ],
+                'seats' => $seatList,
+                'summary' => [
+                    'total' => $seats->count(),
+                    'available' => $available,
+                    'booked' => $booked,
+                    'locked' => $locked,
+                ],
+            ],
+        ], 200);
+    }
 }
