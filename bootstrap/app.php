@@ -17,6 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => CheckRole::class,
         ]);
+        
+        // Redirect to login when not authenticated
+        $middleware->redirectGuestsTo('/login');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (AuthenticationException $e, $request) {
@@ -26,5 +29,8 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message' => 'Unauthenticated'
                 ], 401);
             }
+            
+            // For web routes, redirect to login
+            return redirect()->route('auth.login.form');
         });
     })->create();
