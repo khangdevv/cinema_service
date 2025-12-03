@@ -30,7 +30,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class Account extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasFactory, Notifiable;
 
 	protected $table = 'account';
 	public $timestamps = false;

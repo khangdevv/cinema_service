@@ -193,7 +193,30 @@
         document.getElementById('continue-btn').addEventListener('click', function() {
             if (selectedSeats.length === 0) return;
             
-            alert('Chức năng thanh toán đang được phát triển!\nGhế đã chọn: ' + selectedSeats.map(s => s.label).join(', '));
+            // Tạo form để gửi dữ liệu đến trang checkout
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = '{{ route('payment.checkout') }}';
+            
+            // Thêm showtime_id
+            const showtimeInput = document.createElement('input');
+            showtimeInput.type = 'hidden';
+            showtimeInput.name = 'showtime_id';
+            showtimeInput.value = '{{ $showtime->id }}';
+            form.appendChild(showtimeInput);
+            
+            // Thêm seat_ids
+            selectedSeats.forEach(seat => {
+                const seatInput = document.createElement('input');
+                seatInput.type = 'hidden';
+                seatInput.name = 'seat_ids[]';
+                seatInput.value = seat.id;
+                form.appendChild(seatInput);
+            });
+            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
         });
     </script>
 </body>
