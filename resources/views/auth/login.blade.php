@@ -6,10 +6,10 @@
     <title>Login - Cinema Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-br from-gray-900 via-black-900 to-gray-900 min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full mx-4">
         <div class="bg-black/40 backdrop-blur-lg rounded-xl border border-gray-800 p-8">
-            <h1 class="text-3xl font-bold text-white mb-6 text-center">🎬 Login</h1>
+            <h1 class="text-3xl font-bold text-white mb-6 text-center">Login</h1>
             
             @if($errors->any())
                 <div class="bg-red-500/20 border border-red-500 text-red-100 px-4 py-3 rounded mb-6">
@@ -42,7 +42,7 @@
                            class="w-full px-4 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-purple-500">
                 </div>
                 
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all mb-4">
+                <button type="submit" class="w-full bg-gradient-to-r from-yellow-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white py-3 rounded-lg font-semibold transition-all mb-4">
                     Login
                 </button>
                 
@@ -50,14 +50,7 @@
                     Don't have an account? <a href="{{ route('auth.register.form') }}" class="text-purple-400 hover:text-purple-300">Register</a>
                 </p>
             </form>
-            
-            <div class="mt-6 pt-6 border-t border-gray-700">
-                <p class="text-sm text-gray-400 text-center mb-3">Demo Accounts:</p>
-                <div class="space-y-2 text-xs text-gray-500">
-                    <p>Admin: admin@cinema.com / password</p>
-                    <p>User: user@cinema.com / password</p>
-                </div>
-            </div>
+        
         </div>
     </div>
 </body>
