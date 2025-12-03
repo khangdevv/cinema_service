@@ -6,20 +6,20 @@
     <title>Chọn ghế - {{ $showtime->movie->title }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen">
+<body class="bg-gray-50 min-h-screen">
     <!-- Header -->
-    <nav class="bg-black/40 backdrop-blur-lg border-b border-gray-800">
+    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('booking.movie.detail', $showtime->movie_id) }}" class="text-gray-300 hover:text-white">← Quay lại</a>
-                    <h1 class="text-2xl font-bold text-white">🎬 Cinema Service</h1>
+                    <a href="{{ route('booking.movie.detail', $showtime->movie_id) }}" class="text-gray-500 hover:text-purple-600 text-2xl transition-colors">←</a>
+                    <h1 class="text-2xl font-bold text-gray-900">🎬 Cinema Service</h1>
                 </div>
                 <div class="flex gap-4">
                     @auth('web')
-                        <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-white">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-purple-600 font-medium">Dashboard</a>
                     @else
-                        <a href="{{ route('auth.login.form') }}" class="text-gray-300 hover:text-white">Đăng nhập</a>
+                        <a href="{{ route('auth.login.form') }}" class="text-gray-600 hover:text-purple-600 font-medium">Đăng nhập</a>
                     @endauth
                 </div>
             </div>
@@ -29,39 +29,43 @@
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-7xl mx-auto">
             <!-- Movie Info -->
-            <div class="bg-black/40 backdrop-blur-lg rounded-xl border border-gray-800 p-6 mb-8">
+            <div class="bg-white rounded-xl border border-gray-200 p-6 mb-8 shadow-md">
                 <div class="flex items-center gap-6">
                     @if($showtime->movie->poster)
                         <img src="{{ $showtime->movie->poster }}" 
                              alt="{{ $showtime->movie->title }}" 
-                             class="w-24 h-36 object-cover rounded-lg">
+                             class="w-24 h-36 object-cover rounded-lg shadow-sm">
                     @endif
                     
                     <div>
-                        <h1 class="text-3xl font-bold text-white mb-2">{{ $showtime->movie->title }}</h1>
-                        <div class="text-gray-300">
-                            <p>🏛️ {{ $showtime->screen->name ?? 'Screen' }}</p>
-                            <p>🕐 {{ \Carbon\Carbon::parse($showtime->start_at)->format('H:i, d/m/Y') }}</p>
+                        <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $showtime->movie->title }}</h1>
+                        <div class="text-gray-600">
+                            <p class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🏛️</span> {{ $showtime->screen->name ?? 'Screen' }}
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="text-xl">🕐</span> {{ \Carbon\Carbon::parse($showtime->start_at)->format('H:i, d/m/Y') }}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Seat Map -->
-            <div class="bg-black/40 backdrop-blur-lg rounded-xl border border-gray-800 p-8 mb-8">
+            <div class="bg-white rounded-xl border border-gray-200 p-8 mb-8 shadow-md">
                 <!-- Screen -->
                 <div class="mb-12">
-                    <div class="bg-gradient-to-b from-purple-600 to-transparent h-3 rounded-t-3xl mb-2"></div>
-                    <p class="text-center text-gray-400 text-sm">Màn hình</p>
+                    <div class="bg-gradient-to-b from-purple-600 to-transparent h-3 rounded-t-3xl mb-2 opacity-50"></div>
+                    <p class="text-center text-gray-400 text-sm font-medium uppercase tracking-widest">Màn hình</p>
                 </div>
 
                 <!-- Seats -->
-                <div class="flex justify-center">
-                    <div class="inline-block">
+                <div class="flex justify-center overflow-x-auto pb-4">
+                    <div class="inline-block min-w-max">
                         @foreach($seatsByRow as $row => $seats)
                             <div class="flex items-center gap-2 mb-3">
                                 <!-- Row Label -->
-                                <div class="w-8 text-center text-white font-bold">{{ $row }}</div>
+                                <div class="w-8 text-center text-gray-500 font-bold">{{ $row }}</div>
                                 
                                 <!-- Seats in Row -->
                                 <div class="flex gap-2">
@@ -71,14 +75,14 @@
                                             $isLocked = in_array($seat->id, $lockedSeats);
                                             $isAvailable = !$isBooked && !$isLocked;
                                             
-                                            $seatClass = 'seat w-10 h-10 rounded-t-lg flex items-center justify-center text-xs font-bold transition-all cursor-pointer ';
+                                            $seatClass = 'seat w-10 h-10 rounded-t-lg flex items-center justify-center text-xs font-bold transition-all cursor-pointer shadow-sm ';
                                             
                                             if ($isBooked) {
-                                                $seatClass .= 'bg-red-600 text-white cursor-not-allowed opacity-50';
+                                                $seatClass .= 'bg-red-100 text-red-400 cursor-not-allowed border border-red-200';
                                             } elseif ($isLocked) {
-                                                $seatClass .= 'bg-yellow-600 text-white cursor-not-allowed opacity-50';
+                                                $seatClass .= 'bg-yellow-100 text-yellow-600 cursor-not-allowed border border-yellow-200';
                                             } else {
-                                                $seatClass .= 'bg-gray-700 hover:bg-purple-600 text-white seat-available';
+                                                $seatClass .= 'bg-gray-200 hover:bg-purple-600 hover:text-white text-gray-600 seat-available border border-gray-300 hover:border-purple-600';
                                             }
                                         @endphp
                                         
@@ -95,47 +99,47 @@
                                 </div>
                                 
                                 <!-- Row Label (right side) -->
-                                <div class="w-8 text-center text-white font-bold">{{ $row }}</div>
+                                <div class="w-8 text-center text-gray-500 font-bold">{{ $row }}</div>
                             </div>
                         @endforeach
                     </div>
                 </div>
 
                 <!-- Legend -->
-                <div class="flex justify-center gap-8 mt-12">
+                <div class="flex justify-center gap-8 mt-12 flex-wrap">
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-gray-700 rounded-t-lg"></div>
-                        <span class="text-gray-300">Trống</span>
+                        <div class="w-8 h-8 bg-gray-200 rounded-t-lg border border-gray-300"></div>
+                        <span class="text-gray-600 text-sm">Trống</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-purple-600 rounded-t-lg"></div>
-                        <span class="text-gray-300">Đang chọn</span>
+                        <div class="w-8 h-8 bg-purple-600 rounded-t-lg border border-purple-600"></div>
+                        <span class="text-gray-600 text-sm">Đang chọn</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-red-600 rounded-t-lg opacity-50"></div>
-                        <span class="text-gray-300">Đã đặt</span>
+                        <div class="w-8 h-8 bg-red-100 rounded-t-lg border border-red-200"></div>
+                        <span class="text-gray-600 text-sm">Đã đặt</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-yellow-600 rounded-t-lg opacity-50"></div>
-                        <span class="text-gray-300">Đang giữ</span>
+                        <div class="w-8 h-8 bg-yellow-100 rounded-t-lg border border-yellow-200"></div>
+                        <span class="text-gray-600 text-sm">Đang giữ</span>
                     </div>
                 </div>
             </div>
 
             <!-- Booking Summary -->
-            <div class="bg-black/40 backdrop-blur-lg rounded-xl border border-gray-800 p-6">
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-md sticky bottom-4 z-40">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-2">Ghế đã chọn</h3>
-                        <p class="text-gray-300" id="selected-seats">Chưa chọn ghế nào</p>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ghế đã chọn</h3>
+                        <p class="text-gray-600" id="selected-seats">Chưa chọn ghế nào</p>
                     </div>
                     <div class="text-right">
-                        <p class="text-gray-400 mb-2">Tổng tiền</p>
-                        <p class="text-3xl font-bold text-purple-400" id="total-price">0 đ</p>
+                        <p class="text-gray-500 mb-1 text-sm">Tổng tiền</p>
+                        <p class="text-3xl font-bold text-purple-600" id="total-price">0 đ</p>
                     </div>
                 </div>
                 <button id="continue-btn" disabled 
-                        class="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-lg font-bold text-lg transition-all">
+                        class="w-full mt-6 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 rounded-lg font-bold text-lg transition-all shadow-md hover:shadow-lg">
                     Tiếp tục
                 </button>
             </div>
@@ -144,7 +148,7 @@
 
     <script>
         let selectedSeats = [];
-        const pricePerSeat = 100000; // 100k VND per seat
+        const pricePerSeat = Number('{{ $showtime->base_price }}');
 
         function toggleSeat(element) {
             const seatId = element.getAttribute('data-seat-id');
@@ -154,13 +158,13 @@
 
             if (element.classList.contains('bg-purple-600')) {
                 // Deselect
-                element.classList.remove('bg-purple-600');
-                element.classList.add('bg-gray-700');
+                element.classList.remove('bg-purple-600', 'text-white', 'border-purple-600');
+                element.classList.add('bg-gray-200', 'text-gray-600', 'border-gray-300');
                 selectedSeats = selectedSeats.filter(s => s.id !== seatId);
             } else {
                 // Select
-                element.classList.remove('bg-gray-700');
-                element.classList.add('bg-purple-600');
+                element.classList.remove('bg-gray-200', 'text-gray-600', 'border-gray-300');
+                element.classList.add('bg-purple-600', 'text-white', 'border-purple-600');
                 selectedSeats.push({
                     id: seatId,
                     label: seatLabel
