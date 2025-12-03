@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\BookingController;
+use App\Http\Controllers\Web\PaymentController;
 
 // Redirect root to login if not authenticated, otherwise to movies
 Route::get('/', function () {
@@ -19,14 +20,19 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/movies/{id}', [BookingController::class, 'showMovieDetail'])->name('booking.movie.detail');
     Route::get('/showtimes/{id}/seats', [BookingController::class, 'seatMap'])->name('booking.seat-map');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/my-bookings', [DashboardController::class, 'myBookings'])->name('my.bookings');
+
+    Route::get('/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
+    Route::post('/payment/vietqr', [PaymentController::class, 'generateVietQR'])->name('payment.vietqr');
+    Route::post('/payment/confirm', [PaymentController::class, 'confirmPayment'])->name('payment.confirm');
 });
 
 // Authentication Routes (Guest only)
 Route::middleware('guest:web')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('auth.register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('auth.register.form');
+    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 });
 
 // Logout (Authenticated only)
