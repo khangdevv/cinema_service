@@ -16,7 +16,9 @@
                     <h1 class="text-2xl font-bold text-gray-900">Galaxy Cinema</h1>
                 </div>
                 <div class="flex gap-4 items-center">
-                    <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-purple-600 font-medium">Dashboard</a>
+                    <a href="{{ route('booking.index') }}" class="text-purple-600 hover:text-purple-700 font-semibold">Đặt Vé</a>
+                    <a href="{{ route('my.bookings') }}" class="text-gray-600 hover:text-purple-600 font-medium">Vé Của Tôi</a>
+                    <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-purple-600 font-medium">Cài Đặt</a>
                     <span class="text-gray-300">|</span>
                     <span class="text-gray-700 font-medium">{{ auth()->user()->full_name }}</span>
                     <form action="{{ route('auth.logout') }}" method="POST" class="inline">
@@ -32,6 +34,14 @@
 
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-7xl mx-auto">
+            <!-- Success/Error Messages -->
+            @if(session('success'))
+                <div class="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg mb-6 flex items-center gap-3 shadow-md">
+                    <span class="text-2xl">✓</span>
+                    <span class="font-medium">{{ session('success') }}</span>
+                </div>
+            @endif
+            
             <h2 class="text-4xl font-bold text-gray-900 mb-2">🎬 Phim Đang Chiếu</h2>
             <p class="text-gray-600 mb-8">Chọn phim và đặt vé ngay hôm nay!</p>
 

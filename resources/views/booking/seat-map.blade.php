@@ -17,7 +17,9 @@
                 </div>
                 <div class="flex gap-4">
                     @auth('web')
-                        <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-purple-600 font-medium">Dashboard</a>
+                        <a href="{{ route('booking.index') }}" class="text-gray-600 hover:text-purple-600 font-medium">Đặt Vé</a>
+                        <a href="{{ route('my.bookings') }}" class="text-gray-600 hover:text-purple-600 font-medium">Vé Của Tôi</a>
+                        <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-purple-600 font-medium">Cài Đặt</a>
                     @else
                         <a href="{{ route('auth.login.form') }}" class="text-gray-600 hover:text-purple-600 font-medium">Đăng nhập</a>
                     @endauth
@@ -135,7 +137,7 @@
                     </div>
                     <div class="text-right">
                         <p class="text-gray-500 mb-1 text-sm">Tổng tiền</p>
-                        <p class="text-3xl font-bold text-purple-600" id="total-price">0 đ</p>
+                        <p class="text-3xl font-bold text-purple-600"><span id="total-price">0</span> đ</p>
                     </div>
                 </div>
                 <button id="continue-btn" disabled 
@@ -147,6 +149,7 @@
     </div>
 
     <script>
+        let totalPrice=0;
         let selectedSeats = [];
         const pricePerSeat = Number('{{ $showtime->base_price }}');
 
@@ -181,14 +184,15 @@
 
             if (selectedSeats.length === 0) {
                 selectedSeatsEl.textContent = 'Chưa chọn ghế nào';
-                totalPriceEl.textContent = '0 đ';
+                totalPriceEl.textContent = '0';
                 continueBtn.disabled = true;
             } else {
                 const seatLabels = selectedSeats.map(s => s.label).join(', ');
                 selectedSeatsEl.textContent = seatLabels;
                 
                 const total = selectedSeats.length * pricePerSeat;
-                totalPriceEl.textContent = total.toLocaleString('vi-VN') + ' đ';
+                totalPrice = total;
+                totalPriceEl.textContent = total.toLocaleString('vi-VN');
                 
                 continueBtn.disabled = false;
             }
@@ -197,7 +201,35 @@
         document.getElementById('continue-btn').addEventListener('click', function() {
             if (selectedSeats.length === 0) return;
             
-            alert('Chức năng thanh toán đang được phát triển!\nGhế đã chọn: ' + selectedSeats.map(s => s.label).join(', '));
+            // Tạo form để gửi dữ liệu đến trang checkout
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = '{{ route('payment.checkout') }}';
+            
+            // Thêm showtime_id
+            const showtimeInput = document.createElement('input');
+            showtimeInput.type = 'hidden';
+            showtimeInput.name = 'showtime_id';
+            showtimeInput.value = '{{ $showtime->id }}';
+            form.appendChild(showtimeInput);
+            
+            // Thêm seat_ids
+            selectedSeats.forEach(seat => {
+                const seatInput = document.createElement('input');
+                seatInput.type = 'hidden';
+                seatInput.name = 'seat_ids[]';
+                seatInput.value = seat.id;
+                form.appendChild(seatInput);
+            });
+
+            const priceInput = document.createElement('input');
+            priceInput.type = "hidden";
+            priceInput.name="price";
+            priceInput.value = totalPrice;
+            form.appendChild(priceInput);            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
         });
     </script>
 </body>
