@@ -259,7 +259,7 @@ class ShowtimeController extends Controller
 
         // Lấy ghế đang lock
         $lockedSeats = SeatLock::where('showtime_id', $id)
-            ->where('expires_at', '>', Carbon::now())
+            ->where('expires_at', '>', \Carbon\Carbon::now())
             ->pluck('seat_id')
             ->toArray();
 
