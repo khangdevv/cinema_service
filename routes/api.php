@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SeatController;
 use App\Http\Controllers\Api\ShowtimeController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderLineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
@@ -45,6 +46,12 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::post('/seat-locks', [OrderController::class, 'lockSeats']);
      Route::delete('/seat-locks', [OrderController::class, 'unlockSeats']);
 
+     // OrderLine routes
+     Route::get('/order-lines', [OrderLineController::class, 'index']);
+     Route::get('/order-lines/{orderLine}', [OrderLineController::class, 'show']);
+     Route::get('/orders/{orderId}/order-lines', [OrderLineController::class, 'getByOrder']);
+     Route::get('/order-lines/statistics', [OrderLineController::class, 'statistics']);
+
      Route::get('/hello', function () {
           return response()->json(['msg' => 'Hello from API']);
      });
@@ -57,6 +64,8 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::apiResource('/products', ProductController::class)
                ->except(['index', 'show']);
           Route::apiResource('/seats', SeatController::class)
+               ->except(['index', 'show']);
+          Route::apiResource('/order-lines', OrderLineController::class)
                ->except(['index', 'show']);
           Route::post('/screens/{screen}/generate', [SeatController::class, 'generateSeats']);
           Route::apiResource('/showtimes', ShowtimeController::class)
