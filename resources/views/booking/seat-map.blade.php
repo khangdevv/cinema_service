@@ -204,7 +204,7 @@
             // Tạo form để gửi dữ liệu đến trang checkout
             const form = document.createElement('form');
             form.method = 'GET';
-            form.action = '{{ route('payment.checkout') }}';
+            form.action = '{{ route("payment.checkout") }}';
             
             // Thêm showtime_id
             const showtimeInput = document.createElement('input');
