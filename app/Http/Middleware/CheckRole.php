@@ -5,13 +5,18 @@ use Closure;
 use Illuminate\Http\Request;
 
 class CheckRole {
-    public function handle(Request $request, Closure $next, $role) {
+    public function handle(Request $request, Closure $next, ...$roles) {
         if (!$request->user()) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
+            return redirect()->route('auth.login.form');
         }
 
-        if ($request->user()->role !== $role) {
-            return response()->json(['error' => 'Unauthorized. Required role : ' .$role], 403);
+        // Kiểm tra nếu user có một trong các role được phép
+        if (!in_array($request->user()->role, $roles)) {
+            // Redirect về trang phù hợp với role của user
+            if (in_array($request->user()->role, ['ADMIN', 'STAFF'])) {
+                return redirect()->route('admin.dashboard')->with('error', 'Bạn không có quyền truy cập trang này');
+            }
+            return redirect()->route('booking.index')->with('error', 'Bạn không có quyền truy cập trang này');
         }
 
         return $next($request);
