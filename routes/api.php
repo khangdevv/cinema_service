@@ -24,6 +24,7 @@ Route::post('/payment/webhook', [OrderController::class, 'webhook']);
 Route::middleware('auth:sanctum')->group(function () {
      Route::post('/logout', [AuthController::class, 'logout']);
      Route::get('/info', [AuthController::class, 'getInfo']);
+     
      Route::put('/accounts/{account}', [AccountController::class, 'update']);
 
      Route::get('/screens/{screen}', [ScreenController::class, 'show']);
