@@ -159,7 +159,7 @@ class MovieController extends Controller
             ], 404);
         }
 
-        $hasShowtimes = \App\Models\Showtime::where('movie_id', $id)->exists();
+        $hasShowtimes = Showtime::where('movie_id', $id)->exists();
 
         if ($hasShowtimes) {
             $movie->is_active = false;
@@ -287,5 +287,21 @@ class MovieController extends Controller
                 'error' => $e->getMessage(),
             ], 400);
         }
+    }
+
+    //viethuy write code here!!!!!<))
+    public function getShowtimes($id)
+    {
+        $movie = Movie::findOrFail($id);
+        $showtimes=$movie->showtimes;
+        return response()->json(
+            [
+                'success'=>true,
+                'data' =>[
+                    'movie'=> $movie,
+                    'showtimes'=>$showtimes
+                ]
+            ]
+                );
     }
 }

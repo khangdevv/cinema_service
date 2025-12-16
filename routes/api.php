@@ -13,10 +13,12 @@ use App\Http\Controllers\Api\AccountController;
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/movies', [MovieController::class, 'index']);
-Route::get('/movies/{movie}', [MovieController::class, 'show']);
+Route::get('movies/{id}/showtimes',[MovieController::class,'getshowtimes']);
 Route::get('/screens', [ScreenController::class, 'index']);
 
-// Webhook không cần auth
+
+
+// Webhook không cần authAI
 Route::post('/payment/webhook', [OrderController::class, 'webhook']);
 
 Route::middleware('auth:sanctum')->group(function () {
