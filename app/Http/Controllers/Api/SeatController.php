@@ -101,12 +101,12 @@ class SeatController extends Controller
         }
 
         $request->validate([
-            'screen_id' => 'required|exists:screen,id',
-            'row_label' => 'required|string|max:5',
-            'seat_number' => 'required|numeric',
-            'seat_type' => 'required|in:STANDARD,VIP,COUPLE,ACCESSIBLE',
-            'is_aisle' => 'required|boolean',
-            'is_blocked' => 'required|boolean',
+            'screen_id' => 'exists:screen,id',
+            'row_label' => 'string|max:5',
+            'seat_number' => 'numeric',
+            'seat_type' => 'in:STANDARD,VIP,COUPLE,ACCESSIBLE',
+            'is_aisle' => 'boolean',
+            'is_blocked' => 'boolean',
         ]);
 
         try {
@@ -124,7 +124,7 @@ class SeatController extends Controller
                 'data' => [
                     'seat' => $seat,
                 ],
-            ], 201);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([

@@ -27,7 +27,11 @@ class ProductController extends Controller
             $product->where('is_active', $request->is_active);
         }
 
-        return $product->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Products retrieved successfully',
+            'data' => $product->get(),
+        ], 200);
     }
 
     /**
@@ -92,9 +96,9 @@ class ProductController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'is_active' => 'required|boolean',
+            'name' => 'string|max:255',
+            'price' => 'numeric|min:0',
+            'is_active' => 'boolean',
         ]);
 
         try {
@@ -109,7 +113,7 @@ class ProductController extends Controller
                 'data' => [
                     'product' => $product,
                 ],
-            ], 201);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([

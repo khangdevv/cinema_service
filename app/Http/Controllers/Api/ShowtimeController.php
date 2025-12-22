@@ -189,7 +189,7 @@ class ShowtimeController extends Controller
                 'data' => [
                     'showtime' => $showtime->load(['movie', 'screen']),
                 ],
-            ], 201);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -259,7 +259,7 @@ class ShowtimeController extends Controller
 
         // Lấy ghế đang lock
         $lockedSeats = SeatLock::where('showtime_id', $id)
-            ->where('expires_at', '>', \Carbon\Carbon::now())
+            ->where('expires_at', '>', Carbon::now())
             ->pluck('seat_id')
             ->toArray();
 

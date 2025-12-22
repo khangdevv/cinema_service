@@ -41,11 +41,12 @@ class AccountController extends Controller
             'full_name' => 'required|string|max:255',
             'password_hash' => 'required|min:8',
             'is_active' => 'required|boolean',
-            'role' => 'reqired|in:CUSTOMER,ADMIN',
+            'role' => 'required|in:CUSTOMER,ADMIN',
         ]);
 
         try {
             $account = new Account();
+            $account->email = $request->email;
             $account->phone = $request->phone;
             $account->full_name = $request->full_name;
             $account->password_hash = Hash::make($request->password_hash);
@@ -102,16 +103,17 @@ class AccountController extends Controller
         }
 
         $request->validate([
-            'phone' => 'required|numeric|unique:account',
-            'full_name' => 'required|string|max:255',
-            'password_hash' => 'required|min:8',
+            'phone' => 'numeric|unique:account',
+            'full_name' => 'string|max:255',
+            'password_hash' => 'string|nullable|min:8',
+            'is_active' => 'boolean'
         ]);
 
         try {
-
             $account->phone = $request->phone;
             $account->full_name = $request->full_name;
             $account->password_hash = Hash::make($request->password_hash);
+            $account->is_active = $request->is_active;
             $account->save();
 
 
@@ -121,7 +123,7 @@ class AccountController extends Controller
                 'data' => [
                     'account' => $account,
                 ],
-            ], 201);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
