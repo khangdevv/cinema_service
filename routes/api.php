@@ -6,15 +6,13 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SeatController;
 use App\Http\Controllers\Api\ShowtimeController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/movies', [MovieController::class, 'index']);
-Route::get('/movies/{movie}', [MovieController::class, 'show']);
-Route::get('/screens', [ScreenController::class, 'index']);
 
 // Webhook không cần auth
 Route::post('/payment/webhook', [OrderController::class, 'webhook']);
@@ -24,6 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::get('/info', [AuthController::class, 'getInfo']);
      Route::put('/accounts/{account}', [AccountController::class, 'update']);
 
+     Route::get('/movies', [MovieController::class, 'index']);
+     Route::get('/movies/{movie}', [MovieController::class, 'show']);
+     Route::get('/screens', [ScreenController::class, 'index']);
      Route::get('/screens/{screen}', [ScreenController::class, 'show']);
      Route::get('/products', [ProductController::class, 'index']);
      Route::get('/products/{product}', [ProductController::class, 'show']);
@@ -53,7 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::apiResource('/accounts', AccountController::class);
           Route::apiResource('/movies', MovieController::class)
                ->except(['index', 'show']);
-
+          Route::apiResource('/screens', ScreenController::class)
+               ->except(['index', 'show']);
           Route::apiResource('/products', ProductController::class)
                ->except(['index', 'show']);
           Route::apiResource('/seats', SeatController::class)
@@ -62,7 +64,9 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::apiResource('/showtimes', ShowtimeController::class)
                ->except(['index', 'show']);
           Route::post('/showtimes/generate', [ShowtimeController::class, 'generateShowtimes']);
-          Route::post('/movies/generateSchedule', [MovieController::class, 'generateSchedule']);
+          
+          Route::post('/movies/generateSchedule', [ScheduleController::class, 'createMovieWithSchedule']);
+          Route::post('/movies/{movie}/generateSchedule', [ScheduleController::class, 'generateForExisting']);
      });
 });
 

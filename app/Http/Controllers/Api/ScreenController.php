@@ -87,7 +87,6 @@ class ScreenController extends Controller
                     'screen' => $screen,
                 ],
             ], 201);
-
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -133,6 +132,40 @@ class ScreenController extends Controller
         ]);
 
         try {
+            $sizeChanged = ($screen->row_count != $request->row_count)
+                || ($screen->col_count != $request->col_count);
+
+            if ($sizeChanged) {
+
+                $hasShowtimes = Showtime::where("screen_id", $id)->exists();
+
+                if ($hasShowtimes) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Cannot change screen size because there are showtimes',
+                    ], 400);
+                }
+
+                // Xóa tất cả ghế cũ
+                Seat::where('screen_id', $id)->delete();
+                // Tạo ghế mới
+                $seats = [];
+                $rowLabels = range('A', 'Z');
+                for ($row = 0; $row < $request->row_count; $row++) {
+                    for ($col = 1; $col <= $request->col_count; $col++) {
+                        $seats[] = [
+                            'screen_id' => $screen->id,
+                            'row_label' => $rowLabels[$row],
+                            'seat_number' => $col,
+                            'seat_type' => 'STANDARD',
+                            'is_aisle' => false,
+                            'is_blocked' => false,
+                        ];
+                    }
+                }
+                Seat::insert($seats);
+            }
+
             $screen->update([
                 'code' => $request->code,
                 'name' => $request->name,
@@ -148,8 +181,7 @@ class ScreenController extends Controller
                 'data' => [
                     'screen' => $screen,
                 ],
-            ], 201);
-
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -176,7 +208,7 @@ class ScreenController extends Controller
         $hasShowtimes = Showtime::where("screen_id", $id)->exists();
 
         if ($hasShowtimes) {
-            
+
             $screen->is_active = false;
             $screen->save();
 
@@ -185,8 +217,8 @@ class ScreenController extends Controller
                 'message' => "Screen has been deactive successfully",
                 'data' => $screen,
             ], 200);
-        } 
-        else {
+        } else {
+            Seat::where('screen_id', $id)->delete();
 
             $screen->delete();
 

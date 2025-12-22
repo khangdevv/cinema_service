@@ -33,6 +33,8 @@ class Showtime extends Model
 	protected $table = 'showtime';
 	public $timestamps = false;
 
+	protected $appends = ['status'];
+
 	protected $casts = [
 		'movie_id' => 'int',
 		'screen_id' => 'int',
@@ -49,6 +51,13 @@ class Showtime extends Model
 		'base_price',
 		'status'
 	];
+
+	public function getStatusAttribute(): string
+    {
+        if ($this->end_at < now()) return 'CLOSED';
+        if ($this->start_at <= now()->addMinutes(30)) return 'OPEN';
+        return 'SCHEDULED';
+    }
 
 	public function movie()
 	{

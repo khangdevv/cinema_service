@@ -4,13 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
-use App\Models\Screen;
 use App\Models\Showtime;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-
-use function Laravel\Prompts\select;
-use function PHPUnit\Framework\isEmpty;
 
 class MovieController extends Controller
 {
@@ -41,7 +36,7 @@ class MovieController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Movies retrieved successfully',
-            'data' => $movie->get()
+            'data' => $movie->get(),
         ], 200);
     }
 
@@ -72,7 +67,7 @@ class MovieController extends Controller
                 'success' => true,
                 'message' => 'Movie has been created Successfully',
                 'data' => [
-                    'movie' => $movie,
+                    'movie' => $movie
                 ],
             ], 201);
 
@@ -112,7 +107,7 @@ class MovieController extends Controller
         }
 
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'string|max:255',
             'duration_min' => 'required|numeric',
             'genre' => 'nullable|string',
             'poster' => 'nullable|url',
@@ -132,9 +127,9 @@ class MovieController extends Controller
                 'success' => true,
                 'message' => 'Movie has been updated successfully',
                 'data' => [
-                    'movie' => $movie,
+                    'movie' => $movie
                 ],
-            ], 201);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -159,7 +154,7 @@ class MovieController extends Controller
             ], 404);
         }
 
-        $hasShowtimes = \App\Models\Showtime::where('movie_id', $id)->exists();
+        $hasShowtimes = Showtime::where('movie_id', $id)->exists();
 
         if ($hasShowtimes) {
             $movie->is_active = false;
@@ -178,114 +173,6 @@ class MovieController extends Controller
                 'message' => "Movie has been deleted sucessfully",
                 'data' => $movie,
             ], 200);
-        }
-    }
-
-
-    public function generateSchedule(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'duration_min' => 'required|numeric',
-            'genre' => 'nullable|string',
-            'poster' => 'nullable|url',
-            'rating_code' => 'nullable|string',
-            'days' => 'required|numeric|min:1|max:3',
-            'screens_count' => 'required|numeric|min:1|max:8',
-            'base_price' => 'required|numeric|min:0',
-        ]);
-
-        try {
-            // tạo phim
-            $movie = Movie::create([
-                'title' => $request->title,
-                'duration_min' => $request->duration_min,
-                'genre' => $request->genre,
-                'poster' => $request->poster,
-                'rating_code' => $request->rating_code,
-                'is_active' => true,
-            ]);
-
-            // danh sách phòng active
-            $allScreens = Screen::where('is_active', true)->get();
-
-            if ($allScreens->count() == 0) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'No screens available',
-                ], 400);
-            }
-
-            // lấy id
-            $screenIds = [];
-            foreach ($allScreens as $screen) {
-                $screenIds[] = $screen->id;
-            }
-
-            // random số lượng cần lấy 
-            // nếu giả định có ít rạp thì lấy ít rạp để đỡ lỗi
-            $selectedCount = min($request->screens_count, count($screenIds));
-            $randomKeys = array_rand($screenIds, $selectedCount);
-
-            // Nếu chỉ random 1 phần tử, array_rand trả về số, không phải mảng
-            if (!is_array($randomKeys)) {
-                $randomKeys = [$randomKeys];
-            }
-
-            $selectedScreenIds = [];
-            foreach ($randomKeys as $key) {
-                $selectedScreenIds[] = $screenIds[$key];
-            }
-
-            // lấy phòng mình đã chọn 
-            $screens = Screen::whereIn('id', $selectedScreenIds)->get();
-
-            // tạo suất chiếu
-            // bắt đầu từ ngày hôm sau so với hiện tại 
-            $startDate = Carbon::now()->addDay();
-            $createdCount = 0;
-
-            // tạo
-            for ($day = 0; $day < $request->days; $day++) {
-                foreach ($screens as $screen) {
-                    $startAt = Carbon::parse($startDate->copy()
-                        ->addDays($day)
-                        ->setHour(rand(8, 20))
-                        ->setMinute(fake()->randomElement([0, 15, 30, 45]))
-                        ->setSecond(0));
-
-                    // tính giờ kết thúc bằng cách cộng thời lượng phim với giờ bắt đầu vô nhau 
-                    $endAt = $startAt->copy()->addMinutes($movie->duration_min);
-
-                    // Tạo showtime
-                    Showtime::create([
-                        'movie_id' => $movie->id,
-                        'screen_id' => $screen->id,
-                        'start_at' => $startAt,
-                        'end_at' => $endAt,
-                        'base_price' => $request->base_price,
-                        'status' => 'OPEN',
-                    ]);
-
-                    $createdCount++;
-                }
-            }
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Movie created with showtimes successfully',
-                'data' => [
-                    'movie' => $movie,
-                    'showtimes_created' => $createdCount,
-                ],
-            ], 201);
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to create movie',
-                'error' => $e->getMessage(),
-            ], 400);
         }
     }
 }
