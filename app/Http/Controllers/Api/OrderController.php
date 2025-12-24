@@ -41,7 +41,7 @@ class OrderController extends Controller
             // Kiểm tra các ghế có sẵn không
             foreach ($request->seats as $seatData) {
                 $seat = Seat::findOrFail($seatData['seat_id']);
-                
+
                 // Kiểm tra ghế có bị block không
                 if ($seat->is_blocked) {
                     DB::rollBack();
@@ -54,7 +54,7 @@ class OrderController extends Controller
                 // Kiểm tra ghế đã được đặt chưa
                 $existingOrder = OrderLine::whereHas('order', function ($query) use ($request) {
                     $query->where('showtime_id', $request->showtime_id)
-                          ->where('status', '!=', 'CANCELLED');
+                        ->where('status', '!=', 'CANCELLED');
                 })->where('seat_id', $seatData['seat_id'])->exists();
 
                 if ($existingOrder) {
@@ -164,7 +164,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $account = $request->user();
-        
+
         $orders = Order::where('account_id', $account->id)
             ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
             ->orderBy('id', 'desc')
@@ -181,14 +181,13 @@ class OrderController extends Controller
     {
         if ($request->has('status')) {
             $orders = Order::where('status', 'LIKE', '%' . $request->status . '%')
-            ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
-            ->orderBy('id','desc')
-            ->get();
-        }
-        else {
+                ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
+                ->orderBy('id', 'desc')
+                ->get();
+        } else {
             $orders = Order::with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
-            ->orderBy('id', 'desc')
-            ->get();
+                ->orderBy('id', 'desc')
+                ->get();
         }
 
         return response()->json([
@@ -198,13 +197,46 @@ class OrderController extends Controller
         ]);
     }
 
+    public function updateStatusPayment(Request $request, $id)
+    {
+        $order = Order::find($id);
+
+        if ($order == null) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Order not exist',
+            ]);
+        }
+
+        $request->validate([
+            'status' => 'nullable|in:INIT,PAID,CANCELLED',
+        ]);
+
+        try {
+            $order->status = $request->status;
+            $order->save();
+
+            return response()->json([
+                'success'=> true,
+                'message'=> 'Order has been updated successfully',
+                'data'=> $order,
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 400);
+        }
+    }
+
     /**
      * Lấy chi tiết đơn hàng
      */
     public function show(Request $request, $id)
     {
         $account = $request->user();
-        
+
         $order = Order::where('id', $id)
             ->where('account_id', $account->id)
             ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
@@ -230,7 +262,7 @@ class OrderController extends Controller
     public function cancel(Request $request, $id)
     {
         $account = $request->user();
-        
+
         $order = Order::where('id', $id)
             ->where('account_id', $account->id)
             ->first();
@@ -252,7 +284,7 @@ class OrderController extends Controller
         // Kiểm tra thời gian showtime, không cho hủy nếu quá gần giờ chiếu
         $showtime = $order->showtime;
         $hoursBeforeShowtime = Carbon::now()->diffInHours($showtime->start_at, false);
-        
+
         if ($hoursBeforeShowtime < 2) {
             return response()->json([
                 'success' => false,
@@ -309,7 +341,7 @@ class OrderController extends Controller
                 // Kiểm tra ghế đã được đặt chưa
                 $existingOrder = OrderLine::whereHas('order', function ($query) use ($request) {
                     $query->where('showtime_id', $request->showtime_id)
-                          ->where('status', '!=', 'CANCELLED');
+                        ->where('status', '!=', 'CANCELLED');
                 })->where('seat_id', $seatId)->exists();
 
                 if ($existingOrder) {
@@ -348,9 +380,9 @@ class OrderController extends Controller
                 'success' => true,
                 'message' => 'Seats locked successfully',
                 'data' => [
-                    'locked_seats' => $lockedSeats,
-                    'expires_at' => $expiresAt,
-                ],
+                        'locked_seats' => $lockedSeats,
+                        'expires_at' => $expiresAt,
+                    ],
             ]);
 
         } catch (\Exception $e) {
@@ -389,8 +421,8 @@ class OrderController extends Controller
             'success' => true,
             'message' => 'Seats unlocked successfully',
             'data' => [
-                'unlocked_count' => $deleted,
-            ],
+                    'unlocked_count' => $deleted,
+                ],
         ]);
     }
 
@@ -400,7 +432,7 @@ class OrderController extends Controller
     public function generateQR(Request $request, $id)
     {
         $account = $request->user();
-        
+
         $order = Order::where('id', $id)
             ->where('account_id', $account->id)
             ->with(['showtime.movie'])
@@ -431,10 +463,10 @@ class OrderController extends Controller
         $bankId = env('VIETQR_BANK_ID', '970422'); // MB Bank
         $accountNo = env('VIETQR_ACCOUNT_NO', '0378366953');
         $accountName = env('VIETQR_ACCOUNT_NAME', 'NGUYEN LUU BAO KHANG');
-        
+
         // Mã đơn hàng để tracking
         $orderCode = 'ORDER' . str_pad($order->id, 6, '0', STR_PAD_LEFT);
-        
+
         // Tạo URL QR VietQR
         $vietQRUrl = "https://img.vietqr.io/image/{$bankId}-{$accountNo}-compact.png?"
             . "amount={$order->total_amount}"
@@ -450,17 +482,17 @@ class OrderController extends Controller
             'success' => true,
             'message' => 'QR code generated successfully',
             'data' => [
-                'order_id' => $order->id,
-                'order_code' => $orderCode,
-                'amount' => $order->total_amount,
-                'bank_id' => $bankId,
-                'account_no' => $accountNo,
-                'account_name' => $accountName,
-                'qr_url' => $sepayUrl, // Sử dụng SePay vì ổn định hơn
-                'vietqr_url' => $vietQRUrl, // Backup option
-                'description' => $orderCode,
-                'expires_in_minutes' => 15, // QR hết hạn sau 15 phút
-            ],
+                    'order_id' => $order->id,
+                    'order_code' => $orderCode,
+                    'amount' => $order->total_amount,
+                    'bank_id' => $bankId,
+                    'account_no' => $accountNo,
+                    'account_name' => $accountName,
+                    'qr_url' => $sepayUrl, // Sử dụng SePay vì ổn định hơn
+                    'vietqr_url' => $vietQRUrl, // Backup option
+                    'description' => $orderCode,
+                    'expires_in_minutes' => 15, // QR hết hạn sau 15 phút
+                ],
         ]);
     }
 
@@ -474,7 +506,7 @@ class OrderController extends Controller
         ]);
 
         $account = $request->user();
-        
+
         $order = Order::where('id', $id)
             ->where('account_id', $account->id)
             ->first();
@@ -520,7 +552,7 @@ class OrderController extends Controller
     {
         // Validate webhook signature nếu có
         $webhookSecret = env('PAYMENT_WEBHOOK_SECRET');
-        
+
         // Log webhook data để debug
         Log::info('Payment webhook received', $request->all());
 
@@ -529,24 +561,24 @@ class OrderController extends Controller
         $transactionId = $request->input('transaction_id');
         $amount = $request->input('amount');
         $description = $request->input('description');
-        
+
         // Extract order ID từ description (ORDER000001 -> 1)
         if (preg_match('/ORDER(\d+)/', $description, $matches)) {
             $orderId = (int) $matches[1];
-            
+
             $order = Order::find($orderId);
-            
+
             if ($order && $order->total_amount == $amount && $order->status === 'PENDING') {
                 $order->status = 'CONFIRMED';
                 $order->save();
-                
+
                 // Xóa các seat lock liên quan
                 SeatLock::where('showtime_id', $order->showtime_id)
-                    ->whereHas('order_lines', function($query) use ($order) {
+                    ->whereHas('order_lines', function ($query) use ($order) {
                         $query->where('order_id', $order->id);
                     })
                     ->delete();
-                
+
                 return response()->json([
                     'success' => true,
                     'message' => 'Payment confirmed',

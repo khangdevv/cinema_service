@@ -22,21 +22,25 @@ class ShowtimeController extends Controller
     {
         $showtime = Showtime::query()->with(['movie', 'screen']);
 
-        if ($request->has('movie_id')) {
-            $showtime->where('movie_id', $request->movie_id);
-        }
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
 
-        if ($request->has('screen_id')) {
-            $showtime->where('screen_id', $request->screen_id);
-        }
+            $showtime->where(function ($query) use ($keyword){
+                $query->where('status','like','%'. $keyword .'%')
+                ->orWhereHas('movie', function ($query) use ($keyword) {
+                    $query->where('title','like','%' . $keyword . '%');
+                })
+                ->orWhereHas('screen', function ($query) use ($keyword) {
+                    $query->where('name','like','%'. $keyword .'%');
+                });
 
-        if ($request->has('status')) {
-            $showtime->where('status', $request->status);
-        }
-
-        if ($request->has('date')) {
-            $date = Carbon::parse($request->date);
-            $showtime->whereDate('start_at', $date);
+                try {
+                    $date = Carbon::parse($keyword);
+                    $query->whereDate('start_at', $date->toDateString());
+                } catch (\Exception $e) {
+                    return $e->getMessage();
+                }
+            });
         }
 
         return response()->json([
