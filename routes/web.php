@@ -34,6 +34,10 @@ Route::middleware(['auth:web', 'role:CUSTOMER'])->group(function () {
     Route::get('/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
     Route::post('/payment/vietqr', [PaymentController::class, 'generateVietQR'])->name('payment.vietqr');
     Route::post('/payment/confirm', [PaymentController::class, 'confirmPayment'])->name('payment.confirm');
+
+    // Seat Lock Routes
+    Route::post('/seats/lock', [BookingController::class, 'lockSeat'])->name('seats.lock');
+    Route::delete('/seats/unlock', [BookingController::class, 'unlockSeat'])->name('seats.unlock');
 });
 
 // Authentication Routes (Guest only)
