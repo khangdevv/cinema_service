@@ -48,10 +48,10 @@
             @if($movies->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach($movies as $movie)
-                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group shadow-md">
-                            <a href="{{ route('booking.movie.detail', $movie->id) }}">
+                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group shadow-md flex flex-col">
+                            <a href="{{ route('booking.movie.detail', $movie->id) }}" class="flex flex-col h-full">
                                 <!-- Movie Poster -->
-                                <div class="relative overflow-hidden">
+                                <div class="relative overflow-hidden flex-shrink-0">
                                     @if($movie->poster)
                                         <img src="{{ $movie->poster }}" 
                                              alt="{{ $movie->title }}" 
@@ -73,8 +73,8 @@
                                 </div>
 
                                 <!-- Movie Info -->
-                                <div class="p-5">
-                                    <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                                <div class="p-5 flex flex-col flex-grow">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors min-h-[3.5rem]">
                                         {{ $movie->title }}
                                     </h3>
                                     
@@ -88,20 +88,22 @@
                                     </div>
 
                                     <!-- Quick Showtimes -->
-                                    @if($movie->showtimes && $movie->showtimes->count() > 0)
-                                        <div class="flex flex-wrap gap-2 mb-4">
-                                            @foreach($movie->showtimes->take(3) as $showtime)
-                                                <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-200 font-medium">
-                                                    {{ \Carbon\Carbon::parse($showtime->start_at)->format('H:i') }}
-                                                </span>
-                                            @endforeach
-                                            @if($movie->showtimes->count() > 3)
-                                                <span class="text-xs text-gray-500 flex items-center">+{{ $movie->showtimes->count() - 3 }}</span>
-                                            @endif
-                                        </div>
-                                    @endif
+                                    <div class="mb-4 min-h-[2rem]">
+                                        @if($movie->showtimes && $movie->showtimes->count() > 0)
+                                            <div class="flex flex-wrap gap-2">
+                                                @foreach($movie->showtimes->take(3) as $showtime)
+                                                    <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-200 font-medium">
+                                                        {{ \Carbon\Carbon::parse($showtime->start_at)->format('H:i') }}
+                                                    </span>
+                                                @endforeach
+                                                @if($movie->showtimes->count() > 3)
+                                                    <span class="text-xs text-gray-500 flex items-center">+{{ $movie->showtimes->count() - 3 }}</span>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
 
-                                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2.5 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg">
+                                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2.5 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg mt-auto">
                                         Đặt vé ngay
                                     </button>
                                 </div>
