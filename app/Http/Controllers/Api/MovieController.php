@@ -21,16 +21,14 @@ class MovieController extends Controller
             $movie->where('is_active', true);
         }
 
-        if ($request->has('title')) {
-            $movie->where('title', 'LIKE', '%' . $request->title . '%');
-        }
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
 
-        if ($request->has('genre')) {
-            $movie->where('genre', 'LIKE', '%' . $request->genre . '%');
-        }
-
-        if ($request->has('rating_code')) {
-            $movie->where('rating_code', 'LIKE', '%' . $request->rating_code . '%');
+            $movie->where(function ($query) use ($keyword) {
+                $query->where('title', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('genre', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('rating_code', 'LIKE', '%' . $keyword . '%');
+            });
         }
 
         return response()->json([

@@ -15,16 +15,14 @@ class ProductController extends Controller
     {
         $product = Product::query();
 
-        if ($request->has('name')) {
-            $product->where('name', 'LIKE', '%' . $request->name . '%');
-        }
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
 
-        if ($request->has('price')) {
-            $product->where('price', $request->price);
-        }
-
-        if ($request->has('is_active')) {
-            $product->where('is_active', $request->is_active);
+            $product->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('price', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('is_active', 'LIKE', '%' . $keyword . '%');
+            });
         }
 
         return response()->json([

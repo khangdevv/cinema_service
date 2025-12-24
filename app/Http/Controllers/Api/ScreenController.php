@@ -17,16 +17,14 @@ class ScreenController extends Controller
     {
         $screen = Screen::query();
 
-        if ($request->has('format')) {
-            $screen->where('format', 'LIKE', '%' . $request->format . '%');
-        }
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
 
-        if ($request->has('name')) {
-            $screen->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        if ($request->has('is_active')) {
-            $screen->where('is_active', $request->is_active);
+            $screen->where(function ($query) use ($keyword) {
+                $query->where('format', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('name', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('is_active', 'LIKE', '%' . $keyword . '%');
+            });
         }
 
         return response()->json([

@@ -166,9 +166,30 @@ class OrderController extends Controller
         $account = $request->user();
         
         $orders = Order::where('account_id', $account->id)
-            ->with(['order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
+            ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
             ->orderBy('id', 'desc')
             ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Orders retrieved successfully',
+            'data' => $orders,
+        ]);
+    }
+
+    public function getall(Request $request)
+    {
+        if ($request->has('status')) {
+            $orders = Order::where('status', 'LIKE', '%' . $request->status . '%')
+            ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
+            ->orderBy('id','desc')
+            ->get();
+        }
+        else {
+            $orders = Order::with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
+            ->orderBy('id', 'desc')
+            ->get();
+        }
 
         return response()->json([
             'success' => true,
@@ -186,7 +207,7 @@ class OrderController extends Controller
         
         $order = Order::where('id', $id)
             ->where('account_id', $account->id)
-            ->with(['order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
+            ->with(['account', 'order_lines.seat', 'order_lines.product', 'showtime.movie', 'showtime.screen'])
             ->first();
 
         if (!$order) {

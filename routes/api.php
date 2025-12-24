@@ -64,6 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::apiResource('/showtimes', ShowtimeController::class)
                ->except(['index', 'show']);
           Route::post('/showtimes/generate', [ShowtimeController::class, 'generateShowtimes']);
+          Route::get('/orders', [OrderController::class, 'getall']);
           
           Route::post('/movies/generateSchedule', [ScheduleController::class, 'createMovieWithSchedule']);
           Route::post('/movies/{movie}/generateSchedule', [ScheduleController::class, 'generateForExisting']);

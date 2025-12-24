@@ -18,9 +18,14 @@ class AccountController extends Controller
     {
         $account = Account::query();
 
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
 
-        if ($request->has('full_name')) {
-            $account->where('full_name', 'LIKE', '%' . $request->full_name . '%');
+            $account->where(function ($query) use ($keyword) {
+                $query->where('full_name', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('email', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+            });
         }
 
         return response()->json([
