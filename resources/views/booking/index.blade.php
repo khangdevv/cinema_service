@@ -41,7 +41,7 @@
                     <span class="font-medium">{{ session('success') }}</span>
                 </div>
             @endif
-            
+
             <h2 class="text-4xl font-bold text-gray-900 mb-2">🎬 Phim Đang Chiếu</h2>
             <p class="text-gray-600 mb-8">Chọn phim và đặt vé ngay hôm nay!</p>
 
@@ -53,15 +53,15 @@
                                 <!-- Movie Poster -->
                                 <div class="relative overflow-hidden flex-shrink-0">
                                     @if($movie->poster)
-                                        <img src="{{ $movie->poster }}" 
-                                             alt="{{ $movie->title }}" 
+                                        <img src="{{ $movie->poster }}"
+                                             alt="{{ $movie->title }}"
                                              class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500">
                                     @else
                                         <div class="w-full h-96 bg-gray-200 flex items-center justify-center">
                                             <span class="text-gray-400 text-6xl">🎬</span>
                                         </div>
                                     @endif
-                                    
+
                                     <!-- Genre Badge -->
                                     @if($movie->genre)
                                         <div class="absolute top-3 left-3">
@@ -77,7 +77,7 @@
                                     <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors min-h-[3.5rem]">
                                         {{ $movie->title }}
                                     </h3>
-                                    
+
                                     <div class="text-gray-500 text-sm mb-4 flex items-center gap-2">
                                         @if($movie->duration_min)
                                             <span class="flex items-center gap-1">
@@ -89,15 +89,20 @@
 
                                     <!-- Quick Showtimes -->
                                     <div class="mb-4 min-h-[2rem]">
-                                        @if($movie->showtimes && $movie->showtimes->count() > 0)
+                                        @php
+                                            $upcomingShowtimes = $movie->showtimes->filter(function($showtime) {
+                                                return \Carbon\Carbon::parse($showtime->start_at) >= now();
+                                            });
+                                        @endphp
+                                        @if($upcomingShowtimes && $upcomingShowtimes->count() > 0)
                                             <div class="flex flex-wrap gap-2">
-                                                @foreach($movie->showtimes->take(3) as $showtime)
+                                                @foreach($upcomingShowtimes->take(3) as $showtime)
                                                     <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-200 font-medium">
                                                         {{ \Carbon\Carbon::parse($showtime->start_at)->format('H:i') }}
                                                     </span>
                                                 @endforeach
-                                                @if($movie->showtimes->count() > 3)
-                                                    <span class="text-xs text-gray-500 flex items-center">+{{ $movie->showtimes->count() - 3 }}</span>
+                                                @if($upcomingShowtimes->count() > 3)
+                                                    <span class="text-xs text-gray-500 flex items-center">+{{ $upcomingShowtimes->count() - 3 }}</span>
                                                 @endif
                                             </div>
                                         @endif
