@@ -75,7 +75,7 @@ class ShowtimeController extends Controller
 
                         ->orWhere(function ($q) use ($startAt, $endAt) {
                             $q->where('start_at', '<=', $startAt)
-                              ->where('end_at', '>=', $endAt);
+                                ->where('end_at', '>=', $endAt);
                         });
                 })
                 ->exists();
@@ -119,7 +119,7 @@ class ShowtimeController extends Controller
     public function show(Showtime $showtime)
     {
         $showtime->load(['movie', 'screen']);
-        
+
         return response()->json([
             'success' => true,
             'data' => $showtime,
@@ -162,7 +162,7 @@ class ShowtimeController extends Controller
                         ->orWhereBetween('end_at', [$startAt, $endAt])
                         ->orWhere(function ($q) use ($startAt, $endAt) {
                             $q->where('start_at', '<=', $startAt)
-                              ->where('end_at', '>=', $endAt);
+                                ->where('end_at', '>=', $endAt);
                         });
                 })
                 ->exists();
@@ -248,14 +248,14 @@ class ShowtimeController extends Controller
             ->orderBy('seat_number')
             ->get();
 
-        // Lấy ghế đã đặt
-        $bookedSeats = OrderLine::whereHas('order', function($q) use ($id) {
+        // Lấy ghế đã đặt (bao gồm cả INIT và PAID)
+        $bookedSeats = OrderLine::whereHas('order', function ($q) use ($id) {
             $q->where('showtime_id', $id)
-              ->where('status', 'PAID');
+                ->whereIn('status', ['INIT', 'PAID']);
         })
-        ->where('item_type', 'TICKET')
-        ->pluck('seat_id')
-        ->toArray();
+            ->where('item_type', 'TICKET')
+            ->pluck('seat_id')
+            ->toArray();
 
         // Lấy ghế đang lock
         $lockedSeats = SeatLock::where('showtime_id', $id)
@@ -271,7 +271,7 @@ class ShowtimeController extends Controller
 
         foreach ($seats as $seat) {
             $status = 'AVAILABLE';
-            
+
             if (in_array($seat->id, $bookedSeats)) {
                 $status = 'BOOKED';
                 $booked++;
@@ -296,21 +296,7 @@ class ShowtimeController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => [
-                'showtime' => [
-                    'id' => $showtime->id,
-                    'movie' => $showtime->movie->title,
-                    'screen' => $showtime->screen->name,
-                    'start_at' => $showtime->start_at,
-                ],
-                'seats' => $seatList,
-                'summary' => [
-                    'total' => $seats->count(),
-                    'available' => $available,
-                    'booked' => $booked,
-                    'locked' => $locked,
-                ],
-            ],
+            'data' => $seatList
         ], 200);
     }
 }

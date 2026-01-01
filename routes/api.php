@@ -10,21 +10,22 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
 
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/movies', [MovieController::class, 'index']);
-Route::get('movies/{id}/showtimes',[MovieController::class,'getshowtimes']);
-Route::get('/screens', [ScreenController::class, 'index']);
-
-
-
 // Webhook không cần authAI
 Route::post('/payment/webhook', [OrderController::class, 'webhook']);
 
 Route::middleware('auth:sanctum')->group(function () {
      Route::post('/logout', [AuthController::class, 'logout']);
      Route::get('/info', [AuthController::class, 'getInfo']);
-     
+
+
+     Route::get('/movies', [MovieController::class, 'index']);
+     Route::get('movies/{id}/showtimes', [MovieController::class, 'getShowtimes']);
+     Route::get('/screens', [ScreenController::class, 'index']);
+     Route::get('/showtimes/{showtime}/seat-map', [ShowtimeController::class, 'getSeatMap']);
+
      Route::put('/accounts/{account}', [AccountController::class, 'update']);
 
      Route::get('/screens/{screen}', [ScreenController::class, 'show']);
@@ -34,7 +35,6 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::get('/seats/{seat}', [SeatController::class, 'show']);
      Route::get('/showtimes', [ShowtimeController::class, 'index']);
      Route::get('/showtimes/{showtime}', [ShowtimeController::class, 'show']);
-     Route::get('/showtimes/{showtime}/seat-map', [ShowtimeController::class, 'getSeatMap']);
 
      // Order routes
      Route::post('/orders', [OrderController::class, 'store']);
@@ -43,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::post('/orders/{id}/cancel', [OrderController::class, 'cancel']);
      Route::get('/orders/{id}/qr', [OrderController::class, 'generateQR']);
      Route::post('/orders/{id}/confirm-payment', [OrderController::class, 'confirmPayment']);
-     
+
      // Seat locking routes
      Route::post('/seat-locks', [OrderController::class, 'lockSeats']);
      Route::delete('/seat-locks', [OrderController::class, 'unlockSeats']);

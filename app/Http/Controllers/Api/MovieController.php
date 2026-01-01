@@ -293,15 +293,11 @@ class MovieController extends Controller
     public function getShowtimes($id)
     {
         $movie = Movie::findOrFail($id);
-        $showtimes=$movie->showtimes;
-        return response()->json(
-            [
-                'success'=>true,
-                'data' =>[
-                    'movie'=> $movie,
-                    'showtimes'=>$showtimes
-                ]
-            ]
-                );
+        $showtimes = $movie->showtimes;
+
+        return response()->json([
+            'success' => true,
+            'showtimes' => $showtimes
+        ]);
     }
 }
