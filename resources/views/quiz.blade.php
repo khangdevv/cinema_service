@@ -12,11 +12,12 @@
         rel="stylesheet">
     <meta name="description" content="Hệ thống ôn tập trắc nghiệm về Mã nguồn mở, Linux, Git, Docker, Shell Script">
 
-    @vite('resources/react/src/main.jsx')
+    <link rel="stylesheet" href="{{ asset('quiz/assets/index-DUjkRdI6.css') }}">
 </head>
 
 <body class="antialiased">
     <div id="root"></div>
+    <script type="module" src="{{ asset('quiz/assets/index-B4hApq_5.js') }}"></script>
 </body>
 
 </html>
