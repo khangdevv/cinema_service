@@ -1,0 +1,661 @@
+Câu 1. Phần lớn phần mềm mã nguồn mở là kết quả của 
+a. Niềm đam mê lập trình.
+b. Kết quả của một số bài tập trong các chương trình đại học.
+c. Vì Lợi ích cộng đồng.
+d. Tất cả các điều trên.
+Câu 2. Phần mềm văn phòng nào sau đây sử dụng giấy phép mã nguồn mở
+	a. Microsoft Office
+b. Libre Office
+c. Adobe Acrobat
+d. WinRAR
+Câu 3: Phần mềm Mozilla Firefox sử dụng giấy phép mã nguồn mở nào:
+Mozilla Public License
+GNU GPL
+Apache License
+MIT License
+Câu 4: Phần mềm Apache Server sử dụng giấy phép nào sau đây :
+BSD License
+GNU GPL
+Mozilla Public License
+d. Apache License
+Câu 5: Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy các ứng dụng windows trên môi trường Ubuntu
+VirtualBox và VMware
+Photoshop và AI
+Wine và PlayOnlinux
+Office và Excel
+Câu 6: Giấy phép nào có khả năng kết hợp một phần mềm với một phần mềm thư viên mang giấy phép mở tương ứng.
+LGPL (Lesser General Public License)
+BSD License (Berkeley Software Distribution)
+Apache License
+d. Cả 3 License
+Câu 7. Làm cách nào để xóa người dùng cùng với thư mục home trong Linux?
+	a. userdel
+b. userdel -r
+c. deluser --force
+d. rmuser -h
+Câu 8. Lệnh nào xem danh sách các file của thư mục gốc hệ điều hành Ubuntu?
+dir C:<br>
+show /
+list all
+d. Is /
+Câu 9. Môi trường nào không liên quan đến hệ điều hành Linux
+	a. GNOME
+b. XFACE
+c. KDE
+c. KDE
+Câu 10. Để sử dụng các lệnh Linux trên windows, ta có thể cài đặt
+WSL
+WINE
+PlayOnLinux
+Bootcamp
+Câu 11. Một trong những đặc điểm nổi bật của hệ thống file ext3, ext4 là gì?
+Thời gian kiểm tra hệ thống file (fsck) rất lâu
+Không hỗ trợ tính năng Journaling (Ghi nhật ký)
+Chỉ tương thích với hệ điều hành Windows
+d. Khởi động nhanh
+Câu 12. Tác giả của phiên bản hệ điều hành Linux đầu tiên là?
+Steve Jobs
+Bill Gates
+Richard Stallman
+d. Linus Torvalds
+Câu 13. Phần quan trọng nhất của hệ điều hành Linux là:
+Kernel
+Shell
+Application
+Desktop Environment
+Câu 14. Số phiên bản kernel của Linux có gì đặc biệt
+Số phiên bản luôn bắt đầu bằng số 0.
+Số thứ 2 là số chẵn: Phiên bản ổn định (Stable).
+Số thứ 2 là số lẻ: Phiên bản thử nghiệm/phát triển (Development).
+d. Câu b và c đúng
+Câu 15. Khi cài Redflat Linux ở chế độ nào thì các partion DOS bị xoá hết:
+Server
+Workstation
+Custom
+Laptop
+Câu 16. Để xem hướng dẫn cách dùng lệnh ls, ta thực hiện lệnh:
+help ls
+ls ?
+man Is
+show ls
+Câu 17: Quan niệm nào sau đây sai về copyleft: 
+Copyleft là việc sử dụng luật bản quyền để đảm bảo quyền tự do sao chép và sửa đổi phần mềm.
+Copyleft bắt buộc các phiên bản sửa đổi hoặc mở rộng của phần mềm cũng phải được phát hành dưới cùng giấy phép tự do.
+Mục đích của Copyleft là ngăn chặn việc biến phần mềm tự do thành phần mềm độc quyền.
+d. Tồn tại giấy phép copyleft cho cả phần mềm, âm nhạc và nghệ thuật.
+Câu 18: Nếu bạn viết 1 chương trình áp dụng giấy phép GNU-GPL thì bạn cần đính kèm những thông báo đi cùng phần mềm ở đâu:
+a. Chỉ cần ghi trong tài liệu hướng dẫn sử 	dụng (User Manual).
+b. Đính kèm vào phần đầu của tập tin mã nguồn (dưới dạng ghi chú).
+c. Gửi thông báo đăng ký về tổ chức Free Software Foundation (FSF).
+d. Chỉ cần hiển thị logo GPL trong phần giới thiệu (About) của phần mềm.
+Câu 19: Giấy phép mà nguồn mơ là tập hợp các quy tắc đòi hỏi ai là người phải tuân theo
+a. Người sáng chế ra phần mềm mã nguồn mở.
+b. Nhà bảo hành phần mềm mã nguồn mở.
+c. Người sử dụng phần mềm mã nguồn mở. 
+d. Cả 3 phương án trên đều đúng
+Câu 20: Phát biểu nào sau đây không phải là phát biểu đúng.
+Phần mềm mã nguồn mở là phần mềm tự do.
+Phần mềm mã nguồn mở cho phép người dùng quyền truy cập vào mã nguồn.
+Phần mềm mã nguồn mở cho phép người dùng quyền sửa đổi và cải tiến mã nguồn.
+Phần mềm mã nguồn mở cho phép phân phối lại các bản sao (có thể miễn phí hoặc có phí).
+Câu 21: Câu nào sau đây không phải là ưu điểm của mã nguồn mở.
+Chi phí bản quyền thấp (thường là miễn phí).
+Khả năng bảo mật cao (do có nhiều người soi code).
+Không bị phụ thuộc vào một nhà cung cấp duy nhất (Vendor lock-in).
+d. Phần mềm mã nguồn mở có độ ổn định cao.
+Câu 22: câu nào sau đây là đúng.
+Phần mềm mã nguồn mở không được phép thương mại hóa (bán kiếm lời).
+Phần mềm mã nguồn mở không được pháp luật bảo hộ quyền tác giả.
+Tác giả phần mềm mã nguồn mở phải chịu trách nhiệm đền bù nếu phần mềm gây lỗi.
+d. Phần mềm mã nguồn mở không có bảo hành.
+Câu 23: Điểu nào sau đây không dùng với các giấy phép mã nguồn mở 
+Cho phép tự do phân phối lại chương trình.
+Mã nguồn phải được bao gồm hoặc dễ dàng truy cập.
+Có giấy phép yêu cầu phải sử dụng cùng loại giấy phép với sản phẩm phái sinh. 
+Không được phân biệt đối xử với bất kỳ cá nhân hay nhóm người nào.
+Câu 24: Giấy phép GNU GPL phiên bản mới nhất là:
+1.0
+2.0
+3.0
+4.0
+Câu 25: Ban hãy cho biết phần mềm nào sau đây sử dụng giáp phép GNU GPL: 
+Ubuntu
+Apache Server
+Mozilla Firefox
+Internet Explorer
+Câu 26: Giấy phép nào không cấp phép một phần mềm phần mềm / thư viện mã nguồn đóng liên kết với một phần mềm / thư viện mang giấy phép mở tương ứng.
+GNU General Public License
+GNU Lesser General Public License 
+MIT License
+BSD License
+Câu 27. Môi trường đồ hoạ KDE là gì?
+Là môi trường màn hình nền hiện đại trên các hệ máy tính chạy hệ điều hành Unix/Linux và cũng chạy được trên Microsoft Windows và Mac OS thông qua Cygwin và Fink.
+b. Là một hệ quản trị cơ sở dữ liệu mã nguồn mở phổ biến nhất hiện nay.
+Là một trình biên dịch ngôn ngữ lập trình C/C++ trên môi trường Linux.
+Là một trình duyệt web mặc định được cài đặt trên mọi bản phân phối Linux.
+Câu 28. Thư viện nào sau đây là nền tảng thư viện của môi trường giao diện Gnome
+	a. Qt
+b. GTK+
+c. MFC
+d. Cocoa
+Câu 29. Trong Ubuntu, luôn có một tài khoản mặc định:
+root
+admin
+guest
+user
+Câu 30. Môi trường giao diện nào trong linux phù hợp cho các loại máy chủ cần tính ổn định và tốc độ nhanh.
+Môi trường giao diện văn bản (Console)
+Môi trường đồ họa GNOME
+Môi trường đồ họa KDE
+Môi trường giao diện X-Window
+Câu 31. Các shell có sẵn trong các hệ thống Linux:
+sh (Bourne Shell)
+bash (Bourne Again Shell)
+csh (C Shell)
+d. Tất cả đều đúng
+Câu 32. Các shell script được lưu với phần mở rộng tập là:
+	a. .bat
+b. .sh
+c. .exe
+d. .cmd
+Câu 33. Tại sao cần shell script?
+Để tránh việc phải gõ đi gõ lại các lệnh lặp đi lặp lại.
+Để tự động hóa các tác vụ quản trị hệ thống.
+Để thực hiện một chuỗi các lệnh phức tạp theo trình tự logic.
+d. Tất cả đều đúng
+Câu 34. Đâu là comment 1 dòng trong shell script,
+# comment
+// comment
+/ comment /
+**
+Câu 35. Lệnh #!/bin/bash ở đầu file shell script để
+Khai báo chương trình script nào dịch và thực thi đoạn script
+Là một dòng chú thích (comment) đơn thuần, hệ thống sẽ bỏ qua.
+Cấp quyền thực thi cho file script (tương đương lệnh chmod +x)
+Khai báo đường dẫn thư mục hiện hành của script.
+Câu 36. Khi cài đặt Apache trong Ubuntu, mặc định apache được cài đặt vào thư mục nào?
+/var
+/home
+/bin
+d. /etc
+Câu 37. File cấu hình apache2 trong linux là:
+	a. httpd.conf
+b. apache2.conf
+c. config.apache
+d. web.conf
+Câu 38. Trong Linux,
+a. LAMP là viết tắt của Linux, Apache, Mysql, Php
+b. LAPP(Linux, Apache, PostgreSQL, PHP)
+c. LLMP(Linux, Lighttpd, MySQL/MariaDB, PHP/Perl/Python)
+d. Tất cả các câu trên đều đúng
+Câu 39. Git là
+Phần mềm quản lý phiên bản phân tán
+Phần mềm quản lý phiên bản tập trung
+Một ngôn ngữ lập trình
+Một hệ điều hành mã nguồn mở
+Câu 40. Bugzilla là hệ thống phần mềm theo dõi lỗi mã nguồn mở. Nó là một website chạy trên:
+Apache, Mysql, PHP
+IIS, SQL Server, ASP.NET
+Apache, Mysql, Perl
+Nginx, PostgreSQL, Python
+Câu 41. Trong Bugzilla, đâu là trạng thái của một bug? 
+a. NEW
+b. ASSIGNED
+c. CLOSED
+d. Tất cả đều đúng.
+Câu 42. Đối tượng sử dụng và quản lý Bugzilla thường là:
+	a. Lập trình viên (Developer)
+b. Tester/Quality Control (QC)
+c. Quản trị mạng (Network Administrator)
+d. Người dùng cuối (End User)
+Câu 43. Định dạng phiên bản phần mềm theo quy tắc:
+YEAR.MONTH.DAY
+ALPHA.BETA.RC
+RELEASE.UPDATE.FIX
+d. MAJOR MINOR.PATCH
+Câu 44. Đâu là phiên bản tiền phát hành (phiên bản có thể không ổn định hoặc không đáp ứng được các yêu cầu tương thích)?
+1.0.0-alpha
+1.0.0
+1.0.1
+2.0.0
+Câu 45. Phiên bản phần mềm Beta là:
+Phiên bản dùng thử, nhằm tung ra để người dùng public rộng rãi sử dụng, phản hồi. Bản này có thể có lỗi được phát hành để nhằm mục tiêu hoàn thiện trước khi phát hành chính thức
+Phiên bản kiểm thử nội bộ (Alpha), chỉ dành cho nhóm phát triển và chưa có đầy đủ các tính năng.
+Phiên bản chính thức (Stable Release), đã hoàn thiện hoàn toàn, hoạt động ổn định và sẵn sàng thương mại hóa.
+Phiên bản giới hạn (Demo/Trial), chỉ cung cấp một số tính năng cơ bản hoặc giới hạn thời gian sử dụng để quảng cáo.
+Câu 46. Lệnh git status
+Kiểm tra trạng thái của những file đã thay đổi trong local repository.
+Xem lịch sử các lần commit (phiên bản) trước đó.
+Hiển thị chi tiết nội dung code khác biệt giữa các file.
+Đẩy các tập tin đã thay đổi lên kho chứa từ xa (Remote Repository).
+Câu 47: lệnh git add
+Tạo một kho chứa Git mới (repository) tại thư mục hiện hành.
+Ghi lại (lưu) các thay đổi vào lịch sử phiên bản của kho chứa.
+Tải xuống toàn bộ mã nguồn từ một kho chứa từ xa về máy tính.
+d. Sử dụng để đánh chỉ mục (index) các nội dung mới, mới cập nhật trong thư mục làm việc, nó chuẩn bị nội dung sắp xếp cho lần commit tiếp theo
+Câu 48: Trong git, để chuyển sang nhánh branch1, sử dụng lệnh nào?
+Git branch branch1
+Git merge branch1
+Git add branch1
+d. Git checkout branch1
+Câu 49. Câu nào không đúng trong git?
+Lệnh pull: sao chép các thay đổi từ local repository sang remote repository.
+Lệnh push: sao chép các thay đổi từ local repository sang remote repository.
+Lệnh fetch: tải các thay đổi từ remote repository về nhưng chưa gộp (merge) vào nhánh hiện tại.
+Lệnh commit: lưu lại các thay đổi (snapshot) vào kho chứa cục bộ (local repository).
+Câu 50. Trong git, lệnh clone:
+	a. Khởi tạo một kho chứa (repository) mới và 	rỗng tại thư mục hiện hành.
+b. Tạo một bản sao repository trên máy local 
+c. Cập nhật các thay đổi mới nhất từ server về máy.
+d. Đưa các file từ thư mục làm việc vào vùng chờ (Staging Area).
+Câu 51. Đâu là một hệ điều hành nhân Linux?
+Debian
+Linux Mint
+Cả 2 đều đúng 
+Cả 2 đều sai
+Câu 52. Trong hệ thống tập tin Linux, tập tin thiết bị ngoại vi được chứa trong:
+/dev
+/bin
+/etc
+/home
+Câu 53. Lệnh in đường dẫn của thư mục hiện hành:
+pwd
+ls
+Cd
+path
+Câu 54. Lệnh chuyển thư mục về thư mục cha là
+cd /
+cd ..
+changedir /
+changedir ..
+Câu 55. Lệnh xoá thư mục data/dirl không cần hỏi
+delete -f data/toto
+rm -f data/dirl
+remove data/dirl
+Tất cả đều đúng
+Câu 56. Để copy file a.txt và lưu thành file b.txt, sử dụng lệnh
+cp b.txt a.txt
+copy a.txt b.txt
+copy b.txt a.txt
+cp a.txt b.txt
+Câu 57. Lệnh mv a.txt c.txt
+Xoá các file a.txt và c.txt
+Đổi tên a.txt thành c.txt
+Đổi tên x.txt thành a.txt
+Tất cả đều sai
+Câu 58. Lệnh thiết lập cho tất cả các user có thể read, write và execute file a.txt là
+chmod a.txt 777
+chmod 777 a.txt
+set 777 a.txt
+Tất cả đúng
+Câu 59. Câu lệnh nào thay đổi quyền truy cập file thành rw-r--r-x?
+chmod 546 file
+chmod 642 file
+chmod 645 file
+chmod 655 file
+Câu 60. Tên các tập tin và thư mục trong linux
+Phân biệt hoa, thường
+Không phân biệt hoa, thường
+Chỉ được phép sử dụng chữ thường.
+Bắt buộc phải có phần mở rộng (extension)
+TRẮC NGHIỆM BUGZILLA
+Bugzilla là gì?
+a) Một trình biên dịch C++
+b) Một hệ điều hành server
+c) Một hệ thống theo dõi lỗi mã nguồn mở
+d) Một phần mềm chỉnh sửa ảnh
+2. Ai có trách nhiệm quản lý hệ thống Bugzilla trong một dự án?
+a) Khách hàng
+b) Nhóm kiểm tra chất lượng phần mềm (QC)
+c) Giám đốc kinh doanh
+d) Nhân viên Marketing
+3. Bugzilla được phát hành dưới loại giấy phép nào?
+a) Apache License
+b) GNU General Public License (GPL)
+c) MIT License
+d) Proprietary License
+4. Chức năng nào sau đây là của Bugzilla?
+a) Soạn thảo văn bản
+b) Quản lý lỗi và theo dõi tiến trình sửa lỗi
+c) Thiết kế giao diện web
+d) Quản lý cơ sở dữ liệu nhân sự
+5. Người dùng nào có quyền tạo và quản lý bugs trong Bugzilla?
+a) Administrator
+b) User
+c) Developer
+d) Cả a và b
+6. Lợi ích chính của Bugzilla là gì?
+a) Tăng tốc độ máy tính
+b) Cung cấp một nền tảng để quản lý và theo dõi lỗi phần mềm hiệu quả
+c) Tự động viết code
+d) Bảo mật mạng wifi
+7. Thành phần nào trong Bugzilla giúp người dùng tìm kiếm lỗi?
+a) Query/Buglist
+b) Edit/Delete
+c) Create/New
+d) Admin/User
+8. Để nhận thông báo cập nhật về một bug trong Bugzilla, tính năng nào được sử dụng?
+a) Tin nhắn SMS (SMS Messages)
+b) Email notifications (Thông báo qua Email)
+c) Cửa sổ Chat trực tuyến (Live Chat)
+d) Thông báo trên màn hình Desktop (Desktop Pop-ups)
+9. Lệnh nào sau đây không liên quan đến Bugzilla?
+a) Tạo mới một báo cáo lỗi (New Bug).
+b) Tìm kiếm lỗi (Search).
+c) Xóa mã nguồn lỗi
+d) Thay đổi trạng thái của lỗi (Change Status/Resolution).
+10. Địa chỉ chính thức để tải xuống và sử dụng Bugzilla là gì?
+a) https://bugzilla.org
+b) https://bugzilla.com
+c) https://bugzilla.net
+d) https://bugzilla.vn
+11. Bugzilla có thể hỗ trợ quản lý dự án bằng cách nào?
+a) Theo dõi và phân loại lỗi của từng dự án
+b) Tự động viết mã nguồn và biên dịch chương trình.
+c) Quản lý bảng lương và chấm công nhân viên.
+d) Thiết kế giao diện đồ họa (UI/UX) cho phần mềm.
+12. Bugzilla có thể hỗ trợ tối đa bao nhiêu người dùng làm việc cùng lúc?
+a) Tối đa 50 người dùng
+b) Tối đa 1000 người dùng.
+c) Không giới hạn
+d)  Tối đa 1000 người dùng.
+TRẮC NGHIỆM CẤP QUYỀN CHO THƯ MỤC-TẬP TIN
+Câu 1: Lệnh nào dưới đây thiết lập quyền cho file example.txt thành rwxr-xr--?
+a) chmod 754 example.txt
+b) chmod 644 example.txt
+c) chmod 764 example.txt
+d) chmod 744 example.txt
+Câu 2: Lệnh nào thiết lập quyền cho tất cả user chỉ có quyền đọc và thực thi trên file script.sh?
+a) chmod 555 script.sh
+b) chmod 777 script.sh
+c) chmod 444 script.sh
+d) chmod 644 script.sh
+Câu 3: Để thay đổi quyền của thư mục mydir sao cho chủ sở hữu có toàn quyền, nhóm có quyền đọc và ghi, và những người khác chỉ có quyền đọc, ta sử dụng lệnh nào?
+chmod 777 mydir
+b) chmod 777 mydir
+c) chmod 764 mydir
+d) chmod 644 mydir
+Câu 4: Lệnh chmod 700 myfile sẽ thiết lập quyền nào trên file myfile?
+a) rwxrwxrwx
+b) rwx------
+c) rwxr-xr--
+d) rwxr-xr-x
+Câu 5: Lệnh nào dưới đây thay đổi quyền của file data.txt thành rw-r--r--?
+a) chmod 755 data.txt
+b) chmod 777 data.txt
+c) chmod 644 data.txt
+d) chmod 600 data.txt
+Câu 6: Nếu sử dụng lệnh chmod 0 file, quyền nào sẽ được áp dụng cho file?
+Không ai có quyền truy cập
+Tất cả mọi người có toàn quyền truy cập
+Quyền quay về trạng thái mặc định ban đầu
+Chỉ chủ sở hữu (Owner) mới có quyền truy cập
+Câu 7: Để cấp quyền thực thi cho tất cả các user đối với file program.sh, lệnh nào là đúng?
+a) chmod +x program.sh
+b) chmod -x program.sh
+c) chmod a+r program.sh
+d) chmod 755 program.sh
+Câu 8: Câu lệnh nào thiết lập quyền truy cập của file thành rwxr--r--?
+chmod 744 file
+chmod 755 file
+chmod 644 file
+chmod 777 file
+Câu 9: Để thay đổi quyền của thư mục docs sao cho chỉ chủ sở hữu có toàn quyền, lệnh nào là đúng?
+a) chmod 777 docs
+b) chmod 700 docs
+c) chmod 770 docs
+d) chmod 755 docs
+Câu 10: Lệnh chmod u=rwx,g=rx,o=r file sẽ thiết lập quyền nào?
+a) rwxr-xr--
+b) rwxrw-r--
+c) rwxrwxr--
+d) rw-r--r--
+SHELL SCRIPT
+Câu 1: Tập tin Shell Script thường được lưu với phần mở rộng nào?
+a) .bat
+b) .sh
+c) .exe
+d) .cmd
+Câu 2: Câu lệnh nào được sử dụng để gán giá trị Hello vào biến message trong Shell Script?
+a) let message="Hello"
+b) $message="Hello"
+c) message="Hello"
+d) var message="Hello"
+Câu 3: Lệnh nào dưới đây được sử dụng để thực thi tệp Shell Script có tên script.sh?
+a) run script.sh
+b) ./script.sh
+c) exec script.sh
+d) execute script.sh
+Câu 4: Dòng đầu tiên trong tệp Shell Script thường chứa nội dung nào?
+a) #!/usr/bin/bash
+b) #/usr/local/bin
+c) !#/bin/bash
+d) #!/usr/bin/env python
+Câu 5: Câu lệnh echo $0 trong một Shell Script sẽ in ra gì?
+a) Tên của tập tin script đang chạy
+b) Tham số đầu tiên được truyền vào script
+c) Tham số cuối cùng được truyền vào script
+d) Biến môi trường hiện tại
+Câu 6: Lệnh nào được sử dụng để nhận dữ liệu đầu vào từ người dùng trong Shell Script?
+a) get
+b) read
+c) input
+d) scanf
+Câu 7: Trong Shell Script, ký tự $? đại diện cho điều gì?
+a) Số lượng tham số được truyền vào
+b) Trạng thái thoát (exit status) của lệnh trước đó
+c) Tên tệp đang được thực thi
+d) Đường dẫn đầy đủ của tệp
+Câu 8: Câu lệnh nào kiểm tra xem tệp file.txt có tồn tại không?
+a) if [-t file.txt]
+b) if [-e file.txt]
+c) if [-x file.txt]
+d) if [-c file.txt]
+Câu 9: Trong Shell Script, vòng lặp nào được sử dụng để lặp qua từng dòng của tệp data.txt?
+a) for line in data.txt; do echo $line; done
+b) while read line; do echo $line; done < data.txt
+c) foreach line in data.txt; do echo $line; done
+d) for each line in data.txt; do echo $line; done
+Câu 10: Ký tự nào được sử dụng để chú thích trong Shell Script?
+a) //
+b) #
+c) %
+d) ;;
+Câu 11: Lệnh chmod +x script.sh dùng để làm gì?
+a) Xóa tệp script.sh
+b) Thêm quyền thực thi cho tệp script.sh
+c) Thay đổi nội dung của tệp script.sh
+d) Hiển thị nội dung của tệp script.sh
+Câu 12: Trong Shell Script, làm thế nào để truyền tham số thứ nhất vào script?
+a) Sử dụng biến $1
+b) Sử dụng biến $0
+c) Sử dụng biến $?
+d) Sử dụng biến $param1
+Câu 13: Lệnh nào được sử dụng để hiển thị dòng chữ "Hello, World!" trong Shell Script?
+a) printf "Hello, World!"
+b) echo "Hello, World!"
+c) display "Hello, World!"
+d) write "Hello, World!"
+TRẮC NGHIỆM LINUX KENEL
+Câu 1: Kernel trong Linux là gì?
+a) Một giao diện đồ họa người dùng
+b) Phần cứng của hệ thống
+c) Thành phần cốt lõi của hệ điều hành, quản lý tài nguyên phần cứng và phần mềm
+d) Một ứng dụng của hệ điều hành
+Câu 2: Linux Kernel được phát triển bởi ai?
+a) Richard Stallman
+b) Linus Torvalds
+c) Dennis Ritchie
+d) Ken Thompson
+Câu 3: Chế độ nào sau đây được sử dụng bởi Linux Kernel khi thực thi các lệnh hệ thống?
+a) User Mode
+b) Supervisor Mode
+c) Kernel Mode
+d) Admin Mode
+Câu 4: Kernel Linux hỗ trợ mô hình đa nhiệm nào?
+a) Cooperative multitasking
+b) Preemptive multitasking
+c) Round-robin multitasking
+d) Priority multitasking
+Câu 5: File cấu hình chính của Kernel được lưu trữ ở đâu trong hệ thống Linux?
+a) /etc/kernel.conf
+b) /boot/config-*
+c) /usr/src/linux/.config
+d) /root/kernel.cfg
+Câu 6: Kernel Linux là loại phần mềm nào?
+a) Closed source
+b) Open source
+c) Freeware
+d) Shareware
+Câu 7: Kernel Linux hỗ trợ loại hệ thống tập tin nào dưới đây?
+a) FAT32
+b) NTFS
+c) ext4
+d) Tất cả các loại trên
+Câu 8: Câu lệnh nào dưới đây được sử dụng để kiểm tra phiên bản của Linux Kernel?
+a) uname -v
+b) uname -a
+c) uname -r
+d) uname -m
+Câu 9: Lệnh nào dưới đây được sử dụng để tải module vào Kernel?
+a) loadmod
+b) insmod
+c) modprobe
+d) b và c
+Câu 10: Module Kernel Linux là gì?
+a) Một tệp thực thi của ứng dụng
+b) Một phần của Kernel được tải động để cung cấp các chức năng mở rộng
+c) Một thư viện hệ thống
+d) Một giao diện đồ họa
+Câu 11: File log của Kernel thường được lưu ở đâu?
+a) /var/log/kernel.log
+b) /etc/kernel/log
+c) /usr/kernel/logs
+d) /boot/kernel.log
+Câu 12: Kernel Panic trong Linux là gì?
+a) Một lỗi phần cứng
+b) Một lỗi của ứng dụng người dùng
+c) Một lỗi nghiêm trọng trong Kernel khiến hệ thống ngừng hoạt động
+d) Một cách để Kernel nâng cấp
+Câu 13: Hệ thống tập tin đặc biệt mà Kernel Linux sử dụng để quản lý tiến trình và tài nguyên hệ thống là gì?
+a) /usr
+b) /var
+c) /proc
+d) /dev
+Câu 14: Lệnh nào được sử dụng để liệt kê tất cả các module Kernel đang hoạt động?
+a) lsmod
+b) insmod
+c) modprobe
+d) modlist
+Câu 15: Kernel Linux được viết chủ yếu bằng ngôn ngữ nào?
+a) C++
+b) Python
+c) C
+d) Java
+Câu 16: Để biên dịch lại Kernel Linux, thư mục nào cần được chuẩn bị?
+a) /boot
+b) /usr/src/linux
+c) /etc/kernel
+d) /opt/kernel
+TRẮC NGHIỆM DOCKER
+	Câu 1: Docker là gì?
+a) Một hệ điều hành độc lập
+b) Một nền tảng ảo hóa máy chủ
+c) Một nền tảng cung cấp container hóa để phát triển, vận hành và phân phối ứng dụng
+d) Một công cụ quản lý mã nguồn
+Câu 2: Lệnh nào dùng để khởi động một container trong Docker?
+a) docker start
+b) docker launch
+c) docker run
+d) docker execute
+Câu 3: File nào được sử dụng để định nghĩa các bước xây dựng một Docker Image?
+a) DockerCompose.yml
+b) Dockerfile
+c) DockerImage.yaml
+d) Containerfile
+Câu 4: Lệnh nào dùng để liệt kê tất cả các container đang chạy?
+a) docker ps -a
+b) docker ps
+c) docker list
+d) docker show
+Câu 5: Docker Compose được sử dụng để làm gì?
+a) Quản lý mạng trong Docker
+b) Chạy và quản lý nhiều container như một ứng dụng
+c) Tạo container mới từ một image
+d) Biên dịch Docker Image
+Câu 6: Lệnh nào để xóa một container đã dừng?
+a) docker delete
+b) docker rm
+c) docker stop
+d) docker rmi
+Câu 7: Lệnh nào được sử dụng để xóa một Docker Image?
+a) docker remove image
+b) docker delete image
+c) docker rmi
+d) docker rm image
+Câu 8: Docker Hub là gì?
+a) Một công cụ để tạo Docker Image
+b) Một registry công cộng để lưu trữ và chia sẻ Docker Images
+c) Một công cụ để quản lý container
+d) Một mạng ảo trong Docker
+Câu 9: Lệnh nào được sử dụng để tạo một container từ một image?
+a) docker build
+b) docker create
+c) docker run
+d) docker init
+Câu 10: Câu lệnh nào dùng để truy cập vào terminal của một container đang chạy?
+a) docker attach
+b) docker exec
+c) docker exec -it [container_id] /bin/bash
+d) docker connect
+Câu 11: Docker Image là gì?
+a) Một container đang chạy
+b) Một file chứa mã nguồn của ứng dụng
+c) Một gói chứa mã nguồn, phụ thuộc và môi trường cần thiết để chạy ứng dụng
+d) Một công cụ quản lý container
+Câu 12: Lệnh nào được sử dụng để build một Docker Image từ Dockerfile?
+a) docker build
+b) docker run
+c) docker image create
+d) docker make
+Câu 13: Lệnh nào để dừng một container đang chạy?
+a) docker stop [container_id]
+b) docker kill [container_id]
+c) docker end [container_id]
+d) docker rm [container_id]
+Câu 14: Mạng mặc định trong Docker là gì?
+a) host
+b) bridge
+c) none
+d) default
+Câu 15: Lệnh nào để liệt kê tất cả các Docker Images có trên hệ thống?
+a) docker ps
+b) docker ls
+c) docker images
+d) docker list images
+Câu 16: Câu lệnh nào được sử dụng để chia sẻ một Docker Image lên Docker Hub?
+a) docker push [image_name]
+b) docker pull [image_name]
+c) docker upload [image_name]
+d) docker share [image_name]
+Câu 17: Docker Swarm là gì?
+a) Một công cụ để quản lý container
+b) Một hệ thống điều phối container tích hợp trong Docker
+c) Một phần của Docker Compose
+d) Một Docker Image
+Câu 18: Lệnh nào được sử dụng để tải về một Docker Image từ Docker Hub?
+a) docker pull [image_name]
+b) docker download [image_name]
+c) docker get [image_name]
+d) docker fetch [image_name]
+Câu 19: Tùy chọn nào trong lệnh docker run được sử dụng để chạy container ở chế độ nền (detached mode)?
+a) -f
+b) -it
+c) -d
+d) --run-in-background
+Đáp án: c) -d
+Câu 20: Lệnh nào được sử dụng để xem chi tiết tài nguyên sử dụng của container?
+a) docker stats
+b) docker inspect
+c) docker info
+d) docker resources

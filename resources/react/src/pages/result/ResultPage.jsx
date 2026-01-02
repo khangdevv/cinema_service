@@ -1,0 +1,254 @@
+import { useState, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { examService } from '../../services/examService'
+import Confetti from 'react-confetti'
+import {
+    CheckCircleIcon,
+    XCircleIcon,
+    ClockIcon,
+    TrophyIcon,
+    HomeIcon,
+    ChevronDownIcon,
+    ChevronUpIcon
+} from '@heroicons/react/24/outline'
+
+const ResultPage = () => {
+    const { attemptId } = useParams()
+    const [result, setResult] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [expandedQuestion, setExpandedQuestion] = useState(null)
+    const [showConfetti, setShowConfetti] = useState(false)
+
+    useEffect(() => {
+        loadResult()
+    }, [attemptId])
+
+    const loadResult = async () => {
+        try {
+            const response = await examService.getAttemptDetail(attemptId)
+            console.log('Result API response:', response)
+
+            if (response.success && response.data) {
+                setResult(response.data)
+
+                // Show confetti if score >= 80%
+                if (response.data.score >= 80) {
+                    setShowConfetti(true)
+                    setTimeout(() => setShowConfetti(false), 5000)
+                }
+            } else {
+                console.error('No data in response:', response)
+            }
+        } catch (error) {
+            console.error('Error loading result:', error)
+            alert('Không thể tải kết quả: ' + (error.response?.data?.message || error.message))
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const toggleExpand = (questionId) => {
+        setExpandedQuestion(expandedQuestion === questionId ? null : questionId)
+    }
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-[60vh]">
+                <div className="spinner w-16 h-16"></div>
+            </div>
+        )
+    }
+
+    if (!result) {
+        return (
+            <div className="text-center py-12">
+                <p className="text-error mb-4">Không tìm thấy kết quả</p>
+                <p className="text-gray-600 text-sm mb-6">Attempt ID: {attemptId}</p>
+                <Link to="/" className="btn btn-primary mt-4 inline-block">
+                    Về trang chủ
+                </Link>
+            </div>
+        )
+    }
+
+    const percentage = parseFloat(result.score) || 0
+    const isPassed = percentage >= 50
+    const resultsList = result.results || []
+
+    return (
+        <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
+            {showConfetti && <Confetti />}
+
+            {/* Summary Card */}
+            <div className="card text-center">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary-500 to-purple-600 mb-4">
+                    <TrophyIcon className="w-12 h-12 text-white" />
+                </div>
+
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                    {result.exam_name}
+                </h1>
+
+                <div className={`text-6xl font-bold mb-4 ${isPassed ? 'text-success' : 'text-error'}`}>
+                    {percentage.toFixed(1)}%
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+                    <div className="bg-success/10 rounded-lg p-4">
+                        <CheckCircleIcon className="w-8 h-8 text-success mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-success">{result.correct_answers}</div>
+                        <div className="text-sm text-gray-600">Đúng</div>
+                    </div>
+
+                    <div className="bg-error/10 rounded-lg p-4">
+                        <XCircleIcon className="w-8 h-8 text-error mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-error">{result.wrong_answers}</div>
+                        <div className="text-sm text-gray-600">Sai</div>
+                    </div>
+
+                    <div className="bg-primary-50 rounded-lg p-4">
+                        <ClockIcon className="w-8 h-8 text-primary-600 mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-primary-600">
+                            {result.formatted_time}
+                        </div>
+                        <div className="text-sm text-gray-600">Thời gian</div>
+                    </div>
+                </div>
+
+                <div className="mt-6 flex justify-center space-x-4">
+                    <Link to="/" className="btn btn-secondary">
+                        <HomeIcon className="w-5 h-5 mr-2" />
+                        Về trang chủ
+                    </Link>
+                    <Link to="/statistics" className="btn btn-primary">
+                        Xem thống kê
+                    </Link>
+                </div>
+            </div>
+
+            {/* Review */}
+            <div className="card">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    📝 Chi tiết từng câu
+                </h2>
+
+                <div className="space-y-4">
+                    {resultsList.length === 0 ? (
+                        <div className="text-center py-8 text-gray-600">
+                            Không có dữ liệu chi tiết
+                        </div>
+                    ) : (
+                        resultsList.map((item, index) => {
+                            const isCorrect = item.is_correct
+                            const isExpanded = expandedQuestion === item.question_id
+
+                            return (
+                                <div
+                                    key={item.question_id}
+                                    className={`border-2 rounded-xl overflow-hidden transition-all ${isCorrect ? 'border-success/30 bg-success/5' : 'border-error/30 bg-error/5'}`}
+                                >
+                                    {/* Question header */}
+                                    <div className="p-4">
+                                        <div className="flex items-start space-x-3">
+                                            <div className="flex-shrink-0">
+                                                {isCorrect ? (
+                                                    <CheckCircleIcon className="w-6 h-6 text-success" />
+                                                ) : (
+                                                    <XCircleIcon className="w-6 h-6 text-error" />
+                                                )}
+                                            </div>
+
+                                            <div className="flex-1">
+                                                <div className="flex items-start justify-between mb-2">
+                                                    <p className="text-gray-900 font-medium flex-1">
+                                                        <span className="text-gray-500 mr-2">Câu {index + 1}:</span>
+                                                        {item.question}
+                                                    </p>
+                                                </div>
+
+                                                {/* Selected answer */}
+                                                <div className="text-sm space-y-1 mb-3">
+                                                    <div>
+                                                        <span className="text-gray-600">Bạn chọn: </span>
+                                                        <span className={`font-medium ${isCorrect ? 'text-success' : 'text-error'}`}>
+                                                            {item.user_answer ? item.user_answer.toUpperCase() : 'Không trả lời'}
+                                                        </span>
+                                                        {item.user_answer && (
+                                                            <span className="text-gray-700 ml-2">
+                                                                - {item.options[item.user_answer]}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {!isCorrect && (
+                                                        <div>
+                                                            <span className="text-gray-600">Đáp án đúng: </span>
+                                                            <span className="font-medium text-success">
+                                                                {item.correct_answer.toUpperCase()}
+                                                            </span>
+                                                            <span className="text-gray-700 ml-2">
+                                                                - {item.options[item.correct_answer]}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Expand button */}
+                                                {item.explanation && (
+                                                    <button
+                                                        onClick={() => toggleExpand(item.question_id)}
+                                                        className="text-primary-600 hover:text-primary-700 font-medium text-sm flex items-center"
+                                                    >
+                                                        {isExpanded ? (
+                                                            <>
+                                                                <ChevronUpIcon className="w-4 h-4 mr-1" />
+                                                                Ẩn giải thích
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <ChevronDownIcon className="w-4 h-4 mr-1" />
+                                                                Xem giải thích
+                                                            </>
+                                                        )}
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Explanation */}
+                                    {isExpanded && item.explanation && (
+                                        <div className="bg-white/50 border-t border-gray-200 p-4">
+                                            <div className="flex items-start space-x-2">
+                                                <span className="text-2xl">💡</span>
+                                                <div>
+                                                    <h4 className="font-bold text-gray-900 mb-2">Giải thích:</h4>
+                                                    <p className="text-gray-700 leading-relaxed">
+                                                        {item.explanation}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        })
+                    )}
+                </div>
+            </div>
+
+            {/* Encouragement */}
+            <div className={`card text-center ${isPassed ? 'bg-gradient-to-r from-success/10 to-green-50' : 'bg-gradient-to-r from-orange-50 to-yellow-50'}`}>
+                <p className="text-lg font-medium text-gray-900">
+                    {isPassed
+                        ? percentage >= 80
+                            ? '🎉 Xuất sắc! Bạn đã nắm vững kiến thức!'
+                            : '👍 Tốt lắm! Tiếp tục cố gắng nhé!'
+                        : '💪 Đừng nản chí! Hãy xem lại lý thuyết và thử lại!'}
+                </p>
+            </div>
+        </div>
+    )
+}
+
+export default ResultPage

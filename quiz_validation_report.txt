@@ -1,0 +1,315 @@
+QUIZ DATA VALIDATION REPORT
+Generated: 2026-01-02 05:47:14
+================================================================================
+
+EXAM: Đề Ôn Thầy Trường (CK)
+--------------------------------------------------------------------------------
+Total questions: 58
+
+STATUS: OK - All questions are valid!
+
+EXAM: Trắc nghiệm nguồn mở (Bonus)
+--------------------------------------------------------------------------------
+Total questions: 128
+
+STATUS: ISSUES FOUND - 128 questions have problems
+
+  Question ID 59:
+    Text: Giấy phép BSD - Berkeley System Distribution Licenses được sử dụng l�...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 60:
+    Text: Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 61:
+    Text: Tổ chức FSF là tổ chức...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 62:
+    Text: Bạn hãy cho biết phần mềm nào sau đây sử dụng giấp phép BSD:...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 63:
+    Text: Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 64:
+    Text: Phần mềm Apache Server sử dụng giấy phép nào sau đây :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 65:
+    Text: Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy c�...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 66:
+    Text: Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 67:
+    Text: Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 68:
+    Text: Kiến trúc Kernel Linux là Monolithic....
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 118 more questions with issues
+
+EXAM: Ôn tập Thầy Khuê
+--------------------------------------------------------------------------------
+Total questions: 200
+
+STATUS: ISSUES FOUND - 200 questions have problems
+
+  Question ID 187:
+    Text: Thuật ngữ “Free Software” (Phần mềm tự do) trong bối cảnh mã ...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 188:
+    Text: Loại giấy phép phần mềm nguồn mở nào sau đây có tính chất �...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 189:
+    Text: Đặc điểm chính của giấy phép MIT là gì?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 190:
+    Text: Giấy phép Apache License 2.0 khác biệt so với giấy phép MIT/BSD chủ...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 191:
+    Text: Trong mô hình phát triển phần mềm nguồn mở, thuật ngữ “The Ba...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 192:
+    Text: “Upstream” (thượng nguồn) trong quy trình phát triển mã nguồn m�...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 193:
+    Text: Một “Issue Tracker” (Hệ thống theo dõi vấn đề) trong dự án ng...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 194:
+    Text: Hành động tạo ra một bản sao của kho lưu trữ mã nguồn để ph...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 195:
+    Text: Để đóng góp mã nguồn (code) đã sửa từ kho của mình trở lại...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 196:
+    Text: Vai trò của “Maintainer” (Người duy trì) trong dự án mã nguồn m...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 190 more questions with issues
+
+EXAM: Đề Trộn 50 Câu
+--------------------------------------------------------------------------------
+Total questions: 50
+
+STATUS: ISSUES FOUND - 44 questions have problems
+
+  Question ID 387:
+    Text: Bạn sử dụng lênh sau: useradd –m sapa song user sapa không đăng nh�...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 388:
+    Text: Hãy cho biết GNOME là viết tắt của từ nào sau đây ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 389:
+    Text: Để truy xuất (lấy) giá trị của một biến có tên là count trong...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 391:
+    Text: Lỗi “403 Forbidden” khi truy cập website trên LAMP server thường có...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 392:
+    Text: Trong Linux, thư mục nào thường chứa các file cấu hình hệ thống...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 393:
+    Text: Kiến trúc Kernel Linux là Monolithic....
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 394:
+    Text: Lệnh nào dùng để xóa toàn bộ thư mục /dir (Kể cả TM rỗng)...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 395:
+    Text: Flask được gọi là “Micro-framework” vì lý do gì?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 396:
+    Text: Độ nghiêm trọng “Severity” của Bug thể hiện điều gì?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 397:
+    Text: Kubernetes (K8s) có mối quan hệ gì với Docker?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 34 more questions with issues
+
+================================================================================
+SUMMARY
+================================================================================
+Total issues: 2219
+STATUS: ISSUES NEED TO BE FIXED!
+
+Breakdown by exam:
+  - Đề Ôn Thầy Trường (CK): 0 questions with issues
+  - Trắc nghiệm nguồn mở (Bonus): 128 questions with issues
+  - Ôn tập Thầy Khuê: 200 questions with issues
+  - Đề Trộn 50 Câu: 44 questions with issues

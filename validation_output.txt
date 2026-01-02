@@ -1,0 +1,332 @@
+﻿Psy Shell v0.12.14 (PHP 8.4.14 ΓÇö cli) by Justin Hileman
+php : The system cannot find the path specified.
+At line:1 char:1
++ php artisan tinker generate_validation_report.php 2>&1 | Out-File 
+-Fi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (The system cann...path  
+   specified.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+New PHP manual is available (latest: 3.0.0). Update with `--update-manual`
+QUIZ DATA VALIDATION REPORT
+Generated: 2026-01-02 05:47:14
+================================================================================
+
+EXAM: ─Éß╗ü ├ön Thß║ºy Tr╞░ß╗¥ng (CK)
+--------------------------------------------------------------------------------
+Total questions: 58
+
+STATUS: OK - All questions are valid!
+
+EXAM: Trß║»c nghiß╗çm nguß╗ôn mß╗ƒ (Bonus)
+--------------------------------------------------------------------------------
+Total questions: 128
+
+STATUS: ISSUES FOUND - 128 questions have problems
+
+  Question ID 59:
+    Text: Giß║Ñy ph├⌐p BSD - Berkeley System Distribution Licenses ─æ╞░ß╗úc sß╗¡ dß╗Ñng lß...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 60:
+    Text: Tß╗ò chß╗⌐c OSI - Open Source Initiative l├á mß╗Öt tß╗ò chß╗⌐c nh╞░ thß║┐ n├áo ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 61:
+    Text: Tß╗ò chß╗⌐c FSF l├á tß╗ò chß╗⌐c...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 62:
+    Text: Bß║ín h├úy cho biß║┐t phß║ºn mß╗üm n├áo sau ─æ├óy sß╗¡ dß╗Ñng giß║Ñp ph├⌐p BSD:...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 63:
+    Text: Phß║ºn mß╗üm GIMP sß╗¡ dß╗Ñng giß║Ñy ph├⌐p m├ú nguß╗ôn mß╗ƒ n├áo :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 64:
+    Text: Phß║ºn mß╗üm Apache Server sß╗¡ dß╗Ñng giß║Ñy ph├⌐p n├áo sau ─æ├óy :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 65:
+    Text: Nhß╗»ng phß║ºn mß╗üm m├ú nguß╗ôn mß╗ƒ miß╗àn ph├¡ n├áo sau ─æ├óy gi├║p chß║íy c├...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 66:
+    Text: Tß╗ò chß╗⌐c OSI - Open Source Initiative l├á mß╗Öt tß╗ò chß╗⌐c nh╞░ thß║┐ n├áo ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 67:
+    Text: Phß║ºn mß╗üm GIMP sß╗¡ dß╗Ñng giß║Ñy ph├⌐p m├ú nguß╗ôn mß╗ƒ n├áo :...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 68:
+    Text: Kiß║┐n tr├║c Kernel Linux l├á Monolithic....
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 118 more questions with issues
+
+EXAM: ├ön tß║¡p Thß║ºy Khu├¬
+--------------------------------------------------------------------------------
+Total questions: 200
+
+STATUS: ISSUES FOUND - 200 questions have problems
+
+  Question ID 187:
+    Text: Thuß║¡t ngß╗» ΓÇ£Free SoftwareΓÇ¥ (Phß║ºn mß╗üm tß╗▒ do) trong bß╗æi cß║únh m├ú ...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 188:
+    Text: Loß║íi giß║Ñy ph├⌐p phß║ºn mß╗üm nguß╗ôn mß╗ƒ n├áo sau ─æ├óy c├│ t├¡nh chß║Ñt ΓÇ...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 189:
+    Text: ─Éß║╖c ─æiß╗âm ch├¡nh cß╗ºa giß║Ñy ph├⌐p MIT l├á g├¼?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 190:
+    Text: Giß║Ñy ph├⌐p Apache License 2.0 kh├íc biß╗çt so vß╗¢i giß║Ñy ph├⌐p MIT/BSD chß╗º...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 191:
+    Text: Trong m├┤ h├¼nh ph├ít triß╗ân phß║ºn mß╗üm nguß╗ôn mß╗ƒ, thuß║¡t ngß╗» ΓÇ£The Ba...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 192:
+    Text: ΓÇ£UpstreamΓÇ¥ (th╞░ß╗úng nguß╗ôn) trong quy tr├¼nh ph├ít triß╗ân m├ú nguß╗ôn mß...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 193:
+    Text: Mß╗Öt ΓÇ£Issue TrackerΓÇ¥ (Hß╗ç thß╗æng theo d├╡i vß║Ñn ─æß╗ü) trong dß╗▒ ├ín ng...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 194:
+    Text: H├ánh ─æß╗Öng tß║ío ra mß╗Öt bß║ún sao cß╗ºa kho l╞░u trß╗» m├ú nguß╗ôn ─æß╗â ph...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 195:
+    Text: ─Éß╗â ─æ├│ng g├│p m├ú nguß╗ôn (code) ─æ├ú sß╗¡a tß╗½ kho cß╗ºa m├¼nh trß╗ƒ lß║íi...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 196:
+    Text: Vai tr├▓ cß╗ºa ΓÇ£MaintainerΓÇ¥ (Ng╞░ß╗¥i duy tr├¼) trong dß╗▒ ├ín m├ú nguß╗ôn m...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 190 more questions with issues
+
+EXAM: ─Éß╗ü Trß╗Ön 50 C├óu
+--------------------------------------------------------------------------------
+Total questions: 50
+
+STATUS: ISSUES FOUND - 44 questions have problems
+
+  Question ID 387:
+    Text: Bß║ín sß╗¡ dß╗Ñng l├¬nh sau: useradd ΓÇôm sapa song user sapa kh├┤ng ─æ─âng nhß║...
+    - Missing option A
+
+   INFO  Ctrl+D.
+
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 388:
+    Text: H├úy cho biß║┐t GNOME l├á viß║┐t tß║»t cß╗ºa tß╗½ n├áo sau ─æ├óy ?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 389:
+    Text: ─Éß╗â truy xuß║Ñt (lß║Ñy) gi├í trß╗ï cß╗ºa mß╗Öt biß║┐n c├│ t├¬n l├á count trong...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 391:
+    Text: Lß╗ùi ΓÇ£403 ForbiddenΓÇ¥ khi truy cß║¡p website tr├¬n LAMP server th╞░ß╗¥ng c├│...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 392:
+    Text: Trong Linux, th╞░ mß╗Ñc n├áo th╞░ß╗¥ng chß╗⌐a c├íc file cß║Ñu h├¼nh hß╗ç thß╗æng...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 393:
+    Text: Kiß║┐n tr├║c Kernel Linux l├á Monolithic....
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 394:
+    Text: Lß╗çnh n├áo d├╣ng ─æß╗â x├│a to├án bß╗Ö th╞░ mß╗Ñc /dir (Kß╗â cß║ú TM rß╗ùng)...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 395:
+    Text: Flask ─æ╞░ß╗úc gß╗ìi l├á ΓÇ£Micro-frameworkΓÇ¥ v├¼ l├╜ do g├¼?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 396:
+    Text: ─Éß╗Ö nghi├¬m trß╗ìng ΓÇ£SeverityΓÇ¥ cß╗ºa Bug thß╗â hiß╗çn ─æiß╗üu g├¼?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  Question ID 397:
+    Text: Kubernetes (K8s) c├│ mß╗æi quan hß╗ç g├¼ vß╗¢i Docker?...
+    - Missing option A
+    - Missing option B
+    - Missing option C
+    - Missing option D
+    - Invalid answer: ''
+    - Missing explanation
+
+  ... and 34 more questions with issues
+
+================================================================================
+SUMMARY
+================================================================================
+Total issues: 2219
+STATUS: ISSUES NEED TO BE FIXED!
+
+Breakdown by exam:
+  - ─Éß╗ü ├ön Thß║ºy Tr╞░ß╗¥ng (CK): 0 questions with issues
+  - Trß║»c nghiß╗çm nguß╗ôn mß╗ƒ (Bonus): 128 questions with issues
+  - ├ön tß║¡p Thß║ºy Khu├¬: 200 questions with issues
+  - ─Éß╗ü Trß╗Ön 50 C├óu: 44 questions with issues
+
+Report saved to: D:\STU\HK1-2025-2026\DoAnThucTap\back-end\cinema_service\quiz_validation_report.txt
+

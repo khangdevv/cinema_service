@@ -109,6 +109,27 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        // Database cho ung dung on tap trac nghiem
+        'tracnghiem' => [
+            'driver' => 'mysql',
+            'url' => env('DB_URL'),
+            'host' => env('QUIZ_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('QUIZ_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('QUIZ_DB_DATABASE', 'tracnghiem'),
+            'username' => env('QUIZ_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('QUIZ_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
     ],
 
     /*

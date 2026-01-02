@@ -10,6 +10,57 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AccountController;
 
+// Quiz Controllers
+use App\Http\Controllers\Quiz\AuthController as QuizAuthController;
+use App\Http\Controllers\Quiz\ExamController;
+use App\Http\Controllers\Quiz\TheoryController;
+use App\Http\Controllers\Quiz\StatisticsController;
+
+// =====================================================
+// QUIZ API ROUTES
+// =====================================================
+
+// Public Quiz routes
+Route::prefix('quiz')->group(function () {
+    // Auth
+    Route::post('/register', [QuizAuthController::class, 'register']);
+    Route::post('/login', [QuizAuthController::class, 'login']);
+    Route::get('/auth/google', [QuizAuthController::class, 'redirectToGoogle']);
+    Route::get('/auth/google/callback', [QuizAuthController::class, 'handleGoogleCallback']);
+
+    // Public data - Exams list
+    Route::get('/exams', [ExamController::class, 'index']);
+
+    // Public - Theory
+    Route::get('/topics', [TheoryController::class, 'topics']);
+    Route::get('/theories', [TheoryController::class, 'all']);
+    Route::get('/theories/{slug}', [TheoryController::class, 'show']);
+    Route::get('/topics/{slug}', [TheoryController::class, 'topic']);
+
+    // Leaderboard (public)
+    Route::get('/leaderboard', [StatisticsController::class, 'leaderboard']);
+});
+
+// Protected Quiz routes (require auth)
+Route::prefix('quiz')->middleware('auth:sanctum')->group(function () {
+    // Auth
+    Route::post('/logout', [QuizAuthController::class, 'logout']);
+    Route::get('/me', [QuizAuthController::class, 'me']);
+
+    // Exam
+    Route::get('/exams/{slug}', [ExamController::class, 'show']);
+    Route::post('/submit', [ExamController::class, 'submit']);
+    Route::get('/history', [ExamController::class, 'history']);
+    Route::get('/attempts/{id}', [ExamController::class, 'attemptDetail']);
+
+    // Statistics
+    Route::get('/statistics/overview', [StatisticsController::class, 'overview']);
+    Route::get('/statistics/progress', [StatisticsController::class, 'progress']);
+});
+
+// =====================================================
+// CINEMA API ROUTES (Existing)
+// =====================================================
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register']);
@@ -68,9 +119,3 @@ Route::middleware('auth:sanctum')->group(function () {
           Route::post('/movies/generateSchedule', [MovieController::class, 'generateSchedule']);
      });
 });
-
-
-
-
-
-

@@ -1,0 +1,28 @@
+﻿                                                        {item.explanation}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        })
+                    )}
+                </div>
+            </div>
+
+            {/* Encouragement */}
+            <div className={card text-center }>
+                <p className="text-lg font-medium text-gray-900">
+                    {isPassed
+                        ? percentage >= 80
+                            ? ' Xuất sắc! Bạn đã nắm vững kiến thức!'
+                            : ' Tốt lắm! Tiếp tục cố gắng nhé!'
+                        : ' Đừng nản chí! Hãy xem lại lý thuyết và thử lại!'}
+                </p>
+            </div>
+        </div>
+    )
+}
+
+export default ResultPage

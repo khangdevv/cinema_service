@@ -43,7 +43,12 @@ return [
         'api' => [
             'driver' => 'sanctum',
             'provider' => 'accounts'
-        ]
+        ],
+        // Guard cho ung dung trac nghiem
+        'quiz' => [
+            'driver' => 'session',
+            'provider' => 'quiz_users',
+        ],
     ],
 
     /*
@@ -67,6 +72,12 @@ return [
         'accounts' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Account::class),
+        ],
+
+        // Provider cho ung dung trac nghiem
+        'quiz_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Quiz\Account::class,
         ],
 
         // 'users' => [

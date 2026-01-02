@@ -73,3 +73,11 @@ Route::middleware(['auth:web', 'role:ADMIN,STAFF'])->prefix('admin')->group(func
     Route::delete('/movies/{id}', [AdminController::class, 'movieDelete'])->name('admin.movies.delete');
     Route::patch('/movies/{id}/toggle-status', [AdminController::class, 'movieToggleStatus'])->name('admin.movies.toggle-status');
 });
+
+// =====================================================
+// QUIZ SPA - React Application
+// =====================================================
+Route::get('/quiz/{any?}', function () {
+    return view('quiz');
+})->where('any', '.*')->name('quiz');
+
