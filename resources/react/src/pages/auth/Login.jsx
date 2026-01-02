@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { AcademicCapIcon, EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 
@@ -8,9 +8,41 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [searchParams] = useSearchParams()
 
-    const { login } = useAuth()
+    const { login, isAuthenticated } = useAuth()
     const navigate = useNavigate()
+
+    // Handle Google OAuth callback
+    useEffect(() => {
+        const token = searchParams.get('token')
+        const userParam = searchParams.get('user')
+        const errorParam = searchParams.get('error')
+
+        if (errorParam) {
+            setError(decodeURIComponent(errorParam))
+            return
+        }
+
+        if (token && userParam) {
+            try {
+                const user = JSON.parse(decodeURIComponent(userParam))
+                localStorage.setItem('quiz_token', token)
+                localStorage.setItem('quiz_user', JSON.stringify(user))
+                // Reload to update auth state
+                window.location.href = '/quiz'
+            } catch (e) {
+                setError('Có lỗi xảy ra khi đăng nhập Google')
+            }
+        }
+    }, [searchParams])
+
+    // Redirect if already authenticated
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/')
+        }
+    }, [isAuthenticated, navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

@@ -17,7 +17,7 @@
 
 <body class="antialiased">
     <div id="root"></div>
-    <script type="module" src="{{ asset('quiz/assets/index-B4hApq_5.js') }}"></script>
+    <script type="module" src="{{ asset('quiz/assets/index-On4Pgbet.js') }}"></script>
 </body>
 
 </html>

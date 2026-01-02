@@ -140,14 +140,21 @@ class AuthController extends Controller
                 ]);
             }
 
-            // Sử dụng session-based auth cho web app
-            Auth::guard('quiz')->login($account);
+            // Tạo token cho React app
+            $token = $account->createToken('quiz_token')->plainTextToken;
 
-            // Redirect về trang chủ quiz
-            return redirect('/quiz');
+            // Redirect về React app với token và user info
+            $userData = urlencode(json_encode([
+                'id' => $account->id,
+                'email' => $account->email,
+                'full_name' => $account->full_name,
+                'avatar' => $account->avatar,
+            ]));
+
+            return redirect("/quiz/login?token={$token}&user={$userData}");
 
         } catch (\Exception $e) {
-            return redirect('/quiz/login')->with('error', 'Đăng nhập Google thất bại: ' . $e->getMessage());
+            return redirect('/quiz/login?error=' . urlencode('Đăng nhập Google thất bại: ' . $e->getMessage()));
         }
     }
 }
