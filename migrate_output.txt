@@ -1,0 +1,54 @@
+﻿
+  Dropping all tables ......................................................... 87.42ms DONE
+
+   INFO  Preparing database.  
+
+  Creating migration table ..................................................... 5.73ms DONE
+
+   INFO  Running migrations.  
+
+  0001_01_01_000000_create_users_table ........................................ 47.98ms DONE
+  0001_01_01_000001_create_cache_table ......................................... 7.49ms DONE
+  0001_01_01_000002_create_jobs_table ......................................... 39.91ms DONE
+  2025_11_06_143152_create_account_table ...................................... 54.12ms DONE
+  2025_11_06_143152_create_movie_table ........................................ 15.86ms DONE
+  2025_11_06_143152_create_order_line_table ................................... 41.34ms DONE
+  2025_11_06_143152_create_orders_table ....................................... 56.81ms DONE
+  2025_11_06_143152_create_product_table ....................................... 4.50ms DONE
+  2025_11_06_143152_create_screen_table ....................................... 18.73ms DONE
+  2025_11_06_143152_create_seat_lock_table .................................... 55.44ms DONE
+  2025_11_06_143152_create_seat_table ......................................... 30.07ms DONE
+  2025_11_06_143152_create_showtime_table ..................................... 29.63ms DONE
+  2025_11_06_143155_add_foreign_keys_to_order_line_table ...................... 45.29ms DONE
+  2025_11_06_143155_add_foreign_keys_to_orders_table .......................... 32.06ms DONE
+  2025_11_06_143155_add_foreign_keys_to_seat_lock_table ....................... 53.34ms DONE
+  2025_11_06_143155_add_foreign_keys_to_seat_table ............................ 16.73ms DONE
+  2025_11_06_143155_add_foreign_keys_to_showtime_table ........................ 28.38ms DONE
+  2025_11_06_144023_create_personal_access_tokens_table ....................... 44.53ms DONE
+  2025_11_18_061957_add_colums_poster_genre_into_table_movie .................. 30.88ms DONE
+  2025_11_27_153742_add_is_active_to_movie_table .............................. 14.14ms DONE
+  2025_12_09_024545_add_google_id_to_account_table ............................ 33.19ms DONE
+  2025_12_20_000001_create_quiz_tables ....................................... 162.54ms DONE
+  2025_12_30_000001_create_quiz_system_tables ................................. 35.60ms FAIL
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'quiz_exams' already exists (Connection: mysql, SQL: create table `quiz_exams` (`id` bigint unsigned not null auto_increment primary key, `name` varchar(191) not null, `slug` varchar(191) not null, `description` text null, `type` enum('practice', 'mixed') not null default 'practice', `time_limit` int null, `total_questions` int not null default '0', `is_active` tinyint(1) not null default '1', `created_at` timestamp null, `updated_at` timestamp null) default character set utf8mb4 collate 'utf8mb4_0900_ai_ci')
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+    821Γûò                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822Γûò                 );
+    823Γûò             }
+    824Γûò 
+  Γ₧£ 825Γûò             throw new QueryException(
+    826Γûò                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827Γûò             );
+    828Γûò         }
+    829Γûò     }
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:571
+      PDOException::("SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'quiz_exams' already exists")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:571
+      PDOStatement::execute()
+

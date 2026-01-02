@@ -1,715 +1,403 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-class QuizSeeder extends Seeder
-{
-    public function run(): void
-    {
-        // Tạo tài khoản admin mẫu
-        DB::table('accounts')->insert([
-            'email' => 'admin@tracnghiem.com',
-            'password' => Hash::make('admin123'),
-            'full_name' => 'Admin Trắc Nghiệm',
-            'role' => 'ADMIN',
-            'is_active' => true,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Tạo các chủ đề
-        $topics = [
-            ['name' => 'Tổng quan Mã nguồn mở & Giấy phép', 'slug' => 'tong-quan-ma-nguon-mo', 'description' => 'Khái niệm OSS, các loại giấy phép: GPL, MIT, BSD, Apache, LGPL, MPL', 'sort_order' => 1],
-            ['name' => 'Hệ điều hành Linux', 'slug' => 'linux', 'description' => 'Kernel Linux, cấu trúc thư mục, các lệnh cơ bản, phân quyền', 'sort_order' => 2],
-            ['name' => 'Shell Script', 'slug' => 'shell-script', 'description' => 'Cú pháp Bash, biến, vòng lặp, điều kiện, hàm', 'sort_order' => 3],
-            ['name' => 'Git & GitHub', 'slug' => 'git-github', 'description' => 'Quản lý phiên bản, các lệnh git, workflow', 'sort_order' => 4],
-            ['name' => 'Docker', 'slug' => 'docker', 'description' => 'Container, Image, Docker Compose, Docker Hub', 'sort_order' => 5],
-            ['name' => 'Bugzilla', 'slug' => 'bugzilla', 'description' => 'Hệ thống theo dõi lỗi, trạng thái bug, vòng đời bug', 'sort_order' => 6],
-            ['name' => 'LAMP Stack', 'slug' => 'lamp-stack', 'description' => 'Linux, Apache, MySQL, PHP - Cài đặt và cấu hình', 'sort_order' => 7],
-            ['name' => 'VS Code', 'slug' => 'vscode', 'description' => 'Phím tắt, Extension, Debug, Cấu hình', 'sort_order' => 8],
-            ['name' => 'CMS (WordPress, Joomla, OpenCart)', 'slug' => 'cms', 'description' => 'Hệ quản trị nội dung, Theme, Plugin', 'sort_order' => 9],
-            ['name' => 'Python Web Framework', 'slug' => 'python-framework', 'description' => 'Django, Flask, MVT, ORM, CRUD', 'sort_order' => 10],
-        ];
-
-        foreach ($topics as $topic) {
-            $topic['created_at'] = now();
-            $topic['updated_at'] = now();
-            DB::table('quiz_topics')->insert($topic);
-        }
-
-        // Tạo các đề thi
-        $exams = [
-            ['id' => 1, 'name' => 'Đề Ôn Thầy Trường (CK)', 'slug' => 'de-on-thay-truong', 'description' => 'Đề ôn tập cuối kỳ của thầy Trường - Bao gồm các chủ đề: Mã nguồn mở, Linux, Shell Script, Git, Docker, Bugzilla', 'type' => 'practice', 'time_limit' => 60, 'is_active' => true],
-            ['id' => 2, 'name' => 'Trắc nghiệm nguồn mở (Bonus)', 'slug' => 'trac-nghiem-nguon-mo-bonus', 'description' => 'Đề trắc nghiệm bổ sung về phần mềm mã nguồn mở - Chương 1,2,3,4 và các chủ đề nâng cao', 'type' => 'practice', 'time_limit' => 90, 'is_active' => true],
-            ['id' => 3, 'name' => 'Ôn tập Thầy Khuê', 'slug' => 'on-tap-thay-khue', 'description' => 'Đề ôn tập của thầy Khuê - 7 chủ đề: Tổng quan OSS, Linux Shell, VS Code, LAMP, CMS, Python Framework, Bugzilla', 'type' => 'practice', 'time_limit' => 90, 'is_active' => true],
-            ['id' => 4, 'name' => 'Đề Trộn 50 Câu', 'slug' => 'de-tron-50-cau', 'description' => 'Đề thi trộn ngẫu nhiên 50 câu từ tất cả các đề để luyện tập toàn diện', 'type' => 'mixed', 'time_limit' => 45, 'total_questions' => 50, 'is_active' => true],
-        ];
-
-        foreach ($exams as $exam) {
-            $exam['created_at'] = now();
-            $exam['updated_at'] = now();
-            DB::table('quiz_exams')->insert($exam);
-        }
-
-        // ========== ĐỀ 1: ĐỀ ÔN THẦY TRƯỜNG (CK) ==========
-        $exam1Questions = [
-            // Phần mềm mã nguồn mở
-            ['question' => 'Phần lớn phần mềm mã nguồn mở là kết quả của', 'option_a' => 'Niềm đam mê lập trình', 'option_b' => 'Kết quả của một số bài tập trong các chương trình đại học', 'option_c' => 'Vì Lợi ích cộng đồng', 'option_d' => 'Tất cả các điều trên', 'correct_answer' => 'd', 'explanation' => 'Phần mềm mã nguồn mở được tạo ra từ nhiều nguồn động lực khác nhau: đam mê, học tập, và vì lợi ích cộng đồng.', 'topic_id' => 1],
-
-            ['question' => 'Phần mềm văn phòng nào sau đây sử dụng giấy phép mã nguồn mở', 'option_a' => 'Microsoft Office', 'option_b' => 'Libre Office', 'option_c' => 'Adobe Acrobat', 'option_d' => 'WinRAR', 'correct_answer' => 'b', 'explanation' => 'LibreOffice là bộ phần mềm văn phòng mã nguồn mở, sử dụng giấy phép Mozilla Public License.', 'topic_id' => 1],
-
-            ['question' => 'Phần mềm Mozilla Firefox sử dụng giấy phép mã nguồn mở nào', 'option_a' => 'Mozilla Public License', 'option_b' => 'GNU GPL', 'option_c' => 'Apache License', 'option_d' => 'MIT License', 'correct_answer' => 'a', 'explanation' => 'Mozilla Firefox được phát hành dưới giấy phép Mozilla Public License (MPL).', 'topic_id' => 1],
-
-            ['question' => 'Phần mềm Apache Server sử dụng giấy phép nào sau đây', 'option_a' => 'BSD License', 'option_b' => 'GNU GPL', 'option_c' => 'Mozilla Public License', 'option_d' => 'Apache License', 'correct_answer' => 'd', 'explanation' => 'Apache HTTP Server sử dụng Apache License 2.0.', 'topic_id' => 1],
-
-            ['question' => 'Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy các ứng dụng windows trên môi trường Ubuntu', 'option_a' => 'VirtualBox và VMware', 'option_b' => 'Photoshop và AI', 'option_c' => 'Wine và PlayOnLinux', 'option_d' => 'Office và Excel', 'correct_answer' => 'c', 'explanation' => 'Wine là lớp tương thích giúp chạy ứng dụng Windows trên Linux. PlayOnLinux là frontend giúp dễ dàng cài đặt và quản lý Wine.', 'topic_id' => 1],
-
-            ['question' => 'Giấy phép nào có khả năng kết hợp một phần mềm với một phần mềm thư viện mang giấy phép mở tương ứng', 'option_a' => 'LGPL (Lesser General Public License)', 'option_b' => 'BSD License', 'option_c' => 'Apache License', 'option_d' => 'Cả 3 License', 'correct_answer' => 'a', 'explanation' => 'LGPL cho phép liên kết (link) với thư viện mà không yêu cầu mã nguồn của chương trình chính phải mở.', 'topic_id' => 1],
-
-            // Linux
-            ['question' => 'Làm cách nào để xóa người dùng cùng với thư mục home trong Linux?', 'option_a' => 'userdel', 'option_b' => 'userdel -r', 'option_c' => 'deluser --force', 'option_d' => 'rmuser -h', 'correct_answer' => 'b', 'explanation' => 'Lệnh userdel -r sẽ xóa user và đồng thời xóa thư mục home của user đó.', 'topic_id' => 2],
-
-            ['question' => 'Lệnh nào xem danh sách các file của thư mục gốc hệ điều hành Ubuntu?', 'option_a' => 'dir C:', 'option_b' => 'show /', 'option_c' => 'list all', 'option_d' => 'ls /', 'correct_answer' => 'd', 'explanation' => 'Trong Linux, thư mục gốc là / và lệnh ls dùng để liệt kê nội dung thư mục.', 'topic_id' => 2],
-
-            ['question' => 'Môi trường nào không liên quan đến hệ điều hành Linux', 'option_a' => 'GNOME', 'option_b' => 'XFCE', 'option_c' => 'KDE', 'option_d' => 'Metro', 'correct_answer' => 'd', 'explanation' => 'Metro là giao diện của Windows 8. GNOME, KDE, XFCE đều là môi trường desktop cho Linux.', 'topic_id' => 2],
-
-            ['question' => 'Để sử dụng các lệnh Linux trên windows, ta có thể cài đặt', 'option_a' => 'WSL', 'option_b' => 'WINE', 'option_c' => 'PlayOnLinux', 'option_d' => 'Bootcamp', 'correct_answer' => 'a', 'explanation' => 'WSL (Windows Subsystem for Linux) cho phép chạy môi trường Linux trực tiếp trên Windows.', 'topic_id' => 2],
-
-            ['question' => 'Một trong những đặc điểm nổi bật của hệ thống file ext3, ext4 là gì?', 'option_a' => 'Thời gian kiểm tra hệ thống file (fsck) rất lâu', 'option_b' => 'Không hỗ trợ tính năng Journaling', 'option_c' => 'Chỉ tương thích với hệ điều hành Windows', 'option_d' => 'Khởi động nhanh', 'correct_answer' => 'd', 'explanation' => 'ext3/ext4 hỗ trợ Journaling giúp khởi động nhanh và phục hồi dữ liệu khi có sự cố.', 'topic_id' => 2],
-
-            ['question' => 'Tác giả của phiên bản hệ điều hành Linux đầu tiên là?', 'option_a' => 'Steve Jobs', 'option_b' => 'Bill Gates', 'option_c' => 'Richard Stallman', 'option_d' => 'Linus Torvalds', 'correct_answer' => 'd', 'explanation' => 'Linus Torvalds là người tạo ra kernel Linux vào năm 1991.', 'topic_id' => 2],
-
-            ['question' => 'Phần quan trọng nhất của hệ điều hành Linux là:', 'option_a' => 'Kernel', 'option_b' => 'Shell', 'option_c' => 'Application', 'option_d' => 'Desktop Environment', 'correct_answer' => 'a', 'explanation' => 'Kernel là nhân của hệ điều hành, quản lý tài nguyên phần cứng và cung cấp dịch vụ cho các chương trình.', 'topic_id' => 2],
-
-            ['question' => 'Số phiên bản kernel của Linux có gì đặc biệt', 'option_a' => 'Số phiên bản luôn bắt đầu bằng số 0', 'option_b' => 'Số thứ 2 là số chẵn: Phiên bản ổn định (Stable)', 'option_c' => 'Số thứ 2 là số lẻ: Phiên bản thử nghiệm', 'option_d' => 'Câu b và c đúng', 'correct_answer' => 'd', 'explanation' => 'Trong các phiên bản kernel Linux cũ, số thứ hai chẵn nghĩa là stable, lẻ là development.', 'topic_id' => 2],
-
-            ['question' => 'Để xem hướng dẫn cách dùng lệnh ls, ta thực hiện lệnh:', 'option_a' => 'help ls', 'option_b' => 'ls ?', 'option_c' => 'man ls', 'option_d' => 'show ls', 'correct_answer' => 'c', 'explanation' => 'man (manual) là lệnh để xem hướng dẫn sử dụng chi tiết của các lệnh trong Linux.', 'topic_id' => 2],
-
-            // Copyleft và GPL
-            ['question' => 'Quan niệm nào sau đây sai về copyleft:', 'option_a' => 'Copyleft là việc sử dụng luật bản quyền để đảm bảo quyền tự do sao chép và sửa đổi phần mềm', 'option_b' => 'Copyleft bắt buộc các phiên bản sửa đổi phải phát hành dưới cùng giấy phép tự do', 'option_c' => 'Mục đích của Copyleft là ngăn chặn việc biến phần mềm tự do thành phần mềm độc quyền', 'option_d' => 'Copyleft cho phép biến mã nguồn mở thành mã nguồn đóng (closed source)', 'correct_answer' => 'd', 'explanation' => 'Đáp án d SAI vì copyleft KHÔNG cho phép biến mã nguồn mở thành mã nguồn đóng. Ngược lại, copyleft yêu cầu mọi phiên bản phái sinh đều phải giữ nguyên giấy phép mở. Các đáp án a, b, c đều đúng về copyleft.', 'topic_id' => 1],
-
-            ['question' => 'Nếu bạn viết 1 chương trình áp dụng giấy phép GNU-GPL thì bạn cần đính kèm những thông báo đi cùng phần mềm ở đâu:', 'option_a' => 'Chỉ cần ghi trong tài liệu hướng dẫn sử dụng', 'option_b' => 'Đính kèm vào phần đầu của tập tin mã nguồn (dưới dạng ghi chú)', 'option_c' => 'Gửi thông báo đăng ký về tổ chức FSF', 'option_d' => 'Chỉ cần hiển thị logo GPL trong phần giới thiệu', 'correct_answer' => 'b', 'explanation' => 'GPL yêu cầu đính kèm thông báo giấy phép ở đầu mỗi file source code.', 'topic_id' => 1],
-
-            ['question' => 'Giấy phép mã nguồn mở là tập hợp các quy tắc đòi hỏi ai là người phải tuân theo', 'option_a' => 'Người sáng chế ra phần mềm mã nguồn mở', 'option_b' => 'Nhà bảo hành phần mềm mã nguồn mở', 'option_c' => 'Người sử dụng phần mềm mã nguồn mở', 'option_d' => 'Cả 3 phương án trên đều đúng', 'correct_answer' => 'd', 'explanation' => 'Giấy phép mã nguồn mở áp dụng cho tất cả các bên liên quan: tác giả, người phân phối và người sử dụng.', 'topic_id' => 1],
-
-            ['question' => 'Phát biểu nào sau đây không phải là phát biểu đúng', 'option_a' => 'Phần mềm mã nguồn mở là phần mềm tự do', 'option_b' => 'Phần mềm mã nguồn mở cho phép người dùng quyền truy cập vào mã nguồn', 'option_c' => 'Phần mềm mã nguồn mở cho phép người dùng quyền sửa đổi và cải tiến mã nguồn', 'option_d' => 'Phần mềm mã nguồn mở cho phép phân phối lại các bản sao', 'correct_answer' => 'a', 'explanation' => 'Open Source và Free Software có định nghĩa khác nhau. OSS tập trung vào mã nguồn mở, còn Free Software tập trung vào quyền tự do của người dùng.', 'topic_id' => 1],
-
-            ['question' => 'Câu nào sau đây không phải là ưu điểm của mã nguồn mở', 'option_a' => 'Chi phí bản quyền thấp (thường là miễn phí)', 'option_b' => 'Khả năng bảo mật cao (do có nhiều người soi code)', 'option_c' => 'Không bị phụ thuộc vào một nhà cung cấp duy nhất', 'option_d' => 'Phần mềm mã nguồn mở có độ ổn định cao', 'correct_answer' => 'd', 'explanation' => 'Độ ổn định phụ thuộc vào từng dự án cụ thể, không phải đặc điểm chung của tất cả phần mềm mã nguồn mở.', 'topic_id' => 1],
-
-            ['question' => 'Câu nào sau đây là đúng', 'option_a' => 'Phần mềm mã nguồn mở không được phép thương mại hóa', 'option_b' => 'Phần mềm mã nguồn mở không được pháp luật bảo hộ quyền tác giả', 'option_c' => 'Tác giả phần mềm mã nguồn mở phải chịu trách nhiệm đền bù nếu phần mềm gây lỗi', 'option_d' => 'Phần mềm mã nguồn mở không có bảo hành', 'correct_answer' => 'd', 'explanation' => 'Hầu hết các giấy phép OSS đều có điều khoản "AS IS" - không có bảo hành.', 'topic_id' => 1],
-
-            ['question' => 'Giấy phép GNU GPL phiên bản mới nhất là:', 'option_a' => '1.0', 'option_b' => '2.0', 'option_c' => '3.0', 'option_d' => '4.0', 'correct_answer' => 'c', 'explanation' => 'GPL phiên bản 3.0 được phát hành năm 2007 và là phiên bản mới nhất.', 'topic_id' => 1],
-
-            ['question' => 'Bạn hãy cho biết phần mềm nào sau đây sử dụng giấy phép GNU GPL:', 'option_a' => 'Ubuntu', 'option_b' => 'Apache Server', 'option_c' => 'Mozilla Firefox', 'option_d' => 'Internet Explorer', 'correct_answer' => 'a', 'explanation' => 'Ubuntu (Linux) sử dụng giấy phép GPL. Apache dùng Apache License, Firefox dùng MPL.', 'topic_id' => 1],
-
-            ['question' => 'Giấy phép nào không cấp phép một phần mềm/thư viện mã nguồn đóng liên kết với một phần mềm/thư viện mang giấy phép mở tương ứng', 'option_a' => 'GNU General Public License', 'option_b' => 'GNU Lesser General Public License', 'option_c' => 'MIT License', 'option_d' => 'BSD License', 'correct_answer' => 'a', 'explanation' => 'GPL là giấy phép "lây lan" - yêu cầu code kết hợp cũng phải GPL. LGPL, MIT, BSD cho phép kết hợp với mã nguồn đóng.', 'topic_id' => 1],
-
-            // Desktop Environment
-            ['question' => 'Môi trường đồ họa KDE là gì?', 'option_a' => 'Là môi trường màn hình nền hiện đại trên các hệ máy tính chạy Unix/Linux và cũng chạy được trên Windows và Mac OS', 'option_b' => 'Là một hệ quản trị cơ sở dữ liệu mã nguồn mở', 'option_c' => 'Là một trình biên dịch C/C++ trên môi trường Linux', 'option_d' => 'Là một trình duyệt web mặc định trên Linux', 'correct_answer' => 'a', 'explanation' => 'KDE (K Desktop Environment) là môi trường desktop đa nền tảng cho Unix/Linux, có thể chạy trên Windows và Mac thông qua Cygwin và Fink.', 'topic_id' => 2],
-
-            ['question' => 'Thư viện nào sau đây là nền tảng thư viện của môi trường giao diện Gnome', 'option_a' => 'Qt', 'option_b' => 'GTK+', 'option_c' => 'MFC', 'option_d' => 'Cocoa', 'correct_answer' => 'b', 'explanation' => 'GNOME sử dụng thư viện GTK+ (GIMP Toolkit). KDE sử dụng Qt. MFC là của Windows, Cocoa của macOS.', 'topic_id' => 2],
-
-            ['question' => 'Trong Ubuntu, luôn có một tài khoản mặc định:', 'option_a' => 'root', 'option_b' => 'admin', 'option_c' => 'guest', 'option_d' => 'user', 'correct_answer' => 'a', 'explanation' => 'Tài khoản root luôn tồn tại trong mọi hệ thống Linux, đó là superuser có quyền cao nhất.', 'topic_id' => 2],
-
-            ['question' => 'Môi trường giao diện nào trong Linux phù hợp cho các loại máy chủ cần tính ổn định và tốc độ nhanh', 'option_a' => 'Môi trường giao diện văn bản (Console)', 'option_b' => 'Môi trường đồ họa GNOME', 'option_c' => 'Môi trường đồ họa KDE', 'option_d' => 'Môi trường giao diện X-Window', 'correct_answer' => 'a', 'explanation' => 'Môi trường console (command line) tiêu tốn ít tài nguyên nhất, phù hợp cho server.', 'topic_id' => 2],
-
-            // Shell
-            ['question' => 'Các shell có sẵn trong các hệ thống Linux:', 'option_a' => 'sh (Bourne Shell)', 'option_b' => 'bash (Bourne Again Shell)', 'option_c' => 'csh (C Shell)', 'option_d' => 'Tất cả đều đúng', 'correct_answer' => 'd', 'explanation' => 'Linux hỗ trợ nhiều loại shell: sh, bash, csh, zsh, ksh, fish...', 'topic_id' => 3],
-
-            ['question' => 'Các shell script được lưu với phần mở rộng tập là:', 'option_a' => '.bat', 'option_b' => '.sh', 'option_c' => '.exe', 'option_d' => '.cmd', 'correct_answer' => 'b', 'explanation' => 'Shell script trong Linux thường có đuôi .sh (mặc dù không bắt buộc).', 'topic_id' => 3],
-
-            ['question' => 'Tại sao cần shell script?', 'option_a' => 'Để tránh việc phải gõ đi gõ lại các lệnh', 'option_b' => 'Để tự động hóa các tác vụ quản trị hệ thống', 'option_c' => 'Để thực hiện một chuỗi các lệnh phức tạp', 'option_d' => 'Tất cả đều đúng', 'correct_answer' => 'd', 'explanation' => 'Shell script giúp tự động hóa công việc, tiết kiệm thời gian và giảm sai sót.', 'topic_id' => 3],
-
-            ['question' => 'Đâu là comment 1 dòng trong shell script', 'option_a' => '# comment', 'option_b' => '// comment', 'option_c' => '/* comment */', 'option_d' => '**', 'correct_answer' => 'a', 'explanation' => 'Trong shell script, ký tự # được dùng để bắt đầu một comment.', 'topic_id' => 3],
-
-            ['question' => 'Lệnh #!/bin/bash ở đầu file shell script để', 'option_a' => 'Khai báo chương trình script nào dịch và thực thi đoạn script', 'option_b' => 'Là một dòng chú thích đơn thuần', 'option_c' => 'Cấp quyền thực thi cho file script', 'option_d' => 'Khai báo đường dẫn thư mục hiện hành', 'correct_answer' => 'a', 'explanation' => 'Dòng shebang (#!) chỉ định interpreter sẽ được sử dụng để chạy script.', 'topic_id' => 3],
-
-            // Apache và LAMP
-            ['question' => 'Khi cài đặt Apache trong Ubuntu, mặc định apache được cài đặt vào thư mục nào?', 'option_a' => '/var', 'option_b' => '/home', 'option_c' => '/bin', 'option_d' => '/etc', 'correct_answer' => 'd', 'explanation' => 'File cấu hình Apache nằm trong /etc/apache2. Document root mặc định trong /var/www/html.', 'topic_id' => 7],
-
-            ['question' => 'File cấu hình apache2 trong linux là:', 'option_a' => 'httpd.conf', 'option_b' => 'apache2.conf', 'option_c' => 'config.apache', 'option_d' => 'web.conf', 'correct_answer' => 'b', 'explanation' => 'Trên Ubuntu/Debian, file cấu hình chính là apache2.conf. Trên CentOS/RHEL là httpd.conf.', 'topic_id' => 7],
-
-            ['question' => 'Trong Linux,', 'option_a' => 'LAMP là viết tắt của Linux, Apache, Mysql, Php', 'option_b' => 'LAPP là Linux, Apache, PostgreSQL, PHP', 'option_c' => 'LLMP là Linux, Lighttpd, MySQL/MariaDB, PHP/Perl/Python', 'option_d' => 'Tất cả các câu trên đều đúng', 'correct_answer' => 'd', 'explanation' => 'Có nhiều stack phát triển web phổ biến: LAMP, LAPP, LEMP (Nginx), LLMP (Lighttpd).', 'topic_id' => 7],
-
-            // Git
-            ['question' => 'Git là', 'option_a' => 'Phần mềm quản lý phiên bản phân tán', 'option_b' => 'Phần mềm quản lý phiên bản tập trung', 'option_c' => 'Một ngôn ngữ lập trình', 'option_d' => 'Một hệ điều hành mã nguồn mở', 'correct_answer' => 'a', 'explanation' => 'Git là Distributed Version Control System (DVCS) - hệ thống quản lý phiên bản phân tán.', 'topic_id' => 4],
-
-            ['question' => 'Bugzilla là hệ thống phần mềm theo dõi lỗi mã nguồn mở. Nó là một website chạy trên:', 'option_a' => 'Apache, Mysql, PHP', 'option_b' => 'IIS, SQL Server, ASP.NET', 'option_c' => 'Apache, Mysql, Perl', 'option_d' => 'Nginx, PostgreSQL, Python', 'correct_answer' => 'c', 'explanation' => 'Bugzilla được viết bằng Perl và thường chạy trên Apache với MySQL.', 'topic_id' => 6],
-
-            ['question' => 'Trong Bugzilla, đâu là trạng thái của một bug?', 'option_a' => 'NEW', 'option_b' => 'ASSIGNED', 'option_c' => 'CLOSED', 'option_d' => 'Tất cả đều đúng', 'correct_answer' => 'd', 'explanation' => 'Bugzilla có nhiều trạng thái bug: NEW, ASSIGNED, RESOLVED, VERIFIED, CLOSED, REOPENED...', 'topic_id' => 6],
-
-            ['question' => 'Đối tượng sử dụng và quản lý Bugzilla thường là:', 'option_a' => 'Lập trình viên (Developer)', 'option_b' => 'Tester/Quality Control (QC)', 'option_c' => 'Quản trị mạng (Network Administrator)', 'option_d' => 'Người dùng cuối (End User)', 'correct_answer' => 'b', 'explanation' => 'Bugzilla chủ yếu được sử dụng bởi team phát triển và QA để quản lý bugs.', 'topic_id' => 6],
-
-            // Versioning
-            ['question' => 'Định dạng phiên bản phần mềm theo quy tắc:', 'option_a' => 'YEAR.MONTH.DAY', 'option_b' => 'ALPHA.BETA.RC', 'option_c' => 'RELEASE.UPDATE.FIX', 'option_d' => 'MAJOR.MINOR.PATCH', 'correct_answer' => 'd', 'explanation' => 'Semantic Versioning (SemVer) sử dụng định dạng MAJOR.MINOR.PATCH (ví dụ: 1.2.3).', 'topic_id' => 1],
-
-            ['question' => 'Đâu là phiên bản tiền phát hành (phiên bản có thể không ổn định)?', 'option_a' => '1.0.0-alpha', 'option_b' => '1.0.0', 'option_c' => '1.0.1', 'option_d' => '2.0.0', 'correct_answer' => 'a', 'explanation' => 'Phiên bản alpha, beta, RC (Release Candidate) là các phiên bản tiền phát hành.', 'topic_id' => 1],
-
-            ['question' => 'Phiên bản phần mềm Beta là:', 'option_a' => 'Phiên bản dùng thử, nhằm tung ra để người dùng public rộng rãi sử dụng, phản hồi', 'option_b' => 'Phiên bản kiểm thử nội bộ (Alpha)', 'option_c' => 'Phiên bản chính thức (Stable Release)', 'option_d' => 'Phiên bản giới hạn (Demo/Trial)', 'correct_answer' => 'a', 'explanation' => 'Beta là phiên bản gần hoàn thiện, được phát hành rộng rãi để thu thập phản hồi từ người dùng.', 'topic_id' => 1],
-
-            // Git commands
-            ['question' => 'Lệnh git status', 'option_a' => 'Kiểm tra trạng thái của những file đã thay đổi trong local repository', 'option_b' => 'Xem lịch sử các lần commit trước đó', 'option_c' => 'Hiển thị chi tiết nội dung code khác biệt', 'option_d' => 'Đẩy các tập tin đã thay đổi lên Remote Repository', 'correct_answer' => 'a', 'explanation' => 'git status hiển thị trạng thái working directory: file nào thay đổi, file nào đã staged.', 'topic_id' => 4],
-
-            ['question' => 'Lệnh git add', 'option_a' => 'Tạo một kho chứa Git mới tại thư mục hiện hành', 'option_b' => 'Ghi lại các thay đổi vào lịch sử phiên bản', 'option_c' => 'Tải xuống toàn bộ mã nguồn từ kho chứa từ xa', 'option_d' => 'Đánh chỉ mục (index) các nội dung mới, chuẩn bị cho lần commit tiếp theo', 'correct_answer' => 'd', 'explanation' => 'git add thêm file vào staging area, chuẩn bị cho commit.', 'topic_id' => 4],
-
-            ['question' => 'Trong git, để chuyển sang nhánh branch1, sử dụng lệnh nào?', 'option_a' => 'git branch branch1', 'option_b' => 'git merge branch1', 'option_c' => 'git add branch1', 'option_d' => 'git checkout branch1', 'correct_answer' => 'd', 'explanation' => 'git checkout dùng để chuyển branch. Cũng có thể dùng git switch (Git 2.23+).', 'topic_id' => 4],
-
-            ['question' => 'Câu nào không đúng trong git?', 'option_a' => 'Lệnh pull: sao chép các thay đổi từ local repository sang remote repository', 'option_b' => 'Lệnh push: sao chép các thay đổi từ local repository sang remote repository', 'option_c' => 'Lệnh fetch: tải các thay đổi từ remote về nhưng chưa merge', 'option_d' => 'Lệnh commit: lưu lại các thay đổi vào local repository', 'correct_answer' => 'a', 'explanation' => 'git pull tải thay đổi từ remote về local (ngược lại với mô tả). git push mới đẩy từ local lên remote.', 'topic_id' => 4],
-
-            ['question' => 'Trong git, lệnh clone:', 'option_a' => 'Khởi tạo một kho chứa mới và rỗng', 'option_b' => 'Tạo một bản sao repository trên máy local', 'option_c' => 'Cập nhật các thay đổi mới nhất từ server về máy', 'option_d' => 'Đưa các file từ thư mục làm việc vào vùng chờ', 'correct_answer' => 'b', 'explanation' => 'git clone tạo bản sao hoàn chỉnh của repository từ remote về local.', 'topic_id' => 4],
-
-            // Linux filesystem
-            ['question' => 'Đâu là một hệ điều hành nhân Linux?', 'option_a' => 'Debian', 'option_b' => 'Linux Mint', 'option_c' => 'Cả 2 đều đúng', 'option_d' => 'Cả 2 đều sai', 'correct_answer' => 'c', 'explanation' => 'Debian và Linux Mint đều là các bản phân phối (distro) sử dụng nhân Linux.', 'topic_id' => 2],
-
-            ['question' => 'Trong hệ thống tập tin Linux, tập tin thiết bị ngoại vi được chứa trong:', 'option_a' => '/dev', 'option_b' => '/bin', 'option_c' => '/etc', 'option_d' => '/home', 'correct_answer' => 'a', 'explanation' => '/dev chứa các device files (tập tin đại diện cho thiết bị phần cứng).', 'topic_id' => 2],
-
-            ['question' => 'Lệnh in đường dẫn của thư mục hiện hành:', 'option_a' => 'pwd', 'option_b' => 'ls', 'option_c' => 'cd', 'option_d' => 'path', 'correct_answer' => 'a', 'explanation' => 'pwd (Print Working Directory) in ra đường dẫn thư mục hiện tại.', 'topic_id' => 2],
-
-            ['question' => 'Lệnh chuyển thư mục về thư mục cha là', 'option_a' => 'cd /', 'option_b' => 'cd ..', 'option_c' => 'changedir /', 'option_d' => 'changedir ..', 'correct_answer' => 'b', 'explanation' => 'cd .. chuyển lên thư mục cha. cd / chuyển về thư mục gốc.', 'topic_id' => 2],
-
-            ['question' => 'Lệnh xóa thư mục data/dir1 không cần hỏi', 'option_a' => 'delete -f data/dir1', 'option_b' => 'rm -rf data/dir1', 'option_c' => 'remove data/dir1', 'option_d' => 'Tất cả đều đúng', 'correct_answer' => 'b', 'explanation' => 'rm -rf: -r (recursive) xóa đệ quy, -f (force) không hỏi xác nhận.', 'topic_id' => 2],
-
-            ['question' => 'Để copy file a.txt và lưu thành file b.txt, sử dụng lệnh', 'option_a' => 'cp b.txt a.txt', 'option_b' => 'copy a.txt b.txt', 'option_c' => 'copy b.txt a.txt', 'option_d' => 'cp a.txt b.txt', 'correct_answer' => 'd', 'explanation' => 'cp [nguồn] [đích] - sao chép file nguồn thành file đích.', 'topic_id' => 2],
-
-            ['question' => 'Lệnh mv a.txt c.txt', 'option_a' => 'Xoá các file a.txt và c.txt', 'option_b' => 'Đổi tên a.txt thành c.txt', 'option_c' => 'Đổi tên c.txt thành a.txt', 'option_d' => 'Tất cả đều sai', 'correct_answer' => 'b', 'explanation' => 'mv (move) có thể dùng để di chuyển hoặc đổi tên file.', 'topic_id' => 2],
-
-            ['question' => 'Lệnh thiết lập cho tất cả các user có thể read, write và execute file a.txt là', 'option_a' => 'chmod a.txt 777', 'option_b' => 'chmod 777 a.txt', 'option_c' => 'set 777 a.txt', 'option_d' => 'Tất cả đúng', 'correct_answer' => 'b', 'explanation' => 'chmod 777 file: 7=rwx cho owner, group và others.', 'topic_id' => 2],
-
-            ['question' => 'Câu lệnh nào thay đổi quyền truy cập file thành rw-r--r-x?', 'option_a' => 'chmod 546 file', 'option_b' => 'chmod 642 file', 'option_c' => 'chmod 645 file', 'option_d' => 'chmod 655 file', 'correct_answer' => 'c', 'explanation' => 'rw-=6, r--=4, r-x=5. Vậy chmod 645 tạo quyền rw-r--r-x.', 'topic_id' => 2],
-
-            ['question' => 'Tên các tập tin và thư mục trong linux', 'option_a' => 'Phân biệt hoa, thường', 'option_b' => 'Không phân biệt hoa, thường', 'option_c' => 'Chỉ được phép sử dụng chữ thường', 'option_d' => 'Bắt buộc phải có phần mở rộng', 'correct_answer' => 'a', 'explanation' => 'Linux phân biệt chữ hoa/thường (case-sensitive). file.txt và FILE.txt là 2 file khác nhau.', 'topic_id' => 2],
-        ];
-
-        $order = 1;
-        foreach ($exam1Questions as $q) {
-            DB::table('quiz_questions')->insert([
-                'exam_id' => 1,
-                'topic_id' => $q['topic_id'],
-                'question' => $q['question'],
-                'option_a' => $q['option_a'],
-                'option_b' => $q['option_b'],
-                'option_c' => $q['option_c'] ?? null,
-                'option_d' => $q['option_d'] ?? null,
-                'correct_answer' => $q['correct_answer'],
-                'explanation' => $q['explanation'],
-                'sort_order' => $order++,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
-
-        // Cập nhật total_questions
-        DB::table('quiz_exams')->where('id', 1)->update(['total_questions' => count($exam1Questions)]);
-
-        $this->command->info('Đã seed ' . count($exam1Questions) . ' câu hỏi cho Đề 1');
-
-        // ========== THÊM LÝ THUYẾT ==========
-        $this->seedTheories();
-    }
-
-    private function seedTheories()
-    {
-        $theories = [
-            [
-                'topic_id' => 1,
-                'title' => 'Các loại giấy phép mã nguồn mở',
-                'slug' => 'cac-loai-giay-phep-ma-nguon-mo',
-                'content' => '
-# Các loại Giấy phép Mã nguồn mở
-
-## 1. GNU General Public License (GPL)
-- **Đặc điểm**: Giấy phép Copyleft mạnh nhất
-- **Yêu cầu**:
-  - Mã nguồn phái sinh phải được mở dưới GPL
-  - Phải cung cấp mã nguồn khi phân phối
-- **Phần mềm sử dụng**: Linux kernel, WordPress, MySQL (Community)
-
-## 2. MIT License
-- **Đặc điểm**: Rất linh hoạt, ít ràng buộc
-- **Cho phép**:
-  - Sử dụng, sao chép, sửa đổi, phân phối
-  - Có thể đóng mã nguồn
-- **Phần mềm sử dụng**: jQuery, React, Node.js
-
-## 3. Apache License 2.0
-- **Đặc điểm**:
-  - Tương tự MIT nhưng có điều khoản về bằng sáng chế
-  - Bảo vệ người đóng góp khỏi kiện tụng patent
-- **Phần mềm sử dụng**: Apache HTTP Server, Android
-
-## 4. BSD License
-- **Đặc điểm**: Rất tự do, giống MIT
-- **Có 2 phiên bản**: 2-clause và 3-clause
-- **Phần mềm sử dụng**: FreeBSD, Nginx
-
-## 5. LGPL (Lesser GPL)
-- **Đặc điểm**:
-  - Cho phép liên kết với phần mềm đóng
-  - Chỉ yêu cầu mở phần thư viện LGPL
-- **Phần mềm sử dụng**: GTK+, glibc
-
-## 6. Mozilla Public License (MPL)
-- **Đặc điểm**:
-  - File-level copyleft
-  - Chỉ file sửa đổi cần mở
-- **Phần mềm sử dụng**: Firefox, LibreOffice
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 2,
-                'title' => 'Cấu trúc thư mục Linux',
-                'slug' => 'cau-truc-thu-muc-linux',
-                'content' => '
-# Cấu trúc Thư mục Linux
-
-## Thư mục gốc /
-
-| Thư mục | Mô tả |
-|---------|-------|
-| `/bin` | Binary - Chứa các lệnh cơ bản (ls, cp, mv) |
-| `/boot` | Chứa kernel và bootloader |
-| `/dev` | Device files - Đại diện cho thiết bị phần cứng |
-| `/etc` | Etcetera - File cấu hình hệ thống |
-| `/home` | Thư mục home của người dùng |
-| `/lib` | Thư viện chia sẻ (shared libraries) |
-| `/mnt` | Mount point cho filesystem tạm thời |
-| `/opt` | Optional - Phần mềm bổ sung |
-| `/proc` | Process - Thông tin về process và kernel |
-| `/root` | Thư mục home của root user |
-| `/sbin` | System binaries - Lệnh quản trị hệ thống |
-| `/tmp` | Temporary - File tạm thời |
-| `/usr` | Unix System Resources - Chương trình người dùng |
-| `/var` | Variable - Dữ liệu thay đổi (logs, cache) |
-
-## Các lệnh cơ bản
-
-```bash
-pwd     # In thư mục hiện tại
-ls      # Liệt kê file/thư mục
-cd      # Chuyển thư mục
-mkdir   # Tạo thư mục
-rm      # Xóa file/thư mục
-cp      # Sao chép
-mv      # Di chuyển/đổi tên
-cat     # Xem nội dung file
-chmod   # Thay đổi quyền
-chown   # Thay đổi chủ sở hữu
-```
-
-## Phân quyền trong Linux
-
-| Ký hiệu | Số | Quyền |
-|---------|-----|-------|
-| r | 4 | Read - Đọc |
-| w | 2 | Write - Ghi |
-| x | 1 | Execute - Thực thi |
-
-**Ví dụ**: `chmod 755 file`
-- Owner: 7 = rwx (4+2+1)
-- Group: 5 = r-x (4+1)
-- Others: 5 = r-x (4+1)
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 3,
-                'title' => 'Shell Script cơ bản',
-                'slug' => 'shell-script-co-ban',
-                'content' => '
-# Shell Script Cơ bản
-
-## 1. Cấu trúc file script
-
-```bash
-#!/bin/bash
-# Dòng shebang - chỉ định interpreter
-
-# Đây là comment
-echo "Hello World"
-```
-
-## 2. Biến
-
-```bash
-# Khai báo biến (không có khoảng trắng quanh =)
-name="Linux"
-age=30
-
-# Sử dụng biến
-echo $name
-echo ${name}
-echo "Tôi đang học $name"
-
-# Biến hệ thống
-echo $HOME
-echo $USER
-echo $PWD
-```
-
-## 3. Đọc input
-
-```bash
-read -p "Nhập tên: " name
-echo "Xin chào $name"
-```
-
-## 4. Điều kiện
-
-```bash
-if [ $a -eq $b ]; then
-    echo "a bằng b"
-elif [ $a -gt $b ]; then
-    echo "a lớn hơn b"
-else
-    echo "a nhỏ hơn b"
-fi
-```
-
-**Toán tử so sánh số:**
-- `-eq`: bằng (equal)
-- `-ne`: không bằng (not equal)
-- `-gt`: lớn hơn (greater than)
-- `-lt`: nhỏ hơn (less than)
-- `-ge`: lớn hơn hoặc bằng
-- `-le`: nhỏ hơn hoặc bằng
-
-## 5. Vòng lặp
-
-```bash
-# For loop
-for i in 1 2 3 4 5; do
-    echo $i
-done
-
-# For với range
-for i in {1..5}; do
-    echo $i
-done
-
-# While loop
-count=1
-while [ $count -le 5 ]; do
-    echo $count
-    ((count++))
-done
-```
-
-## 6. Mảng
-
-```bash
-arr=("apple" "banana" "cherry")
-
-echo ${arr[0]}      # Phần tử đầu tiên
-echo ${arr[@]}      # Tất cả phần tử
-echo ${#arr[@]}     # Số phần tử
-```
-
-## 7. Hàm
-
-```bash
-function greet() {
-    echo "Hello $1"
-}
-
-greet "World"
-```
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 4,
-                'title' => 'Git - Quản lý phiên bản',
-                'slug' => 'git-quan-ly-phien-ban',
-                'content' => '
-# Git - Hệ thống quản lý phiên bản
-
-## Khái niệm cơ bản
-
-- **Repository (Repo)**: Kho chứa mã nguồn
-- **Commit**: Snapshot của code tại một thời điểm
-- **Branch**: Nhánh phát triển độc lập
-- **Merge**: Gộp các nhánh
-- **Remote**: Kho chứa từ xa (GitHub, GitLab)
-
-## Các lệnh Git cơ bản
-
-### Thiết lập ban đầu
-```bash
-git config --global user.name "Tên của bạn"
-git config --global user.email "email@example.com"
-```
-
-### Khởi tạo và Clone
-```bash
-git init                # Khởi tạo repo mới
-git clone <url>         # Clone repo từ remote
-```
-
-### Làm việc với file
-```bash
-git status              # Xem trạng thái
-git add <file>          # Thêm file vào staging
-git add .               # Thêm tất cả file
-git commit -m "message" # Commit với message
-```
-
-### Làm việc với remote
-```bash
-git remote add origin <url>   # Thêm remote
-git push origin <branch>      # Đẩy lên remote
-git pull origin <branch>      # Kéo từ remote
-git fetch                     # Tải về nhưng không merge
-```
-
-### Làm việc với branch
-```bash
-git branch              # Liệt kê branch
-git branch <name>       # Tạo branch mới
-git checkout <branch>   # Chuyển branch
-git checkout -b <name>  # Tạo và chuyển branch
-git merge <branch>      # Gộp branch
-git branch -d <branch>  # Xóa branch
-```
-
-### Xem lịch sử
-```bash
-git log                 # Xem lịch sử commit
-git log --oneline       # Xem ngắn gọn
-git diff                # Xem thay đổi
-```
-
-## Git Workflow
-
-1. **Clone** hoặc **Pull** code mới nhất
-2. Tạo **Branch** cho tính năng mới
-3. **Add** và **Commit** thay đổi
-4. **Push** lên remote
-5. Tạo **Pull Request**
-6. **Review** và **Merge**
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 5,
-                'title' => 'Docker cơ bản',
-                'slug' => 'docker-co-ban',
-                'content' => '
-# Docker Cơ bản
-
-## Khái niệm
-
-- **Image**: Template chỉ đọc để tạo container
-- **Container**: Instance đang chạy của image
-- **Dockerfile**: File định nghĩa cách build image
-- **Docker Hub**: Registry công cộng chứa images
-
-## Các lệnh Docker cơ bản
-
-### Làm việc với Image
-```bash
-docker images                    # Liệt kê images
-docker pull <image>              # Tải image từ Hub
-docker rmi <image>               # Xóa image
-docker build -t <name> .         # Build image từ Dockerfile
-docker push <image>              # Đẩy image lên Hub
-```
-
-### Làm việc với Container
-```bash
-docker ps                        # Liệt kê container đang chạy
-docker ps -a                     # Liệt kê tất cả container
-docker run <image>               # Tạo và chạy container
-docker run -d <image>            # Chạy ở chế độ nền (detached)
-docker run -it <image> /bin/bash # Chạy với terminal tương tác
-docker start <container>         # Khởi động container
-docker stop <container>          # Dừng container
-docker rm <container>            # Xóa container
-docker exec -it <container> bash # Truy cập vào container
-```
-
-### Dockerfile cơ bản
-```dockerfile
-FROM ubuntu:20.04
-RUN apt-get update && apt-get install -y nginx
-COPY . /var/www/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-### Docker Compose
-```yaml
-version: "3"
-services:
-  web:
-    image: nginx
-    ports:
-      - "80:80"
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-```
-
-```bash
-docker-compose up -d             # Chạy services
-docker-compose down              # Dừng services
-docker-compose logs              # Xem logs
-```
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 6,
-                'title' => 'Bugzilla - Hệ thống theo dõi lỗi',
-                'slug' => 'bugzilla-he-thong-theo-doi-loi',
-                'content' => '
-# Bugzilla - Hệ thống theo dõi lỗi
-
-## Giới thiệu
-Bugzilla là phần mềm mã nguồn mở dùng để theo dõi và quản lý bugs trong quá trình phát triển phần mềm. Được phát triển bởi Mozilla Foundation và viết bằng Perl.
-
-## Các trạng thái Bug
-
-| Trạng thái | Mô tả |
-|------------|-------|
-| **NEW/UNCONFIRMED** | Bug mới được báo cáo |
-| **ASSIGNED** | Đã giao cho developer xử lý |
-| **RESOLVED** | Đã giải quyết |
-| **VERIFIED** | QA đã xác nhận sửa đúng |
-| **CLOSED** | Đóng hoàn toàn |
-| **REOPENED** | Mở lại vì vẫn còn lỗi |
-
-## Resolution (Kết quả giải quyết)
-
-| Resolution | Ý nghĩa |
-|------------|---------|
-| **FIXED** | Đã sửa xong |
-| **INVALID** | Không phải bug, do user hiểu sai |
-| **WONTFIX** | Không sửa (do design hoặc không cần thiết) |
-| **DUPLICATE** | Trùng với bug khác |
-| **WORKSFORME** | Không tái hiện được lỗi |
-
-## Các trường quan trọng
-
-- **Product**: Sản phẩm
-- **Component**: Module/tính năng
-- **Version**: Phiên bản phần mềm
-- **Severity**: Mức độ nghiêm trọng (Blocker, Critical, Major, Minor, Trivial)
-- **Priority**: Độ ưu tiên (P1 - P5)
-- **Assignee**: Người được giao xử lý
-- **CC List**: Danh sách người theo dõi
-
-## Vòng đời Bug
-
-```
-UNCONFIRMED → NEW → ASSIGNED → RESOLVED → VERIFIED → CLOSED
-                         ↓                    ↓
-                    REOPENED ←←←←←←←←←←←←←←←←←
-```
-',
-                'sort_order' => 1
-            ],
-            [
-                'topic_id' => 7,
-                'title' => 'LAMP Stack',
-                'slug' => 'lamp-stack',
-                'content' => '
-# LAMP Stack
-
-## LAMP là gì?
-LAMP là bộ công cụ phát triển web mã nguồn mở phổ biến:
-- **L**inux - Hệ điều hành
-- **A**pache - Web server
-- **M**ySQL/MariaDB - Cơ sở dữ liệu
-- **P**HP/Python/Perl - Ngôn ngữ lập trình
-
-## Cài đặt trên Ubuntu
-
-```bash
-# Cập nhật package
-sudo apt update
-
-# Cài Apache
-sudo apt install apache2
-
-# Cài MySQL
-sudo apt install mysql-server
-sudo mysql_secure_installation
-
-# Cài PHP
-sudo apt install php libapache2-mod-php php-mysql
-
-# Khởi động lại Apache
-sudo systemctl restart apache2
-```
-
-## Cấu hình Apache
-
-**File cấu hình chính**: `/etc/apache2/apache2.conf`
-**Document Root**: `/var/www/html`
-**Virtual Hosts**: `/etc/apache2/sites-available/`
-
-```bash
-# Bật module rewrite
-sudo a2enmod rewrite
-
-# Bật site
-sudo a2ensite mysite.conf
-
-# Tắt site
-sudo a2dissite 000-default.conf
-
-# Restart Apache
-sudo systemctl restart apache2
-```
-
-## MySQL cơ bản
-
-```bash
-# Đăng nhập MySQL
-sudo mysql -u root -p
-
-# Tạo database
-CREATE DATABASE mydb;
-
-# Tạo user
-CREATE USER \'user\'@\'localhost\' IDENTIFIED BY \'password\';
-
-# Cấp quyền
-GRANT ALL PRIVILEGES ON mydb.* TO \'user\'@\'localhost\';
-FLUSH PRIVILEGES;
-```
-
-## PHP Info
-
-Tạo file `/var/www/html/info.php`:
-```php
-<?php
-phpinfo();
-?>
-```
-
-**Các port mặc định:**
-- HTTP: 80
-- HTTPS: 443
-- MySQL: 3306
-',
-                'sort_order' => 1
-            ],
-        ];
-
-        foreach ($theories as $theory) {
-            $theory['created_at'] = now();
-            $theory['updated_at'] = now();
-            DB::table('quiz_theories')->insert($theory);
-        }
-
-        $this->command->info('Đã seed ' . count($theories) . ' bài lý thuyết');
+class QuizSeeder extends Seeder {
+    public function run(): void {
+        DB::table('accounts')->insert(['email'=>'admin@tracnghiem.com','password'=>Hash::make('admin123'),'full_name'=>'Admin','role'=>'ADMIN','is_active'=>true,'created_at'=>now(),'updated_at'=>now()]);
+        
+        foreach([
+            ['id'=>1,'name'=>'Mã nguồn mở','slug'=>'oss','description'=>'GPL,MIT,BSD','sort_order'=>1],
+            ['id'=>2,'name'=>'Linux','slug'=>'linux','description'=>'Kernel,lệnh','sort_order'=>2],
+            ['id'=>3,'name'=>'Shell','slug'=>'shell','description'=>'Bash,script','sort_order'=>3],
+            ['id'=>4,'name'=>'Git','slug'=>'git','description'=>'Version control','sort_order'=>4],
+            ['id'=>5,'name'=>'Docker','slug'=>'docker','description'=>'Container','sort_order'=>5],
+            ['id'=>6,'name'=>'Bugzilla','slug'=>'bugzilla','description'=>'Bug tracking','sort_order'=>6],
+            ['id'=>7,'name'=>'LAMP','slug'=>'lamp','description'=>'Apache,MySQL','sort_order'=>7],
+            ['id'=>8,'name'=>'VSCode','slug'=>'vscode','description'=>'Editor','sort_order'=>8],
+            ['id'=>9,'name'=>'CMS','slug'=>'cms','description'=>'WordPress','sort_order'=>9],
+            ['id'=>10,'name'=>'Python','slug'=>'python','description'=>'Django,Flask','sort_order'=>10],
+        ] as $t) { $t['created_at']=$t['updated_at']=now(); DB::table('quiz_topics')->insert($t); }
+        
+        foreach([
+            ['id'=>1,'name'=>'Đề Ôn Thầy Trường','slug'=>'de1','description'=>'119 câu','type'=>'practice','time_limit'=>90,'total_questions'=>119,'is_active'=>true],
+            ['id'=>2,'name'=>'Ôn tập Thầy Khuê','slug'=>'de2','description'=>'116 câu','type'=>'practice','time_limit'=>90,'total_questions'=>116,'is_active'=>true],
+            ['id'=>3,'name'=>'Bonus','slug'=>'de3','description'=>'120 câu','type'=>'practice','time_limit'=>120,'total_questions'=>120,'is_active'=>true],
+        ] as $e) { $e['created_at']=$e['updated_at']=now(); DB::table('quiz_exams')->insert($e); }
+
+
+        // ĐỀ 1: 119 CÂU
+        $e1=[
+['Phần lớn phần mềm mã nguồn mở là kết quả của','Niềm đam mê lập trình.','Kết quả của một số bài tập trong các chương trình đại học.','Vì Lợi ích cộng đồng.','Tất cả các điều trên.','d',1],
+['Phần mềm văn phòng nào sau đây sử dụng giấy phép mã nguồn mở','Microsoft Office','Libre Office','Adobe Acrobat','WinRAR','b',1],
+['Phần mềm Mozilla Firefox sử dụng giấy phép mã nguồn mở nào:','Mozilla Public License','GNU GPL','Apache License','MIT License','a',1],
+['Phần mềm Apache Server sử dụng giấy phép nào sau đây :','BSD License','GNU GPL','Mozilla Public License','Apache License','d',7],
+['Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy các ứng dụng windows trên môi trường Ubuntu','VirtualBox và VMware','Photoshop và AI','Wine và PlayOnlinux','Office và Excel','c',2],
+['Giấy phép nào có khả năng kết hợp một phần mềm với một phần mềm thư viên mang giấy phép mở tương ứng.','LGPL (Lesser General Public License)','BSD License (Berkeley Software Distribution)','Apache License','Cả 3 License','d',1],
+['Làm cách nào để xóa người dùng cùng với thư mục home trong Linux?','userdel','userdel -r','deluser --force','rmuser -h','b',2],
+['Lệnh nào xem danh sách các file của thư mục gốc hệ điều hành Ubuntu?','dir C:<br>','show /','list all','Is /','d',2],
+['Môi trường nào không liên quan đến hệ điều hành Linux','GNOME','XFACE','KDE','KDE','b',2],
+['Để sử dụng các lệnh Linux trên windows, ta có thể cài đặt','WSL','WINE','PlayOnLinux','Bootcamp','a',2],
+['Một trong những đặc điểm nổi bật của hệ thống file ext3, ext4 là gì?','Thời gian kiểm tra hệ thống file (fsck) rất lâu','Không hỗ trợ tính năng Journaling (Ghi nhật ký)','Chỉ tương thích với hệ điều hành Windows','Khởi động nhanh','d',2],
+['Tác giả của phiên bản hệ điều hành Linux đầu tiên là?','Steve Jobs','Bill Gates','Richard Stallman','Linus Torvalds','d',2],
+['Phần quan trọng nhất của hệ điều hành Linux là:','Kernel','Shell','Application','Desktop Environment','a',2],
+['Số phiên bản kernel của Linux có gì đặc biệt','Số phiên bản luôn bắt đầu bằng số 0.','Số thứ 2 là số chẵn: Phiên bản ổn định (Stable).','Số thứ 2 là số lẻ: Phiên bản thử nghiệm/phát triển (Development).','Câu b và c đúng','d',2],
+['Khi cài Redflat Linux ở chế độ nào thì các partion DOS bị xoá hết:','Server','Workstation','Custom','Laptop','a',2],
+['Để xem hướng dẫn cách dùng lệnh ls, ta thực hiện lệnh:','help ls','ls ?','man Is','show ls','c',2],
+['Quan niệm nào sau đây sai về copyleft:','Copyleft là việc sử dụng luật bản quyền để đảm bảo quyền tự do sao chép và sửa đổi phần mềm.','Copyleft bắt buộc các phiên bản sửa đổi hoặc mở rộng của phần mềm cũng phải được phát hành dưới cùng giấy phép tự do.','Mục đích của Copyleft là ngăn chặn việc biến phần mềm tự do thành phần mềm độc quyền.','Tồn tại giấy phép copyleft cho cả phần mềm, âm nhạc và nghệ thuật.','d',1],
+['Nếu bạn viết 1 chương trình áp dụng giấy phép GNU-GPL thì bạn cần đính kèm những thông báo đi cùng phần mềm ở đâu:','Chỉ cần ghi trong tài liệu hướng dẫn sử 	dụng (User Manual).','Đính kèm vào phần đầu của tập tin mã nguồn (dưới dạng ghi chú).','Gửi thông báo đăng ký về tổ chức Free Software Foundation (FSF).','Chỉ cần hiển thị logo GPL trong phần giới thiệu (About) của phần mềm.','b',1],
+['Giấy phép mà nguồn mơ là tập hợp các quy tắc đòi hỏi ai là người phải tuân theo','Người sáng chế ra phần mềm mã nguồn mở.','Nhà bảo hành phần mềm mã nguồn mở.','Người sử dụng phần mềm mã nguồn mở.','Cả 3 phương án trên đều đúng','c',1],
+['Phát biểu nào sau đây không phải là phát biểu đúng.','Phần mềm mã nguồn mở là phần mềm tự do.','Phần mềm mã nguồn mở cho phép người dùng quyền truy cập vào mã nguồn.','Phần mềm mã nguồn mở cho phép người dùng quyền sửa đổi và cải tiến mã nguồn.','Phần mềm mã nguồn mở cho phép phân phối lại các bản sao (có thể miễn phí hoặc có phí).','a',1],
+['Câu nào sau đây không phải là ưu điểm của mã nguồn mở.','Chi phí bản quyền thấp (thường là miễn phí).','Khả năng bảo mật cao (do có nhiều người soi code).','Không bị phụ thuộc vào một nhà cung cấp duy nhất (Vendor lock-in).','Phần mềm mã nguồn mở có độ ổn định cao.','d',1],
+['câu nào sau đây là đúng.','Phần mềm mã nguồn mở không được phép thương mại hóa (bán kiếm lời).','Phần mềm mã nguồn mở không được pháp luật bảo hộ quyền tác giả.','Tác giả phần mềm mã nguồn mở phải chịu trách nhiệm đền bù nếu phần mềm gây lỗi.','Phần mềm mã nguồn mở không có bảo hành.','d',1],
+['Điểu nào sau đây không dùng với các giấy phép mã nguồn mở','Cho phép tự do phân phối lại chương trình.','Mã nguồn phải được bao gồm hoặc dễ dàng truy cập.','Có giấy phép yêu cầu phải sử dụng cùng loại giấy phép với sản phẩm phái sinh.','Không được phân biệt đối xử với bất kỳ cá nhân hay nhóm người nào.','c',1],
+['Giấy phép GNU GPL phiên bản mới nhất là:','1.0','2.0','3.0','4.0','c',1],
+['Ban hãy cho biết phần mềm nào sau đây sử dụng giáp phép GNU GPL:','Ubuntu','Apache Server','Mozilla Firefox','Internet Explorer','a',1],
+['Giấy phép nào không cấp phép một phần mềm phần mềm / thư viện mã nguồn đóng liên kết với một phần mềm / thư viện mang giấy phép mở tương ứng.','GNU General Public License','GNU Lesser General Public License','MIT License','BSD License','a',1],
+['Môi trường đồ hoạ KDE là gì?','Là môi trường màn hình nền hiện đại trên các hệ máy tính chạy hệ điều hành Unix/Linux và cũng chạy được trên Microsoft Windows và Mac OS thông qua Cygwin và Fink.','Là một hệ quản trị cơ sở dữ liệu mã nguồn mở phổ biến nhất hiện nay.','Là một trình biên dịch ngôn ngữ lập trình C/C++ trên môi trường Linux.','Là một trình duyệt web mặc định được cài đặt trên mọi bản phân phối Linux.','a',2],
+['Thư viện nào sau đây là nền tảng thư viện của môi trường giao diện Gnome','Qt','GTK+','MFC','Cocoa','b',2],
+['Trong Ubuntu, luôn có một tài khoản mặc định:','root','admin','guest','user','a',2],
+['Môi trường giao diện nào trong linux phù hợp cho các loại máy chủ cần tính ổn định và tốc độ nhanh.','Môi trường giao diện văn bản (Console)','Môi trường đồ họa GNOME','Môi trường đồ họa KDE','Môi trường giao diện X-Window','a',2],
+['Các shell có sẵn trong các hệ thống Linux:','sh (Bourne Shell)','bash (Bourne Again Shell)','csh (C Shell)','Tất cả đều đúng','d',3],
+['Các shell script được lưu với phần mở rộng tập là:','.bat','.sh','.exe','.cmd','b',3],
+['Tại sao cần shell script?','Để tránh việc phải gõ đi gõ lại các lệnh lặp đi lặp lại.','Để tự động hóa các tác vụ quản trị hệ thống.','Để thực hiện một chuỗi các lệnh phức tạp theo trình tự logic.','Tất cả đều đúng','d',3],
+['Đâu là comment 1 dòng trong shell script,','# comment','// comment','/ comment /','**','a',3],
+['Lệnh #!/bin/bash ở đầu file shell script để','Khai báo chương trình script nào dịch và thực thi đoạn script','Là một dòng chú thích (comment) đơn thuần, hệ thống sẽ bỏ qua.','Cấp quyền thực thi cho file script (tương đương lệnh chmod +x)','Khai báo đường dẫn thư mục hiện hành của script.','a',3],
+['Khi cài đặt Apache trong Ubuntu, mặc định apache được cài đặt vào thư mục nào?','/var','/home','/bin','/etc','d',7],
+['File cấu hình apache2 trong linux là:','httpd.conf','apache2.conf','config.apache','web.conf','b',7],
+['Trong Linux,','LAMP là viết tắt của Linux, Apache, Mysql, Php','LAPP(Linux, Apache, PostgreSQL, PHP)','LLMP(Linux, Lighttpd, MySQL/MariaDB, PHP/Perl/Python)','Tất cả các câu trên đều đúng','d',2],
+['Git là','Phần mềm quản lý phiên bản phân tán','Phần mềm quản lý phiên bản tập trung','Một ngôn ngữ lập trình','Một hệ điều hành mã nguồn mở','a',4],
+['Bugzilla là hệ thống phần mềm theo dõi lỗi mã nguồn mở. Nó là một website chạy trên:','Apache, Mysql, PHP','IIS, SQL Server, ASP.NET','Apache, Mysql, Perl','Nginx, PostgreSQL, Python','a',6],
+['Trong Bugzilla, đâu là trạng thái của một bug?','NEW','ASSIGNED','CLOSED','Tất cả đều đúng.','d',6],
+['Đối tượng sử dụng và quản lý Bugzilla thường là:','Lập trình viên (Developer)','Tester/Quality Control (QC)','Quản trị mạng (Network Administrator)','Người dùng cuối (End User)','b',6],
+['Định dạng phiên bản phần mềm theo quy tắc:','YEAR.MONTH.DAY','ALPHA.BETA.RC','RELEASE.UPDATE.FIX','MAJOR MINOR.PATCH','d',1],
+['Đâu là phiên bản tiền phát hành (phiên bản có thể không ổn định hoặc không đáp ứng được các yêu cầu tương thích)?','1.0.0-alpha','1.0.0','1.0.1','2.0.0','a',1],
+['Phiên bản phần mềm Beta là:','Phiên bản dùng thử, nhằm tung ra để người dùng public rộng rãi sử dụng, phản hồi. Bản này có thể có lỗi được phát hành để nhằm mục tiêu hoàn thiện trước khi phát hành chính thức','Phiên bản kiểm thử nội bộ (Alpha), chỉ dành cho nhóm phát triển và chưa có đầy đủ các tính năng.','Phiên bản chính thức (Stable Release), đã hoàn thiện hoàn toàn, hoạt động ổn định và sẵn sàng thương mại hóa.','Phiên bản giới hạn (Demo/Trial), chỉ cung cấp một số tính năng cơ bản hoặc giới hạn thời gian sử dụng để quảng cáo.','a',1],
+['Lệnh git status','Kiểm tra trạng thái của những file đã thay đổi trong local repository.','Xem lịch sử các lần commit (phiên bản) trước đó.','Hiển thị chi tiết nội dung code khác biệt giữa các file.','Đẩy các tập tin đã thay đổi lên kho chứa từ xa (Remote Repository).','a',4],
+['lệnh git add','Tạo một kho chứa Git mới (repository) tại thư mục hiện hành.','Ghi lại (lưu) các thay đổi vào lịch sử phiên bản của kho chứa.','Tải xuống toàn bộ mã nguồn từ một kho chứa từ xa về máy tính.','Sử dụng để đánh chỉ mục (index) các nội dung mới, mới cập nhật trong thư mục làm việc, nó chuẩn bị nội dung sắp xếp cho lần commit tiếp theo','d',4],
+['Trong git, để chuyển sang nhánh branch1, sử dụng lệnh nào?','Git branch branch1','Git merge branch1','Git add branch1','Git checkout branch1','d',4],
+['Câu nào không đúng trong git?','Lệnh pull: sao chép các thay đổi từ local repository sang remote repository.','Lệnh push: sao chép các thay đổi từ local repository sang remote repository.','Lệnh fetch: tải các thay đổi từ remote repository về nhưng chưa gộp (merge) vào nhánh hiện tại.','Lệnh commit: lưu lại các thay đổi (snapshot) vào kho chứa cục bộ (local repository).','a',4],
+['Trong git, lệnh clone:','Khởi tạo một kho chứa (repository) mới và 	rỗng tại thư mục hiện hành.','Tạo một bản sao repository trên máy local','Cập nhật các thay đổi mới nhất từ server về máy.','Đưa các file từ thư mục làm việc vào vùng chờ (Staging Area).','b',4],
+['Đâu là một hệ điều hành nhân Linux?','Debian','Linux Mint','Cả 2 đều đúng','Cả 2 đều sai','c',2],
+['Trong hệ thống tập tin Linux, tập tin thiết bị ngoại vi được chứa trong:','/dev','/bin','/etc','/home','a',2],
+['Lệnh in đường dẫn của thư mục hiện hành:','pwd','ls','Cd','path','a',2],
+['Lệnh chuyển thư mục về thư mục cha là','cd /','cd ..','changedir /','changedir ..','b',2],
+['Lệnh xoá thư mục data/dirl không cần hỏi','delete -f data/toto','rm -f data/dirl','remove data/dirl','Tất cả đều đúng','b',2],
+['Để copy file a.txt và lưu thành file b.txt, sử dụng lệnh','cp b.txt a.txt','copy a.txt b.txt','copy b.txt a.txt','cp a.txt b.txt','d',1],
+['Lệnh mv a.txt c.txt','Xoá các file a.txt và c.txt','Đổi tên a.txt thành c.txt','Đổi tên x.txt thành a.txt','Tất cả đều sai','b',1],
+['Lệnh thiết lập cho tất cả các user có thể read, write và execute file a.txt là','chmod a.txt 777','chmod 777 a.txt','set 777 a.txt','Tất cả đúng','b',2],
+['Câu lệnh nào thay đổi quyền truy cập file thành rw-r--r-x?','chmod 546 file','chmod 642 file','chmod 645 file','chmod 655 file','c',1],
+['Tên các tập tin và thư mục trong linux','Phân biệt hoa, thường','Không phân biệt hoa, thường','Chỉ được phép sử dụng chữ thường.','Bắt buộc phải có phần mở rộng (extension)','a',2],
+['Lệnh nào dưới đây thiết lập quyền cho file example.txt thành rwxr-xr--?','chmod 754 example.txt','chmod 644 example.txt','chmod 764 example.txt','chmod 744 example.txt','a',1],
+['Lệnh nào thiết lập quyền cho tất cả user chỉ có quyền đọc và thực thi trên file script.sh?','chmod 555 script.sh','chmod 777 script.sh','chmod 444 script.sh','chmod 644 script.sh','a',3],
+['Để thay đổi quyền của thư mục mydir sao cho chủ sở hữu có toàn quyền, nhóm có quyền đọc và ghi, và những người khác chỉ có quyền đọc, ta sử dụng lệnh nào?','chmod 777 mydir','chmod 777 mydir','chmod 764 mydir','chmod 644 mydir','c',2],
+['Lệnh chmod 700 myfile sẽ thiết lập quyền nào trên file myfile?','rwxrwxrwx','rwx------','rwxr-xr--','rwxr-xr-x','b',2],
+['Lệnh nào dưới đây thay đổi quyền của file data.txt thành rw-r--r--?','chmod 755 data.txt','chmod 777 data.txt','chmod 644 data.txt','chmod 600 data.txt','c',1],
+['Nếu sử dụng lệnh chmod 0 file, quyền nào sẽ được áp dụng cho file?','Không ai có quyền truy cập','Tất cả mọi người có toàn quyền truy cập','Quyền quay về trạng thái mặc định ban đầu','Chỉ chủ sở hữu (Owner) mới có quyền truy cập','a',2],
+['Để cấp quyền thực thi cho tất cả các user đối với file program.sh, lệnh nào là đúng?','chmod +x program.sh','chmod -x program.sh','chmod a+r program.sh','chmod 755 program.sh','a',2],
+['Câu lệnh nào thiết lập quyền truy cập của file thành rwxr--r--?','chmod 744 file','chmod 755 file','chmod 644 file','chmod 777 file','a',1],
+['Để thay đổi quyền của thư mục docs sao cho chỉ chủ sở hữu có toàn quyền, lệnh nào là đúng?','chmod 777 docs','chmod 700 docs','chmod 770 docs','chmod 755 docs','b',2],
+['Lệnh chmod u=rwx,g=rx,o=r file sẽ thiết lập quyền nào?','rwxr-xr--','rwxrw-r--','rwxrwxr--','rw-r--r--','a',2],
+['Tập tin Shell Script thường được lưu với phần mở rộng nào?','.bat','.sh','.exe','.cmd','b',3],
+['Câu lệnh nào được sử dụng để gán giá trị Hello vào biến message trong Shell Script?','let message="Hello"','$message="Hello"','message="Hello"','var message="Hello"','c',3],
+['Lệnh nào dưới đây được sử dụng để thực thi tệp Shell Script có tên script.sh?','run script.sh','./script.sh','exec script.sh','execute script.sh','b',3],
+['Dòng đầu tiên trong tệp Shell Script thường chứa nội dung nào?','#!/usr/bin/bash','#/usr/local/bin','!#/bin/bash','#!/usr/bin/env python','a',3],
+['Câu lệnh echo $0 trong một Shell Script sẽ in ra gì?','Tên của tập tin script đang chạy','Tham số đầu tiên được truyền vào script','Tham số cuối cùng được truyền vào script','Biến môi trường hiện tại','a',3],
+['Lệnh nào được sử dụng để nhận dữ liệu đầu vào từ người dùng trong Shell Script?','get','read','input','scanf','b',3],
+['Trong Shell Script, ký tự $? đại diện cho điều gì?','Số lượng tham số được truyền vào','Trạng thái thoát (exit status) của lệnh trước đó','Tên tệp đang được thực thi','Đường dẫn đầy đủ của tệp','b',3],
+['Câu lệnh nào kiểm tra xem tệp file.txt có tồn tại không?','if [-t file.txt]','if [-e file.txt]','if [-x file.txt]','if [-c file.txt]','b',1],
+['Trong Shell Script, vòng lặp nào được sử dụng để lặp qua từng dòng của tệp data.txt?','for line in data.txt; do echo $line; done','while read line; do echo $line; done < data.txt','foreach line in data.txt; do echo $line; done','for each line in data.txt; do echo $line; done','b',3],
+['Ký tự nào được sử dụng để chú thích trong Shell Script?','//','#','%',';;','b',3],
+['Lệnh chmod +x script.sh dùng để làm gì?','Xóa tệp script.sh','Thêm quyền thực thi cho tệp script.sh','Thay đổi nội dung của tệp script.sh','Hiển thị nội dung của tệp script.sh','b',3],
+['Trong Shell Script, làm thế nào để truyền tham số thứ nhất vào script?','Sử dụng biến $1','Sử dụng biến $0','Sử dụng biến $?','Sử dụng biến $param1','a',3],
+['Lệnh nào được sử dụng để hiển thị dòng chữ "Hello, World!" trong Shell Script?','printf "Hello, World!"','echo "Hello, World!"','display "Hello, World!"','write "Hello, World!"','b',3],
+['Kernel trong Linux là gì?','Một giao diện đồ họa người dùng','Phần cứng của hệ thống','Thành phần cốt lõi của hệ điều hành, quản lý tài nguyên phần cứng và phần mềm','Một ứng dụng của hệ điều hành','c',2],
+['Linux Kernel được phát triển bởi ai?','Richard Stallman','Linus Torvalds','Dennis Ritchie','Ken Thompson','b',2],
+['Chế độ nào sau đây được sử dụng bởi Linux Kernel khi thực thi các lệnh hệ thống?','User Mode','Supervisor Mode','Kernel Mode','Admin Mode','c',2],
+['Kernel Linux hỗ trợ mô hình đa nhiệm nào?','Cooperative multitasking','Preemptive multitasking','Round-robin multitasking','Priority multitasking','b',2],
+['File cấu hình chính của Kernel được lưu trữ ở đâu trong hệ thống Linux?','/etc/kernel.conf','/boot/config-*','/usr/src/linux/.config','/root/kernel.cfg','b',2],
+['Kernel Linux là loại phần mềm nào?','Closed source','Open source','Freeware','Shareware','b',2],
+['Kernel Linux hỗ trợ loại hệ thống tập tin nào dưới đây?','FAT32','NTFS','ext4','Tất cả các loại trên','d',2],
+['Câu lệnh nào dưới đây được sử dụng để kiểm tra phiên bản của Linux Kernel?','uname -v','uname -a','uname -r','uname -m','c',2],
+['Lệnh nào dưới đây được sử dụng để tải module vào Kernel?','loadmod','insmod','modprobe','b và c','d',2],
+['Module Kernel Linux là gì?','Một tệp thực thi của ứng dụng','Một phần của Kernel được tải động để cung cấp các chức năng mở rộng','Một thư viện hệ thống','Một giao diện đồ họa','b',2],
+['File log của Kernel thường được lưu ở đâu?','/var/log/kernel.log','/etc/kernel/log','/usr/kernel/logs','/boot/kernel.log','a',2],
+['Kernel Panic trong Linux là gì?','Một lỗi phần cứng','Một lỗi của ứng dụng người dùng','Một lỗi nghiêm trọng trong Kernel khiến hệ thống ngừng hoạt động','Một cách để Kernel nâng cấp','c',2],
+['Hệ thống tập tin đặc biệt mà Kernel Linux sử dụng để quản lý tiến trình và tài nguyên hệ thống là gì?','/usr','/var','/proc','/dev','c',2],
+['Lệnh nào được sử dụng để liệt kê tất cả các module Kernel đang hoạt động?','lsmod','insmod','modprobe','modlist','a',2],
+['Kernel Linux được viết chủ yếu bằng ngôn ngữ nào?','C++','Python','C','Java','c',2],
+['Để biên dịch lại Kernel Linux, thư mục nào cần được chuẩn bị?','/boot','/usr/src/linux','/etc/kernel','/opt/kernel','b',2],
+['Docker là gì?','Một hệ điều hành độc lập','Một nền tảng ảo hóa máy chủ','Một nền tảng cung cấp container hóa để phát triển, vận hành và phân phối ứng dụng','Một công cụ quản lý mã nguồn','c',5],
+['Lệnh nào dùng để khởi động một container trong Docker?','docker start','docker launch','docker run','docker execute','c',5],
+['File nào được sử dụng để định nghĩa các bước xây dựng một Docker Image?','DockerCompose.yml','Dockerfile','DockerImage.yaml','Containerfile','b',5],
+['Lệnh nào dùng để liệt kê tất cả các container đang chạy?','docker ps -a','docker ps','docker list','docker show','b',5],
+['Docker Compose được sử dụng để làm gì?','Quản lý mạng trong Docker','Chạy và quản lý nhiều container như một ứng dụng','Tạo container mới từ một image','Biên dịch Docker Image','b',5],
+['Lệnh nào để xóa một container đã dừng?','docker delete','docker rm','docker stop','docker rmi','b',5],
+['Lệnh nào được sử dụng để xóa một Docker Image?','docker remove image','docker delete image','docker rmi','docker rm image','c',5],
+['Docker Hub là gì?','Một công cụ để tạo Docker Image','Một registry công cộng để lưu trữ và chia sẻ Docker Images','Một công cụ để quản lý container','Một mạng ảo trong Docker','b',5],
+['Lệnh nào được sử dụng để tạo một container từ một image?','docker build','docker create','docker run','docker init','c',5],
+['Câu lệnh nào dùng để truy cập vào terminal của một container đang chạy?','docker attach','docker exec','docker exec -it [container_id] /bin/bash','docker connect','b',5],
+['Docker Image là gì?','Một container đang chạy','Một file chứa mã nguồn của ứng dụng','Một gói chứa mã nguồn, phụ thuộc và môi trường cần thiết để chạy ứng dụng','Một công cụ quản lý container','c',5],
+['Lệnh nào được sử dụng để build một Docker Image từ Dockerfile?','docker build','docker run','docker image create','docker make','a',5],
+['Lệnh nào để dừng một container đang chạy?','docker stop [container_id]','docker kill [container_id]','docker end [container_id]','docker rm [container_id]','a',5],
+['Mạng mặc định trong Docker là gì?','host','bridge','none','default','b',5],
+['Lệnh nào để liệt kê tất cả các Docker Images có trên hệ thống?','docker ps','docker ls','docker images','docker list images','c',5],
+['Câu lệnh nào được sử dụng để chia sẻ một Docker Image lên Docker Hub?','docker push [image_name]','docker pull [image_name]','docker upload [image_name]','docker share [image_name]','a',5],
+['Docker Swarm là gì?','Một công cụ để quản lý container','Một hệ thống điều phối container tích hợp trong Docker','Một phần của Docker Compose','Một Docker Image','b',5],
+['Lệnh nào được sử dụng để tải về một Docker Image từ Docker Hub?','docker pull [image_name]','docker download [image_name]','docker get [image_name]','docker fetch [image_name]','a',5],
+['Tùy chọn nào trong lệnh docker run được sử dụng để chạy container ở chế độ nền (detached mode)?','-f','-it','-d','--run-in-background','c',5],
+['Lệnh nào được sử dụng để xem chi tiết tài nguyên sử dụng của container?','docker stats','docker inspect','docker info','docker resources','a',5],
+];
+$o=1;foreach($e1 as $d)DB::table('quiz_questions')->insert(['exam_id'=>1,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+
+        // ĐỀ 2: 116 CÂU
+        $e2=[
+['Loại giấy phép phần mềm nguồn mở nào sau đây có tính chất','MIT License.','Apache License 2.0.','BSD License.','GNU General Public License (GPL).','d',1],
+['Một "Issue Tracker" (Hệ thống theo dõi vấn đề) trong dự án','Báo cáo lỗi (bug reporting).','Yêu cầu tính năng mới (feature request).','Thảo luận về việc triển khai một chức năng cụ thể.','Biên dịch mã nguồn thành phần mềm chạy được.','d',6],
+['Hành động tạo ra một bản sao của kho lưu trữ mã nguồn để phát','Clone.','Fork.','Branch.','Commit.','b',1],
+['Để đóng góp mã nguồn (code) đã sửa từ kho của mình trở lại dự','Issue Request.','Pull Request (hoặc Merge Request).','Commit Request.','Fork Request.','b',1],
+['Hệ thống nào sau đây là hệ thống quản lý phiên bản (VCS) phổ','FTP.','Dropbox.','Git.','Bugzilla.','c',1],
+['File nào thường được xem là "mặt tiền" của dự án trên','LICENSE.','.gitignore.','README.md.','index.html.','c',1],
+['Thành phần nào được coi là "trái tim" của hệ điều hành Linux,','Shell','Linux Kernel','Desktop Environment (GNOME, KDE)','Package Manager','b',2],
+['Hệ thống tệp tin (File System) của Linux được tổ chức theo','Cấu trúc phẳng (Flat structure)','Cấu trúc mạng lưới (Network structure)','Cấu trúc cây (Tree structure) với thư mục gốc là /','Cấu trúc phân vùng ổ đĩa (C:, D:, E:)','c',2],
+['Trong Linux, thư mục nào thường chứa các file cấu hình hệ','/bin','/home','/etc','/dev','c',2],
+['Lệnh nào sau đây được sử dụng để liệt kê các file và thư mục,','ls -l','ls -a','ls -h','dir /all','b',2],
+['Để cấp quyền "Toàn quyền" (Đọc, Ghi, Thực thi - rwx) cho chủ','chmod 755','chmod 644','chmod 777','chmod 600','c',1],
+['Ký tự nào đại diện cho thư mục chủ (home directory) của người','/','.','\\~','\\$','c',2],
+['Trong Shell Script, cú pháp nào đúng để gán giá trị cho biến','name = \\"Linux\\" (có khoảng trắng)','\\$name = \\"Linux\\"','name=\\"Linux\\" (không có khoảng trắng)','set name \\"Linux\\"','c',3],
+['Để truy xuất (lấy) giá trị của một biến có tên là count trong','count','%count%','\\$count','\\@count','c',3],
+['Lệnh nào dùng để xóa một thư mục và tất cả các file con bên','rm filename','rmdir dirname','rm -rf dirname','del /s dirname','c',2],
+['Trong Linux, User có quyền hạn cao nhất (Superuser) thường','admin, UID 1','root, UID 0','administrator, UID 0','system, UID 100','b',2],
+['Ký hiệu nào được sử dụng để chuyển hướng kết quả đầu ra','\\>','\\>\\>','\\<','\\|','a',1],
+['Lệnh grep trong Linux chủ yếu được sử dụng để làm gì?','Nén và giải nén file.','Tìm kiếm chuỗi ký tự (text pattern) bên trong nội dung file.','Quản lý tiến trình (process).','Kết nối mạng.','b',2],
+['Để chạy một file script có tên myscript.sh trong thư mục','myscript.sh','run myscript.sh','./myscript.sh','call myscript.sh','c',3],
+['Cấu trúc rẽ nhánh if trong Shell Script kết thúc bằng từ','end','endif','fi','done','c',3],
+['Để xem hướng dẫn sử dụng chi tiết (manual) của một lệnh (ví','help cp','man cp','cp /?','doc cp','b',1],
+['Phép toán so sánh "Bằng nhau" (equal) cho số nguyên trong','==','=','-eq','-ne','c',1],
+['Lệnh nào dùng để hiển thị đường dẫn đầy đủ của thư mục hiện','path','cd','ls','pwd','d',2],
+['Visual Studio Code (VS Code) là sản phẩm được phát triển bởi','Google','Facebook','Microsoft','JetBrains','c',8],
+['Để mở "Command Palette" (Bảng lệnh điều khiển) để truy cập','Ctrl + P','Ctrl + Shift + P (hoặc F1)','Ctrl + F','Alt + F4','b',1],
+['File cấu hình cài đặt (Settings) của VS Code được lưu trữ','XML','YAML','JSON','INI','c',8],
+['Để cài đặt thêm các ngôn ngữ, debugger, hoặc công cụ hỗ trợ','Source Control','Extensions (Marketplace)','Explorer','Run and Debug','b',1],
+['Phím tắt mặc định để mở/tắt Integrated Terminal (Terminal','Ctrl + T','Ctrl + \\` (dấu huyền)','Ctrl + Shift + T','Alt + T','b',1],
+['Để tìm kiếm nhanh và mở một file trong dự án (Quick Open), ta','Ctrl + P','Ctrl + O','Ctrl + Shift + F','Ctrl + N','a',1],
+['Thư mục ẩn nào được VS Code tạo ra trong dự án để lưu các','.git','.vscode','.config','.idea','b',8],
+['Extension nào phổ biến giúp tạo một máy chủ web cục bộ','PHP Debug','Python','Live Server','Docker','c',3],
+['Tính năng "Multi-cursor" (Đa con trỏ) cho phép sửa nhiều','Shift','Ctrl','Alt','Tab','c',1],
+['Biểu tượng "Source Control" (trông giống nhánh cây) trên','Quản lý Extension.','Tìm kiếm file.','Tích hợp quản lý phiên bản Git (Commit, Push, Pull...).','Debug chương trình.','c',1],
+['File launch.json trong thư mục .vscode có vai trò quan trọng','Lưu trữ giao diện màu sắc (Theme).','Cấu hình các thiết lập để chạy và gỡ lỗi (Debug) chương trình.','Lưu lịch sử các file đã mở.','Định nghĩa các phím tắt.','b',8],
+['Để định dạng lại (Format) toàn bộ code trong file đang mở','Ctrl + S','Shift + Alt + F','Ctrl + K','Ctrl + Shift + I','b',10],
+['VS Code hỗ trợ chạy trên các hệ điều hành nào?','Chỉ Windows.','Chỉ Windows và macOS.','Chỉ Linux.','Đa nền tảng: Windows, macOS và Linux.','d',8],
+['Extension "Prettier" thường được sử dụng với mục đích gì?','Kiểm tra lỗi bảo mật.','Định dạng code (Code formatter) tự động theo chuẩn.','Biên dịch code C++.','Quản lý cơ sở dữ liệu.','b',1],
+['Khi làm việc với PHP trong VS Code, để có thể Debug (gỡ lỗi)','Node.js','Xdebug.','Python.','Java SDK.','b',6],
+['LAMP stack là từ viết tắt của các thành phần nào?','Linux, Apple, MySQL, PHP.','Linux, Apache, MySQL (hoặc MariaDB), PHP (hoặc Python/Perl).','Local, Admin, Manager, Process.','Linux, Apache, MongoDB, Python.','b',7],
+['Trong mô hình LAMP, thành phần Apache đóng vai trò là gì?','Hệ điều hành.','Hệ quản trị cơ sở dữ liệu.','Web Server (Máy chủ web) xử lý các yêu cầu HTTP.','Ngôn ngữ kịch bản phía server.','c',7],
+['Cổng (Port) mặc định mà Apache Web Server lắng nghe các yêu','21','22','3306','80','d',7],
+['Trên Ubuntu/Debian, thư mục mặc định chứa mã nguồn website','/home/user/web','/var/www/html','/etc/apache2','/usr/bin/html','b',2],
+['File cấu hình chính của Apache trên Ubuntu thường có tên và','/etc/php/php.ini','/etc/apache2/apache2.conf','/etc/mysql/my.cnf','/var/www/index.html','b',7],
+['Để khởi động lại dịch vụ Apache sau khi thay đổi cấu hình, ta','apache2 start','sudo systemctl restart apache2','sudo service apache restart','Cả B và C đều đúng.','b',7],
+['File cấu hình quan trọng nhất của PHP, nơi thiết lập các','config.php','php.ini','httpd.conf','.htaccess','b',7],
+['Hệ quản trị cơ sở dữ liệu MySQL hoạt động mặc định trên cổng','8080','3306','1433','27017','b',7],
+['Công cụ phpMyAdmin là một ứng dụng viết bằng PHP dùng để làm','Soạn thảo code PHP.','Quản trị cơ sở dữ liệu MySQL thông qua giao diện web.','Quản lý server Linux.','Thiết kế giao diện website.','b',7],
+['Địa chỉ IP Loopback (Localhost) để truy cập web server ngay','192.168.1.1','0.0.0.0','127.0.0.1','10.0.0.1','c',7],
+['Trong PHP, đoạn mã lệnh phải được đặt trong cặp thẻ nào để','\\<script\\> ... \\</script\\>','\\<?php ... ?\\>','\\<body\\> ... \\</body\\>','\\<php\\> ... \\</php\\>','b',7],
+['Để kiểm tra xem PHP đã hoạt động và xem thông tin cấu hình','\\<?php show_info(); ?\\>','\\<?php php_status(); ?\\>','\\<?php phpinfo(); ?\\>','\\<?php echo \\"Hello\\"; ?\\>','c',7],
+['Quyền sở hữu (User/Group) của thư mục /var/www/html nên được','root:root','www-data:www-data','user:user','guest:guest','b',2],
+['Module nào của Apache cần được kích hoạt để sử dụng tính','mod_ssl','mod_rewrite','mod_proxy','mod_security','b',7],
+['Để bảo mật cho MySQL ngay sau khi cài đặt (đặt mật khẩu','mysql_install_db','sudo mysql_secure_installation','mysql -u root -p','systemctl secure mysql','b',7],
+['Giao thức HTTPS (Web bảo mật) sử dụng cổng mặc định nào?','80','8080','443','22','c',1],
+['CMS là viết tắt của thuật ngữ nào?','Computer Management System','Content Management System (Hệ quản trị nội dung)','Code Maintenance Service','Customer Marketing System','b',9],
+['CMS nào sau đây được biết đến là phổ biến nhất thế giới, khởi','Joomla','Drupal','WordPress','OpenCart','c',9],
+['Để chạy được WordPress, Joomla hay OpenCart, server cần hỗ','[ASP.NET](https://asp.net/) và SQL Server','Java và Oracle','PHP và MySQL/MariaDB','Python và PostgreSQL','c',9],
+['OpenCart là một CMS được thiết kế chuyên biệt cho mục đích','Làm blog cá nhân.','Xây dựng website thương mại điện tử (E-commerce).','Làm diễn đàn (Forum).','Làm mạng xã hội.','b',9],
+['Trong kiến trúc của WordPress, "Theme" đóng vai trò gì?','Quản lý cơ sở dữ liệu.','Quy định giao diện hiển thị (frontend) của website.','Bổ sung tính năng mới (chức năng).','Quản lý người dùng.','b',9],
+['Để mở rộng chức năng cho WordPress (ví dụ: thêm form liên hệ,','Widget','Post','Plugin','Category','c',9],
+['Trong quá trình cài đặt CMS (ví dụ Joomla), bước "Database','Tên website và slogan.','Email quản trị viên.','Hostname, Username, Password của Database và Tên Database.','Mã số thuế doanh nghiệp.','c',9],
+['File wp-config.php trong WordPress chứa thông tin quan trọng','Nội dung bài viết.','Thông tin kết nối cơ sở dữ liệu (Database Connection info).','Danh sách người dùng.','Hình ảnh giao diện.','b',7],
+['Đường dẫn mặc định để truy cập trang quản trị (Admin','/administrator','/admin','/wp-admin','/manage','c',1],
+['Odoo chủ yếu được viết bằng ngôn ngữ lập trình nào?','PHP','Java','Python','C#','c',1],
+['"Permalink" trong WordPress ảnh hưởng đến yếu tố nào của','Tốc độ tải trang.','Màu sắc giao diện.','Cấu trúc đường dẫn URL (SEO) của bài viết/trang.','Quyền của người dùng.','c',9],
+['"VirtueMart" là một Extension thương mại điện tử nổi tiếng','WordPress (dùng WooCommerce).','Joomla.','Drupal.','OpenCart.','b',1],
+['Trong mô hình MVC của OpenCart (hoặc các CMS hiện đại), phần','Xử lý logic nghiệp vụ.','Tương tác trực tiếp với Database.','Hiển thị dữ liệu ra giao diện người dùng (HTML/Template).','Điều hướng đường dẫn.','c',9],
+['Thư mục wp-content trong mã nguồn WordPress chứa dữ liệu','Các file lõi của hệ thống (Core files).','File cấu hình server.','Themes, Plugins và file Uploads (ảnh, media) của người dùng.','Cơ sở dữ liệu MySQL.','c',9],
+['Web Framework nào của Python được coi là "full-stack", cung','Flask','Django','Pyramid','Bottle','b',10],
+['Kiến trúc thiết kế của Django được gọi là gì?','MVC (Model - View - Controller)','MVT (Model - View - Template)','MVVM (Model - View - ViewModel)','MVP (Model - View - Presenter)','b',10],
+['Trong Django, thành phần "Model" chịu trách nhiệm làm gì?','Xử lý giao diện HTML.','Điều hướng URL.','Định nghĩa cấu trúc dữ liệu và tương tác với Cơ sở dữ liệu.','Nhận request từ người dùng.','c',10],
+['Để cài đặt Django hoặc Flask, ta sử dụng công cụ quản lý gói','npm','composer','pip','gem','c',10],
+['Lệnh chuẩn để chạy server phát triển (Development Server)','python start server','python manage.py runserver','django-admin run','flask run','b',1],
+['Hệ thống Template engine mặc định mà Flask và Django sử dụng','Blade','Smarty','Jinja2 (Flask) / Django Template Language (DTL)','Razor','c',10],
+['Trong một ứng dụng CRUD, chữ "C" là viết tắt của hành động','Connect - JOIN','Create - INSERT','Change - UPDATE','Cancel - DROP','b',1],
+['Để áp dụng các thay đổi trong Model (cấu trúc bảng) vào','manage.py runserver và manage.py build','manage.py makemigrations và manage.py migrate','manage.py startapp và manage.py db','manage.py create và manage.py commit','b',1],
+['Trong Flask, decorator \\@app.route(\'/\') dùng để làm gì?','Khai báo biến toàn cục.','Kết nối database.','Gắn kết một URL (ví dụ trang chủ) với một hàm xử lý cụ thể.','Chạy ứng dụng.','c',10],
+['Để lấy dữ liệu từ form gửi lên theo phương thức POST trong','request.get','request.form','request.args','request.data','b',10],
+['Trong kiến trúc MVT của Django, file views.py tương đương','Model','View','Controller (Xử lý logic, nhận request, trả về response)','Database','c',10],
+['Để tạo một tài khoản quản trị viên cao cấp (Superuser) truy','python manage.py createadmin','python manage.py createsuperuser','python manage.py adduser root','python manage.py user -admin','b',2],
+['WSGI là giao diện chuẩn giúp kết nối giữa thành phần nào với','Giữa Python Web Application và Database.','Giữa Web Server (như Apache/Nginx) và Python Web Application.','Giữa Client và Server.','Giữa HTML và CSS.','b',10],
+['Bugzilla là phần mềm mã nguồn mở được phát triển bởi tổ chức','Google','Apache Software Foundation','Mozilla Foundation','Microsoft','c',6],
+['Để chạy được Bugzilla, máy chủ cần hỗ trợ ngôn ngữ lập trình','PHP','Java','Perl','Python','c',6],
+['Cấu trúc phân cấp cao nhất để quản lý một dự án trong','Component','Product','Version','Milestone','b',1],
+['Trạng thái (Status) nào cho biết một Bug vừa mới được báo cáo','RESOLVED','ASSIGNED','NEW (hoặc UNCONFIRMED)','CLOSED','c',6],
+['Khi một lập trình viên bắt đầu sửa lỗi, họ nên chuyển trạng','NEW','ASSIGNED','VERIFIED','REOPENED','b',6],
+['Khi Developer đã sửa xong lỗi và đẩy code lên, họ sẽ chuyển','DUPLICATE','INVALID','FIXED','WONTFIX','c',6],
+['Nếu một Bug được báo cáo nhưng Developer xác định đó là tính','FIXED','INVALID','DUPLICATE','WORKSFORME','b',6],
+['Để cài đặt Bugzilla trên Windows, ta thường cần cài đặt thêm','XAMPP','ActivePerl và Apache (hoặc IIS)','Docker Desktop','Visual Studio','b',6],
+['Một Bug bị đóng lại (CLOSED) nhưng sau đó lại xuất hiện','NEW','REOPENED','ASSIGNED','RESOLVED','b',6],
+['Ai là người có quyền tạo thêm "User" mới trong Bugzilla?','Bất kỳ ai truy cập web.','Administrator (Quản trị viên hệ thống).','Chỉ Developer.','Chỉ Tester.','b',6],
+['Git là hệ thống quản lý phiên bản thuộc loại nào?','Tập trung (Centralized VCS - như SVN).','Phân tán (Distributed VCS).','Cục bộ (Local VCS).','Client-Server VCS.','b',4],
+['Câu lệnh nào dùng để khởi tạo một kho lưu trữ Git mới','git start','git create','git init','git new','c',4],
+['Để sao chép một kho chứa từ xa (ví dụ trên GitHub) về máy cá','git copy','git pull','git clone','git download','c',4],
+['Để xem trạng thái hiện tại của các file (file nào đã sửa,','git log','git info','git status','git show','c',1],
+['Lệnh nào dùng để tải các thay đổi mới nhất từ kho chứa từ xa','git push','git pull','git fetch','git update','b',1],
+['Để tạo một nhánh mới (branch) có tên là feature-login, ta','git new feature-login','git branch feature-login','git checkout feature-login','git add feature-login','b',4],
+['Để chuyển đổi không gian làm việc sang nhánh feature-login,','git move feature-login','git checkout feature-login (hoặc git switch feature-login)','git branch feature-login','git select feature-login','b',1],
+['Lệnh git merge feature-login (khi đang đứng ở nhánh main) sẽ','Xóa nhánh feature-login.','Gộp các thay đổi từ nhánh feature-login vào nhánh main.','Tạo nhánh main từ feature-login.','Đẩy code lên GitHub.','b',4],
+['Để xem lịch sử các lần commit trước đó, ta dùng lệnh:','git log','git history','git past','git review','a',4],
+['Trong Git, con trỏ HEAD thường trỏ đến đâu?','Commit đầu tiên của dự án.','Commit mới nhất của nhánh hiện tại đang làm việc.','Kho chứa từ xa.','Thư mục Staging.','b',4],
+['Docker là một nền tảng mã nguồn mở sử dụng công nghệ nào để','Máy ảo (Virtual Machine - VM).','Containerization (Ảo hóa mức hệ điều hành).','Trình biên dịch mã nguồn.','Cơ sở dữ liệu đám mây.','b',5],
+['Khi một Docker Image được chạy (run), nó trở thành gì?','Docker File.','Docker Hub.','Docker Container.','Virtual Machine.','c',5],
+['Lệnh nào dùng để tải một Image từ Docker Hub về máy cục bộ?','docker get','docker load','docker pull','docker fetch','c',5],
+['Để liệt kê tất cả các Container đang chạy (active), ta dùng','docker list','docker ps','docker images','docker show','b',5],
+['Để xây dựng một Image từ Dockerfile trong thư mục hiện tại,','docker build -t my-image-name .','docker create my-image-name','docker make .','docker compile','a',5],
+['Để dừng một Container đang chạy, ta dùng lệnh:','docker kill','docker stop \\[container_id\\]','docker pause','docker end','b',5],
+['Để xóa một Image khỏi máy cục bộ, ta dùng lệnh:','docker rm \\[image_id\\]','docker rmi \\[image_id\\]','docker delete \\[image_id\\]','docker clean \\[image_id\\]','b',5],
+['ProjectLibre là phần mềm mã nguồn mở được thiết kế để thay','Microsoft Word','Microsoft Excel','Microsoft Project','Adobe Photoshop','c',10],
+['WBS là viết tắt của thuật ngữ nào trong quản lý dự án?','Work Breakdown System','Work Breakdown Structure (Cấu trúc phân chia công việc)','Website Building Structure','Working Basic Schedule','b',1],
+['Để gán một nhân viên cụ thể vào làm một công việc (Task)','Task Usage.','Resource (Resources -\\> Assign Resources).','Calendar.','Network.','b',1],
+['Để thiết lập lịch làm việc (ví dụ: nghỉ Thứ 7, CN, ngày lễ)','Task Information.','Calendar (Change Working Time).','Resource Sheet.','Options.','b',1],
+['Nếu bạn muốn công việc B bắt đầu sau khi công việc A kết','FS - 2 days','FS + 2 days (Lag time)','SS + 2 days','FF + 2 days','b',1],
+['Để xem tổng quan chi phí và thời gian của toàn bộ dự án, ta','Task Information của công việc đầu tiên.','Project Information -\\> Statistics (Thống kê dự án).','Màn hình Help.','Menu File.','b',1],
+['Cấu trúc phân cấp công việc trong ProjectLibre được tạo ra','Copy & Paste.','Indent (Thụt lề phải) và Outdent (Thụt lề trái) cho các Task.','Tô màu cho dòng.','Đổi font chữ.','b',10],
+['Mối quan hệ "Start-to-Start" (SS) có nghĩa là:','Hai công việc phải kết thúc cùng lúc.','Công việc B có thể bắt đầu khi công việc A bắt đầu.','Công việc B bắt đầu khi A kết thúc.','Công việc B kết thúc khi A bắt đầu.','b',1],
+];
+$o=1;foreach($e2 as $d)DB::table('quiz_questions')->insert(['exam_id'=>2,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+
+        // ĐỀ 3: 120 CÂU
+        $e3=[
+['Giấy phép BSD - Berkeley System Distribution Licenses được sử dụng lần đầu tiên cho phần mềm nào?','Free BSD','BSD Unix','Net BSD','Unix','a',1],
+['Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?','Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.','Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.','Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.','Câu b và c.','d',1],
+['Tổ chức FSF là tổ chức','Phần mềm mã nguồn mở','Phần mềm tự do','Quỹ phần mềm nguồn mở','Phần mềm miễn phí','c',1],
+['Bạn hãy cho biết phần mềm nào sau đây sử dụng giấp phép BSD:','Ubuntu','Window Xfree86','JavaFBP toolkit','Không câu nào đúng','b',1],
+['Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :','GNU GPL License','Apache Public License','BSD License','Artistic License','a',1],
+['Phần mềm Apache Server sử dụng giấy phép nào sau đây :','BSD License','Artistic License','GPL License','Apache License','d',7],
+['Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy các ứng dụng windows trên môi trường Ubuntu','Wine và CrossOver.','Wine door và Cedega','Wine và PlayOnlinux.','Cả 3 đều đúng.','c',2],
+['Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?','Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.','Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.','Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.','Câu b và c.','d',1],
+['Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :','GNU GPL License','Apache Public License','BSD License','Artistic License','a',1],
+['Dung lượng nhỏ nhất cho phép đối với các swap partition là :','16 MB','64 MB','128 MB','256 MB','a',1],
+['Có ít nhất bao nhiêu patition cần được tạo ra khi ta cài đặt LINUX ?','2','1','Lớn hơn 2','Lớn hơn 3','a',2],
+['Bạn đang cài Linux lên máy tính của bạn. Bạn muốn có 5 partitions khác nhau và đã tạo ra được 4 partition. Còn partition thứ 5 không cách nào tạo ra được. Điều gì đã xảy ra ?','Bạn đã tạo ra 4 primary partitions.','Hard drive của bạn không đủ chỗ để tạo hơn 4 partition.','Bạn phải tạo swap partition .','Linux không cho phép tạo hơn 4 partitions.','a',2],
+['Swap đóng vai trò gì?','Bộ nhớ đệm','Bộ nhớ phân trang','Bộ chuyển bộ nhớ','Câu a và b','a',1],
+['Máy tính của bạn có hai ổ đĩa cứng IDE và bạn đang cài Linux trên chúng. Mỗi đĩa cứng bạn chia thành hai patitions . Các partition trên máy của bạn có tên là gì ?','hda1, hda2, hdb1, hdb2','hda1, hda2, hda3, hda4','sda1, sda2, sda1, sdb2','sda1, sda2, sda3, sda4','a',2],
+['Để đọc nội dung một đĩa CD trong Linux ta phải làm thế nào ?','Phải mount trước','eject cdrom','cd /mnt/cdrom','Không đọc được CD rom','a',2],
+['Trong hệ thống Linux user nào có quyền cao nhất ?','User root','User administrator','User admin','User có UID=0','a',2],
+['Lệnh nào dùng để cài đặt gói phần mềm “packagename.rpm”?','rpm –ivh packagename.rpm','rpm –evh packagename.rpm','rpm –q packagename.rpm','rpm –qa *.rpm','a',1],
+['Để thay đổi các lựa chọn gắn kết (mount) tự động cho một hệ thống tập tin cục bộ, ta cần sửa đổi nội dung tập tin nào?','/etc/fstab','b./etc/filesystems','c./etc/group','d./etc/mnttab','a',1],
+['Hãy cho biết GNOME là viết tắt của từ nào sau đây ?','GNU Network Object Model Environment','GNU Networld Object Model Enviroment','GNU Object Model Environment','','a',2],
+['Hệ điều hành Kubuntu sử dụng trình duyệt web nào dưới đây?','Firefox','Konqueror','Pidgin internet messenger','','b',2],
+['Khi cài đặt song song nhiều loại giao diện đồ hoạ trong Ubuntu thì chọn khởi động một loại nào đó giao diện như thế nào ?','Trong khi đăng nhập vào hệ thống thì chọn loại giao diện cần khởiđộng trong mục Session rồi mới nhấn nút login.','Sau khi đăng nhập vào hệ thống xong, chọn System / Appearance để chọnloại giao diện cần dùng.','Sau khi đăng nhập Ubuntu vào Terminal gõ dòng lệnh tên của loại giaodiện để chuyển sang giao diện cần dùng.','','a',2],
+['Nguyên tắc để cài đặt song song nhiều giao diện là gì ?','Cài đặt thêm bản phân phối của loại giao diện cần dùng lên giao diện đang sử dụng','Tải thư viện tương ứng của môi trường giao diện cần dùng và tiến hành cài đặt.','Cả 2 phương án trên','','b',1],
+['Để liệt kê đầy đủ thông tin của các file có trong thư mục hiện hành theo ta dùng lệnh ls với tham số','–l','–a','–x','–n','a',2],
+['Để liệt kê các file ẩn trong thư mục hiện hành theo ta dùng lệnh ls với tham số','–a','–b','–l','–n','a',2],
+['Để chuyển sang một thư mục khác ta dùng lệnh …','Lệnh cd','Lệnh cdir','Lệnh mkdir','Lệnh dir','a',2],
+['Một user có username là sinhvien và home directory của anh ta là /home/sinhvien. Để trở về home dir của anh ta 1 cách nhanh nhất, anh ta phải dùng lệnh','cd  /home/sinhvien','cd','cd / ; cd home ; cd sinhvien','cd/home/sinhvien','a',2],
+['Để chép một file /tmp/hello.txt vào thư mục /tmp/hello/ ta phải làm lệnh nào sau đây:','cp /tmp/hello.txt  /tmp/hello','copy /tmp/hello.txt  /tmp/hello/','cp tmp/hello.txt  /tmp/hello','cp /tmp/hello  /tmp/hello','a',2],
+['Để xem nội dung một tập tin văn bản trong Linux ta có thể dùng lệnh nào sau đây','cả 3 lệnh dưới đây','cat','less','more','a',2],
+['Tập tin nào chứa các mount point mặc định khi hệ thống boot lên:','/etc/fstab','/etc/mtab','/etc/mount.conf','/etc/modules.conf','a',1],
+['Tập tin nào chứa thông tin các file system đang được mount','/etc/mount.conf','/etc/mntab','/etc/fstab','/etc/modules.conf','a',1],
+['Tập tin sau đây có thuộc tính tuyệt đối như thế nào :','-rwx--x--x   hello.sh','711','077','644','a',1],
+['Để thiết lập thuộc tính cho một tập tin hello.sh với các yêu cầu sau:','- Chủ sở hữu được quyền đọc- ghi, nhóm được đọc- thực thi, other chỉ đọc thì ta làm lệnh nào dưới đây ?','chmHod 654','chmod 665','chmod 653','b',1],
+['Tập tin có dấu chấm “.” phía trước có đặc tính gì đặc biệt:  Ví dụ:   .hello.txt','Tập tin ẩn','Thực thi','Không thấy được với lệnh ls','Tập tin hệ thống','a',1],
+['Chương trình soạn thảo nào sau đây không sử dụng giao diện đồ hoạ','vi','emacs','latex','kword','a',1],
+['Emacs là một chương trình … ?','Tất cả các tính năng dưới đây','soạn thảo văn bản','Công cụ lập trình','Email client','a',1],
+['Để xem các tiến trình hiện có trong hệ thống Linux ta dùng lệnh nào','Lệnh ps','Lệnh ls','Lệnh cs','Lệnh ds','a',2],
+['Tiến trình init:','Tất cả đều đúng','Luôn có PID = 1;','Không thể kết thúc được','Gọi khởi động các tiến trình khác','a',1],
+['Để xem chi tiết các tiến trình đang chạy trong hệ thống ta dùng lệnh ps với các tham số nào sau đây','–ax','–ef','–axf','Cả 3 câu đều đúng','a',1],
+['Mỗi tiến trình chạy trong hệ thống Linux được đặc trưng bởi :','PID','PUID','PGUID','GUID','a',2],
+['Để dừng một tiến trình ta dùng lệnh nào :','kill','stop','shutdown','halt','a',1],
+['Điều gì xảy ra với một tiến trình khi ta kill tiến trình cha của nó','Tiến trình con sẽ chết theo','Không có gì ảnh hưởng','Chương trình sẽ đọc lại file cấu hình','Sẽ có một tiến trình con mới sinh ra','a',1],
+['Để kill hết các tiến trình có tên là vi ta dùng lệnh nào','kill –HUP vi','kill –9 vi','killall –HUP vi','killall –9 vi','a',1],
+['Để thiết lập địa chỉ IP cho một máy Linux ta sử dụng lệnh nào trong các lệnh sau đây','ifconfig','ipconfig','netstat','route','a',2],
+['Để xem trạng thái các port đang mở của một máy Linux  ta sử dụng lệnh nào trong các lệnh sau đây','netstat','ipconfig','ifconfig','route','a',2],
+['Tập tin nào trong Linux định nghĩa các port cho các dịch vụ chạy trong nó','/etc/services','/etc/service','/etc/ports.conf','/etc/httpd.conf','a',2],
+['Làm thế nào để login từ xa qua mạng vào một máy Linux ?','Cả 3 cách dưới đây','Dùng telnet','Dùng ssh','Dùng rlogin','a',2],
+['Dịch vụ openSSH trong Linux là gì ?','Secure Shell','Secure Socket Shell','Samba Shell','Không có tên trong danh sách trên','a',2],
+['Tập tin nào chứa khai báo địa chỉ máy chủ DNS?','/etc/resolv.conf','/etc/named','/etc/sysconfig/resolv.conf','/etc/sysconfig/network','a',1],
+['Để chỉ liệt kê danh sách các tập tin có ký tự cuối cùng trong tên là “?” ở thư mục hiện hành, ta dùng lệnh?','ls *[?]','ls *?','ls*\\?','Tất cả đều sai','a',2],
+['Tập tin nào chứa ánh xạ loại địa chỉ IP cục bộ?','/etc/hosts','/etc/host.conf','/etc/resolv.conf','/etc/named.conf','a',1],
+['Lệnh nào được sử dụng để cho người dùng thiết lập lịch của riêng họ?','crontab –e','vi ~/.crontab','cp /etc/crontab','crontab –v','a',1],
+['Để chép nội dung file1 vào cuối file2, sử dụng lệnh?','cat file1 >> file2','cat file1 file2','more file1 2> file2','copy file1 >> file2','a',1],
+['Để hủy bỏ lệnh đang thi hành, ta thực hiện:','Nhấn Ctrl + C','Nhấn Ctrl + D','Nhấn Ctrl + Z','Nhấn Ctrl + S','a',1],
+['Tập tin /etc/sysconfig/network có chứa thông tin về:','Tên máy tính và default gateway','Các thiết bị được sử dụng để kết nối mạng','Các script dùng trong kết nối PPP và SLIP','Trạng thái của mạng','a',2],
+['Chương trình nào dùng để kiểm tra cấu hình dịch vụ DNS?','nslookup','dnscheck','BIND','resolve','a',1],
+['Lệnh nào để biết đầy đủ đường dẫn của thư mục hiện hành?','pwd','path','echo path','Không câu nào đúng','a',2],
+['Để tạo tập tin “new” chứa nội dung của hai tập tin “data” và “odd”, ta dùng lệnh:','cat data odd > new','cp data odd > new','cp data odd >> new','Tất cả đều đúng','a',1],
+['“/doc” là một thư mục, lệnh nào sai trong các lệnh dưới đây?','ln /doc mydoc','ln –s /doc mydoc','rm –rf /doc','cp –s /doc mydoc','a',2],
+['Lệnh nào để xóa tập tin có tên là “-abc”','rm –f –abc','rm –i –abc','rm -- -abc','rm \\ -abc','a',1],
+['Lệnh nào tương đương với lệnh sau “mkdir –p /home1/home2','mkdir --parents /home2/home1','mkdir /file /doc /priv','mkdir /priv /doc /file','mkdir –p /priv/doc/file','a',1],
+['Trong trình soạn thảo vi, lệnh nào dùng để ghi và thoát?','wq!','wq',':qw','','a',1],
+['Lệnh nào tương đương với lệnh sau “chmod u+rwx,g=rx,o-rwx myfile”','chmod 750 myfile','chmod 027 myfile','chmod 757 myfile','Không câu nào đúng','a',2],
+['Để chuyển về thư mục chủ của người dùng hiện hành, ta dùng lệnh?','cd ~','pwd','cd ..','cd /home','a',2],
+['Có thể tạo một Symbolic Link chỉ tới một tập tin không tồn tại hay không?','Tùy trường hợp','Có','Không','Tất cả đều sai','a',1],
+['Lệnh nào dùng để xóa toàn bộ thư mục /dir (Kể cả TM rỗng)','rm –rf </dir>','rm –sf </dir>','rmdir </dir>','rmdir –p </dir>','a',2],
+['Để tìm tất cả các sự khác nhau giữa hai tập tin, ta dùng lệnh:','diff','cmp','wc','Tất cả đều sai','a',1],
+['Thư mục /dev chứa:','Các tập tin đại diện thiết bị','Các tập tin dùng phát triển hệ thống','Các tập tin rác, tạm thời','Các tập tin đại diện trạng thái hiện hành của hệ thống','a',2],
+['Để sao chép tất cả nội dung có trong thư mục /dir vào thư mục /tmp, thi hành lệnh:','Tất cả đều đúng','cp –r /dir /tmp','cp –a /dir /tmp','cp --parents /dir /tmp','a',2],
+['Lệnh nào dùng để liệt kê danh sách tất cả các tập tin có tên phần mở rộng không chứa các ký tự trong khoảng từ “x” đến “w” trong thư mục hiện hành','ls *.[!x-w]','ls *.!x | .!w','ls ! *.[xz]','ls *.[!xw]','a',2],
+['“/xyz” là một symbolic link của “/tmp/dir”, lệnh nào sau đây cho phép ta chuyển vào thư mục “/tmp/dir”?','Tất cả đều sai','cd –L /xyz','cd –P /xyz','cd /xyz','a',2],
+['Lệnh nào cho phép ta tạo một account user mới trên hệ thống','Câu b và c đúng','Lệnh adduser','Lệnh useradd','lệnh passwd','a',2],
+['Sau khi đánh lệnh useradd sinhvien. Hỏi user có account là sinhvien có thể login vào hệ thống được không ?','Không','Được','Được sau khi thay đổi mật khẩu','Được do đã chứng thực người dùng','a',2],
+['Tập tin /etc/passwd chứa thông tin gì của users hệ thống','Chứa uid,gid, home directory, shell','Chứa profile của người dùng','Chứa password của người dùng','Chứa tập shadow của người dùng','a',2],
+['Tập tin /etc/shadow chứa thông tin gì của users hệ thống','Chứa password của người dùng','Chứa profile của người dùng','Chứa uid,gid, home directory, shell','Chứa login name','a',2],
+['Để thay đổi tên đăng nhập của tài khoản “user” thành “newuser”, ta dùng lệnh?','usermode –l newuser user','userchange –name newuser user','passwd –n newuser user','usermode –m user newuser','a',2],
+['Trong RedHat Linux, tên tài khoản người dùng:','Không được bắt đầu bằng một ký số','Là duy nhất','Phân biệt chữ thường với chữ hoa','Tất cả đều đúng','a',2],
+['Lệnh nào tương đương với lệnh sau “chown sales myfile”','chown sales:sales myfile','chgroup sales:sales myfile','chgrp sales myfile','chmod sales myfile','a',2],
+['Để khóa tài khoản “user”, ta dùng lệnh?','b và c đều đúng','usermod –L user','passwd –l user','b và c đều sai','a',2],
+['Khi tạo một tài khoản người dùng, thông tin nào bắt buộc phải được cung cấp?','Tên đăng nhập','Tên đầy đủ (Full Name)','Mã nhận diện tài khoản (UID)','Shell','a',1],
+['Để tạo tài khoản người dùng “abc” là thành viên của nhóm “group”, ta dùng lệnh:','useradd –g group abc','useradd –G group abc','useradd –m group abc','useradd group abc','a',1],
+['Tất cả các nhóm được liệt kê trong file /etc/group .Mỗi một nhóm được thể hiện trên một dòng.Hãy xác định trật tự đúng của các trường trên thực thể này:','groupname: password: GID: member list','GID : groupname: password: member list','groupname: GID: password: member list','GID: member list: groupname: password','a',2],
+['Bạn sử dụng lênh sau: useradd –m sapa song user sapa không đăng nhập vào được. Để đăng nhập được ta phải làm gì ?','Cần đăng ký mật khẩu cho user sapa bằng lệnh password sapa','Phải tạo thư mục home cho sapa và tạo quyền cho phép truy cập.','Bạn cần biên tập lại file /etc/passwd và đăng ký shell cho acount sapa','Tên người dùng nhỏ hơn 5 ký tự.','a',2],
+['Bạn tạo một user sinhvien mới bằng cách thêm vào /etc/passwd file một dòng như sau: sinhvien:abcdef:501:501:tensinhvien:/home/sinhvien:/bin/bash Sau đó sinh vien gặp bạn và nói không logon vào hệ thống được. Bạn kiểm tra và thấy tên user và mật khẩu đều đúng. Điều gì đã xảy ra?','Bạn không thể nhập mật khẩu trực tiếp. Cần dùng lệnh passwd command để đăng ký mật khẩu cho user.','UID và  GID giống nhau','Bạn không gõ khoảng trống hoặc ngoặc kép vào những vị trí cần thiết.','Tên người dùng quá ngắn, tối thiểu nó phải có độ dài 6 ký tự.','a',3],
+['Quan sát file /etc/passwd, bạn thấy trong trường password chứa ký hiệu ‘x’ ? - Ý nghĩa của ký tự này là gì?','Bạn đang sử dụng shadow password.','Password đã được mã hoá.','Tất cả  passwords đều rỗng.','Tất cả passwords đều hết hạn.','a',2],
+['Sau khi Dung rời khỏi công ty ,bạn dùng lệnh userdel Dung để xoá user này. Mẩu tin của user này trong file etc/passwd bị xoá , tuy vậy , trong home directory có thể vẫn còn thư mục của user này. Bạn có thể dùng lệnh nào sau đây để khẳng định  home directory cũng đã bị xoá?','userdel –r Dung','userdel –m Dung','userdel –u Dung','userdel –l Dung','a',2],
+['Bạn Dung có username là sapa. Bạn ấy nói  rằng quên mật mật khẩu đăng nhập. Lệnh nào sẽ giúp bạn Dung reset lại mật khẩu của mình.','passwd sapa','passwd Dung','resetpassw','su sapa','a',2],
+['File nào xác định tất cả các user trên hệ thống của bạn','/etc/passwd','/etc/users','/etc/password','/etc/user.conf','a',2],
+['Những user name nào sau đây không đúng','Theresa Hadden','thadden','TheresaH','T.H.','a',2],
+['Bạn hãy cho biết kết quả chạy đoạn code sau đây','#!/bin/sh myname="nguyen van A" echo ‘myname : $myname’ exit 0','myname : $myname','myname : nguyen van A','myname:” ”','b',1],
+['Trên SHELL LINUX cho phép truyền từ CLI tối đa bao nhiêu biến tham số:','9','8','10','Không xác định','a',3],
+['Trên SHELL LINUX để truyền số tham số lớn hơn 9 ta dùng lệnh','shift','add','sub','more','a',3],
+['Kết quả nào sau đây là đúng khi chay đoạn code:  foo=10 x=foo y=’$’$x echo $y','$foo:','10','$x','’$’$x','a',1],
+['Kết quả nào sau đây là đúng khi chay đoạn code: foo=10 x=foo eval y=’$’$x echo $y','10','$foo:','$x','’$’$x','a',1],
+['Hãy cho biết giá trị của biến z khi chạy đoạn code sau đây: X=10.5 y=25 z=$(($x+$y))','35.5','35','25','Báo lỗi','a',3],
+['Cho một chuỗi:  string=abvfdhyscdfbckh123fdh  Câu lệnh echo $string{#string};  sẽ trả về giá trị nào sau đây:','21','19','23','17','a',1],
+['Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string #a*b}  cho ta kết quả nào sau đây:','defavc123fau','abc','abcd','cdefavc123fau','a',1],
+['Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string ##fa}  cho ta kết quả nào sau đây:','u','favc123fau','abcde','au','a',1],
+['Cho một chuỗi:   string=abcdefavc 123fau   Câu lệnh echo {string %%fa}  cho ta kết quả nào sau đây:','abcde','abcdefavc123','abcdefavc123fa','abcdefa','a',1],
+['Tập tin /etc/group chứa các thông tin về nhóm trong hệ thống. Hãy cho biết câu lệnh sau xuất ra thông tin nào của nhóm:  ($(cat  /etc/group | grep  $GRUID | cut  –d:  -f4))','- Lưu ý : $GRUID là ID của nhóm được nhập từ KB','Group’s Members','Group ID','Group Name','b',2],
+['Để lấy chiều dài của chuỗi “string” ta dùng lệnh nào sau đây','Cả ba lệnh','${#string}','expr length $string','expr "$string" : \'.*\'','a',1],
+['Trong tập tin /etc/group các nhóm được mô tả dưới dang : groupname: password: GID: member list.','Lệnh nào dưới đây cho phép trả về danh sách người dùng trong nhóm (member list):','MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f4))','MEMBERS=($(cat /etc/passwd | grep $GUID | cut –d: -f4))','MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f2))','b',2],
+['Lệnh nào sau  đây thay thế tất cả chuỗi con trong “string” trùng với “substring” bằng một chuỗi “replacement”:','echo ${string//substring/replacement}','echo ${string/substring/replacement}','echo ${#string */replacement/}','echo ${$string */replacement/}','a',1],
+['File nào trong số các file dưới đây chứa các biến môi trường khi sử dụng Bash Shell ?','/etc/profile','~/.profile','/bash','~/bash','a',3],
+['Để tìm những số điện thoại trong phonebook có mã vùng là 0903 và các số sau là xxx xxx .Ví dụ : 0903 654 723 hoặc 0903 677 654 … ta dùng lệnh nào sau đây :','grep ‘0903 [0-9]\\{3\\}[0-9]\\{3\\}[0-9] phonebook','grep ‘0903 * * ‘ phonebook','grep ‘0903 [0-9] [0-9] phonebook','grep ^0903 phonebook','a',1],
+['Để tìm các dòng có chứa 2,3,4 ký tự “b” liên tiếp trong tệp tin “test” ta dùng lệnh nào sau đây :','grep b\\[2,3,4] test','grep “b??”  test','grep b* test','grep “bb,bbb,bbbb” test','a',1],
+['Lệnh nào dưới đây cho phép lấy ra chuỗi “xyz” từ chuỗi string=“xyzabcdef123xyztuv”','echo ${string%%abc*}','echo ${string##*xyz}','echo ${#string xyz}','echo ${string#*xyz}','a',1],
+['Những lệnh nào dưới đây cho phép loại chuỗi “xyz” đầu tiên tính từ đầu chuỗi string=“xyzabcdef123xyztuv”','echo ${string#x*y}','echo ${string##*xyz}','echo $[string:3]','echo ${string%%xyz*}','a',1],
+['Lệnh nào dưới đây cho phép loại tất cả các ký tự đứng trước chuỗi “xyz” trong chuỗi string=“xyzabcdef123xyztuv”','echo ${string##*xyz}','echo ${string#*xyz}','echo ${#string xyz}','echo ${string%%abc*}','a',1],
+['Các thư viện chuẩn của gcc nằm trên thư mục nào dưới đây:','/usr/lib/gcc-lib','/usr/sbin/lib','/sbin/lib','/usr/local/lib','a',2],
+['Các tập tin nào sau đây không phải là tập tin thư viện của gcc ?','liba.lib','libabc.so','libabc.sa','libab.a','a',1],
+['Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc  main.c','a.out','main.o','main','a.o','a',2],
+['Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc   -c  main.c','main.o','main','main.so','main.sa','a',2],
+['Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc  main.c  -o   main','main','main.o','main.obj','main.exe','a',2],
+['Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau: /root]#gcc  -c  main.c myapp.c','main.o  , myapp.o','main  , myapp','main.so ,   myapp.so','main.sa, myapp.sa','a',2],
+['Cho biết tập tin nào  được tạo ra sau khi thực hiện câu lệnh sau','/root]#gcc  main.o  lib1.o lib2.o  -o   main   //lib1.o và lib2.o là hai tập tin thư viện','main','lib.a','lib.so','b',1],
+['Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau','/root]#ar cvr  lib1.o lib2.o  lib12.a   //lib1.o và lib2.o là hai tập tin thư viện','lib12.a','lib.a','lib.sa','b',1],
+['Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau','/root]#gcc  main.o  -o  main  lib12.a','main','main.c','main.lib','b',1],
+['Để tạo liên kết động từ hai tập tin thư viện lib1.o và lib2.0 ta dùng câu lệnh','~root]#gcc  -shared  lib1.o  lib2.o  -o  lib12.so','~root]#gcc   -c  -pfic lib1.c  lib2.c','~root]#gcc  -o  lib12.so  -shared lib1.o  lib2.o','~root]#gcc  -o  -shared lib1.o  lib12.so  lib2.o','a',1],
+['Tập tin makefile là tập tin','Chứa các thông tin mô tả cách thức xây dựng và biên dịch','thực thi chương trình','Cấu hình hệ thống','Logfile','a',3],
+['Trình tự các thông tin được đặc tả trong makefile là','các đích (tagget) – các phụ thuộc (dependences) – các quy tắc (rules)','các quy tắc (rules)– các phụ thuộc(dependences) –các đích(tagget)','các phụ thuộc (dependences) – các quy tắc (rules) - các đích (tagget)','Không quan trọng','a',3],
+];
+$o=1;foreach($e3 as $d)DB::table('quiz_questions')->insert(['exam_id'=>3,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+
+        $this->command->info('✅ 355 câu!');
     }
 }
