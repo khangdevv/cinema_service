@@ -99,20 +99,18 @@ class AuthController extends Controller
     // Google OAuth - Redirect
     public function redirectToGoogle()
     {
-        // Sử dụng quiz_redirect cho ứng dụng trắc nghiệm
-        $redirectUrl = config('services.google.quiz_redirect');
+        // Set session marker để Web AuthController biết request từ Quiz app
+        session(['google_auth_source' => 'quiz']);
 
-        return Socialite::driver('google')
-            ->stateless()
-            ->redirectUrl($redirectUrl)
-            ->redirect();
+        // Redirect đến route Google chung đã được config trên Google Console
+        return redirect('/auth/google');
     }
 
     // Google OAuth - Callback
     public function handleGoogleCallback()
     {
         try {
-            $redirectUrl = config('services.google.quiz_redirect');
+            $redirectUrl = config('services.google.redirect');
             $googleUser = Socialite::driver('google')
                 ->stateless()
                 ->redirectUrl($redirectUrl)
