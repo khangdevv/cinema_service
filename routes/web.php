@@ -7,20 +7,9 @@ use App\Http\Controllers\Web\BookingController;
 use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\AdminController;
 
-// Redirect root to login if not authenticated, otherwise redirect based on role
+// Redirect root to Quiz App
 Route::get('/', function () {
-    if (auth()->guard('web')->check()) {
-        $user = auth()->guard('web')->user();
-
-        // Nếu là ADMIN hoặc STAFF thì vào admin panel
-        if (in_array($user->role, ['ADMIN', 'STAFF'])) {
-            return redirect()->route('admin.dashboard');
-        }
-
-        // Nếu là CUSTOMER thì vào trang đặt vé
-        return redirect()->route('booking.index');
-    }
-    return redirect()->route('auth.login.form');
+    return redirect('/quiz');
 })->name('home');
 
 // Booking Routes (Requires Authentication + CUSTOMER role only)
