@@ -1,64 +1,68 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
-import { AcademicCapIcon, EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import {
+    AcademicCapIcon,
+    EnvelopeIcon,
+    LockClosedIcon,
+} from "@heroicons/react/24/outline";
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [searchParams] = useSearchParams()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [searchParams] = useSearchParams();
 
-    const { login, isAuthenticated } = useAuth()
-    const navigate = useNavigate()
+    const { login, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
 
     // Handle Google OAuth callback
     useEffect(() => {
-        const token = searchParams.get('token')
-        const userParam = searchParams.get('user')
-        const errorParam = searchParams.get('error')
+        const token = searchParams.get("token");
+        const userParam = searchParams.get("user");
+        const errorParam = searchParams.get("error");
 
         if (errorParam) {
-            setError(decodeURIComponent(errorParam))
-            return
+            setError(decodeURIComponent(errorParam));
+            return;
         }
 
         if (token && userParam) {
             try {
-                const user = JSON.parse(decodeURIComponent(userParam))
-                localStorage.setItem('quiz_token', token)
-                localStorage.setItem('quiz_user', JSON.stringify(user))
+                const user = JSON.parse(decodeURIComponent(userParam));
+                localStorage.setItem("quiz_token", token);
+                localStorage.setItem("quiz_user", JSON.stringify(user));
                 // Reload to update auth state
-                window.location.href = '/quiz'
+                window.location.href = "/quiz";
             } catch (e) {
-                setError('Có lỗi xảy ra khi đăng nhập Google')
+                setError("Có lỗi xảy ra khi đăng nhập Google");
             }
         }
-    }, [searchParams])
+    }, [searchParams]);
 
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/')
+            navigate("/");
         }
-    }, [isAuthenticated, navigate])
+    }, [isAuthenticated, navigate]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        setError('')
-        setLoading(true)
+        e.preventDefault();
+        setError("");
+        setLoading(true);
 
-        const result = await login(email, password)
-
+        const result = await login(email, password);
+        console.log(result);
         if (result.success) {
-            navigate('/')
+            navigate("/");
         } else {
-            setError(result.message)
+            setError(result.message);
         }
 
-        setLoading(false)
-    }
+        setLoading(false);
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
@@ -110,7 +114,9 @@ const Login = () => {
                                 <input
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                     className="input pl-10"
                                     placeholder="••••••••"
                                     required
@@ -129,7 +135,7 @@ const Login = () => {
                                     Đang đăng nhập...
                                 </>
                             ) : (
-                                'Đăng nhập'
+                                "Đăng nhập"
                             )}
                         </button>
 
@@ -139,7 +145,9 @@ const Login = () => {
                                 <div className="w-full border-t border-gray-300"></div>
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="px-4 bg-white text-gray-500">hoặc</span>
+                                <span className="px-4 bg-white text-gray-500">
+                                    hoặc
+                                </span>
                             </div>
                         </div>
 
@@ -172,7 +180,7 @@ const Login = () => {
 
                     <div className="mt-6 text-center">
                         <p className="text-sm text-gray-600">
-                            Chưa có tài khoản?{' '}
+                            Chưa có tài khoản?{" "}
                             <Link
                                 to="/register"
                                 className="text-primary-600 hover:text-primary-700 font-medium"
@@ -191,7 +199,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
