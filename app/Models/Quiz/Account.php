@@ -11,6 +11,7 @@ class Account extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
+    protected $connection = 'tracnghiem';
     protected $table = 'accounts';
 
     protected $fillable = [

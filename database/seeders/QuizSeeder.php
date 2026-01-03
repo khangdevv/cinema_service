@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 
 class QuizSeeder extends Seeder {
     public function run(): void {
-        DB::table('accounts')->insert(['email'=>'admin@tracnghiem.com','password'=>Hash::make('admin123'),'full_name'=>'Admin','role'=>'ADMIN','is_active'=>true,'created_at'=>now(),'updated_at'=>now()]);
+        DB::connection('tracnghiem')->table('accounts')->insert(['email'=>'admin@tracnghiem.com','password'=>Hash::make('admin123'),'full_name'=>'Admin','role'=>'ADMIN','is_active'=>true,'created_at'=>now(),'updated_at'=>now()]);
         
         foreach([
             ['id'=>1,'name'=>'Mã nguồn mở','slug'=>'oss','description'=>'GPL,MIT,BSD','sort_order'=>1],
@@ -19,13 +19,13 @@ class QuizSeeder extends Seeder {
             ['id'=>8,'name'=>'VSCode','slug'=>'vscode','description'=>'Editor','sort_order'=>8],
             ['id'=>9,'name'=>'CMS','slug'=>'cms','description'=>'WordPress','sort_order'=>9],
             ['id'=>10,'name'=>'Python','slug'=>'python','description'=>'Django,Flask','sort_order'=>10],
-        ] as $t) { $t['created_at']=$t['updated_at']=now(); DB::table('quiz_topics')->insert($t); }
+        ] as $t) { $t['created_at']=$t['updated_at']=now(); DB::connection('tracnghiem')->table('quiz_topics')->insert($t); }
         
         foreach([
             ['id'=>1,'name'=>'Đề Ôn Thầy Trường','slug'=>'de1','description'=>'119 câu','type'=>'practice','time_limit'=>90,'total_questions'=>119,'is_active'=>true],
             ['id'=>2,'name'=>'Ôn tập Thầy Khuê','slug'=>'de2','description'=>'116 câu','type'=>'practice','time_limit'=>90,'total_questions'=>116,'is_active'=>true],
             ['id'=>3,'name'=>'Bonus','slug'=>'de3','description'=>'120 câu','type'=>'practice','time_limit'=>120,'total_questions'=>120,'is_active'=>true],
-        ] as $e) { $e['created_at']=$e['updated_at']=now(); DB::table('quiz_exams')->insert($e); }
+        ] as $e) { $e['created_at']=$e['updated_at']=now(); DB::connection('tracnghiem')->table('quiz_exams')->insert($e); }
 
 
         // ĐỀ 1: 119 CÂU
@@ -150,7 +150,7 @@ class QuizSeeder extends Seeder {
 ['Tùy chọn nào trong lệnh docker run được sử dụng để chạy container ở chế độ nền (detached mode)?','-f','-it','-d','--run-in-background','c',5],
 ['Lệnh nào được sử dụng để xem chi tiết tài nguyên sử dụng của container?','docker stats','docker inspect','docker info','docker resources','a',5],
 ];
-$o=1;foreach($e1 as $d)DB::table('quiz_questions')->insert(['exam_id'=>1,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+$o=1;foreach($e1 as $d)DB::connection('tracnghiem')->table('quiz_questions')->insert(['exam_id'=>1,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
 
         // ĐỀ 2: 116 CÂU
         $e2=[
@@ -271,7 +271,7 @@ $o=1;foreach($e1 as $d)DB::table('quiz_questions')->insert(['exam_id'=>1,'topic_
 ['Cấu trúc phân cấp công việc trong ProjectLibre được tạo ra','Copy & Paste.','Indent (Thụt lề phải) và Outdent (Thụt lề trái) cho các Task.','Tô màu cho dòng.','Đổi font chữ.','b',10],
 ['Mối quan hệ "Start-to-Start" (SS) có nghĩa là:','Hai công việc phải kết thúc cùng lúc.','Công việc B có thể bắt đầu khi công việc A bắt đầu.','Công việc B bắt đầu khi A kết thúc.','Công việc B kết thúc khi A bắt đầu.','b',1],
 ];
-$o=1;foreach($e2 as $d)DB::table('quiz_questions')->insert(['exam_id'=>2,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+$o=1;foreach($e2 as $d)DB::connection('tracnghiem')->table('quiz_questions')->insert(['exam_id'=>2,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
 
         // ĐỀ 3: 120 CÂU
         $e3=[
@@ -396,7 +396,7 @@ $o=1;foreach($e2 as $d)DB::table('quiz_questions')->insert(['exam_id'=>2,'topic_
 ['Tập tin makefile là tập tin','Chứa các thông tin mô tả cách thức xây dựng và biên dịch','thực thi chương trình','Cấu hình hệ thống','Logfile','a',3],
 ['Trình tự các thông tin được đặc tả trong makefile là','các đích (tagget) – các phụ thuộc (dependences) – các quy tắc (rules)','các quy tắc (rules)– các phụ thuộc(dependences) –các đích(tagget)','các phụ thuộc (dependences) – các quy tắc (rules) - các đích (tagget)','Không quan trọng','a',3],
 ];
-$o=1;foreach($e3 as $d)DB::table('quiz_questions')->insert(['exam_id'=>3,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
+$o=1;foreach($e3 as $d)DB::connection('tracnghiem')->table('quiz_questions')->insert(['exam_id'=>3,'topic_id'=>$d[6],'question'=>$d[0],'option_a'=>$d[1],'option_b'=>$d[2],'option_c'=>$d[3],'option_d'=>$d[4],'correct_answer'=>$d[5],'explanation'=>'','sort_order'=>$o++,'created_at'=>now(),'updated_at'=>now()]);
 
         $this->command->info('✅ 355 câu!');
     }

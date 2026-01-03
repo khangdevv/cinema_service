@@ -1,747 +1,884 @@
 Chương 1: Phần mềm mã nguồn mở (20 câu)
 Câu 3: Giấy phép BSD - Berkeley System Distribution Licenses được sử dụng lần đầu tiên cho phần mềm nào?
-Free BSD
-BSD Unix
-Net BSD
-Unix
+ 
+a.	Free BSD
+b.	BSD Unix
+c.	Net BSD
+d.	Unix
+ 
 Câu 5: Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?
-Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.
-Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.
-Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.
-Câu b và c.
+a.	Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.
+b.	Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.
+c.	Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.
+d.	Câu b và c.
 Câu 6: Tổ chức FSF là tổ chức
-Phần mềm mã nguồn mở
-Phần mềm tự do
-Quỹ phần mềm nguồn mở
-Phần mềm miễn phí
+ 
+a.	Phần mềm mã nguồn mở
+b.	Phần mềm tự do
+c.	Quỹ phần mềm nguồn mở
+d.	Phần mềm miễn phí
+ 
+ 
 Câu 14: Bạn hãy cho biết phần mềm nào sau đây sử dụng giấp phép BSD:
-Ubuntu
-Window Xfree86
-JavaFBP toolkit
-Không câu nào đúng
+ 
+a.	Ubuntu
+b.	Window Xfree86
+c.	JavaFBP toolkit
+d.	Không câu nào đúng
+ 
+ 
 Câu 17: Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :
-GNU GPL License
-Apache Public License
-BSD License
-Artistic License
+ 
+a.	GNU GPL License
+b.	Apache Public License
+c.	BSD License
+d.	Artistic License
+ 
+ 
 Câu 19: Phần mềm Apache Server sử dụng giấy phép nào sau đây :
-BSD License
-Artistic License
-GPL License
-Apache License
+ 
+a.	BSD License
+b.	Artistic License
+c.	GPL License
+d.	Apache License
+ 
 Câu 20: Những phần mềm mã nguồn mở miễn phí nào sau đây giúp chạy các ứng dụng windows trên môi trường Ubuntu
-Wine và CrossOver.
-Wine door và Cedega
-Wine và PlayOnlinux.
-Cả 3 đều đúng.
-CHƯƠNG 2
+ 
+a.	Wine và CrossOver.
+b.	Wine door và Cedega
+c.	Wine và PlayOnlinux.
+d.	Cả 3 đều đúng.
+ 
+
+CHƯƠNG 2 
+ 
+ 
+
 Chuong 1: Phần mềm mã nguồn mở (20 câu)
+
 Câu 5: Tổ chức OSI - Open Source Initiative là một tổ chức như thế nào ?
-Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.
-Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.
-Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.
-Câu b và c.
+a.	Là một tổ chức phần mềm nguồn mở, trực tiếp phát triển các dự án phần mềm nguồn mở.
+b.	Là một tổ chức phi lợi nhuận mà mục đích của nó là thúc đẩy sự phát triển phần mềm nguồn mở.
+c.	Hoạt động quan trọng nhất của tổ chức này là xem xét phê duyệt giấy phép mã nguồn mở.
+d.	Câu b và c.
 Câu 17: Phần mềm GIMP sử dụng giấy phép mã nguồn mở nào :
-GNU GPL License
-Apache Public License
-BSD License
-Artistic License
+ 
+a.	GNU GPL License
+b.	Apache Public License
+c.	BSD License
+d.	Artistic License
+ 
+
+
+
+
 Câu 4: Kiến trúc Kernel Linux là Monolithic.
+
 Câu 5. Dung lượng nhỏ nhất cho phép đối với các swap partition là :
-16 MB
-64 MB
-128 MB
-256 MB
+ 
+a.	16 MB
+b.	64 MB
+c.	128 MB
+d.	256 MB
+ 
 Câu 6. Có ít nhất bao nhiêu patition cần được tạo ra khi ta cài đặt LINUX ?
-2
-1
-Lớn hơn 2
-Lớn hơn 3
+ 
+a.	2
+b.	1
+c.	Lớn hơn 2
+d.	Lớn hơn 3
+ 
 Câu 7. Bạn đang cài Linux lên máy tính của bạn. Bạn muốn có 5 partitions khác nhau và đã tạo ra được 4 partition. Còn partition thứ 5 không cách nào tạo ra được. Điều gì đã xảy ra ?
-Bạn đã tạo ra 4 primary partitions.
-Hard drive của bạn không đủ chỗ để tạo hơn 4 partition.
-Bạn phải tạo swap partition .
-Linux không cho phép tạo hơn 4 partitions.
+a.	Bạn đã tạo ra 4 primary partitions.
+b.	Hard drive của bạn không đủ chỗ để tạo hơn 4 partition.
+c.	Bạn phải tạo swap partition .
+d.	Linux không cho phép tạo hơn 4 partitions.
 Câu 10. Swap đóng vai trò gì?
-Bộ nhớ đệm       
-Bộ nhớ phân trang   
-Bộ chuyển bộ nhớ      
-Câu a và b
+ 
+a.	Bộ nhớ đệm       
+b.	Bộ nhớ phân trang   
+c.	Bộ chuyển bộ nhớ      
+d.	Câu a và b
+ 
 Câu 11. Máy tính của bạn có hai ổ đĩa cứng IDE và bạn đang cài Linux trên chúng. Mỗi đĩa cứng bạn chia thành hai patitions . Các partition trên máy của bạn có tên là gì ? 
-hda1, hda2, hdb1, hdb2
-hda1, hda2, hda3, hda4
-sda1, sda2, sda1, sdb2
-sda1, sda2, sda3, sda4
+ 
+a.	hda1, hda2, hdb1, hdb2
+b.	hda1, hda2, hda3, hda4
+c.	sda1, sda2, sda1, sdb2
+d.	sda1, sda2, sda3, sda4
+ 
 Câu 12. Để đọc nội dung một đĩa CD trong Linux ta phải làm thế nào ? 
-Phải mount trước    
-eject cdrom   
-cd /mnt/cdrom   
-Không đọc được CD rom
+ 
+a.	Phải mount trước    
+b.	eject cdrom   
+c.	cd /mnt/cdrom   
+d.	Không đọc được CD rom 
+
 Câu 13. Trong hệ thống Linux user nào có quyền cao nhất ? 
+ 
 a. User root   
 b. User administrator    
 c. User admin     
 d. User có UID=0 
+ 
 Câu 14. Lệnh nào dùng để cài đặt gói phần mềm “packagename.rpm”?
-rpm –ivh packagename.rpm
-rpm –evh packagename.rpm
-rpm –q packagename.rpm
-rpm –qa *.rpm
+ 
+a.	rpm –ivh packagename.rpm
+b.	rpm –evh packagename.rpm
+c.	rpm –q packagename.rpm
+d.	rpm –qa *.rpm
+ 
 Câu 15. Để thay đổi các lựa chọn gắn kết (mount) tự động cho một hệ thống tập tin cục bộ, ta cần sửa đổi nội dung tập tin nào?
+ 
 a. /etc/fstab     
 b./etc/filesystems     
 c./etc/group     
 d./etc/mnttab
+ 
+
+
 Câu 16.  Hãy cho biết GNOME là viết tắt của từ nào sau đây ?
-GNU Network Object Model Environment
-GNU Networld Object Model Enviroment
-GNU Object Model Environment
+a.	GNU Network Object Model Environment
+b.	GNU Networld Object Model Enviroment
+c.	GNU Object Model Environment
 Câu 17. Hãy cho biết phiên bản KDE đầu tiên 1.0 ra đời năm nào ?
+ 
 a. 1988     	 b. 1998     c. 1990
+ 
 Câu 18. Hệ điều hành Kubuntu sử dụng trình duyệt web nào dưới đây?
+ 
 a. Firefox
 b. Konqueror
 c. Pidgin internet messenger
+ 
 Câu 19. Khi cài đặt song song nhiều loại giao diện đồ hoạ trong Ubuntu thì chọn khởi động một loại nào đó giao diện như thế nào ?
-Trong khi đăng nhập vào hệ thống thì chọn loại giao diện cần khởiđộng trong mục Session rồi mới nhấn nút login.
-Sau khi đăng nhập vào hệ thống xong, chọn System / Appearance để chọnloại giao diện cần dùng.
-Sau khi đăng nhập Ubuntu vào Terminal gõ dòng lệnh tên của loại giaodiện để chuyển sang giao diện cần dùng.
+a.	Trong khi đăng nhập vào hệ thống thì chọn loại giao diện cần khởiđộng trong mục Session rồi mới nhấn nút login.
+b.	Sau khi đăng nhập vào hệ thống xong, chọn System / Appearance để chọnloại giao diện cần dùng.
+c.	Sau khi đăng nhập Ubuntu vào Terminal gõ dòng lệnh tên của loại giaodiện để chuyển sang giao diện cần dùng.
 Câu 23. Nguyên tắc để cài đặt song song nhiều giao diện là gì ?
-Cài đặt thêm bản phân phối của loại giao diện cần dùng lên giao diện đang sử dụng
-Tải thư viện tương ứng của môi trường giao diện cần dùng và tiến hành cài đặt.
-Cả 2 phương án trên 
+a.	Cài đặt thêm bản phân phối của loại giao diện cần dùng lên giao diện đang sử dụng
+b.	Tải thư viện tương ứng của môi trường giao diện cần dùng và tiến hành cài đặt.
+c.	Cả 2 phương án trên 
 Câu 25. Để liệt kê đầy đủ thông tin của các file có trong thư mục hiện hành theo ta dùng lệnh ls với tham số 
-–l 
-–a 
-–x 
-–n
+ 
+a.	–l 
+b.	–a 
+c.	–x 
+d.	–n
+ 
 Câu 26. Để liệt kê các file ẩn trong thư mục hiện hành theo ta dùng lệnh ls với tham số 
-–a 
-–b 
-–l 
-–n
+ 
+a.	–a 
+b.	–b 
+c.	–l 
+d.	–n
+ 
 Câu 27. Để chuyển sang một thư mục khác ta dùng lệnh …
-Lệnh cd 
-Lệnh cdir 
-Lệnh mkdir 
-Lệnh dir 
+ 
+a.	Lệnh cd 
+b.	Lệnh cdir 
+c.	Lệnh mkdir 
+d.	Lệnh dir 
+ 
 Câu 28. Một user có username là sinhvien và home directory của anh ta là /home/sinhvien. Để trở về home dir của anh ta 1 cách nhanh nhất, anh ta phải dùng lệnh 
-cd  /home/sinhvien 
-cd 
-cd / ; cd home ; cd sinhvien 
-cd/home/sinhvien
+ 
+a.	cd  /home/sinhvien 
+b.	cd 
+c.	cd / ; cd home ; cd sinhvien 
+d.	cd/home/sinhvien
+ 
 Câu 29. Để chép một file /tmp/hello.txt vào thư mục /tmp/hello/ ta phải làm lệnh nào sau đây: 
-cp /tmp/hello.txt  /tmp/hello 
-copy /tmp/hello.txt  /tmp/hello/ 
-cp tmp/hello.txt  /tmp/hello 
-cp /tmp/hello  /tmp/hello 
+ 
+a.	cp /tmp/hello.txt  /tmp/hello 
+b.	copy /tmp/hello.txt  /tmp/hello/ 
+c.	cp tmp/hello.txt  /tmp/hello 
+d.	cp /tmp/hello  /tmp/hello 
+ 
 Câu 30. Để xem nội dung một tập tin văn bản trong Linux ta có thể dùng lệnh nào sau đây 
-cả 3 lệnh dưới đây
-cat 
-less 
-more
+ 
+a.	cả 3 lệnh dưới đây
+b.	cat 
+c.	less 
+d.	more
+ 
 Câu 31. Tập tin nào chứa các mount point mặc định khi hệ thống boot lên: 
-/etc/fstab 
-/etc/mtab 
-/etc/mount.conf 
-/etc/modules.conf 
+ 
+a.	/etc/fstab 
+b.	/etc/mtab 
+c.	/etc/mount.conf 
+d.	/etc/modules.conf 
+ 
 Câu 32. Tập tin nào chứa thông tin các file system đang được mount 
-/etc/mount.conf 
-/etc/mntab 
-/etc/fstab 
-/etc/modules.conf 
+ 
+a.	/etc/mount.conf 
+b.	/etc/mntab 
+c.	/etc/fstab 
+d.	/etc/modules.conf 
+ 
 Câu 33. Tập tin sau đây có thuộc tính tuyệt đối như thế nào : 
      -rwx--x--x   hello.sh
-711 
-077 
-644 
-755 
+ 
+a.	711 
+b.	077 
+c.	644 
+d.	755 
+ 
 Câu 34. Để thiết lập thuộc tính cho một tập tin hello.sh với các yêu cầu sau: 
 - Chủ sở hữu được quyền đọc- ghi, nhóm được đọc- thực thi, other chỉ đọc thì ta làm lệnh nào dưới đây ? 
-chmHod 654  
-chmod 665 
-chmod 653 
-chmod 754
+ 
+a.	654  
+b.	chmod 665 
+c.	chmod 653 
+d.	chmod 754
+ 
 Câu 35. Tập tin có dấu chấm “.” phía trước có đặc tính gì đặc biệt:  Ví dụ:   .hello.txt
-Tập tin ẩn 
-Thực thi  
-Không thấy được với lệnh ls  
-Tập tin hệ thống  
+ 
+a.	Tập tin ẩn 
+b.	Thực thi  
+c.	Không thấy được với lệnh ls  
+d.	Tập tin hệ thống  
+ 
 Câu 36. Chương trình soạn thảo nào sau đây không sử dụng giao diện đồ hoạ 
-vi 
-emacs 
-latex 
-kword 
+ 
+a.	vi 
+b.	emacs 
+c.	latex 
+d.	kword 
+ 
 Câu 37. Emacs là một chương trình … ?
-Tất cả các tính năng dưới đây
-soạn thảo văn bản 
-Công cụ lập trình 
-Email client 
+ 
+a.	Tất cả các tính năng dưới đây
+b.	soạn thảo văn bản 
+c.	Công cụ lập trình 
+d.	Email client 
+ 
 Câu 38. Để xem các tiến trình hiện có trong hệ thống Linux ta dùng lệnh nào 
-Lệnh ps 
-Lệnh ls 
-Lệnh cs  
-Lệnh ds 
+ 
+a.	Lệnh ps 
+b.	Lệnh ls 
+c.	Lệnh cs  
+d.	Lệnh ds 
+ 
 Câu 39. Tiến trình init:
-Tất cả đều đúng
-Luôn có PID = 1;
-Không thể kết thúc được
-Gọi khởi động các tiến trình khác
+ 
+a.	Tất cả đều đúng
+b.	Luôn có PID = 1;
+c.	Không thể kết thúc được
+d.	Gọi khởi động các tiến trình khác
+ 
 Câu 40. Để xem chi tiết các tiến trình đang chạy trong hệ thống ta dùng lệnh ps với các tham số nào sau đây 
-–ax  
-–ef 
-–axf 
-Cả 3 câu đều đúng 
+ 
+a.	–ax  
+b.	–ef 
+c.	–axf 
+d.	Cả 3 câu đều đúng 
+ 
 Câu 41. Mỗi tiến trình chạy trong hệ thống Linux được đặc trưng bởi : 
-PID
-PUID 
-PGUID 
-GUID 
+ 
+a.	PID
+b.	PUID 
+c.	PGUID 
+d.	GUID 
+ 
 Câu 42. Để dừng một tiến trình ta dùng lệnh nào : 
-kill 
-stop 
-shutdown 
-halt 
+ 
+a.	kill 
+b.	stop 
+c.	shutdown 
+d.	halt 
+ 
 Câu 43. Điều gì xảy ra với một tiến trình khi ta kill tiến trình cha của nó 
-Tiến trình con sẽ chết theo 
-Không có gì ảnh hưởng 
-Chương trình sẽ đọc lại file cấu hình 
-Sẽ có một tiến trình con mới sinh ra 
+ 
+a.	Tiến trình con sẽ chết theo 
+b.	Không có gì ảnh hưởng 
+c.	Chương trình sẽ đọc lại file cấu hình 
+d.	Sẽ có một tiến trình con mới sinh ra 
+ 
 Câu 44. Để kill hết các tiến trình có tên là vi ta dùng lệnh nào 
-kill –HUP vi 
-kill –9 vi 
-killall –HUP vi 
-killall –9 vi
+ 
+a.	kill –HUP vi 
+b.	kill –9 vi 
+c.	killall –HUP vi 
+d.	killall –9 vi
+ 
 Câu 45. Để thiết lập địa chỉ IP cho một máy Linux ta sử dụng lệnh nào trong các lệnh sau đây 
-ifconfig 
-ipconfig 
-netstat 
-route 
+ 
+a.	ifconfig 
+b.	ipconfig 
+c.	netstat 
+d.	route 
+ 
 Câu 46. Để xem trạng thái các port đang mở của một máy Linux  ta sử dụng lệnh nào trong các lệnh sau đây 
-netstat 
-ipconfig 
-ifconfig 
-route 
+ 
+a.	netstat 
+b.	ipconfig 
+c.	ifconfig 
+d.	route 
+ 
 Câu 47. Tập tin nào trong Linux định nghĩa các port cho các dịch vụ chạy trong nó 
-/etc/services 
-/etc/service 
-/etc/ports.conf 
-/etc/httpd.conf 
+ 
+a.	/etc/services 
+b.	/etc/service 
+c.	/etc/ports.conf 
+d.	/etc/httpd.conf 
+ 
 Câu 48. Dịch vụ SMTP chạy ở port nào ? – Port 25.
 Câu 49. Dịch vụ www chạy ở port nào ? – Port 80.
 Câu 50. Dịch vụ nào cho phép ta truyền file qua mạng ? – ftp.
 Câu 51. Làm thế nào để login từ xa qua mạng vào một máy Linux ?
-Cả 3 cách dưới đây
-Dùng telnet 
-Dùng ssh 
-Dùng rlogin 
+ 
+a.	Cả 3 cách dưới đây
+b.	Dùng telnet 
+c.	Dùng ssh 
+d.	Dùng rlogin 
+ 
 Câu 52.Dịch vụ openSSH trong Linux là gì ? 
-Secure Shell 
-Secure Socket Shell 
-Samba Shell 
-Không có tên trong danh sách trên 
+ 
+a.	Secure Shell 
+b.	Secure Socket Shell 
+c.	Samba Shell 
+d.	Không có tên trong danh sách trên 
+ 
 Câu 53.Tập tin nào chứa khai báo địa chỉ máy chủ DNS?
-/etc/resolv.conf
-/etc/named
-/etc/sysconfig/resolv.conf
-/etc/sysconfig/network
+ 
+a.	/etc/resolv.conf
+b.	/etc/named
+c.	/etc/sysconfig/resolv.conf
+d.	/etc/sysconfig/network
+ 
 Câu 54. Để chỉ liệt kê danh sách các tập tin có ký tự cuối cùng trong tên là “?” ở thư mục hiện hành, ta dùng lệnh?
-ls *[?]
-ls *?
-ls*\?
-Tất cả đều sai
+ 
+a.	ls *[?]
+b.	ls *?
+c.	ls*\?
+d.	Tất cả đều sai
+ 
 Câu 55.Tập tin nào chứa ánh xạ loại địa chỉ IP cục bộ?
-/etc/hosts
-/etc/host.conf
-/etc/resolv.conf
-/etc/named.conf
+ 
+a.	/etc/hosts
+b.	/etc/host.conf
+c.	/etc/resolv.conf
+d.	/etc/named.conf
+ 
 Câu 56.Lệnh nào được sử dụng để cho người dùng thiết lập lịch của riêng họ?
-crontab –e
-vi ~/.crontab
-cp /etc/crontab
-crontab –v
+ 
+a.	crontab –e
+b.	vi ~/.crontab
+c.	cp /etc/crontab
+d.	crontab –v
+ 
 Câu 57. Để chép nội dung file1 vào cuối file2, sử dụng lệnh?
-cat file1 >> file2     
-cat file1 file2        
-more file1 2> file2       
-copy file1 >> file2
+ 
+a.	cat file1 >> file2     
+b.	cat file1 file2        
+c.	more file1 2> file2       
+d.	copy file1 >> file2
+ 
 Câu 58. Để hủy bỏ lệnh đang thi hành, ta thực hiện:
-Nhấn Ctrl + C         
-Nhấn Ctrl + D           
-Nhấn Ctrl + Z     
-Nhấn Ctrl + S
+ 
+a.	Nhấn Ctrl + C         
+b.	Nhấn Ctrl + D           
+c.	Nhấn Ctrl + Z     
+d.	Nhấn Ctrl + S
+ 
 Câu 59. Tập tin /etc/sysconfig/network có chứa thông tin về:
-Tên máy tính và default gateway
-Các thiết bị được sử dụng để kết nối mạng
-Các script dùng trong kết nối PPP và SLIP
-Trạng thái của mạng
+ 
+a.	Tên máy tính và default gateway
+b.	Các thiết bị được sử dụng để kết nối mạng
+c.	Các script dùng trong kết nối PPP và SLIP
+d.	Trạng thái của mạng
+ 
 Câu 60. Chương trình nào dùng để kiểm tra cấu hình dịch vụ DNS?
-nslookup     
-dnscheck       
-BIND        
-resolve
+ 
+a.	nslookup     
+b.	dnscheck       
+c.	BIND        
+d.	resolve
+ 
 Câu 61. Lệnh nào để biết đầy đủ đường dẫn của thư mục hiện hành?
-pwd        
-path        
-echo path         
-Không câu nào đúng
+ 
+a.	pwd        
+b.	path        
+c.	echo path         
+d.	Không câu nào đúng
+ 
 Câu 62. Để tạo tập tin “new” chứa nội dung của hai tập tin “data” và “odd”, ta dùng lệnh:
-cat data odd > new
-cp data odd > new   
-cp data odd >> new      
-Tất cả đều đúng
+ 
+a.	cat data odd > new
+b.	cp data odd > new   
+c.	cp data odd >> new      
+d.	Tất cả đều đúng
+ 
 Câu 63. “/doc” là một thư mục, lệnh nào sai trong các lệnh dưới đây?
-ln /doc mydoc      
-ln –s /doc mydoc        
-rm –rf /doc         
-cp –s /doc mydoc
+ 
+a.	ln /doc mydoc      
+b.	ln –s /doc mydoc        
+c.	rm –rf /doc         
+d.	cp –s /doc mydoc
+ 
 Câu 65. Lệnh nào để xóa tập tin có tên là “-abc”
-rm –f –abc      
-rm –i –abc        
-rm -- -abc        
-rm \ -abc
+ 
+a.	rm –f –abc      
+b.	rm –i –abc        
+c.	rm -- -abc        
+d.	rm \ -abc
+ 
 Câu 66. Lệnh nào tương đương với lệnh sau “mkdir –p /home1/home2
-mkdir --parents /home2/home1
-mkdir /file /doc /priv
-mkdir /priv /doc /file
-mkdir –p /priv/doc/file
+ 
+a.	mkdir --parents /home2/home1
+b.	mkdir /file /doc /priv
+c.	mkdir /priv /doc /file
+d.	mkdir –p /priv/doc/file
+ 
 Câu 67. Trong trình soạn thảo vi, lệnh nào dùng để ghi và thoát?
-wq!           
-wq            
-:qw
+ 
+a.	wq!           
+b.	wq            
+c.	:qw
+ 
 Câu 68. Lệnh nào tương đương với lệnh sau “chmod u+rwx,g=rx,o-rwx myfile”
-chmod 750 myfile
-chmod 027 myfile
-chmod 757 myfile
-Không câu nào đúng
+ 
+a.	chmod 750 myfile
+b.	chmod 027 myfile
+c.	chmod 757 myfile
+d.	Không câu nào đúng
+ 
 Câu 69. Để chuyển về thư mục chủ của người dùng hiện hành, ta dùng lệnh?
-cd ~        
-pwd       
-cd ..       
-cd /home
+ 
+a.	cd ~        
+b.	pwd       
+c.	cd ..       
+d.	cd /home
+ 
 Câu 70. Trong trình soạn thảo vi, để chuyển về chế độ lệnh, ta nhấn:
-ESC
-INS
-Ctrl + Shift
-Tất cả đều sai
+ 
+a.	ESC
+b.	INS
+c.	Ctrl + Shift
+d.	Tất cả đều sai
+ 
 Câu 71. Có thể tạo một Symbolic Link chỉ tới một tập tin không tồn tại hay không?
-Tùy trường hợp
-Có
-Không
-Tất cả đều sai
+ 
+a.	Tùy trường hợp
+b.	Có
+c.	Không
+d.	Tất cả đều sai
+ 
 Câu 72. Lệnh nào dùng để xóa toàn bộ thư mục /dir (Kể cả TM rỗng)
-rm –rf </dir>
-rm –sf </dir>
-rmdir </dir>
-rmdir –p </dir>
+ 
+a.	rm –rf </dir>
+b.	rm –sf </dir>
+c.	rmdir </dir>
+d.	rmdir –p </dir>
+ 
 Câu 73. Để tìm tất cả các sự khác nhau giữa hai tập tin, ta dùng lệnh:
-diff
-cmp
-wc
-Tất cả đều sai
+ 
+a.	diff
+b.	cmp
+c.	wc
+d.	Tất cả đều sai
+ 
 Câu 74. Thư mục /dev chứa:
-Các tập tin đại diện thiết bị
-Các tập tin dùng phát triển hệ thống
-Các tập tin rác, tạm thời
-Các tập tin đại diện trạng thái hiện hành của hệ thống
+ 
+a.	Các tập tin đại diện thiết bị
+b.	Các tập tin dùng phát triển hệ thống
+c.	Các tập tin rác, tạm thời
+d.	Các tập tin đại diện trạng thái hiện hành của hệ thống
+ 
 Câu 75. Để sao chép tất cả nội dung có trong thư mục /dir vào thư mục /tmp, thi hành lệnh:
-Tất cả đều đúng
-cp –r /dir /tmp
-cp –a /dir /tmp
-cp --parents /dir /tmp
+ 
+a.	Tất cả đều đúng
+b.	cp –r /dir /tmp
+c.	cp –a /dir /tmp
+d.	cp --parents /dir /tmp
+ 
 Câu 76. Lệnh nào dùng để liệt kê danh sách tất cả các tập tin có tên phần mở rộng không chứa các ký tự trong khoảng từ “x” đến “w” trong thư mục hiện hành
-ls *.[!x-w]
-ls *.!x | .!w
-ls ! *.[xz]
-ls *.[!xw]
+ 
+a.	ls *.[!x-w]
+b.	ls *.!x | .!w
+c.	ls ! *.[xz]
+d.	ls *.[!xw]
+ 
 Câu 77. “/xyz” là một symbolic link của “/tmp/dir”, lệnh nào sau đây cho phép ta chuyển vào thư mục “/tmp/dir”?
-Tất cả đều sai
-cd –L /xyz
-cd –P /xyz
-cd /xyz
+ 
+a.	Tất cả đều sai
+b.	cd –L /xyz
+c.	cd –P /xyz
+d.	cd /xyz
+ 
 Câu 78. Lệnh nào cho phép ta tạo một account user mới trên hệ thống 
-Câu b và c đúng
-Lệnh adduser 
-Lệnh useradd 
-lệnh passwd 
+ 
+a.	Câu b và c đúng
+b.	Lệnh adduser 
+c.	Lệnh useradd 
+d.	lệnh passwd 
+ 
 Câu 79. Sau khi đánh lệnh useradd sinhvien. Hỏi user có account là sinhvien có thể login vào hệ thống được không ? 
-Không
-Được 
-Được sau khi thay đổi mật khẩu
-Được do đã chứng thực người dùng
+ 
+a.	Không
+b.	Được 
+c.	Được sau khi thay đổi mật khẩu
+d.	Được do đã chứng thực người dùng
+ 
 Câu 80. Tập tin /etc/passwd chứa thông tin gì của users hệ thống 
-Chứa uid,gid, home directory, shell 
-Chứa profile của người dùng 
-Chứa password của người dùng 
-Chứa tập shadow của người dùng 
+ 
+a.	Chứa uid,gid, home directory, shell 
+b.	Chứa profile của người dùng 
+c.	Chứa password của người dùng 
+d.	Chứa tập shadow của người dùng 
+ 
 Câu 81. Tập tin /etc/shadow chứa thông tin gì của users hệ thống 
-Chứa password của người dùng 
-Chứa profile của người dùng 
-Chứa uid,gid, home directory, shell 
-Chứa login name 
+ 
+a.	Chứa password của người dùng 
+b.	Chứa profile của người dùng 
+c.	Chứa uid,gid, home directory, shell 
+d.	Chứa login name 
+ 
 Câu 82. Để thay đổi tên đăng nhập của tài khoản “user” thành “newuser”, ta dùng lệnh?
-usermode –l newuser user
-userchange –name newuser user
-passwd –n newuser user
-usermode –m user newuser
+ 
+a.	usermode –l newuser user
+b.	userchange –name newuser user
+c.	passwd –n newuser user
+d.	usermode –m user newuser
+ 
 Câu 83. Trong RedHat Linux, tên tài khoản người dùng:
-Không được bắt đầu bằng một ký số
-Là duy nhất
-Phân biệt chữ thường với chữ hoa
-Tất cả đều đúng
+ 
+a.	Không được bắt đầu bằng một ký số
+b.	Là duy nhất
+c.	Phân biệt chữ thường với chữ hoa
+d.	Tất cả đều đúng
+ 
 Câu 84. Lệnh nào tương đương với lệnh sau “chown sales myfile”
-chown sales:sales myfile
-chgroup sales:sales myfile
-chgrp sales myfile
-chmod sales myfile
+ 
+a.	chown sales:sales myfile
+b.	chgroup sales:sales myfile
+c.	chgrp sales myfile
+d.	chmod sales myfile
+ 
 Câu 85. Để khóa tài khoản “user”, ta dùng lệnh?
-b và c đều đúng
-usermod –L user
-passwd –l user
-b và c đều sai
+ 
+a.	b và c đều đúng
+b.	usermod –L user
+c.	passwd –l user
+d.	b và c đều sai
+ 
 Câu 86. Khi tạo một tài khoản người dùng, thông tin nào bắt buộc phải được cung cấp?
-Tên đăng nhập
-Tên đầy đủ (Full Name)
-Mã nhận diện tài khoản (UID)
-Shell
+ 
+a.	Tên đăng nhập
+b.	Tên đầy đủ (Full Name)
+c.	Mã nhận diện tài khoản (UID)
+d.	Shell
+ 
 Câu 87. Để tạo tài khoản người dùng “abc” là thành viên của nhóm “group”, ta dùng lệnh:
-useradd –g group abc
-useradd –G group abc
-useradd –m group abc
-useradd group abc
+ 
+a.	useradd –g group abc
+b.	useradd –G group abc
+c.	useradd –m group abc
+d.	useradd group abc
+ 
 Câu 88. Tất cả các nhóm được liệt kê trong file /etc/group .Mỗi một nhóm được thể hiện trên một dòng.Hãy xác định trật tự đúng của các trường trên thực thể này:
-groupname: password: GID: member list
-GID : groupname: password: member list
-groupname: GID: password: member list
-GID: member list: groupname: password
+ 
+a.	groupname: password: GID: member list
+b.	GID : groupname: password: member list
+c.	groupname: GID: password: member list
+d.	GID: member list: groupname: password
+ 
 Câu 89. Bạn sử dụng lênh sau: useradd –m sapa song user sapa không đăng nhập vào được. Để đăng nhập được ta phải làm gì ?
-Cần đăng ký mật khẩu cho user sapa bằng lệnh password sapa
-Phải tạo thư mục home cho sapa và tạo quyền cho phép truy cập.
-Bạn cần biên tập lại file /etc/passwd và đăng ký shell cho acount sapa
-Tên người dùng nhỏ hơn 5 ký tự.
+a.	Cần đăng ký mật khẩu cho user sapa bằng lệnh password sapa
+b.	Phải tạo thư mục home cho sapa và tạo quyền cho phép truy cập.
+c.	Bạn cần biên tập lại file /etc/passwd và đăng ký shell cho acount sapa
+d.	Tên người dùng nhỏ hơn 5 ký tự.
 Câu 90. Bạn tạo một user sinhvien mới bằng cách thêm vào /etc/passwd file một dòng như sau: sinhvien:abcdef:501:501:tensinhvien:/home/sinhvien:/bin/bash Sau đó sinh vien gặp bạn và nói không logon vào hệ thống được. Bạn kiểm tra và thấy tên user và mật khẩu đều đúng. Điều gì đã xảy ra?
-Bạn không thể nhập mật khẩu trực tiếp. Cần dùng lệnh passwd command để đăng ký mật khẩu cho user.
-UID và  GID giống nhau
-Bạn không gõ khoảng trống hoặc ngoặc kép vào những vị trí cần thiết.
-Tên người dùng quá ngắn, tối thiểu nó phải có độ dài 6 ký tự.
+a.	Bạn không thể nhập mật khẩu trực tiếp. Cần dùng lệnh passwd command để đăng ký mật khẩu cho user.
+b.	UID và  GID giống nhau
+c.	Bạn không gõ khoảng trống hoặc ngoặc kép vào những vị trí cần thiết.
+d.	Tên người dùng quá ngắn, tối thiểu nó phải có độ dài 6 ký tự.
 Câu 91. Quan sát file /etc/passwd, bạn thấy trong trường password chứa ký hiệu ‘x’ ? - Ý nghĩa của ký tự này là gì?
-Bạn đang sử dụng shadow password.
-Password đã được mã hoá.
-Tất cả  passwords đều rỗng.
-Tất cả passwords đều hết hạn.
+ 
+a.	Bạn đang sử dụng shadow password.
+b.	Password đã được mã hoá.
+c.	Tất cả  passwords đều rỗng.
+d.	Tất cả passwords đều hết hạn.
+ 
 Câu 92. Sau khi Dung rời khỏi công ty ,bạn dùng lệnh userdel Dung để xoá user này. Mẩu tin của user này trong file etc/passwd bị xoá , tuy vậy , trong home directory có thể vẫn còn thư mục của user này. Bạn có thể dùng lệnh nào sau đây để khẳng định  home directory cũng đã bị xoá?
-userdel –r Dung
-userdel –m Dung
-userdel –u Dung
-userdel –l Dung
+ 
+a.	userdel –r Dung
+b.	userdel –m Dung
+c.	userdel –u Dung
+d.	userdel –l Dung
+ 
 Câu 93. Bạn Dung có username là sapa. Bạn ấy nói  rằng quên mật mật khẩu đăng nhập. Lệnh nào sẽ giúp bạn Dung reset lại mật khẩu của mình.
-passwd sapa
-passwd Dung
-resetpassw
-su sapa
+ 
+a.	passwd sapa
+b.	passwd Dung
+c.	resetpassw
+d.	su sapa
+ 
 Câu 94. File nào xác định tất cả các user trên hệ thống của bạn
-/etc/passwd
-/etc/users
-/etc/password
-/etc/user.conf
+ 
+a.	/etc/passwd
+b.	/etc/users
+c.	/etc/password
+d.	/etc/user.conf
+ 
 Câu 95. Những user name nào sau đây không đúng 
-Theresa Hadden
-thadden
-TheresaH
-T.H.
+ 
+a.	Theresa Hadden
+b.	thadden
+c.	TheresaH
+d.	T.H.
+ 
+
 Chương 3 & 4 : Lập trình C & SHELL (34 Câu)
+
 Câu 1. Bạn hãy cho biết kết quả chạy đoạn code sau đây
  #!/bin/sh myname="nguyen van A" echo ‘myname : $myname’ exit 0
-myname : $myname
-myname : nguyen van A
-myname:” ”
-nguyen van A
+ 
+a.	myname : $myname
+b.	myname : nguyen van A
+c.	myname:” ”
+d.	nguyen van A
+ 
 Câu 2. Trên SHELL LINUX cho phép truyền từ CLI tối đa bao nhiêu biến tham số:
-9
-8
-10
-Không xác định
+ 
+a.	9
+b.	8
+c.	10
+d.	Không xác định
+ 
 Câu 3. Trên SHELL LINUX để truyền số tham số lớn hơn 9 ta dùng lệnh
-shift
-add
-sub
-more
+ 
+a.	shift
+b.	add
+c.	sub
+d.	more
+ 
 Câu 4. Đoạn code sau đây cho ra kết quả nào 
    $cat << EOF # dấu hiệu đánh dấu chọn ở đây là EOF
    > Xin chao 
    > …
    > EOF (và gõ ENTER)
-Xin chao
-EOF
-Không có gì
-Báo lỗi
+ 
+a.	Xin chao
+b.	EOF
+c.	Không có gì
+d.	Báo lỗi
+ 
 Câu 5. Kết quả nào sau đây là đúng khi chay đoạn code:  foo=10 x=foo y=’$’$x echo $y 
-$foo:
-10
-$x
-’$’$x
+ 
+a.	$foo:
+b.	10
+c.	$x
+d.	’$’$x
+ 
 Câu 6. Kết quả nào sau đây là đúng khi chay đoạn code: foo=10 x=foo eval y=’$’$x echo $y
-10
-$foo:
-$x
-’$’$x
+ 
+a.	10
+b.	$foo:
+c.	$x
+d.	’$’$x
+ 
 Câu 7. Hãy cho biết giá trị của biến z khi chạy đoạn code sau đây: X=10.5 y=25 z=$(($x+$y))
-35.5     
-35          
-25          
-Báo lỗi
-Câu 8. Cho một chuỗi:  string=abvfdhyscdfbckh123fdh  Câu lệnh echo $string{#string};  sẽ trả về giá trị nào sau đây:
-21        
-19     
-23      
-17
-Câu 9. Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string #a*b}  cho ta kết quả nào sau đây:
-defavc123fau          
-abc      
-abcd         
-cdefavc123fau
-Câu 10. Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string ##fa}  cho ta kết quả nào sau đây:
-u
-favc123fau
-abcde
-au
-Câu 11. Cho một chuỗi:   string=abcdefavc 123fau   Câu lệnh echo {string %%fa}  cho ta kết quả nào sau đây:
-abcde
-abcdefavc123
-abcdefavc123fa
-abcdefa
+ 
+a.	35.5     
+b.	35          
+c.	25          
+d.	Báo lỗi
+ 
+Câu 8. Cho một chuỗi:  string=abvfdhyscdfbckh123fdh  Câu lệnh echo $string{#string};  sẽ trả về giá trị nào sau đây:
+ 
+a.	21        
+b.	19     
+c.	23      
+d.	17
+ 
+Câu 9. Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string #a*b}  cho ta kết quả nào sau đây:
+ 
+a.	defavc123fau          
+b.	abc      
+c.	abcd         
+d.	cdefavc123fau
+ 
+Câu 10. Cho một chuỗi:   string=abcdefavc 123fau  Câu lệnh echo {string ##fa}  cho ta kết quả nào sau đây:
+ 
+a.	u
+b.	favc123fau
+c.	abcde
+d.	au
+ 
+Câu 11. Cho một chuỗi:   string=abcdefavc 123fau   Câu lệnh echo {string %%fa}  cho ta kết quả nào sau đây:
+ 
+a.	abcde
+b.	abcdefavc123
+c.	abcdefavc123fa
+d.	abcdefa
+ 
 Câu 12. Tập tin /etc/group chứa các thông tin về nhóm trong hệ thống. Hãy cho biết câu lệnh sau xuất ra thông tin nào của nhóm:  ($(cat  /etc/group | grep  $GRUID | cut  –d:  -f4)) 
 - Lưu ý : $GRUID là ID của nhóm được nhập từ KB
-Group’s Members
-Group ID
-Group Name
-Shadow pasword
+ 
+a.	Group’s Members
+b.	Group ID
+c.	Group Name
+d.	Shadow pasword
+ 
 Câu 13. Để lấy chiều dài của chuỗi “string” ta dùng lệnh nào sau đây 
-Cả ba lệnh 
-${#string}  
-expr length $string 
-expr "$string" : '.*'
+ 
+a.	Cả ba lệnh 
+b.	${#string}  
+c.	expr length $string 
+d.	expr "$string" : '.*'
+ 
 Câu 14. Trong tập tin /etc/group các nhóm được mô tả dưới dang : groupname: password: GID: member list. 
 Lệnh nào dưới đây cho phép trả về danh sách người dùng trong nhóm (member list):
-MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f4))
-MEMBERS=($(cat /etc/passwd | grep $GUID | cut –d: -f4)) 
-MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f2))
-MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f1))
+a.	MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f4))
+b.	MEMBERS=($(cat /etc/passwd | grep $GUID | cut –d: -f4)) 
+c.	MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f2))
+d.	MEMBERS=($(cat /etc/group  | grep $GUID | cut –d: -f1))
 Câu 15. Lệnh nào sau  đây thay thế tất cả chuỗi con trong “string” trùng với “substring” bằng một chuỗi “replacement”:
-echo ${string//substring/replacement}
-echo ${string/substring/replacement}
-echo ${#string */replacement/}
-echo ${$string */replacement/}
+ 
+a.	echo ${string//substring/replacement}
+b.	echo ${string/substring/replacement}
+c.	echo ${#string */replacement/}
+d.	echo ${$string */replacement/}
+ 
 Câu 16. File nào trong số các file dưới đây chứa các biến môi trường khi sử dụng Bash Shell ?
-/etc/profile
-~/.profile
-/bash
-~/bash
+ 
+a.	/etc/profile
+b.	~/.profile
+c.	/bash
+d.	~/bash
+ 
 Câu 17. Mở  file /etc/passwd ta thấy có các dòng .Trật tự nào sau đây của các trường là đúng:
-username, UID, GID, comment, home directory, command
-username, UID, GID, home directory, command, comment
-UID, username, GID, home directory, comment, command
-username, UID, group name, GID, home directory, comment
+a.	username, UID, GID, comment, home directory, command
+b.	username, UID, GID, home directory, command, comment
+c.	UID, username, GID, home directory, comment, command
+d.	username, UID, group name, GID, home directory, comment
 Câu 18.Để tìm những số điện thoại trong phonebook có mã vùng là 0903 và các số sau là xxx xxx .Ví dụ : 0903 654 723 hoặc 0903 677 654 … ta dùng lệnh nào sau đây :
-grep ‘0903 [0-9]\{3\}[0-9]\{3\}[0-9] phonebook 
-grep ‘0903 * * ‘ phonebook
-grep ‘0903 [0-9] [0-9] phonebook
-grep ^0903 phonebook
+ 
+a.	grep ‘0903 [0-9]\{3\}[0-9]\{3\}[0-9] phonebook 
+b.	grep ‘0903 * * ‘ phonebook
+c.	grep ‘0903 [0-9] [0-9] phonebook
+d.	grep ^0903 phonebook
+ 
 Câu 19. Để tìm các dòng có chứa 2,3,4 ký tự “b” liên tiếp trong tệp tin “test” ta dùng lệnh nào sau đây :
-grep b\[2,3,4] test 
-grep “b??”  test
-grep b* test
-grep “bb,bbb,bbbb” test
+ 
+a.	grep b\[2,3,4] test 
+b.	grep “b??”  test
+c.	grep b* test
+d.	grep “bb,bbb,bbbb” test
+ 
 Câu 20. Lệnh nào dưới đây cho phép lấy ra chuỗi “xyz” từ chuỗi string=“xyzabcdef123xyztuv”
-echo ${string%%abc*}             
-echo ${string##*xyz}
-echo ${#string xyz}                  
-echo ${string#*xyz}
+ 
+a.	echo ${string%%abc*}             
+b.	echo ${string##*xyz}
+c.	echo ${#string xyz}                  
+d.	echo ${string#*xyz}
+ 
 Câu 21. Những lệnh nào dưới đây cho phép loại chuỗi “xyz” đầu tiên tính từ đầu chuỗi string=“xyzabcdef123xyztuv”
-echo ${string#x*y}
-echo ${string##*xyz}
-echo $[string:3]
-echo ${string%%xyz*}
+ 
+a.	echo ${string#x*y}
+b.	echo ${string##*xyz}
+c.	echo $[string:3]
+d.	echo ${string%%xyz*}
+ 
 Câu 22. Lệnh nào dưới đây cho phép loại tất cả các ký tự đứng trước chuỗi “xyz” trong chuỗi string=“xyzabcdef123xyztuv”
-echo ${string##*xyz}
-echo ${string#*xyz}
-echo ${#string xyz}
-echo ${string%%abc*}
+ 
+a.	echo ${string##*xyz}
+b.	echo ${string#*xyz}
+c.	echo ${#string xyz}
+d.	echo ${string%%abc*}
+ 
 Câu 23. Các thư viện chuẩn của gcc nằm trên thư mục nào dưới đây:
-/usr/lib/gcc-lib
-/usr/sbin/lib
-/sbin/lib
-/usr/local/lib
+ 
+a.	/usr/lib/gcc-lib
+b.	/usr/sbin/lib
+c.	/sbin/lib
+d.	/usr/local/lib
+ 
 Câu 24. Các tập tin nào sau đây không phải là tập tin thư viện của gcc ?
-liba.lib  
-libabc.so           
-libabc.sa     					       
-libab.a
+ 
+a.	liba.lib  
+b.	libabc.so           
+c.	libabc.sa     					       
+d.	libab.a
+ 
 Câu 25.Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc  main.c  
-a.out        
-main.o       
-main           
-a.o
+ 
+a.	a.out        
+b.	main.o       
+c.	main           
+d.	a.o
+ 
 Câu 26. Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc   -c  main.c   
-main.o     
-main    
-main.so     
-main.sa
+ 
+a.	main.o     
+b.	main    
+c.	main.so     
+d.	main.sa
+ 
 Câu 27. Cho biết tập tin nào sau đây được tạo ra sau khi thực hiện câu lệnh sau /root]#gcc  main.c  -o   main
-main         
-main.o   
-main.obj   
-main.exe
+ 
+a.	main         
+b.	main.o   
+c.	main.obj   
+d.	main.exe
+ 
 Câu 28. Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau: /root]#gcc  -c  main.c myapp.c
-main.o  , myapp.o
-main  , myapp
-main.so ,   myapp.so
-main.sa, myapp.sa
+ 
+a.	main.o  , myapp.o
+b.	main  , myapp
+c.	main.so ,   myapp.so
+d.	main.sa, myapp.sa
+ 
 Câu 29. Cho biết tập tin nào  được tạo ra sau khi thực hiện câu lệnh sau
 /root]#gcc  main.o  lib1.o lib2.o  -o   main   //lib1.o và lib2.o là hai tập tin thư viện
-main
-lib.a
-lib.so
-lib.sa
+ 
+a.	main
+b.	lib.a
+c.	lib.so
+d.	lib.sa
+ 
 Câu 30. Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau
 /root]#ar cvr  lib1.o lib2.o  lib12.a   //lib1.o và lib2.o là hai tập tin thư viện
-lib12.a     
-lib.a      
-lib.sa    
-lib.12.o
+ 
+a.	lib12.a     
+b.	lib.a      
+c.	lib.sa    
+d.	lib.12.o
+ 
 Câu 31. Cho biết tập tin nào được tạo ra sau khi thực hiện câu lệnh sau
 /root]#gcc  main.o  -o  main  lib12.a      
-main         
-main.c           
-main.lib               
-main.exe
+ 
+a.	main         
+b.	main.c           
+c.	main.lib               
+d.	main.exe
+ 
 Câu 32. Để tạo liên kết động từ hai tập tin thư viện lib1.o và lib2.0 ta dùng câu lệnh
-~root]#gcc  -shared  lib1.o  lib2.o  -o  lib12.so
-~root]#gcc   -c  -pfic lib1.c  lib2.c
-~root]#gcc  -o  lib12.so  -shared lib1.o  lib2.o 
-~root]#gcc  -o  -shared lib1.o  lib12.so  lib2.o
+ 
+a.	~root]#gcc  -shared  lib1.o  lib2.o  -o  lib12.so
+b.	~root]#gcc   -c  -pfic lib1.c  lib2.c
+c.	~root]#gcc  -o  lib12.so  -shared lib1.o  lib2.o 
+d.	~root]#gcc  -o  -shared lib1.o  lib12.so  lib2.o
+ 
 Câu 33. Tập tin makefile là tập tin 
-Chứa các thông tin mô tả cách thức xây dựng và biên dịch 
-thực thi chương trình
-Cấu hình hệ thống
-Logfile
+ 
+a.	Chứa các thông tin mô tả cách thức xây dựng và biên dịch 
+b.	thực thi chương trình
+c.	Cấu hình hệ thống
+d.	Logfile
+ 
 Câu 34. Trình tự các thông tin được đặc tả trong makefile là
-các đích (tagget) – các phụ thuộc (dependences) – các quy tắc (rules)
-các quy tắc (rules)– các phụ thuộc(dependences) –các đích(tagget)
-các phụ thuộc (dependences) – các quy tắc (rules) - các đích (tagget) 
-Không quan trọng
-Các loại giấy phép
-Giấy phép MIT License: đặc trưng bởi sự ngắn gọn và linh hoạt, cho phép người dùng tự do sử dụng, sao chép, sửa đổi và phân phối mã nguồn mở mà không có các ràng buộc lớn.
-GNU General Public License (GPL): có quyền tự do chạy chương trình cho bất kỳ mục đích nào , có quyền sao chép, phân phối và chuyển giao bản sao của chương trình cho người khác. Nếu bạn thay đổi chương trình, bạn có quyền phát hành phiên bản sửa đổi của chương trình đó.
-BSD (Berkeley Software Distribution License): Bản quyền và thông báo bản quyền phải được giữ lại trong mã nguồn và tài liệu. Phép phân phối và sử dụng được cho phép trong cả biến thể mã nguồn và nhị phân, có hoặc không có sự thay đổi. Các tên người đóng góp không được sử dụng để quảng cáo cho bất kỳ phiên bản phái sinh nào mà không có được sự cho phép bằng văn bản.
-Mozilla Public License 2.0 (MPL): Cho phép phân phối và sử dụng mã nguồn mở theo các điều kiện cụ thể. Có các điều kiện đặc biệt liên quan đến việc sử dụng tên "Mozilla" hoặc các biểu tượng, hình ảnh, hoặc logo liên quan. Cho phép sử dụng và phân phối theo các phiên bản mới của giấy phép được công bố bởi người duy trì giấy phép.
-Eclipse Public License (EPL): Cấp phép cho người sử dụng để sao chép, tạo ra các tác phẩm phái sinh, hiển thị công khai, thực hiện công khai, cấp phép con, và phân phối phần mềm mã nguồn mở. Loại trừ trách nhiệm cho bất kỳ yêu cầu nào xuất phát từ việc vi phạm quyền sở hữu trí tuệ hoặc các lý do khác.
-Lesser General Public License (LGPL): có quyền sao chép, phân phối và/hoặc sửa đổi mã nguồn. Cho phép liên kết với (hoặc liên kết động) các thư viện LGPL mà không buộc chúng phải sử dụng cùng một giấy phép. Nếu bạn sửa đổi thư viện LGPL và phân phối phiên bản sửa đổi đó, bạn phải cung cấp mã nguồn của các sửa đổi. Cho phép sử dụng thư viện LGPL với phần mềm không chịu ràng buộc GPL/LGPL và ngược lại.
-Apache License 2.0: có quyền sao chép, sửa đổi, phân phối và cung cấp giấy phép cho tác phẩm của mình. có thể sửa đổi nguồn và phân phối phiên bản sửa đổi. Không có bảo đảm nào và người sử dụng tự chịu trách nhiệm khi sử dụng phần mềm. Các thông báo bản quyền và giấy phép phải được giữ lại trong mã nguồn.
-Shell Script
-Gán giá trị cho biến: variable_name=value
-Sử dụng biến: echo $variable_name
-Lệnh điều kiện (if-else): 
-if [ condition ]; then
-   			 # Câu lệnh khi điều kiện đúng
-else
-    		# Câu lệnh khi điều kiện sai
-fi
-Vòng lặp (for):
-while [ condition ]; do
-    # Câu lệnh thực hiện khi điều kiện đúng
-Done
-Kiểm tra tồn tại của tệp/thư mục:
-if [ -e file ]; then
-   			 # Câu lệnh khi file tồn tại
-fi
-Kiểm tra quyền truy cập:
-if [ -r file ]; then
-    # Câu lệnh khi file có quyền đọc
-Fi
-Ghi vào tệp: echo "content" > file
-Linux
-Thao tác folder và file
-Liệt kê nội dung thư mục: Ls
-Chuyển đến một thư mục khác: cd directory_name
-Tạo một thư mục mới: mkdir new_directory
-Xóa tệp/thư mục: rm file_or_directory
-Copy tệp/thư mục: cp source_file destination
-Di chuyển tệp/thư mục: mv source_directory destination
-*  còn được sử dụng để đổi tên mv old_name new_name
-Xóa một thư mục và nội dung bên trong: rm -r directory
-Xóa một thư mục và nội dung bên trong: rm -r directory
-Tạo tệp mới: touch ten_file
-Tạo tệp và chỉnh sửa nội dung:
-nano example.txt
-vim example.txt
-Cấp quyền: chmod xxx file_or_directory
-xxx là một dãy ba chữ số biểu thị quyền cho chủ sở hữu, nhóm và người dùng khác. 
-Mỗi chữ số đại diện cho các quyền riêng lẻ, và có thể có các giá trị từ 0 đến 7:
-4: Quyền đọc (Read)
-2: Quyền ghi (Write)
-1: Quyền thực thi (Execute)
-Lamp
-Apache
-Lệnh cài: sudo apt install apache2
-Kiểm tra phiên bản Apache: apache2 -v
-Khởi động Apache: sudo service apache2 start
-Dừng Apache: sudo service apache2 restart
-Khởi động lại Apache: sudo apt install apache2
-Hiển thị trạng thái Apache: sudo service apache2 status
-Tệp cấu hình chính của Apache: /etc/apache2/apache2.conf
-Thư mục chứa cấu hình của các trang web cụ thể: /etc/apache2/sites-available/
-Kích hoạt và vô hiệu hóa các trang web:
-sudo a2ensite
-sudo a2dissite
-Mysql-Server
-Lệnh cài: sudo apt install mysql-server
-Kiểm tra trạng thái MySQL: sudo service mysql status
-Tệp cấu hình: /etc/mysql/my.cnf
-Đăng nhập vào MySQL: sudo mysql -u taikhoan -p
-Tạo một tài khoản mới: CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
-Cấp quyền cho tài khoản: 
-GRANT ALL PRIVILEGES ON database_name.* TO 'new_user'@'localhost';
-Php : Lệnh cài: sudo apt install php{version}
-Git
-Khởi tạo một kho lưu trữ (repository): git init
-Sao chép một kho lưu trữ từ xa: git clone <url>
-Kiểm tra trạng thái làm việc: git status
-Thêm tất cả các tệp vào chỉ mục (staging area): git add .
-Commit (lưu trạng thái): git commit -m "Message describing the changes"
-Đẩy commit lên: git push 
-Kéo (fetch và merge) từ một nhánh từ xa: git pull origin <branch_name>
-Tạo một nhánh mới: git branch <branch_name>
-Chuyển đổi giữa các nhánh: git checkout <branch_name>
-Tạo tag: git tag -a v1.0 -m "Release version 1.0"
-Bugzilla
-Các trạng thái của bug
-NEW (Mới): Bug vừa được báo cáo và chưa được xác nhận hoặc xử lý.
-ASSIGNED (Đã giao việc): Bug đã được xác nhận và giao cho một người cụ thể để giải quyết.
-REOPENED (Mở lại): Bug trước đó đã được đóng nhưng sau đó được mở lại vì vấn đề vẫn tồn tại hoặc quay trở lại.
-RESOLVED (Đã giải quyết): Bug đã được giải quyết (đã sửa chữa), nhưng có thể cần kiểm thử hoặc xác nhận thêm.
-VERIFIED (Đã xác nhận): Bug đã được kiểm thử và xác nhận là đã giải quyết.
-CLOSED (Đã đóng): Bug đã được giải quyết và xác nhận, và không còn cần theo dõi nữa.
-WONTFIX (Không sửa): Bug được xác định là không cần hoặc không thể sửa và sẽ không được xử lý.
-WORKSFORME (Hoạt động đúng): Không thể xác định vấn đề trong môi trường phát triển hiện tại và có vẻ là hoạt động đúng.
-INVALID (Không hợp lệ): Bug không hợp lệ, thường do báo cáo sai hoặc không rõ ràng.
-Vòng đời của bug
-UNCONFIRMED (Chưa được xác nhận): Bug được báo cáo và chưa được xác nhận. Ở trạng thái này, các nhân viên hỗ trợ hoặc quản trị viên có thể xác nhận bug để chuyển nó sang trạng thái tiếp theo.
-NEW (Mới): Bug đã được xác nhận và được đánh số. Nó sẽ ở trạng thái "Mới" cho đến khi được gán cho một nhóm hoặc người giải quyết.
-ASSIGNED (Đã giao việc): Bug đã được giao cho một người hoặc nhóm để giải quyết. Người này sẽ chịu trách nhiệm giải quyết vấn đề.
-RESOLVED (Đã giải quyết): Bug đã được giải quyết. Có thể có một số trạng thái con như "FIXED" (đã sửa chữa), "WONTFIX" (không sửa chữa), "INVALID" (không hợp lệ) tùy thuộc vào quyết định của người giải quyết.
-VERIFIED (Đã xác nhận): Bug được kiểm thử và xác nhận rằng nó đã được giải quyết. Người kiểm thử sẽ chịu trách nhiệm xác nhận.
-CLOSED (Đã đóng): Bug được đóng và không còn nằm trong danh sách theo dõi. Có thể có nhiều lý do để đóng bug, chẳng hạn như bug đã được giải quyết và kiểm thử thành công.
-Docker
-Câu lệnh thao tác với Docker Image:
-docker images : Câu lệnh kiểm tra danh sách các image đã cài đặt
-docker rmi <id/Name> : Câu lệnh xóa 1 image chưa chạy dựa vào id hoặc tên
-docker rmi -f <id/Name> : Câu lệnh xóa 1 image kể cả khi đang chạy dựa vào id hoặc tên
-Câu lệnh thao tác với Docker Container:
-docker ps : Câu lệnh liệt kê danh sách các container đang chạy
-docker ps -a: liệt kê danh sách các container đang chạy và đã tắt
-docker inspect { container_id } : Xem thông tin chi tiết của container được tạo ra
-docker logs { container_id } : xem lịch sử container
-docker rm <id/Name>: xóa 1 container dựa vào id hoặc tên
-docker rm -f <id/Name>: xóa 1 container kể cả đang chạy
-docker rm $(docker ps -a -q): xóa tất cả các container
+a.	các đích (tagget) – các phụ thuộc (dependences) – các quy tắc (rules)
+b.	các quy tắc (rules)– các phụ thuộc(dependences) –các đích(tagget)
+c.	các phụ thuộc (dependences) – các quy tắc (rules) - các đích (tagget) 
+d.	Không quan trọng
+
+
+ 
+
+
+ 
+
+
+ 

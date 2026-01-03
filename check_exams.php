@@ -1,35 +1,32 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
+
+$app = require_once __DIR__ . '/bootstrap/app.php';
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
 use Illuminate\Support\Facades\DB;
 
-echo "=== QUIZ EXAMS ===" . PHP_EOL;
-$exams = DB::table('quiz_exams')->select('id', 'name', 'slug')->get();
+echo "=== All Exams ===\n";
+$exams = DB::connection('tracnghiem')->table('quiz_exams')->get();
 foreach ($exams as $exam) {
-    echo "ID: {$exam->id} - {$exam->name} ({$exam->slug})" . PHP_EOL;
+    $questionCount = DB::connection('tracnghiem')
+        ->table('quiz_questions')
+        ->where('exam_id', $exam->id)
+        ->count();
+    echo "Exam ID: {$exam->id}, Name: {$exam->name}, Questions: {$questionCount}\n";
 }
 
-echo PHP_EOL . "=== QUESTIONS COUNT PER EXAM ===" . PHP_EOL;
-$counts = DB::table('quiz_questions')
-    ->select('exam_id', DB::raw('COUNT(*) as count'))
+echo "\n=== Questions per exam_id ===\n";
+$grouped = DB::connection('tracnghiem')
+    ->table('quiz_questions')
+    ->select('exam_id', DB::raw('count(*) as count'))
     ->groupBy('exam_id')
     ->get();
-
-foreach ($counts as $count) {
-    $examName = DB::table('quiz_exams')->where('id', $count->exam_id)->value('name');
-    echo "{$examName}: {$count->count} câu" . PHP_EOL;
+foreach ($grouped as $row) {
+    echo "exam_id: {$row->exam_id}, count: {$row->count}\n";
 }
 
-echo PHP_EOL . "=== EXAMS WITHOUT QUESTIONS ===" . PHP_EOL;
-$examIds = $counts->pluck('exam_id')->toArray();
-$emptyExams = DB::table('quiz_exams')
-    ->whereNotIn('id', $examIds)
-    ->select('id', 'name')
-    ->get();
-
-if ($emptyExams->isEmpty()) {
-    echo "Tất cả đề đều có câu hỏi!" . PHP_EOL;
-} else {
-    foreach ($emptyExams as $exam) {
-        echo "❌ {$exam->name} (ID: {$exam->id}) - 0 câu" . PHP_EOL;
-    }
-}
+echo "\n=== Total questions ===\n";
+echo DB::connection('tracnghiem')->table('quiz_questions')->count() . "\n";

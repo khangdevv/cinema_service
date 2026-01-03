@@ -1,0 +1,1100 @@
+ÔN TẬP PHÁT TRIỂN PHẦN MỀM MÃ NGUỒN MỞ
+CHỦ ĐỀ 1: TỔNG QUAN VỀ MÃ NGUỒN MỞ, GIẤY PHÉP & QUY TRÌNH PHÁT TRIỂN
+Câu 1: Thuật ngữ “Free Software” (Phần mềm tự do) trong bối cảnh mã nguồn mở nhấn mạnh điều gì nhất?
+A. Phần mềm được cung cấp hoàn toàn miễn phí về giá tiền.
+B. Người dùng không phải trả tiền bản quyền nhưng phải trả phí bảo trì.
+C. Quyền tự do của người dùng để chạy, sao chép, phân phối, nghiên cứu, thay đổi và cải tiến phần mềm.
+D. Phần mềm không có bản quyền và thuộc về phạm vi công cộng (Public Domain).
+Câu 2: Loại giấy phép phần mềm nguồn mở nào sau đây có tính chất “lây lan” (viral), yêu cầu các phần mềm phái sinh cũng phải mở mã nguồn theo cùng giấy phép?
+A. MIT License.
+B. Apache License 2.0.
+C. BSD License.
+D. GNU General Public License (GPL).
+Câu 3: Đặc điểm chính của giấy phép MIT là gì?
+A. Yêu cầu mã nguồn sửa đổi phải được công khai lại cho cộng đồng.
+B. Cho phép sử dụng, sửa đổi, hợp nhất, xuất bản, phân phối, cấp phép lại và/hoặc bán các bản sao của phần mềm với rất ít hạn chế.
+C. Cấm sử dụng phần mềm cho mục đích thương mại.
+D. Yêu cầu người dùng phải đóng góp tài chính cho tác giả nếu sử dụng cho thương mại.
+Câu 4: Giấy phép Apache License 2.0 khác biệt so với giấy phép MIT/BSD chủ yếu ở điểm nào?
+A. Nó là giấy phép Copyleft mạnh mẽ như GPL.
+B. Nó không cho phép sửa đổi mã nguồn.
+C. Nó bao gồm các điều khoản rõ ràng về cấp quyền sử dụng bằng sáng chế (patent rights) từ những người đóng góp.
+D. Nó chỉ dành cho các dự án chạy trên máy chủ Web Apache.
+Câu 5: Trong mô hình phát triển phần mềm nguồn mở, thuật ngữ “The Bazaar” (Cái chợ) được Eric S. Raymond dùng để mô tả điều gì?
+A. Một nơi buôn bán phần mềm thương mại.
+B. Quy trình phát triển tập trung, khép kín, được kiểm soát chặt chẽ bởi một nhóm nhỏ.
+C. Quy trình phát triển mở, phi tập trung, nơi mã nguồn được phát hành thường xuyên và cộng đồng cùng tham gia sửa lỗi, đóng góp.
+D. Một kho lưu trữ (repository) chứa nhiều phần mềm rác.
+Câu 6: “Upstream” (thượng nguồn) trong quy trình phát triển mã nguồn mở thường ám chỉ điều gì?
+A. Phiên bản phần mềm đã được chỉnh sửa bởi người dùng cuối.
+B. Kho mã nguồn gốc hoặc dự án gốc mà từ đó mã nguồn được phân tách (fork) hoặc lấy về.
+C. Máy chủ dùng để tải phần mềm về máy cá nhân.
+D. Quy trình đẩy code từ máy cá nhân lên máy chủ.
+Câu 7: Một “Issue Tracker” (Hệ thống theo dõi vấn đề) trong dự án nguồn mở KHÔNG dùng để làm gì?
+A. Báo cáo lỗi (bug reporting).
+B. Yêu cầu tính năng mới (feature request).
+C. Thảo luận về việc triển khai một chức năng cụ thể.
+D. Biên dịch mã nguồn thành phần mềm chạy được.
+Câu 8: Hành động tạo ra một bản sao của kho lưu trữ mã nguồn để phát triển độc lập hoặc đề xuất thay đổi được gọi là gì?
+A. Clone.
+B. Fork.
+C. Branch.
+D. Commit.
+Câu 9: Để đóng góp mã nguồn (code) đã sửa từ kho của mình trở lại dự án gốc, bạn thường tạo yêu cầu gì?
+A. Issue Request.
+B. Pull Request (hoặc Merge Request).
+C. Commit Request.
+D. Fork Request.
+Câu 10: Vai trò của “Maintainer” (Người duy trì) trong dự án mã nguồn mở là gì?
+A. Người chỉ sử dụng phần mềm và báo lỗi.
+B. Người tài trợ tiền cho dự án.
+C. Người có quyền quản lý, xét duyệt các đóng góp (code), định hướng phát triển và duy trì sự ổn định của dự án.
+D. Người viết tài liệu hướng dẫn sử dụng nhưng không biết lập trình.
+Câu 11: Community-Driven Development (Phát triển hướng cộng đồng) dựa trên nguyên tắc nào là chủ yếu?
+A. Quyết định thuộc về người trả nhiều tiền nhất.
+B. Quyết định dựa trên sự đồng thuận và đóng góp thực tế (Meritocracy - chế độ nhân tài) của các thành viên.
+C. Chỉ công ty sở hữu dự án mới được quyền ra quyết định.
+D. Tuân thủ tuyệt đối mệnh lệnh của người sáng lập ban đầu mà không có thảo luận.
+Câu 12: Hệ thống nào sau đây là hệ thống quản lý phiên bản (VCS) phổ biến nhất hiện nay trong các dự án nguồn mở?
+A. FTP.
+B. Dropbox.
+C. Git.
+D. Bugzilla.
+Câu 13: “Copyleft” là khái niệm dùng để chỉ:
+A. Việc từ bỏ hoàn toàn bản quyền tác giả.
+B. Việc sử dụng luật bản quyền để đảm bảo rằng phần mềm và các phiên bản sửa đổi của nó luôn luôn được giữ ở trạng thái mã nguồn mở.
+C. Quyền sao chép tài liệu bên trái trang giấy.
+D. Việc cấm sao chép phần mềm dưới mọi hình thức.
+Câu 14: Tại sao tài liệu “CONTRIBUTING.md” lại quan trọng trong một dự án nguồn mở?
+A. Để quảng cáo bán phần mềm.
+B. Để liệt kê danh sách các nhà tài trợ.
+C. Để hướng dẫn những người mới cách thức tham gia, quy tắc viết code (coding convention) và quy trình gửi đóng góp cho dự án.
+D. Để chứa mã nguồn chính của chương trình.
+Câu 15: Mô hình kinh doanh “Open Core” thường hoạt động như thế nào?
+A. Bán toàn bộ mã nguồn với giá cao.
+B. Giữ kín toàn bộ mã nguồn và chỉ bán dịch vụ.
+C. Cung cấp phần lõi (core) chức năng cơ bản dưới dạng mã nguồn mở miễn phí, nhưng tính phí cho các tính năng nâng cao hoặc module bổ sung (proprietary).
+D. Chỉ thu tiền từ việc bán áo thun và logo dự án.
+Câu 16: “Semantic Versioning” (ví dụ: v1.0.2) giúp ích gì cho việc quản lý phát hành phần mềm?
+A. Giúp đặt tên phiên bản cho đẹp.
+B. Giúp người dùng và nhà phát triển biết được mức độ thay đổi (lớn, nhỏ, hay vá lỗi) và tính tương thích của phiên bản mới so với phiên bản cũ.
+C. Chỉ định ngày tháng phát hành phần mềm.
+D. Mã hóa số lượng người tải về.
+Câu 17: Một yếu tố “phi kỹ thuật” quan trọng để duy trì một dự án nguồn mở bền vững là gì?
+A. Sử dụng ngôn ngữ lập trình khó nhất.
+B. Không cần giao tiếp với người dùng.
+C. Xây dựng văn hóa giao tiếp tôn trọng, minh bạch và quản lý kỳ vọng của cộng đồng.
+D. Giấu kín danh tính của tất cả lập trình viên.
+Câu 18: File nào thường được xem là “mặt tiền” của dự án trên GitHub, chứa thông tin giới thiệu, cách cài đặt và sử dụng cơ bản?
+A. LICENSE.
+B. .gitignore.
+C. README.md.
+D. index.html.
+Câu 19: CI/CD (Continuous Integration/Continuous Delivery) hỗ trợ gì cho hạ tầng dự án nguồn mở?
+A. Tự động viết code thay cho lập trình viên.
+B. Tự động hóa việc kiểm thử (test), tích hợp mã nguồn và đóng gói/phát hành, giúp phát hiện lỗi sớm và giảm tải cho maintainer.
+C. Tự động trả lời email của người dùng.
+D. Tự động tìm kiếm nhà tài trợ.
+Câu 20: Khi một dự án OSS được gọi là “Abandonware”, điều đó có nghĩa là gì?
+A. Dự án đang rất phổ biến.
+B. Dự án đã chuyển sang thu phí hoàn toàn.
+C. Dự án đã bị tác giả hoặc cộng đồng bỏ rơi, không còn được cập nhật hay bảo trì trong thời gian dài.
+D. Dự án vừa mới được khởi tạo.
+CHỦ ĐỀ 2: HỆ ĐIỀU HÀNH LINUX & LẬP TRÌNH SHELL
+(Nội dung: Lịch sử, Kernel, Các lệnh cơ bản, Phân quyền, Shell script)
+Câu 1: Thành phần nào được coi là “trái tim” của hệ điều hành Linux, chịu trách nhiệm quản lý tài nguyên phần cứng và bộ nhớ?
+A. Shell
+B. Linux Kernel
+C. Desktop Environment (GNOME, KDE)
+D. Package Manager
+Câu 2: Hệ thống tệp tin (File System) của Linux được tổ chức theo cấu trúc nào?
+A. Cấu trúc phẳng (Flat structure)
+B. Cấu trúc mạng lưới (Network structure)
+C. Cấu trúc cây (Tree structure) với thư mục gốc là /
+D. Cấu trúc phân vùng ổ đĩa (C:, D:, E:)
+Câu 3: Trong Linux, thư mục nào thường chứa các file cấu hình hệ thống (configuration files)?
+A. /bin
+B. /home
+C. /etc
+D. /dev
+Câu 4: Lệnh nào sau đây được sử dụng để liệt kê các file và thư mục, bao gồm cả các file ẩn?
+A. ls -l
+B. ls -a
+C. ls -h
+D. dir /all
+Câu 5: Để cấp quyền “Toàn quyền” (Đọc, Ghi, Thực thi - rwx) cho chủ sở hữu (User), nhóm (Group) và những người khác (Others), ta dùng lệnh chmod với tham số nào?
+A. chmod 755
+B. chmod 644
+C. chmod 777
+D. chmod 600
+Câu 6: Ký tự nào đại diện cho thư mục chủ (home directory) của người dùng hiện tại trong dòng lệnh?
+A. /
+B. .
+C. ~
+D. $
+Câu 7: Dòng đầu tiên “Shebang” trong một file Shell Script (ví dụ: #!/bin/bash) có tác dụng gì?
+A. Là một dòng chú thích (comment) thông thường.
+B. Khai báo trình thông dịch (interpreter) sẽ được sử dụng để thực thi script này.
+C. Khai báo tên tác giả của script.
+D. Khai báo biến môi trường.
+Câu 8: Trong Shell Script, cú pháp nào đúng để gán giá trị cho biến name?
+A. name = "Linux" (có khoảng trắng)
+B. $name = "Linux"
+C. name="Linux" (không có khoảng trắng)
+D. set name "Linux"
+Câu 9: Để truy xuất (lấy) giá trị của một biến có tên là count trong Shell Script, ta dùng cách nào?
+A. count
+B. %count%
+C. $count
+D. @count
+Câu 10: Lệnh nào dùng để xóa một thư mục và tất cả các file con bên trong nó (cần cẩn thận khi dùng)?
+A. rm filename
+B. rmdir dirname
+C. rm -rf dirname
+D. del /s dirname
+Câu 11: Trong Linux, User có quyền hạn cao nhất (Superuser) thường có tên đăng nhập là gì và UID là bao nhiêu?
+A. admin, UID 1
+B. root, UID 0
+C. administrator, UID 0
+D. system, UID 100
+Câu 12: Ký hiệu nào được sử dụng để chuyển hướng kết quả đầu ra (standard output) của lệnh vào một file, và ghi đè (overwrite) nội dung cũ?
+A. >
+B. >>
+C. <
+D. |
+Câu 13: Lệnh grep trong Linux chủ yếu được sử dụng để làm gì?
+A. Nén và giải nén file.
+B. Tìm kiếm chuỗi ký tự (text pattern) bên trong nội dung file.
+C. Quản lý tiến trình (process).
+D. Kết nối mạng.
+Câu 14: Để chạy một file script có tên myscript.sh trong thư mục hiện tại, lệnh nào sau đây là đúng (giả sử file đã có quyền thực thi)?
+A. myscript.sh
+B. run myscript.sh
+C. ./myscript.sh
+D. call myscript.sh
+Câu 15: Cấu trúc rẽ nhánh if trong Shell Script kết thúc bằng từ khóa nào?
+A. end
+B. endif
+C. fi
+D. done
+Câu 16: Một bản phân phối Linux (Linux Distribution) bao gồm Kernel và các thành phần nào?
+A. Chỉ bao gồm Kernel và trình duyệt web.
+B. Kernel + Các tiện ích GNU + Giao diện người dùng + Trình quản lý gói + Ứng dụng.
+C. Kernel + Microsoft Office.
+D. Chỉ bao gồm giao diện đồ họa.
+Câu 17: Để xem hướng dẫn sử dụng chi tiết (manual) của một lệnh (ví dụ: lệnh cp), ta dùng lệnh nào?
+A. help cp
+B. man cp
+C. cp /?
+D. doc cp
+Câu 18: Phép toán so sánh “Bằng nhau” (equal) cho số nguyên trong câu lệnh điều kiện của Shell Script ([ $a ... $b ]) là gì?
+A. ==
+B. =
+C. -eq
+D. -ne
+Câu 19: Lệnh nào dùng để hiển thị đường dẫn đầy đủ của thư mục hiện tại đang đứng (Print Working Directory)?
+A. path
+B. cd
+C. ls
+D. pwd
+Câu 20: Ký tự đường ống (pipe) | có tác dụng gì trong dòng lệnh Linux?
+A. Chạy hai lệnh cùng một lúc.
+B. Lấy đầu ra (output) của lệnh đứng trước làm đầu vào (input) cho lệnh đứng sau.
+C. Ngắt dòng lệnh.
+D. Chạy lệnh trong nền (background).
+CHỦ ĐỀ 3: PHẦN MỀM IDE - VISUAL STUDIO CODE (VS CODE)
+(Nội dung: Cài đặt, Extension, Phím tắt, Debug, Cấu hình môi trường)
+Câu 1: Visual Studio Code (VS Code) là sản phẩm được phát triển bởi công ty nào?
+A. Google
+B. Facebook
+C. Microsoft
+D. JetBrains
+Câu 2: VS Code được phân loại chính xác nhất là gì?
+A. Một trình biên dịch (Compiler).
+B. Một trình soạn thảo mã nguồn (Source Code Editor) mạnh mẽ có thể mở rộng thành IDE.
+C. Một hệ điều hành.
+D. Một trình duyệt web.
+Câu 3: Tính năng “IntelliSense” trong VS Code có tác dụng gì?
+A. Tự động sửa lỗi logic của chương trình.
+B. Hỗ trợ nhắc lệnh, tự động hoàn thành mã (code completion), và hiển thị thông tin tham số.
+C. Tự động tải mã nguồn lên GitHub.
+D. Tự động định dạng lại code cho đẹp.
+Câu 4: Để mở “Command Palette” (Bảng lệnh điều khiển) để truy cập tất cả các chức năng của VS Code, ta dùng phím tắt nào?
+A. Ctrl + P
+B. Ctrl + Shift + P (hoặc F1)
+C. Ctrl + F
+D. Alt + F4
+Câu 5: File cấu hình cài đặt (Settings) của VS Code được lưu trữ dưới định dạng nào?
+A. XML
+B. YAML
+C. JSON
+D. INI
+Câu 6: Để cài đặt thêm các ngôn ngữ, debugger, hoặc công cụ hỗ trợ (như Live Server), người dùng cần truy cập vào mục nào?
+A. Source Control
+B. Extensions (Marketplace)
+C. Explorer
+D. Run and Debug
+Câu 7: Phím tắt mặc định để mở/tắt Integrated Terminal (Terminal tích hợp sẵn) trong VS Code là gì?
+A. Ctrl + T
+B. Ctrl + ` (dấu huyền)
+C. Ctrl + Shift + T
+D. Alt + T
+Câu 8: Để tìm kiếm nhanh và mở một file trong dự án (Quick Open), ta dùng phím tắt nào?
+A. Ctrl + P
+B. Ctrl + O
+C. Ctrl + Shift + F
+D. Ctrl + N
+Câu 9: Thư mục ẩn nào được VS Code tạo ra trong dự án để lưu các thiết lập riêng cho dự án đó (như launch.json, settings.json)?
+A. .git
+B. .vscode
+C. .config
+D. .idea
+Câu 10: Extension nào phổ biến giúp tạo một máy chủ web cục bộ (local web server) có tính năng tự động tải lại trang (live reload) khi code thay đổi?
+A. PHP Debug
+B. Python
+C. Live Server
+D. Docker
+Câu 11: Tính năng “Multi-cursor” (Đa con trỏ) cho phép sửa nhiều dòng cùng lúc được kích hoạt bằng cách giữ phím nào và click chuột?
+A. Shift
+B. Ctrl
+C. Alt
+D. Tab
+Câu 12: Biểu tượng “Source Control” (trông giống nhánh cây) trên thanh Sidebar dùng để làm gì?
+A. Quản lý Extension.
+B. Tìm kiếm file.
+C. Tích hợp quản lý phiên bản Git (Commit, Push, Pull…).
+D. Debug chương trình.
+Câu 13: File launch.json trong thư mục .vscode có vai trò quan trọng gì?
+A. Lưu trữ giao diện màu sắc (Theme).
+B. Cấu hình các thiết lập để chạy và gỡ lỗi (Debug) chương trình.
+C. Lưu lịch sử các file đã mở.
+D. Định nghĩa các phím tắt.
+Câu 14: Để định dạng lại (Format) toàn bộ code trong file đang mở cho ngay ngắn, phím tắt thường dùng là:
+A. Ctrl + S
+B. Shift + Alt + F
+C. Ctrl + K
+D. Ctrl + Shift + I
+Câu 15: “Zen Mode” trong VS Code giúp lập trình viên làm gì?
+A. Nghe nhạc thiền khi code.
+B. Chuyển sang chế độ màn hình đen trắng.
+C. Ẩn tất cả các thanh công cụ và menu, chỉ hiển thị code để tăng sự tập trung.
+D. Tự động viết code giúp lập trình viên.
+Câu 16: VS Code hỗ trợ chạy trên các hệ điều hành nào?
+A. Chỉ Windows.
+B. Chỉ Windows và macOS.
+C. Chỉ Linux.
+D. Đa nền tảng: Windows, macOS và Linux.
+Câu 17: Để chia màn hình soạn thảo làm hai (Split Editor) để xem 2 file cùng lúc, ta dùng phím tắt hoặc biểu tượng nào?
+A. Ctrl + \
+B. Ctrl + /
+C. Ctrl + -
+D. Ctrl + =
+Câu 18: Extension “Prettier” thường được sử dụng với mục đích gì?
+A. Kiểm tra lỗi bảo mật.
+B. Định dạng code (Code formatter) tự động theo chuẩn.
+C. Biên dịch code C++.
+D. Quản lý cơ sở dữ liệu.
+Câu 19: Tính năng “Snippets” giúp ích gì cho lập trình viên?
+A. Tự động lưu file.
+B. Chèn nhanh các đoạn mã mẫu thường dùng thông qua các từ khóa ngắn.
+C. Chụp ảnh màn hình code.
+D. Kết nối đến server từ xa.
+Câu 20: Khi làm việc với PHP trong VS Code, để có thể Debug (gỡ lỗi) từng dòng, ngoài cài extension PHP Debug, ta cần cài đặt thêm thành phần gì trên máy?
+A. Node.js
+B. Xdebug.
+C. Python.
+D. Java SDK.
+CHỦ ĐỀ 4: CÀI ĐẶT VÀ SỬ DỤNG DỊCH VỤ WEB MÃ NGUỒN MỞ (LAMP STACK)
+(Nội dung: Apache, MySQL, PHP, Cấu hình Web Server)
+Câu 1: LAMP stack là từ viết tắt của các thành phần nào?
+A. Linux, Apple, MySQL, PHP.
+B. Linux, Apache, MySQL (hoặc MariaDB), PHP (hoặc Python/Perl).
+C. Local, Admin, Manager, Process.
+D. Linux, Apache, MongoDB, Python.
+Câu 2: Trong mô hình LAMP, thành phần Apache đóng vai trò là gì?
+A. Hệ điều hành.
+B. Hệ quản trị cơ sở dữ liệu.
+C. Web Server (Máy chủ web) xử lý các yêu cầu HTTP.
+D. Ngôn ngữ kịch bản phía server.
+Câu 3: Cổng (Port) mặc định mà Apache Web Server lắng nghe các yêu cầu HTTP là bao nhiêu?
+A. 21
+B. 22
+C. 3306
+D. 80
+Câu 4: Trên Ubuntu/Debian, thư mục mặc định chứa mã nguồn website (Document Root) của Apache thường nằm ở đâu?
+A. /home/user/web
+B. /var/www/html
+C. /etc/apache2
+D. /usr/bin/html
+Câu 5: File cấu hình chính của Apache trên Ubuntu thường có tên và đường dẫn là gì?
+A. /etc/php/php.ini
+B. /etc/apache2/apache2.conf
+C. /etc/mysql/my.cnf
+D. /var/www/index.html
+Câu 6: Lệnh nào sau đây dùng để cài đặt đầy đủ các gói cơ bản của LAMP trên Ubuntu?
+A. sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql
+B. sudo apt install lamp-stack
+C. sudo install web-server
+D. sudo apt-get install all
+Câu 7: Để khởi động lại dịch vụ Apache sau khi thay đổi cấu hình, ta dùng lệnh nào?
+A. apache2 start
+B. sudo systemctl restart apache2
+C. sudo service apache restart
+D. Cả B và C đều đúng.
+Câu 8: File cấu hình quan trọng nhất của PHP, nơi thiết lập các thông số như dung lượng file upload tối đa, hiển thị lỗi…, là file nào?
+A. config.php
+B. php.ini
+C. httpd.conf
+D. .htaccess
+Câu 9: Hệ quản trị cơ sở dữ liệu MySQL hoạt động mặc định trên cổng (Port) nào?
+A. 8080
+B. 3306
+C. 1433
+D. 27017
+Câu 10: Công cụ phpMyAdmin là một ứng dụng viết bằng PHP dùng để làm gì?
+A. Soạn thảo code PHP.
+B. Quản trị cơ sở dữ liệu MySQL thông qua giao diện web.
+C. Quản lý server Linux.
+D. Thiết kế giao diện website.
+Câu 11: Địa chỉ IP Loopback (Localhost) để truy cập web server ngay trên máy cài đặt là gì?
+A. 192.168.1.1
+B. 0.0.0.0
+C. 127.0.0.1
+D. 10.0.0.1
+Câu 12: Trong PHP, đoạn mã lệnh phải được đặt trong cặp thẻ nào để Web Server hiểu và xử lý?
+A. <script> … </script>
+B. <?php … ?>
+C. <body> … </body>
+D. <php> … </php>
+Câu 13: Để kiểm tra xem PHP đã hoạt động và xem thông tin cấu hình hiện tại, ta thường tạo một file info.php với nội dung gì?
+A. <?php show_info(); ?>
+B. <?php php_status(); ?>
+C. <?php phpinfo(); ?>
+D. <?php echo "Hello"; ?>
+Câu 14: Quyền sở hữu (User/Group) của thư mục /var/www/html nên được gán cho user nào để Apache có thể ghi dữ liệu (ví dụ khi upload ảnh)?
+A. root:root
+B. www-data:www-data
+C. user:user
+D. guest:guest
+Câu 15: Module nào của Apache cần được kích hoạt để sử dụng tính năng “URL Rewrite” (viết lại đường dẫn cho thân thiện, thường dùng trong WordPress, Joomla)?
+A. mod_ssl
+B. mod_rewrite
+C. mod_proxy
+D. mod_security
+Câu 16: File .htaccess là gì?
+A. File chứa mật khẩu của database.
+B. File cấu hình phân cấp (cục bộ) cho phép thay đổi cấu hình Apache trong từng thư mục cụ thể mà không cần restart server.
+C. File chứa mã nguồn HTML.
+D. File log lỗi của hệ thống.
+Câu 17: Để bảo mật cho MySQL ngay sau khi cài đặt (đặt mật khẩu root, xóa user ẩn danh…), ta nên chạy lệnh nào?
+A. mysql_install_db
+B. sudo mysql_secure_installation
+C. mysql -u root -p
+D. systemctl secure mysql
+Câu 18: Giao thức HTTPS (Web bảo mật) sử dụng cổng mặc định nào?
+A. 80
+B. 8080
+C. 443
+D. 22
+Câu 19: Lỗi “403 Forbidden” khi truy cập website trên LAMP server thường có nghĩa là gì?
+A. Server bị sập.
+B. Không tìm thấy trang (Not found).
+C. Server hoạt động nhưng từ chối quyền truy cập (thường do sai phân quyền file/folder).
+D. Lỗi cú pháp PHP.
+Câu 20: Sự khác biệt chính giữa LAMP (trên Linux) và XAMPP (thường dùng trên Windows) là gì?
+A. LAMP là phần mềm thương mại, XAMPP là miễn phí.
+B. LAMP là các thành phần cài đặt rời rạc trên hệ điều hành Linux thực tế; XAMPP là bộ đóng gói sẵn dễ cài đặt cho môi trường phát triển (Development).
+C. XAMPP mạnh hơn LAMP.
+D. LAMP không chạy được PHP.
+CHỦ ĐỀ 5: CÀI ĐẶT VÀ SỬ DỤNG PHẦN MỀM CMS (WORDPRESS, JOOMLA, OPENCART, ODOO)
+(Nội dung: Khái niệm CMS, Đặc điểm từng loại, Cài đặt, Quản trị)
+Câu 1: CMS là viết tắt của thuật ngữ nào?
+A. Computer Management System
+B. Content Management System (Hệ quản trị nội dung)
+C. Code Maintenance Service
+D. Customer Marketing System
+Câu 2: CMS nào sau đây được biết đến là phổ biến nhất thế giới, khởi đầu là nền tảng blogging?
+A. Joomla
+B. Drupal
+C. WordPress
+D. OpenCart
+Câu 3: Để chạy được WordPress, Joomla hay OpenCart, server cần hỗ trợ ngôn ngữ lập trình và cơ sở dữ liệu nào là chủ yếu?
+A. ASP.NET và SQL Server
+B. Java và Oracle
+C. PHP và MySQL/MariaDB
+D. Python và PostgreSQL
+Câu 4: OpenCart là một CMS được thiết kế chuyên biệt cho mục đích gì?
+A. Làm blog cá nhân.
+B. Xây dựng website thương mại điện tử (E-commerce).
+C. Làm diễn đàn (Forum).
+D. Làm mạng xã hội.
+Câu 5: Trong kiến trúc của WordPress, “Theme” đóng vai trò gì?
+A. Quản lý cơ sở dữ liệu.
+B. Quy định giao diện hiển thị (frontend) của website.
+C. Bổ sung tính năng mới (chức năng).
+D. Quản lý người dùng.
+Câu 6: Để mở rộng chức năng cho WordPress (ví dụ: thêm form liên hệ, SEO, bảo mật), ta cài đặt thành phần nào?
+A. Widget
+B. Post
+C. Plugin
+D. Category
+Câu 7: Odoo khác biệt lớn nhất so với WordPress hay Joomla ở điểm nào?
+A. Odoo chỉ là một website tin tức.
+B. Odoo không phải là mã nguồn mở.
+C. Odoo là một bộ phần mềm quản trị doanh nghiệp toàn diện (ERP) tích hợp cả Website, Bán hàng, Kho, Kế toán…
+D. Odoo chỉ chạy trên Windows.
+Câu 8: Trong quá trình cài đặt CMS (ví dụ Joomla), bước “Database Configuration” yêu cầu thông tin gì?
+A. Tên website và slogan.
+B. Email quản trị viên.
+C. Hostname, Username, Password của Database và Tên Database.
+D. Mã số thuế doanh nghiệp.
+Câu 9: File wp-config.php trong WordPress chứa thông tin quan trọng gì?
+A. Nội dung bài viết.
+B. Thông tin kết nối cơ sở dữ liệu (Database Connection info).
+C. Danh sách người dùng.
+D. Hình ảnh giao diện.
+Câu 10: CMS Joomla nổi tiếng với đặc điểm nào?
+A. Đơn giản nhất, ít tính năng nhất.
+B. Mạnh mẽ trong việc quản lý phân quyền user và xây dựng các cổng thông tin (Portal) phức tạp.
+C. Chỉ dành cho bán hàng online.
+D. Không hỗ trợ đa ngôn ngữ.
+Câu 11: Đường dẫn mặc định để truy cập trang quản trị (Admin Dashboard) của WordPress thường là gì?
+A. /administrator
+B. /admin
+C. /wp-admin
+D. /manage
+Câu 12: Trong OpenCart, khái niệm “Extension” (Mở rộng) bao gồm những gì?
+A. Chỉ là giao diện.
+B. Chỉ là cổng thanh toán.
+C. Modules, Shipping (Giao hàng), Payments (Thanh toán), Order Totals, v.v.
+D. Danh sách sản phẩm.
+Câu 13: Để bảo mật website CMS mã nguồn mở, việc làm nào sau đây là quan trọng nhất?
+A. Không bao giờ đăng bài viết mới.
+B. Thường xuyên cập nhật (Update) Core CMS, Plugin và Theme lên phiên bản mới nhất.
+C. Chỉ truy cập web vào ban ngày.
+D. Tắt database.
+Câu 14: Hệ thống “Layout” trong OpenCart giúp admin làm gì?
+A. Viết mã CSS.
+B. Bố trí các Module (như Banner, Slide, Sản phẩm mới) vào các vị trí khác nhau trên từng trang.
+C. Chỉnh sửa giá sản phẩm.
+D. Quản lý kho hàng.
+Câu 15: Odoo chủ yếu được viết bằng ngôn ngữ lập trình nào?
+A. PHP
+B. Java
+C. Python
+D. C#
+Câu 16: “Permalink” trong WordPress ảnh hưởng đến yếu tố nào của website?
+A. Tốc độ tải trang.
+B. Màu sắc giao diện.
+C. Cấu trúc đường dẫn URL (SEO) của bài viết/trang.
+D. Quyền của người dùng.
+Câu 17: Khi cài đặt WordPress trên Localhost (XAMPP/LAMP), nếu gặp lỗi “Error establishing a database connection”, nguyên nhân thường là gì?
+A. Chưa cài đặt trình duyệt Chrome.
+B. Sai thông tin đăng nhập Database (User, Pass, DB Name) trong file wp-config.php hoặc MySQL chưa chạy.
+C. Mạng Internet bị rớt.
+D. Phiên bản PHP quá cao.
+Câu 18: “VirtueMart” là một Extension thương mại điện tử nổi tiếng dành cho CMS nào?
+A. WordPress (dùng WooCommerce).
+B. Joomla.
+C. Drupal.
+D. OpenCart.
+Câu 19: Trong mô hình MVC của OpenCart (hoặc các CMS hiện đại), phần “View” chịu trách nhiệm gì?
+A. Xử lý logic nghiệp vụ.
+B. Tương tác trực tiếp với Database.
+C. Hiển thị dữ liệu ra giao diện người dùng (HTML/Template).
+D. Điều hướng đường dẫn.
+Câu 20: Thư mục wp-content trong mã nguồn WordPress chứa dữ liệu gì?
+A. Các file lõi của hệ thống (Core files).
+B. File cấu hình server.
+C. Themes, Plugins và file Uploads (ảnh, media) của người dùng.
+D. Cơ sở dữ liệu MySQL.
+CHỦ ĐỀ 6: TÌM HIỂU VÀ SỬ DỤNG WEB FRAMEWORK PYTHON (DJANGO/FLASK)
+(Nội dung: Framework, MVC/MVT, ORM, CRUD, Routing)
+Câu 1: Web Framework nào của Python được coi là “full-stack”, cung cấp sẵn hầu hết mọi thứ (pin kèm theo) như Admin, ORM, Auth?
+A. Flask
+B. Django
+C. Pyramid
+D. Bottle
+Câu 2: Kiến trúc thiết kế của Django được gọi là gì?
+A. MVC (Model - View - Controller)
+B. MVT (Model - View - Template)
+C. MVVM (Model - View - ViewModel)
+D. MVP (Model - View - Presenter)
+Câu 3: Trong Django, thành phần “Model” chịu trách nhiệm làm gì?
+A. Xử lý giao diện HTML.
+B. Điều hướng URL.
+C. Định nghĩa cấu trúc dữ liệu và tương tác với Cơ sở dữ liệu.
+D. Nhận request từ người dùng.
+Câu 4: Flask được gọi là “Micro-framework” vì lý do gì?
+A. Nó chỉ viết được các ứng dụng rất nhỏ.
+B. Nó rất chậm.
+C. Nó cung cấp phần lõi tối giản, không tích hợp sẵn ORM hay Admin, cho phép lập trình viên tự chọn thư viện mở rộng.
+D. Kích thước file cài đặt nhỏ hơn 1KB.
+Câu 5: Để cài đặt Django hoặc Flask, ta sử dụng công cụ quản lý gói nào của Python?
+A. npm
+B. composer
+C. pip
+D. gem
+Câu 6: “Virtual Environment” (ví dụ: venv) trong Python có tác dụng gì?
+A. Tạo máy ảo VMware.
+B. Tạo môi trường độc lập để cài đặt các thư viện riêng biệt cho từng dự án, tránh xung đột phiên bản.
+C. Tăng tốc độ chạy code Python.
+D. Giả lập trình duyệt web.
+Câu 7: Lệnh chuẩn để chạy server phát triển (Development Server) trong Django là gì?
+A. python start server
+B. python manage.py runserver
+C. django-admin run
+D. flask run
+Câu 8: Hệ thống Template engine mặc định mà Flask và Django sử dụng (hoặc tương tự) để nhúng code Python vào HTML là gì?
+A. Blade
+B. Smarty
+C. Jinja2 (Flask) / Django Template Language (DTL)
+D. Razor
+Câu 9: ORM (Object Relational Mapping) giúp lập trình viên thao tác với Database như thế nào?
+A. Phải viết các câu lệnh SQL thuần phức tạp.
+B. Thao tác với Database thông qua các đối tượng (Object) và phương thức của Python thay vì viết SQL.
+C. Không cần dùng Database nữa.
+D. Chỉ dùng để vẽ sơ đồ ER.
+Câu 10: Trong một ứng dụng CRUD, chữ “C” là viết tắt của hành động nào và tương ứng với lệnh SQL nào?
+A. Connect - JOIN
+B. Create - INSERT
+C. Change - UPDATE
+D. Cancel - DROP
+Câu 11: File urls.py trong Django có chức năng chính là gì?
+A. Định nghĩa cấu trúc Database.
+B. Định tuyến (Routing) - ánh xạ các URL truy cập vào các hàm xử lý (Views) tương ứng.
+C. Cấu hình giao diện.
+D. Lưu trữ file tĩnh (CSS, JS).
+Câu 12: Để áp dụng các thay đổi trong Model (cấu trúc bảng) vào Database thực tế trong Django, ta phải chạy hai lệnh nào theo thứ tự?
+A. manage.py runserver và manage.py build
+B. manage.py makemigrations và manage.py migrate
+C. manage.py startapp và manage.py db
+D. manage.py create và manage.py commit
+Câu 13: Trong Flask, decorator @app.route(‘/’) dùng để làm gì?
+A. Khai báo biến toàn cục.
+B. Kết nối database.
+C. Gắn kết một URL (ví dụ trang chủ) với một hàm xử lý cụ thể.
+D. Chạy ứng dụng.
+Câu 14: Để lấy dữ liệu từ form gửi lên theo phương thức POST trong Flask, ta dùng đối tượng nào?
+A. request.get
+B. request.form
+C. request.args
+D. request.data
+Câu 15: Trong kiến trúc MVT của Django, file views.py tương đương với thành phần nào trong mô hình MVC truyền thống?
+A. Model
+B. View
+C. Controller (Xử lý logic, nhận request, trả về response)
+D. Database
+Câu 16: File settings.py trong dự án Django dùng để cấu hình gì?
+A. Chỉ cấu hình màu sắc.
+B. Cấu hình toàn bộ dự án: Database, Apps đã cài, Timezone, Language, Static files…
+C. Viết code xử lý logic.
+D. Thiết kế giao diện HTML.
+Câu 17: Để tạo một tài khoản quản trị viên cao cấp (Superuser) truy cập vào Django Admin, ta dùng lệnh:
+A. python manage.py createadmin
+B. python manage.py createsuperuser
+C. python manage.py adduser root
+D. python manage.py user -admin
+Câu 18: WSGI là giao diện chuẩn giúp kết nối giữa thành phần nào với nhau?
+A. Giữa Python Web Application và Database.
+B. Giữa Web Server (như Apache/Nginx) và Python Web Application.
+C. Giữa Client và Server.
+D. Giữa HTML và CSS.
+Câu 19: Trong Django, lệnh python manage.py startapp product sẽ làm gì?
+A. Khởi tạo một dự án Django mới hoàn toàn.
+B. Chạy server product.
+C. Tạo một module (ứng dụng con) mới có tên là “product” bên trong dự án.
+D. Xóa bảng product trong database.
+Câu 20: Template tag {% for item in products %} … {% endfor %} trong Django/Jinja2 dùng để làm gì?
+A. Kiểm tra điều kiện đúng sai.
+B. Duyệt qua danh sách các sản phẩm và hiển thị từng phần tử (Vòng lặp).
+C. Định dạng ngày tháng.
+D. Comment code.
+CHỦ ĐỀ 7: HỆ THỐNG THEO DÕI LỖI (BUG TRACKING SYSTEM) - BUGZILLA
+(Nội dung: Khái niệm Bug, Vòng đời Bug, Cấu trúc Bugzilla, Quản trị)
+Câu 1: Bugzilla là phần mềm mã nguồn mở được phát triển bởi tổ chức nào?
+A. Google
+B. Apache Software Foundation
+C. Mozilla Foundation
+D. Microsoft
+Câu 2: Mục đích chính của phần mềm Bugzilla là gì?
+A. Soạn thảo mã nguồn.
+B. Theo dõi, báo cáo và quản lý các lỗi (bug) hoặc yêu cầu thay đổi trong quá trình phát triển phần mềm.
+C. Quản lý phiên bản mã nguồn.
+D. Kiểm thử tự động (Automation Test).
+Câu 3: Để chạy được Bugzilla, máy chủ cần hỗ trợ ngôn ngữ lập trình nào là chủ yếu?
+A. PHP
+B. Java
+C. Perl
+D. Python
+Câu 4: Cấu trúc phân cấp cao nhất để quản lý một dự án trong Bugzilla là gì?
+A. Component
+B. Product
+C. Version
+D. Milestone
+Câu 5: Trong Bugzilla, một “Component” (Thành phần) là gì?
+A. Một người dùng cụ thể.
+B. Một tập hợp con của Product, giúp chia nhỏ dự án để dễ quản lý (ví dụ: Giao diện, Database, API).
+C. Một phiên bản phần mềm.
+D. Một loại lỗi.
+Câu 6: Trạng thái (Status) nào cho biết một Bug vừa mới được báo cáo và chưa được xử lý?
+A. RESOLVED
+B. ASSIGNED
+C. NEW (hoặc UNCONFIRMED)
+D. CLOSED
+Câu 7: Khi một lập trình viên bắt đầu sửa lỗi, họ nên chuyển trạng thái Bug sang gì?
+A. NEW
+B. ASSIGNED
+C. VERIFIED
+D. REOPENED
+Câu 8: Độ nghiêm trọng “Severity” của Bug thể hiện điều gì?
+A. Mức độ ưu tiên sửa lỗi của quản lý.
+B. Mức độ ảnh hưởng kỹ thuật của lỗi đối với hệ thống (ví dụ: làm sập hệ thống, tính toán sai, lỗi giao diện nhỏ).
+C. Thời gian cần để sửa lỗi.
+D. Chi phí để sửa lỗi.
+Câu 9: Mức độ ưu tiên “Priority” (P1 đến P5) dùng để làm gì?
+A. Đánh giá kỹ năng của Tester.
+B. Xác định thứ tự công việc cần làm, lỗi nào cần được sửa trước theo yêu cầu của quản lý dự án.
+C. Xác định lỗi khó hay dễ.
+D. Xác định ai là người sửa lỗi.
+Câu 10: Khi Developer đã sửa xong lỗi và đẩy code lên, họ sẽ chuyển trạng thái Bug sang RESOLVED với kết quả (Resolution) là gì?
+A. DUPLICATE
+B. INVALID
+C. FIXED
+D. WONTFIX
+Câu 11: Nếu một Bug được báo cáo nhưng Developer xác định đó là tính năng chứ không phải lỗi, hoặc lỗi do người dùng, họ chọn Resolution là gì?
+A. FIXED
+B. INVALID
+C. DUPLICATE
+D. WORKSFORME
+Câu 12: Trạng thái “VERIFIED” trong vòng đời Bug thường do ai thực hiện?
+A. Developer (người sửa lỗi).
+B. Tester/QA (người kiểm thử) - xác nhận rằng lỗi đã thực sự được sửa đúng.
+C. Project Manager.
+D. Khách hàng.
+Câu 13: Trường “CC List” trong form báo lỗi có tác dụng gì?
+A. Gửi email quảng cáo.
+B. Thêm email của những người cần theo dõi tiến độ xử lý Bug này (sẽ nhận thông báo khi Bug thay đổi).
+C. Chặn người dùng truy cập.
+D. Phân quyền admin.
+Câu 14: Để cài đặt Bugzilla trên Windows, ta thường cần cài đặt thêm gói phần mềm nào để hỗ trợ Perl và Web Server?
+A. XAMPP
+B. ActivePerl và Apache (hoặc IIS)
+C. Docker Desktop
+D. Visual Studio
+Câu 15: Lệnh hoặc Script nào dùng để kiểm tra xem hệ thống đã cài đủ các module Perl cần thiết cho Bugzilla chưa?
+A. checksetup.pl
+B. install.exe
+C. setup.sh
+D. make config
+Câu 16: Một Bug bị đóng lại (CLOSED) nhưng sau đó lại xuất hiện trong phiên bản tiếp theo, Tester sẽ chuyển trạng thái nó thành gì?
+A. NEW
+B. REOPENED
+C. ASSIGNED
+D. RESOLVED
+Câu 17: Resolution “DUPLICATE” nghĩa là gì?
+A. Lỗi này không thể sửa được.
+B. Lỗi này đã được báo cáo trước đó rồi (trùng lặp với một Bug ID khác).
+C. Lỗi này quá khó.
+D. Lỗi này sẽ sửa sau.
+Câu 18: Tham số urlbase trong cấu hình Bugzilla dùng để làm gì?
+A. Đặt tên cho Database.
+B. Xác định địa chỉ URL đầy đủ của website Bugzilla để hệ thống gửi link chính xác trong email thông báo.
+C. Đặt mật khẩu admin.
+D. Xác định đường dẫn file log.
+Câu 19: Ai là người có quyền tạo thêm “User” mới trong Bugzilla?
+A. Bất kỳ ai truy cập web.
+B. Administrator (Quản trị viên hệ thống).
+C. Chỉ Developer.
+D. Chỉ Tester.
+Câu 20: “Hardware” và “OS” là hai trường thông tin trong Bug report dùng để chỉ định điều gì?
+A. Cấu hình máy chủ Bugzilla.
+B. Môi trường phần cứng và hệ điều hành nơi lỗi xảy ra (để Developer tái hiện lỗi).
+C. Loại máy tính Developer đang dùng.
+D. Giá tiền của phần mềm.
+CHỦ ĐỀ 8: QUẢN LÝ PHIÊN BẢN VỚI GIT & GITHUB
+(Nội dung: Khái niệm VCS, Lệnh Git cơ bản, Quy trình nhóm, Branching)
+Câu 1: Git là hệ thống quản lý phiên bản thuộc loại nào?
+A. Tập trung (Centralized VCS - như SVN).
+B. Phân tán (Distributed VCS).
+C. Cục bộ (Local VCS).
+D. Client-Server VCS.
+Câu 2: Câu lệnh nào dùng để khởi tạo một kho lưu trữ Git mới (repository) trong thư mục hiện tại?
+A. git start
+B. git create
+C. git init
+D. git new
+Câu 3: Để sao chép một kho chứa từ xa (ví dụ trên GitHub) về máy cá nhân, ta dùng lệnh gì?
+A. git copy
+B. git pull
+C. git clone
+D. git download
+Câu 4: Khu vực “Staging Area” (hoặc Index) trong Git là gì?
+A. Nơi lưu trữ vĩnh viễn các file.
+B. Nơi trung gian chứa các thay đổi đã được đánh dấu (add) để chuẩn bị cho lần commit tiếp theo.
+C. Thư mục chứa file bị xóa.
+D. Kho chứa từ xa.
+Câu 5: Lệnh git commit -m “message” có tác dụng gì?
+A. Tải file lên server.
+B. Lưu lại các thay đổi đang ở Staging Area vào lịch sử phiên bản (Local Repository) kèm theo ghi chú.
+C. Thêm file vào Staging Area.
+D. Gộp nhánh.
+Câu 6: Để xem trạng thái hiện tại của các file (file nào đã sửa, file nào chưa add…), ta dùng lệnh:
+A. git log
+B. git info
+C. git status
+D. git show
+Câu 7: Lệnh nào dùng để tải các thay đổi mới nhất từ kho chứa từ xa (Remote) về và gộp vào nhánh hiện tại ở máy cục bộ?
+A. git push
+B. git pull
+C. git fetch
+D. git update
+Câu 8: Lệnh git push origin main có ý nghĩa gì?
+A. Tải code từ nhánh main về máy.
+B. Đẩy các commit từ nhánh main ở máy cục bộ lên kho chứa từ xa có tên là origin.
+C. Xóa nhánh main trên server.
+D. Tạo một nhánh mới tên là origin.
+Câu 9: Để tạo một nhánh mới (branch) có tên là feature-login, ta dùng lệnh nào?
+A. git new feature-login
+B. git branch feature-login
+C. git checkout feature-login
+D. git add feature-login
+Câu 10: Để chuyển đổi không gian làm việc sang nhánh feature-login, ta dùng lệnh nào?
+A. git move feature-login
+B. git checkout feature-login (hoặc git switch feature-login)
+C. git branch feature-login
+D. git select feature-login
+Câu 11: “Conflict” (Xung đột) trong Git xảy ra khi nào?
+A. Khi hai người cùng sửa hai file khác nhau.
+B. Khi hai người cùng sửa đổi trên cùng một dòng của cùng một file và Git không thể tự động gộp lại.
+C. Khi mạng internet bị mất.
+D. Khi ổ cứng bị đầy.
+Câu 12: File .gitignore có tác dụng gì?
+A. Lưu trữ mật khẩu Git.
+B. Liệt kê các file hoặc thư mục mà Git sẽ bỏ qua, không theo dõi (ví dụ: file build, file tạm, thư mục node_modules).
+C. Chứa các ghi chú commit.
+D. Chứa cấu hình user của Git.
+Câu 13: Lệnh git merge feature-login (khi đang đứng ở nhánh main) sẽ thực hiện điều gì?
+A. Xóa nhánh feature-login.
+B. Gộp các thay đổi từ nhánh feature-login vào nhánh main.
+C. Tạo nhánh main từ feature-login.
+D. Đẩy code lên GitHub.
+Câu 14: GitHub, GitLab, Bitbucket đóng vai trò gì trong quy trình làm việc với Git?
+A. Là phần mềm Git chạy trên máy tính cá nhân.
+B. Là các dịch vụ lưu trữ kho mã nguồn Git tập trung (Remote Repository) và hỗ trợ quản lý dự án.
+C. Là trình biên dịch code.
+D. Là hệ điều hành.
+Câu 15: Quy trình “Pull Request” (hoặc Merge Request) trên GitHub dùng để làm gì?
+A. Yêu cầu tải code về máy.
+B. Yêu cầu review code và gộp các thay đổi từ một nhánh (hoặc fork) vào nhánh chính của dự án.
+C. Yêu cầu xóa dự án.
+D. Yêu cầu cấp quyền admin.
+Câu 16: CI/CD (GitHub Actions) giúp ích gì cho dự án?
+A. Tự động viết code.
+B. Tự động hóa quy trình xây dựng (Build), kiểm thử (Test) và triển khai (Deploy) phần mềm khi có code mới được đẩy lên.
+C. Tăng dung lượng lưu trữ.
+D. Bảo vệ bản quyền phần mềm.
+Câu 17: Để xem lịch sử các lần commit trước đó, ta dùng lệnh:
+A. git log
+B. git history
+C. git past
+D. git review
+Câu 18: Trong Git, con trỏ HEAD thường trỏ đến đâu?
+A. Commit đầu tiên của dự án.
+B. Commit mới nhất của nhánh hiện tại đang làm việc.
+C. Kho chứa từ xa.
+D. Thư mục Staging.
+Câu 19: Lệnh git fetch khác git pull ở điểm nào?
+A. git fetch tải code về và tự động gộp (merge).
+B. git fetch chỉ tải thông tin thay đổi từ server về nhưng KHÔNG tự động gộp vào code hiện tại; git pull thì có.
+C. git fetch dùng để đẩy code lên.
+D. Hai lệnh này hoàn toàn giống nhau.
+Câu 20: Để cấu hình tên người dùng cho toàn bộ các dự án Git trên máy, ta dùng lệnh:
+A. git config --global user.name "Your Name"
+B. git setup name "Your Name"
+C. git config --global user.name "Your Name"
+D. git user "Your Name"
+CHỦ ĐỀ 9: TÌM HIỂU VÀ SỬ DỤNG DOCKER
+(Nội dung: Container, Image, Dockerfile, Docker Hub, Các lệnh cơ bản)
+Câu 1: Docker là một nền tảng mã nguồn mở sử dụng công nghệ nào để đóng gói và chạy ứng dụng?
+A. Máy ảo (Virtual Machine - VM).
+B. Containerization (Ảo hóa mức hệ điều hành).
+C. Trình biên dịch mã nguồn.
+D. Cơ sở dữ liệu đám mây.
+Câu 2: Sự khác biệt chính giữa Docker Container và Máy ảo (VM) là gì?
+A. Container nặng hơn VM.
+B. VM chia sẻ kernel của hệ điều hành máy chủ, còn Container thì không.
+C. Container chia sẻ kernel của hệ điều hành máy chủ (Host OS), nhẹ hơn và khởi động nhanh hơn VM.
+D. Container cần cài đặt hệ điều hành riêng cho mỗi ứng dụng.
+Câu 3: “Docker Image” được hiểu là gì?
+A. Một tiến trình đang chạy.
+B. Một khuôn mẫu (template) chỉ đọc (read-only) chứa mã nguồn, thư viện và các phụ thuộc cần thiết để chạy ứng dụng.
+C. Một cơ sở dữ liệu.
+D. Một file văn bản cấu hình.
+Câu 4: Khi một Docker Image được chạy (run), nó trở thành gì?
+A. Docker File.
+B. Docker Hub.
+C. Docker Container.
+D. Virtual Machine.
+Câu 5: File văn bản chứa các chỉ thị (instruction) để tự động xây dựng (build) nên một Docker Image được gọi là gì?
+A. docker-compose.yml
+B. Dockerfile (không có đuôi mở rộng).
+C. image.json
+D. build.sh
+Câu 6: Lệnh nào dùng để tải một Image từ Docker Hub về máy cục bộ?
+A. docker get
+B. docker load
+C. docker pull
+D. docker fetch
+Câu 7: Để liệt kê tất cả các Container đang chạy (active), ta dùng lệnh nào?
+A. docker list
+B. docker ps
+C. docker images
+D. docker show
+Câu 8: Trong Dockerfile, chỉ thị FROM có tác dụng gì?
+A. Copy file từ máy thật vào ảnh.
+B. Chạy một lệnh trong quá trình build.
+C. Xác định Image gốc (Base Image) mà từ đó Image mới sẽ được xây dựng (ví dụ: FROM ubuntu:18.04).
+D. Khai báo cổng mạng.
+Câu 9: Để xây dựng một Image từ Dockerfile trong thư mục hiện tại, ta dùng lệnh nào?
+A. docker build -t my-image-name .
+B. docker create my-image-name
+C. docker make .
+D. docker compile
+Câu 10: Lệnh docker run -d -p 8080:80 nginx có ý nghĩa gì?
+A. Chạy container nginx và tự động xóa.
+B. Chạy container nginx dưới nền (detached mode), ánh xạ cổng 8080 của máy chủ (Host) vào cổng 80 của container.
+C. Tải image nginx về máy.
+D. Dừng container nginx.
+Câu 11: Docker Hub là gì?
+A. Công cụ quản lý mạng của Docker.
+B. Kho lưu trữ (Registry) tập trung lớn nhất để chia sẻ và lưu trữ các Docker Image.
+C. Một phần mềm soạn thảo code.
+D. Hệ điều hành Docker.
+Câu 12: Để dừng một Container đang chạy, ta dùng lệnh:
+A. docker kill
+B. docker stop [container_id]
+C. docker pause
+D. docker end
+Câu 13: “Docker Volume” được sử dụng để giải quyết vấn đề gì?
+A. Tăng tốc độ CPU.
+B. Lưu trữ dữ liệu bền vững (Persistence Data) ngay cả khi Container bị xóa hoặc khởi động lại.
+C. Bảo mật mạng.
+D. Giảm dung lượng Image.
+Câu 14: Chỉ thị CMD trong Dockerfile khác RUN ở điểm nào?
+A. RUN chạy khi khởi động container, CMD chạy khi build.
+B. RUN thực thi lệnh trong quá trình build Image (cài phần mềm…); CMD xác định lệnh mặc định sẽ chạy khi Container được khởi động.
+C. Hai lệnh này giống hệt nhau.
+D. CMD dùng để copy file.
+Câu 15: Để xóa một Image khỏi máy cục bộ, ta dùng lệnh:
+A. docker rm [image_id]
+B. docker rmi [image_id]
+C. docker delete [image_id]
+D. docker clean [image_id]
+Câu 16: docker-compose là công cụ giúp làm gì?
+A. Thiết kế giao diện đồ họa cho Docker.
+B. Định nghĩa và chạy các ứng dụng đa container (multi-container applications) bằng một file cấu hình YAML.
+C. Tối ưu hóa kernel Linux.
+D. Thay thế cho Dockerfile.
+Câu 17: Trong file docker-compose.yml, từ khóa services dùng để định nghĩa gì?
+A. Danh sách các mạng.
+B. Các container (ứng dụng) cấu thành nên hệ thống (ví dụ: web, db).
+C. Phiên bản của Docker.
+D. Danh sách người dùng.
+Câu 18: Lệnh docker exec -it [container_id] bash dùng để làm gì?
+A. Xóa container.
+B. Xem log của container.
+C. Truy cập vào bên trong shell (dòng lệnh) của một Container đang chạy để thao tác.
+D. Khởi động lại container.
+Câu 19: Kubernetes (K8s) có mối quan hệ gì với Docker?
+A. Là đối thủ cạnh tranh thay thế Docker Image.
+B. Là hệ thống điều phối (Orchestration) giúp quản lý, triển khai và mở rộng hàng loạt các Container (thường là Docker container) trên nhiều máy chủ.
+C. Là một phiên bản cũ của Docker.
+D. Là ngôn ngữ lập trình để viết Docker.
+Câu 20: Tác dụng của file .dockerignore là gì?
+A. Bỏ qua các lỗi khi chạy.
+B. Loại trừ các file/thư mục không cần thiết (như .git, node_modules) khỏi context khi build Image để giảm dung lượng.
+C. Danh sách các user bị cấm dùng Docker.
+D. Cấu hình mạng cho Docker.
+CHỦ ĐỀ 10: QUẢN LÝ DỰ ÁN VỚI PROJECTLIBRE
+(Nội dung: WBS, Gantt Chart, Resource, Dependencies, Critical Path)
+Câu 1: ProjectLibre là phần mềm mã nguồn mở được thiết kế để thay thế cho phần mềm thương mại nào?
+A. Microsoft Word
+B. Microsoft Excel
+C. Microsoft Project
+D. Adobe Photoshop
+Câu 2: Biểu đồ Gantt (Gantt Chart) trong quản lý dự án dùng để hiển thị điều gì?
+A. Chi phí dự án theo biểu đồ tròn.
+B. Tiến độ dự án theo thời gian, thể hiện thời gian bắt đầu, kết thúc và độ dài của các công việc.
+C. Cấu trúc tổ chức nhân sự.
+D. Sơ đồ dòng dữ liệu.
+Câu 3: WBS là viết tắt của thuật ngữ nào trong quản lý dự án?
+A. Work Breakdown System
+B. Work Breakdown Structure (Cấu trúc phân chia công việc)
+C. Website Building Structure
+D. Working Basic Schedule
+Câu 4: Mục đích chính của việc tạo WBS là gì?
+A. Chia nhỏ dự án thành các phần việc nhỏ hơn, dễ quản lý và kiểm soát hơn.
+B. Tính toán lương cho nhân viên.
+C. Vẽ sơ đồ mạng máy tính.
+D. Viết báo cáo tổng kết.
+Câu 5: Trong ProjectLibre, mối quan hệ phụ thuộc “Finish-to-Start” (FS) giữa công việc A và B có nghĩa là gì?
+A. Công việc A và B phải bắt đầu cùng lúc.
+B. Công việc B phải kết thúc trước khi A bắt đầu.
+C. Công việc A phải kết thúc rồi thì công việc B mới được bắt đầu (đây là loại phổ biến nhất).
+D. Hai công việc không liên quan nhau.
+Câu 6: “Critical Path” (Đường găng) trong dự án là gì?
+A. Đường đi ngắn nhất để hoàn thành dự án.
+B. Chuỗi các công việc dài nhất quyết định thời gian hoàn thành sớm nhất của dự án; bất kỳ sự chậm trễ nào trên đường găng đều làm chậm cả dự án.
+C. Danh sách các công việc ít quan trọng nhất.
+D. Đường nối giữa các tài nguyên.
+Câu 7: Để gán một nhân viên cụ thể vào làm một công việc (Task) trong ProjectLibre, ta vào mục nào?
+A. Task Usage.
+B. Resource (Resources -> Assign Resources).
+C. Calendar.
+D. Network.
+Câu 8: Trong ProjectLibre, “Milestone” (Cột mốc) là một công việc đặc biệt có đặc điểm gì?
+A. Thời gian thực hiện (Duration) bằng 1 ngày.
+B. Thời gian thực hiện (Duration) bằng 0, dùng để đánh dấu một sự kiện quan trọng (ví dụ: Bàn giao, Ký hợp đồng).
+C. Không cần tài nguyên.
+D. Luôn nằm ở cuối dự án.
+Câu 9: Để thiết lập lịch làm việc (ví dụ: nghỉ Thứ 7, CN, ngày lễ) cho dự án, ta cấu hình ở đâu?
+A. Task Information.
+B. Calendar (Change Working Time).
+C. Resource Sheet.
+D. Options.
+Câu 10: Loại tài nguyên “Material” (Vật liệu) trong ProjectLibre khác với “Work” (Nhân sự/Máy móc) ở chỗ nào?
+A. “Work” tính theo thời gian (giờ công), “Material” tính theo đơn vị số lượng tiêu hao (cái, mét, lít…).
+B. “Material” đắt tiền hơn.
+C. “Material” không được tính vào chi phí.
+D. “Work” không thể gán cho Task.
+Câu 11: Khi một công việc có thanh hiển thị màu đỏ trên biểu đồ Gantt trong ProjectLibre, điều đó thường báo hiệu gì?
+A. Công việc đó đã hoàn thành.
+B. Công việc đó nằm trên đường găng (Critical Task), cần đặc biệt lưu ý về tiến độ.
+C. Công việc đó bị lỗi.
+D. Công việc đó chưa được gán người làm.
+Câu 12: “Baseline” (Đường cơ sở) được lưu lại để làm gì?
+A. Để làm đẹp biểu đồ.
+B. Để lưu lại kế hoạch ban đầu đã được duyệt, dùng để so sánh với thực tế thực hiện sau này.
+C. Để gửi cho khách hàng xem chơi.
+D. Để xóa dữ liệu cũ.
+Câu 13: Cột “Predecessors” (Công việc tiền nhiệm) dùng để khai báo thông tin gì?
+A. Tên người quản lý.
+B. Chi phí công việc.
+C. ID của các công việc phải thực hiện trước công việc hiện tại (xác định mối quan hệ phụ thuộc).
+D. Ngày kết thúc dự án.
+Câu 14: Nếu bạn muốn công việc B bắt đầu sau khi công việc A kết thúc được 2 ngày (có độ trễ), bạn thiết lập mối quan hệ như thế nào?
+A. FS - 2 days
+B. FS + 2 days (Lag time)
+C. SS + 2 days
+D. FF + 2 days
+Câu 15: Trong khung nhìn “Resource Sheet”, cột “Std. Rate” dùng để nhập thông tin gì?
+A. Tên nhân viên.
+B. Đơn giá chuẩn (mức lương/chi phí) theo giờ của tài nguyên (ví dụ: 10$/giờ).
+C. Số giờ làm thêm.
+D. Tổng chi phí dự án.
+Câu 16: Để xem tổng quan chi phí và thời gian của toàn bộ dự án, ta thường xem ở đâu?
+A. Task Information của công việc đầu tiên.
+B. Project Information -> Statistics (Thống kê dự án).
+C. Màn hình Help.
+D. Menu File.
+Câu 17: Cấu trúc phân cấp công việc trong ProjectLibre được tạo ra bằng cách sử dụng chức năng nào?
+A. Copy & Paste.
+B. Indent (Thụt lề phải) và Outdent (Thụt lề trái) cho các Task.
+C. Tô màu cho dòng.
+D. Đổi font chữ.
+Câu 18: Mối quan hệ “Start-to-Start” (SS) có nghĩa là:
+A. Hai công việc phải kết thúc cùng lúc.
+B. Công việc B có thể bắt đầu khi công việc A bắt đầu.
+C. Công việc B bắt đầu khi A kết thúc.
+D. Công việc B kết thúc khi A bắt đầu.
+Câu 19: Khi tài nguyên bị “Overallocated” (Quá tải - ví dụ 1 người bị gán làm 2 việc full-time cùng lúc), ProjectLibre sẽ báo hiệu bằng cách nào?
+A. Tự động xóa công việc.
+B. Hiển thị biểu tượng cảnh báo màu đỏ (Red Man) ở cột chỉ số (Indicator).
+C. Không cho phép lưu file.
+D. Tắt chương trình.
+Câu 20: “Duration” của một công việc tóm lược (Summary Task - công việc cha) được tính như thế nào?
+A. Do người dùng tự nhập.
+B. Bằng tổng thời gian của các công việc con cộng lại.
+C. Được tính toán tự động dựa trên thời điểm bắt đầu sớm nhất và kết thúc muộn nhất của các công việc con.
+D. Luôn bằng 0.
+BẢNG LỆNH LINUX
+BẢNG LỆNH GIT
+BẢNG LỆNH DOCKER
+Lệnh | Chức năng | Ví dụ
+ls | Liệt kê file/thư mục | ls -la
+cd | Di chuyển thư mục | cd /home/user
+pwd | Hiển thị thư mục hiện tại | pwd
+mkdir | Tạo thư mục mới | mkdir myfolder
+rm | Xóa file/thư mục | rm -rf folder
+cp | Sao chép file/thư mục | cp file1 file2
+mv | Di chuyển/đổi tên | mv old.txt new.txt
+cat | Hiển thị nội dung file | cat file.txt
+nano | Soạn thảo file (dễ dùng) | nano file.txt
+vi | Soạn thảo file (nâng cao) | vi file.txt
+grep | Tìm kiếm chuỗi trong file | grep "text" file.txt
+chmod | Phân quyền file/thư mục | chmod 755 script.sh
+chown | Thay đổi chủ sở hữu | chown user:group file
+sudo | Chạy lệnh với quyền root | sudo apt update
+ps | Hiển thị tiến trình | ps aux | grep nginx
+kill | Dừng tiến trình | kill -9 1234
+top | Xem tài nguyên hệ thống | top
+df | Kiểm tra dung lượng ổ đĩa | df -h
+du | Xem dung lượng thư mục | du -sh /home
+tar | Nén/giải nén file | tar -xzvf file.tar.gz
+find | Tìm kiếm file | find / -name "*.log"
+scp | Copy file qua SSH | scp file user@host:/path
+ssh | Kết nối SSH | ssh user@host
+wget | Tải file từ internet | wget https://example.com/file
+curl | Truy cập/gọi API | curl https://api.example.com
+Lệnh | Chức năng | Ví dụ
+git init | Khởi tạo repository | git init
+git clone | Sao chép repository | git clone https://github.com/user/repo
+git add | Thêm file vào staging | git add .
+git commit | Lưu thay đổi | git commit -m "message"
+git push | Đẩy code lên remote | git push origin main
+git pull | Lấy code từ remote | git pull origin main
+git status | Xem trạng thái thay đổi | git status
+git log | Xem lịch sử commit | git log --oneline
+git branch | Quản lý nhánh | git branch -a
+git checkout | Chuyển nhánh/commit | git checkout feature
+git merge | Gộp nhánh | git merge feature
+git stash | Lưu tạm thay đổi | git stash
+git diff | Xem khác biệt | git diff HEAD~1
+git reset | Hoàn tác commit | git reset --soft HEAD~1
+git remote | Quản lý remote | git remote -v
+git fetch | Lấy thông tin từ remote | git fetch origin
+git rebase | Di chuyển commit | git rebase main
+git tag | Quản lý tag | git tag v1.0
+git config | Cấu hình Git | git config --global user.name "Name"
+git rm | Xóa file khỏi Git | git rm file.txt
+git mv | Đổi tên/di chuyển file | git mv old.txt new.txt
+git show | Xem thông tin commit | git show abc123
+git blame | Xem ai sửa từng dòng | git blame file.txt
+git cherry-pick | Lấy commit cụ thể | git cherry-pick abc123
+Lệnh | Chức năng | Ví dụ
+docker run | Chạy container | docker run -d -p 80:80 nginx
+docker ps | Liệt kê container | docker ps -a
+docker images | Liệt kê images | docker images
+docker build | Build image từ Dockerfile | docker build -t myapp .
+docker pull | Tải image từ registry | docker pull ubuntu:20.04
+docker push | Đẩy image lên registry | docker push myapp:v1
+docker exec | Chạy lệnh trong container | docker exec -it container bash
+docker stop | Dừng container | docker stop mycontainer
+docker start | Khởi động container | docker start mycontainer
+docker restart | Khởi động lại container | docker restart mycontainer
+docker rm | Xóa container | docker rm mycontainer
+docker rmi | Xóa image | docker rmi myimage
+docker logs | Xem logs container | docker logs -f mycontainer
+docker inspect | Xem thông tin chi tiết | docker inspect mycontainer
+docker network | Quản lý mạng | docker network ls
+docker volume | Quản lý volume | docker volume create myvol
+docker-compose up | Khởi động services | docker-compose up -d
+docker-compose down | Dừng services | docker-compose down
+docker-compose ps | Xem trạng thái services | docker-compose ps
+docker-compose logs | Xem logs services | docker-compose logs -f
+docker-compose build | Build lại images | docker-compose build
+docker-compose exec | Chạy lệnh trong service | docker-compose exec web bash
+docker system prune | Dọn dẹp Docker | docker system prune -a
+docker stats | Xem tài nguyên container | docker stats
+docker cp | Copy file vào/ra container | docker cp file.txt container:/path

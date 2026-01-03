@@ -11,6 +11,12 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+    // Show login page (serves React SPA)
+    public function showLogin()
+    {
+        return view('quiz.app');
+    }
+
     // Đăng ký
     public function register(Request $request)
     {

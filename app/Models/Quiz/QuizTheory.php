@@ -9,6 +9,7 @@ class QuizTheory extends Model
 {
     use HasFactory;
 
+    protected $connection = 'tracnghiem';
     protected $table = 'quiz_theories';
 
     protected $fillable = [
